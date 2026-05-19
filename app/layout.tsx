@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "JAMRO TOOLS",
   description:
     "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",
+  verification: {
+    google: "IAiGibFhHc1E4PgoezOdgQVxtCxI06idO6FMJR3BNm4",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <GoogleTagManager gtmId="GTM-K8T5VTBP" />
+      <GoogleAnalytics gaId="G-G787P55JXR" />
       <body className="min-h-full">{children}</body>
     </html>
   );
