@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafbff;
+  --foreground: #101828;
+  --color-brand: #0755d8;
+  --color-brand-light: #2f6bed;
+  --color-border: #d7dfef;
+  --color-border-strong: #bcc8dd;
+  --color-hero: #eef4ff;
+  --color-ink: #111827;
+  --color-muted: #50586a;
+  --color-page: #fbfbff;
+  --color-surface: #fbfbff;
 }
 
 @theme inline {
@@ -12,15 +21,32 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+@keyframes hero-recycle-bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.hero-recycle-bounce {
+  animation: hero-recycle-bounce 1.8s ease-in-out infinite;
+  will-change: transform;
 }
