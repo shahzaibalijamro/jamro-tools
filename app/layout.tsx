@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -13,10 +13,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "JAMRO TOOLS",
   description:
     "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",
+  icons: {
+    icon: "/jamro_tools_favicon.png",
+  },
   verification: {
     google: "IAiGibFhHc1E4PgoezOdgQVxtCxI06idO6FMJR3BNm4",
   },
@@ -30,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
     >
       <GoogleAnalytics gaId="G-G787P55JXR" />
       <body className="min-h-full">{children}</body>
