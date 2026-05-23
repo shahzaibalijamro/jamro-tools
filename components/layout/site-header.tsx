@@ -42,7 +42,7 @@ export function SiteHeader() {
           <button
             type="button"
             aria-label="Toggle dark mode"
-            className="inline-flex size-8 items-center justify-center rounded-full text-[#111827] transition hover:bg-[#e8eefc] min-[700px]:size-10 lg:size-8 xl:size-9"
+            className="min-[400px]:inline-flex hidden size-8 items-center justify-center rounded-full text-[#111827] transition hover:bg-[#e8eefc] min-[700px]:size-10 lg:size-8 xl:size-9"
           >
             <Moon className="size-6 min-[700px]:size-9 lg:size-6" strokeWidth={2.35} aria-hidden="true" />
           </button>
