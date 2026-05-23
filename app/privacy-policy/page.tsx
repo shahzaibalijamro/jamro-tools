@@ -7,6 +7,7 @@ import { PrivacyHero } from "@/components/privacy/privacy-hero";
 import { PrivacyMobileNav } from "@/components/privacy/privacy-mobile-nav";
 import { PrivacySections } from "@/components/privacy/privacy-sections";
 import { PrivacySidebar } from "@/components/privacy/privacy-sidebar";
+import { AboutHeader } from "@/components/about/about-header";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - Jamro Tools",
@@ -24,7 +25,7 @@ export default function PrivacyPage() {
       />
 
       <div className="min-h-screen bg-[#f9f9ff] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d]">
-        <PrivacyHeader />
+        <AboutHeader />
 
         <main>
           {/* Mobile hero (full-bleed bg) + Mobile jump nav */}

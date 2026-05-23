@@ -3,9 +3,9 @@ import { Moon, Search } from "lucide-react";
 
 const navItems = [
   { label: "Tools", href: "/tools", active: true },
-  { label: "Categories", href: "/categories" },
-  { label: "API", href: "/api" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function SiteHeader() {
@@ -20,26 +20,10 @@ export function SiteHeader() {
           >
             Jamro Tools
           </Link>
-
-          <form
-            role="search"
-            className="hidden h-[50px] min-w-[220px] max-w-[330px] flex-1 items-center rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-5 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] lg:flex min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px] xl:px-6"
-          >
-            <Search className="mr-4 size-6 shrink-0 text-[var(--color-ink)] opacity-80 xl:mr-5" strokeWidth={2.25} aria-hidden="true" />
-            <label htmlFor="site-search" className="sr-only">
-              Search tools
-            </label>
-            <input
-              id="site-search"
-              type="search"
-              placeholder="Search 1,000+ tools..."
-              className="min-w-0 w-full bg-transparent text-[16px] font-medium outline-none placeholder:text-[#505a70] xl:text-[18px]"
-            />
-          </form>
         </div>
 
-        <div className="flex shrink-0 items-center gap-3 min-[700px]:gap-8 lg:gap-3 xl:gap-9">
-          <nav aria-label="Primary navigation" className="hidden h-[72px] items-center gap-4 xl:gap-8 lg:flex">
+        <div className="flex shrink-0 items-center gap-3 min-[700px]:gap-8 lg:gap-4 xl:gap-9">
+          <nav aria-label="Primary navigation" className="hidden h-[30px] items-center gap-4 xl:gap-8 lg:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -64,10 +48,10 @@ export function SiteHeader() {
           </button>
 
           <Link
-            href="/feedback"
-            className="inline-flex h-10 w-[112px] shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-[54px] min-[700px]:w-[178px] min-[700px]:text-[22px] lg:h-10 lg:w-[108px] lg:text-[14px] xl:h-[43px] xl:w-[132px]"
+            href="/request-tool"
+            className="inline-flex h-10 w-[150px] shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-[54px] min-[700px]:w-[210px] min-[700px]:text-[22px] lg:h-10 lg:w-[150px] lg:text-[14px] xl:h-[43px] xl:w-[150px]"
           >
-            Feedback
+            Request a Tool
           </Link>
         </div>
       </div>

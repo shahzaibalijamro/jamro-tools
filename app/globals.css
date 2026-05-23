@@ -19,6 +19,115 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ── Jamro Utility System · 404 page design tokens ── */
+  /* Colors (from DESIGN.md — added globally; no existing page uses these utility names) */
+  --color-primary: #003594;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #004ac6;
+  --color-on-primary-container: #b8c8ff;
+  --color-primary-fixed: #dbe1ff;
+  --color-primary-fixed-dim: #b4c5ff;
+  --color-on-primary-fixed: #00174b;
+  --color-on-primary-fixed-variant: #003ea8;
+  --color-secondary: #085ac0;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #5b94fd;
+  --color-on-secondary-container: #002c66;
+  --color-secondary-fixed: #d8e2ff;
+  --color-secondary-fixed-dim: #adc6ff;
+  --color-on-secondary-fixed: #001a42;
+  --color-on-secondary-fixed-variant: #004395;
+  --color-tertiary: #6e2700;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #943700;
+  --color-on-tertiary-container: #ffba9d;
+  --color-tertiary-fixed: #ffdbcd;
+  --color-tertiary-fixed-dim: #ffb596;
+  --color-on-tertiary-fixed: #360f00;
+  --color-on-tertiary-fixed-variant: #7d2d00;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-surface: #f9f9ff;
+  --color-surface-dim: #cfdaf2;
+  --color-surface-bright: #f9f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f3ff;
+  --color-surface-container: #e7eeff;
+  --color-surface-container-high: #dee8ff;
+  --color-surface-container-highest: #d8e3fb;
+  --color-on-surface: #111c2d;
+  --color-on-surface-variant: #434654;
+  --color-inverse-surface: #263143;
+  --color-inverse-on-surface: #ecf1ff;
+  --color-inverse-primary: #b4c5ff;
+  --color-outline: #737685;
+  --color-outline-variant: #c3c6d6;
+  --color-surface-tint: #1b55d0;
+  --color-surface-variant: #d8e3fb;
+  --color-on-background: #111c2d;
+  --color-glass-bg: rgba(255, 255, 255, 0.7);
+  --color-glass-border: rgba(226, 232, 240, 0.8);
+  --color-hero-gradient-start: #E0E7FF;
+  --color-hero-gradient-mid: #EEF2FF;
+  --color-hero-gradient-end: #F5F3FF;
+
+  /* Spacing (extends Tailwind defaults; sm / md / lg / xl match defaults) */
+  --spacing-xs: 4px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* Typography — font families */
+  --font-label-md: Inter;
+  --font-headline-md: Inter;
+  --font-label-sm: Inter;
+  --font-display-lg-mobile: Inter;
+  --font-body-lg: Inter;
+  --font-display-lg: Inter;
+  --font-title-lg: Inter;
+  --font-body-md: Inter;
+
+  /* Typography — font sizes (Tailwind v4 multi-value syntax) */
+  --font-size-display-lg: 48px;
+  --font-size-display-lg--line-height: 1.1;
+  --font-size-display-lg--letter-spacing: -0.02em;
+  --font-size-display-lg--font-weight: 600;
+
+  --font-size-display-lg-mobile: 36px;
+  --font-size-display-lg-mobile--line-height: 1.1;
+  --font-size-display-lg-mobile--font-weight: 600;
+
+  --font-size-headline-md: 32px;
+  --font-size-headline-md--line-height: 1.2;
+  --font-size-headline-md--font-weight: 600;
+
+  --font-size-title-lg: 20px;
+  --font-size-title-lg--line-height: 1.4;
+  --font-size-title-lg--font-weight: 600;
+
+  --font-size-body-lg: 18px;
+  --font-size-body-lg--line-height: 1.6;
+  --font-size-body-lg--font-weight: 400;
+
+  --font-size-body-md: 16px;
+  --font-size-body-md--line-height: 1.6;
+  --font-size-body-md--font-weight: 400;
+
+  --font-size-label-md: 14px;
+  --font-size-label-md--line-height: 1.4;
+  --font-size-label-md--letter-spacing: 0.01em;
+  --font-size-label-md--font-weight: 600;
+
+  --font-size-label-sm: 12px;
+  --font-size-label-sm--line-height: 1.4;
+  --font-size-label-sm--font-weight: 400;
 }
 
 body {
@@ -78,5 +187,30 @@ a {
 
 .hero-recycle-bounce {
   animation: hero-recycle-bounce 1.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Dot-grid pattern — used on Terms of Service and other legal pages (desktop-only) */
+.tos-grid-pattern {
+  background-image: radial-gradient(circle at 2px 2px, #c3c6d7 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.2;
+}
+
+/* ── 404 Page · Glass panel utility ── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* ── 404 Page · Float animation (desktop) ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
   will-change: transform;
 }
