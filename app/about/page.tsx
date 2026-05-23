@@ -28,7 +28,7 @@ export default function AboutPage() {
       <div className="min-h-screen bg-[#f9f9ff] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d]">
         <AboutHeader />
 
-        <main className="mx-auto max-w-[1280px] px-4 pb-12 pb-20 sm:px-6 md:pb-12">
+        <main className="mx-auto max-w-[1280px] px-4 pb-8 sm:px-6 md:pb-12">
           <AboutHero />
           <AboutMission />
           <StoryValuesSection />
@@ -36,8 +36,7 @@ export default function AboutPage() {
           <AboutCta />
         </main>
 
-        <SiteFooter hasMarginBottom={true} />
-        <MobileBottomNav />
+        <SiteFooter hasMarginBottom={false} />
       </div>
     </>
   );

@@ -10,12 +10,12 @@ function CategoryCard({ category }: { category: ToolCategory }) {
     <li>
       <Link
         href={category.href}
-        className="flex min-h-[180px] min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] min-[700px]:min-h-[260px] min-[700px]:p-9 lg:min-h-[210px] lg:rounded-[12px] lg:p-7 xl:min-h-[190px]"
+        className="flex min-h-[180px] text-center justify-center min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] min-[700px]:min-h-[260px] min-[700px]:p-9 lg:min-h-[210px] lg:rounded-[12px] lg:p-7 xl:min-h-[190px]"
       >
         <ToolIcon
           icon={category.icon}
           tone={category.tone}
-          className="size-16 shrink-0 min-[700px]:size-[86px] lg:size-[64px]"
+          className="size-16 mx-auto shrink-0 min-[700px]:size-[86px] lg:size-[64px]"
           iconClassName="size-9 min-[700px]:size-12 lg:size-9"
         />
         <h3 className="mt-8 min-w-0 break-words text-[24px] font-extrabold leading-[1.08] text-[var(--color-ink)] min-[700px]:mt-12 min-[700px]:text-[30px] lg:mt-7 lg:text-[clamp(20px,2vw,24px)] xl:text-[24px]">

@@ -5,7 +5,7 @@ export function AboutCta() {
   return (
     <>
       {/* MOBILE CTA — dark inverse-surface background, rounded top */}
-      <section className="-mx-4 -mb-12 rounded-t-3xl bg-[#263143] px-4 py-12 text-center sm:-mx-6 md:hidden">
+      <section className="rounded-3xl bg-[#263143] px-4 py-12 text-center md:hidden">
         <h3 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#ecf1ff]">
           Ready to work smarter?
         </h3>
