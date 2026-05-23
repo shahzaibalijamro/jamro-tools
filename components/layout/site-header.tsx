@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { Moon, Search } from "lucide-react";
+import { Moon, Search, Menu, X } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const navItems = [
   { label: "Tools", href: "/tools", active: true },
@@ -9,67 +12,279 @@ const navItems = [
 ];
 
 export function SiteHeader() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+
+  /* Close button coordinates (matches hamburger position exactly) */
+  const [closePos, setClosePos] = useState<{ top: number; right: number }>({
+    top: 0,
+    right: 0,
+  });
+
+  /* ----- helpers --------------------------------------------------------- */
+
+  const computeClosePos = useCallback(() => {
+    const btn = hamburgerRef.current;
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    setClosePos({
+      top: rect.top,
+      right: window.innerWidth - rect.right,
+    });
+  }, []);
+
+  const openSidebar = useCallback(() => {
+    computeClosePos();
+    setSidebarOpen(true);
+  }, [computeClosePos]);
+
+  const closeSidebar = useCallback(() => {
+    setSidebarOpen(false);
+  }, []);
+
+  /* ----- effects --------------------------------------------------------- */
+
+  // Recompute close button position on resize; close if >900px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setSidebarOpen(false);
+      } else if (sidebarOpen) {
+        computeClosePos();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [sidebarOpen, computeClosePos]);
+
+  // Lock body scroll while sidebar is open
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [sidebarOpen]);
+
+  /* ----- render ---------------------------------------------------------- */
+
   return (
-    <header className="sticky top-0 z-50 h-14 border-b border-white/60 bg-[rgba(250,251,255,0.76)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-24 lg:h-[72px]">
-      <div className="mx-auto flex h-full w-full max-w-[1300px] items-center justify-between gap-4 px-4 min-[700px]:px-9">
-        <div className="flex h-full min-w-0 flex-1 items-center lg:gap-5 xl:gap-8">
-          <Link
-            href="/"
-            className="shrink-0 whitespace-nowrap text-[22px] font-extrabold leading-none text-[var(--color-brand)] min-[700px]:text-[34px] lg:text-[23px]"
-            aria-label="Jamro Tools home"
-          >
-            Jamro Tools
-          </Link>
-          <form
-            role="search"
-            className="hidden h-[50px] min-w-[220px] max-w-[330px] flex-1 items-center rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-5 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] lg:flex min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px] xl:px-6"
-          >
-            <Search className="mr-4 size-6 shrink-0 text-[var(--color-ink)] opacity-80 xl:mr-5" strokeWidth={2.25} aria-hidden="true" />
-            <label htmlFor="site-search" className="sr-only">
-              Search tools
-            </label>
-            <input
-              id="site-search"
-              type="search"
-              placeholder="Search 1,000+ tools..."
-              className="min-w-0 w-full bg-transparent text-[16px] font-medium outline-none placeholder:text-[#505a70] xl:text-[18px]"
-            />
-          </form>
+    <>
+      {/* ================================================================ */}
+      {/* HEADER                                                          */}
+      {/* ================================================================ */}
+      <header className="sticky top-0 z-50 h-14 border-b border-white/60 bg-[rgba(250,251,255,0.76)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-[72px]">
+        <div className="mx-auto flex h-full w-full max-w-[1300px] items-center justify-between max-[602px]:gap-2 gap-4 px-4 min-[700px]:px-9">
+          {/* LEFT: Logo + Search */}
+          <div className="flex h-full min-w-0 flex-1 items-center justify-between gap-3 min-[700px]:gap-5 xl:gap-8">
+            <Link
+              href="/"
+              className="shrink-0 whitespace-nowrap text-[22px] font-extrabold leading-none text-[var(--color-brand)] min-[700px]:text-[23px]"
+              aria-label="Jamro Tools home"
+            >
+              Jamro Tools
+            </Link>
+            <form
+              role="search"
+              className="flex h-[44px] min-w-[130px] max-w-[330px] max-[580px]:hidden flex-1 items-center rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-4 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] min-[400px]:h-[40px] min-[400px]:px-5 min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px] xl:px-6"
+            >
+              <Search
+                className="mr-3 size-5 shrink-0 text-[var(--color-ink)] opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
+                strokeWidth={2.25}
+                aria-hidden="true"
+              />
+              <label htmlFor="site-search" className="sr-only">
+                Search tools
+              </label>
+              <input
+                id="site-search"
+                type="search"
+                placeholder="Search tools..."
+                className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] min-[400px]:text-[16px] xl:text-[18px]"
+              />
+            </form>
+          </div>
+
+          {/* RIGHT: nav · moon · cta · hamburger */}
+          <div className="flex shrink-0 items-center gap-3 min-[700px]:gap-5 xl:gap-9">
+            {/* Desktop nav — ≥901px */}
+            <nav
+              aria-label="Primary navigation"
+              className="hidden h-[30px] items-center gap-4 xl:gap-8 min-[901px]:flex"
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${
+                    item.active
+                      ? "border-[var(--color-brand)] text-[var(--color-brand)]"
+                      : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Night mode — ≥901px only */}
+            <button
+              type="button"
+              aria-label="Toggle dark mode"
+              className="hidden min-[901px]:inline-flex size-8 items-center justify-center rounded-full text-[#111827] transition hover:bg-[#e8eefc] min-[700px]:size-8 xl:size-9"
+            >
+              <Moon className="size-6 min-[700px]:size-6" strokeWidth={2.35} aria-hidden="true" />
+            </button>
+
+            {/* Request a Tool — ≥901px only */}
+            <Link
+              href="/request-tool"
+              className="hidden min-[901px]:inline-flex h-10 w-[150px] shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-10 min-[700px]:w-[150px] min-[700px]:text-[14px] xl:h-[43px] xl:w-[150px]"
+            >
+              Request a Tool
+            </Link>
+
+            {/* Hamburger — ≤900px only */}
+            <button
+              ref={hamburgerRef}
+              type="button"
+              aria-label="Open navigation menu"
+              className="hidden max-[900px]:inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] transition hover:bg-[#e8eefc]"
+              style={{
+                opacity: sidebarOpen ? 0 : 1,
+                transition: "opacity 150ms ease-in-out",
+                willChange: "opacity",
+              }}
+              onClick={openSidebar}
+            >
+              <Menu className="size-7" strokeWidth={2.35} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* ================================================================ */}
+      {/* SIDEBAR — always in DOM for CSS transitions (≤900px)           */}
+      {/* ================================================================ */}
+      <div
+        className="fixed inset-0 z-60 min-[901px]:hidden"
+        style={{ pointerEvents: sidebarOpen ? "auto" : "none" }}
+      >
+        {/* BACKDROP — fades opacity in/out */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundColor: "rgba(0,0,0,0.3)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
+            opacity: sidebarOpen ? 1 : 0,
+            transition: "opacity 300ms ease-in-out",
+            willChange: "opacity",
+          }}
+          onClick={closeSidebar}
+          aria-hidden="true"
+        />
+
+        {/* PANEL — slides in from the right edge */}
+        <div
+          className="absolute inset-0 flex flex-col bg-[#fafbff] shadow-xl"
+          style={{
+            transform: sidebarOpen ? "translateX(0)" : "translateX(100%)",
+            transition: "transform 300ms ease-in-out",
+            willChange: "transform",
+          }}
+        >
+          {/* ----- panel inner content ----- */}
+          <div className="flex h-full flex-col p-6">
+            {/* Top row: logo + spacer for close button */}
+            <div
+              className="mb-8 flex items-center"
+              style={{ paddingRight: "48px" }}
+            >
+              <span className="text-[22px] font-extrabold text-[var(--color-brand)]">
+                Jamro Tools
+              </span>
+            </div>
+
+            {/* Nav links */}
+            <nav className="flex flex-col">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeSidebar}
+                  className={`border-b text-center border-[var(--color-border)] py-4 text-[17px] font-semibold transition ${
+                    item.active
+                      ? "text-[var(--color-brand)]"
+                      : "text-[var(--color-muted)] hover:text-[var(--color-brand)]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Spacer */}
+            <div className="flex-1" />
+
+            <form
+              role="search"
+              className="mb-4 h-12 w-full max-[580px]:flex hidden items-center rounded-full border border-(--color-border) bg-[#f4f7ff] px-4 text-(--color-muted) shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] min-[400px]:px-5  xl:px-6"
+            >
+              <Search
+                className="mr-3 size-5 shrink-0 text-[var(--color-ink)] opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
+                strokeWidth={2.25}
+                aria-hidden="true"
+              />
+              <label htmlFor="site-search" className="sr-only">
+                Search tools
+              </label>
+              <input
+                id="site-search"
+                type="search"
+                placeholder="Search tools..."
+                className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] min-[400px]:text-[16px] xl:text-[18px]"
+              />
+            </form>
+
+            {/* Request a Tool */}
+            <Link
+              href="/request-tool"
+              onClick={closeSidebar}
+              className="mb-4 flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5]"
+            >
+              Request a Tool
+            </Link>
+
+            {/* Night mode toggle */}
+            <button
+              type="button"
+              aria-label="Toggle dark mode"
+              className="flex h-12 w-full items-center justify-center gap-3 rounded-full border border-[var(--color-border)] text-[16px] font-semibold text-[var(--color-ink)] transition hover:bg-[#e8eefc]"
+            >
+              <Moon className="size-6" strokeWidth={2.35} aria-hidden="true" />
+              Dark Mode
+            </button>
+          </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-3 min-[700px]:gap-8 lg:gap-4 xl:gap-9">
-          <nav aria-label="Primary navigation" className="hidden h-[30px] items-center gap-4 xl:gap-8 lg:flex">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${
-                  item.active
-                    ? "border-[var(--color-brand)] text-[var(--color-brand)]"
-                    : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)]"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <button
-            type="button"
-            aria-label="Toggle dark mode"
-            className="min-[400px]:inline-flex hidden size-8 items-center justify-center rounded-full text-[#111827] transition hover:bg-[#e8eefc] min-[700px]:size-10 lg:size-8 xl:size-9"
-          >
-            <Moon className="size-6 min-[700px]:size-9 lg:size-6" strokeWidth={2.35} aria-hidden="true" />
-          </button>
-
-          <Link
-            href="/request-tool"
-            className="inline-flex h-10 w-[150px] shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-[54px] min-[700px]:w-[210px] min-[700px]:text-[22px] lg:h-10 lg:w-[150px] lg:text-[14px] xl:h-[43px] xl:w-[150px]"
-          >
-            Request a Tool
-          </Link>
-        </div>
+        {/* CLOSE BUTTON — fixed overlay, replaces hamburger in-place */}
+        <button
+          type="button"
+          aria-label="Close navigation menu"
+          className="fixed inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] hover:bg-[#e8eefc]"
+          style={{
+            top: `${closePos.top}px`,
+            right: `${closePos.right}px`,
+            opacity: sidebarOpen ? 1 : 0,
+            transition: "opacity 150ms ease-in-out, background-color 150ms",
+            willChange: "opacity",
+            pointerEvents: sidebarOpen ? "auto" : "none",
+          }}
+          onClick={closeSidebar}
+        >
+          <X className="size-7" strokeWidth={2.35} aria-hidden="true" />
+        </button>
       </div>
-    </header>
+    </>
   );
 }

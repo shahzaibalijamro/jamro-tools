@@ -7,11 +7,11 @@ import { footerColumns } from "@/lib/landing-data";
 export function SiteFooter({ hasMarginBottom = false }) {
   return (
     <footer
-      className={`bg-[#273247] md:pb-0 text-[#d9e4f6] ${hasMarginBottom ? "pb-16" : ""}`}
+      className={`bg-[#273247] min-[700px]:pb-0 text-[#d9e4f6] ${hasMarginBottom ? "pb-16" : ""}`}
     >
       <Container>
         <div className="mx-auto max-w-[988px]">
-          <div className="grid gap-12 justify-center md:justify-start text-center md:text-start    py-14 min-[700px]:grid-cols-2 min-[700px]:py-16 lg:grid-cols-[1fr_0.8fr_1fr_0.95fr] lg:gap-20">
+          <div className="grid gap-12 justify-center min-[700px]:justify-start text-center min-[700px]:text-start py-14 min-[700px]:py-16 min-[700px]:grid-cols-[1fr_0.8fr_1fr_0.95fr] min-[700px]:gap-20">
             <div>
               <Link
                 href="/"
@@ -24,7 +24,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
                 The digital Swiss Army knife for the modern professional. Built
                 for speed, privacy, and utility.
               </p>
-              <div className="mt-8 flex items-center justify-center md:justify-start gap-5 text-[#d9e4f6]">
+              <div className="mt-8 flex items-center justify-center min-[700px]:justify-start gap-5 text-[#d9e4f6]">
                 <Link href="/community" aria-label="Jamro Tools community">
                   <Globe2
                     className="size-5"
