@@ -44,7 +44,7 @@ function PhilosophyCard() {
 
 export function TeamPhilosophySection() {
   return (
-    <section className="mb-12">
+    <section className="mb-12 hidden md:block">
       <SectionHeading
         title="Powered by Passion"
         description="We are a distributed team of engineers, designers, and mathematicians dedicated to building the ultimate utility belt for the digital age."

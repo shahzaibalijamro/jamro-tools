@@ -13,7 +13,7 @@ export default function Home() {
         <CategorySection />
         <TrustSection />
       </main>
-      <SiteFooter />
+      <SiteFooter hasMarginBottom={false} />
     </>
   );
 }

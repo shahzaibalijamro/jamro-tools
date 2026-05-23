@@ -47,7 +47,7 @@ export function AboutHero() {
       </div>
 
       {/* Desktop Hero Image */}
-      <div className="relative hidden h-[280px] overflow-hidden rounded-[12px] shadow-xl sm:h-[340px] md:block md:h-[400px]">
+      <div className="relative hidden md:mt-8  h-[280px] overflow-hidden rounded-[12px] shadow-xl sm:h-[340px]  md:block md:h-[400px]">
         <Image
           src="/about/hero-workspace.png"
           alt="Modern workspace with screens and design tools"

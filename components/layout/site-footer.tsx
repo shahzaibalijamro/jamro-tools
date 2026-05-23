@@ -4,12 +4,12 @@ import { AtSign, Globe2, Heart } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { footerColumns } from "@/lib/landing-data";
 
-export function SiteFooter() {
+export function SiteFooter({hasMarginBottom = false}) {
   return (
-    <footer className="bg-[#273247] text-[#d9e4f6]">
+    <footer className={`bg-[#273247] md:pb-0 text-[#d9e4f6] ${hasMarginBottom ? 'pb-16' : ''}`}>
       <Container>
         <div className="mx-auto max-w-[988px]">
-          <div className="grid gap-12 py-14 min-[700px]:grid-cols-2 min-[700px]:py-16 lg:grid-cols-[1fr_0.8fr_1fr_0.95fr] lg:gap-20">
+          <div className="grid gap-12 justify-center md:justify-start text-center md:text-start    py-14 min-[700px]:grid-cols-2 min-[700px]:py-16 lg:grid-cols-[1fr_0.8fr_1fr_0.95fr] lg:gap-20">
             <div>
               <Link
                 href="/"
@@ -22,7 +22,7 @@ export function SiteFooter() {
                 The digital Swiss Army knife for the modern professional. Built for speed, privacy,
                 and utility.
               </p>
-              <div className="mt-8 flex items-center gap-5 text-[#d9e4f6]">
+              <div className="mt-8 flex items-center justify-center md:justify-start gap-5 text-[#d9e4f6]">
                 <Link href="/community" aria-label="Jamro Tools community">
                   <Globe2 className="size-5" strokeWidth={2.25} aria-hidden="true" />
                 </Link>
@@ -58,7 +58,7 @@ export function SiteFooter() {
             <p className="inline-flex items-center justify-center gap-1">
               Made with
               <Heart className="size-3 fill-red-500 text-red-500" aria-hidden="true" />
-              by the Jamro Team
+              by <a href="https://github.com/shahzaibalijamro" className="underline hover:text-[#d9e4f6]">Shahzaib Ali</a>.
             </p>
           </div>
         </div>

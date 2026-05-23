@@ -69,8 +69,8 @@ export function HeroSection() {
               100% free. No sign-up.
             </span>
             <span className="hidden lg:inline">
-              Every tool you need. 100% free. No
-              <br />
+              Every tool you need. 100% free.<br /> No
+              
               sign-up.
             </span>
           </h1>

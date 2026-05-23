@@ -8,6 +8,7 @@ import { AboutMission } from "@/components/about/about-mission";
 import { MobileBottomNav } from "@/components/about/mobile-bottom-nav";
 import { StoryValuesSection } from "@/components/about/story-values-section";
 import { TeamPhilosophySection } from "@/components/about/team-philosophy-section";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export const metadata: Metadata = {
   title: "About Us - Jamro Tools",
@@ -35,7 +36,7 @@ export default function AboutPage() {
           <AboutCta />
         </main>
 
-        <AboutFooter />
+        <SiteFooter hasMarginBottom={true} />
         <MobileBottomNav />
       </div>
     </>

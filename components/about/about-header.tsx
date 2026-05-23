@@ -8,7 +8,7 @@ export function AboutHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#c3c6d7] bg-[#f9f9ff] shadow-sm">
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6">
-        <div className="flex min-w-0 items-center gap-2">
+        <div className="flex min-w-0 items-center gap-5">
           <Link
             href="/"
             className="flex shrink-0 items-center gap-2"
@@ -28,7 +28,7 @@ export function AboutHeader() {
 
           <nav
             aria-label="About page navigation"
-            className="hidden items-center gap-4 md:flex"
+            className="hidden items-center gap-4 lg:flex"
           >
             {aboutNavItems.map((item) => (
               <Link
