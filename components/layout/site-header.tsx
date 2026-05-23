@@ -200,7 +200,7 @@ export function SiteHeader() {
               className="mb-8 flex items-center"
               style={{ paddingRight: "48px" }}
             >
-              <span className="text-[22px] font-extrabold text-[var(--color-brand)]">
+              <span className="text-[22px] relative -top-3 -left-2 font-extrabold text-[var(--color-brand)]">
                 Jamro Tools
               </span>
             </div>
