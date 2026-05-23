@@ -150,7 +150,7 @@ export function NotFoundMain() {
         {/* Glass card with image and 404 */}
         <div
           ref={glassCardRef}
-          className="glass-panel w-full aspect-square mb-12 rounded-xl flex items-center justify-center relative group overflow-hidden"
+          className="glass-panel w-full aspect-square mb-6 rounded-xl flex items-center justify-center relative group overflow-hidden"
         >
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuADN2zOorOw0-XHN7ef4ig624x1GwCPuz25MmS4BubG_xNumD14z2cQmJR_NL6O-s2TJEuJaSNjeopicPxsLiJml5wo7IITNEXkjETUB9x13Zwa0bM2kqJ2ynyT-NvZIL69ipkC7RY4-QYKWu1X408ikPfZ3yfhGm3TeQpCSrT_V4YZ6d-r2f4W7gA-PirlqT7W13nKP8X5PQ-Z9SrAtnS6jbAtkH2HXadnX9Co12i87p-kii2CceUYQ7GjUBbI1LT8UfOAfmBfWV4B"
