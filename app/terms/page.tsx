@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
-import { AboutHeader } from "@/components/about/about-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { TermsHero } from "@/components/terms/terms-hero";
 import { TermsSections } from "@/components/terms/terms-sections";
 import { TermsSidebar } from "@/components/terms/terms-sidebar";
 import { TermsContentCard } from "@/components/terms/terms-content-card";
+import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
   title: "Terms of Service - Jamro Tools",
@@ -23,7 +23,7 @@ export default function TermsPage() {
       />
 
       <div className="min-h-screen bg-[#f9f9ff] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d]">
-        <AboutHeader />
+        <SiteHeader />
 
         <main className="relative overflow-hidden pt-4 pb-8">
           {/* Dot-grid pattern background (desktop only) */}

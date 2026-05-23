@@ -8,12 +8,10 @@ import {
 } from "lucide-react";
 
 export const aboutNavItems = [
-  { label: "All Tools", href: "/tools" },
-  { label: "Text", href: "/tools/text" },
-  { label: "Images", href: "/tools/images" },
-  { label: "Math", href: "/tools/math" },
-  { label: "Dev", href: "/tools/dev" },
-  { label: "Converters", href: "/tools/converters" },
+  { label: "Tools", href: "/tools" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" }
 ];
 
 export const missionFacts = ["100% Free Forever", "No Sign-up Required"];

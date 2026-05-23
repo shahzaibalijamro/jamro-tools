@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 
 import { AboutCta } from "@/components/about/about-cta";
-import { AboutFooter } from "@/components/about/about-footer";
-import { AboutHeader } from "@/components/about/about-header";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutMission } from "@/components/about/about-mission";
-import { MobileBottomNav } from "@/components/about/mobile-bottom-nav";
 import { StoryValuesSection } from "@/components/about/story-values-section";
 import { TeamPhilosophySection } from "@/components/about/team-philosophy-section";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
   title: "About Us - Jamro Tools",
@@ -26,7 +24,7 @@ export default function AboutPage() {
       />
 
       <div className="min-h-screen bg-[#f9f9ff] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d]">
-        <AboutHeader />
+        <SiteHeader />
 
         <main className="mx-auto max-w-[1280px] px-4 pb-8 sm:px-6 md:pb-12">
           <AboutHero />

@@ -14,18 +14,13 @@ export function AboutHeader() {
             className="flex shrink-0 items-center gap-2"
             aria-label="Jamro Tools home"
           >
-            <Image
-              src="/jamro_tools_favicon.png"
-              alt="Jamro Tools Logo"
-              width={32}
-              height={32}
-              className="size-8"
-            />
             <span className="text-[20px] font-bold leading-[1.4] text-[#004ac6]">
               Jamro Tools
             </span>
           </Link>
+        </div>
 
+        <div className="flex shrink-0 items-center gap-4">
           <nav
             aria-label="About page navigation"
             className="hidden items-center gap-4 lg:flex"
@@ -40,9 +35,6 @@ export function AboutHeader() {
               </Link>
             ))}
           </nav>
-        </div>
-
-        <div className="flex shrink-0 items-center gap-4">
           <form role="search" className="relative hidden sm:block">
             <Search
               className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#737686]"
@@ -74,7 +66,11 @@ export function AboutHeader() {
             aria-label="Open navigation menu"
             className="flex size-10 items-center justify-center rounded-full active:bg-[#d8e3fb] transition-colors md:hidden"
           >
-            <Menu className="size-6 text-[#111c2d]" strokeWidth={2} aria-hidden="true" />
+            <Menu
+              className="size-6 text-[#111c2d]"
+              strokeWidth={2}
+              aria-hidden="true"
+            />
           </button>
         </div>
       </div>

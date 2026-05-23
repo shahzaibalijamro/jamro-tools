@@ -53,7 +53,7 @@ export function NotFoundMain() {
   };
 
   return (
-    <main className="flex-grow flex flex-col items-center justify-center pt-[120px] pb-12 px-4 sm:px-6 max-w-[1280px] mx-auto w-full relative overflow-hidden">
+    <main className="flex-grow flex flex-col items-center justify-center pt-10 pb-12 px-4 sm:px-6 max-w-[1280px] mx-auto w-full relative overflow-hidden">
       {/* ── Atmospheric blobs (mobile only) ── */}
       <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl md:hidden" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl md:hidden" />

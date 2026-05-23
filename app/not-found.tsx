@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 
 import { NotFoundMain } from "@/components/not-found/not-found-main";
-import { AboutHeader } from "@/components/about/about-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
   title: "404 - Page Not Found | Jamro Tools",
@@ -21,7 +21,7 @@ export default function NotFoundPage() {
       />
 
       <div className="min-h-screen flex flex-col bg-surface font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-on-surface">
-        <AboutHeader />
+        <SiteHeader />
         <NotFoundMain />
         <SiteFooter />
       </div>
