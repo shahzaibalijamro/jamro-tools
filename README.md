@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jamro Tools
+
+> 🚧 **This project is currently under active construction.** Features, pages, and tools are being built out. Expect frequent changes and additions.
+
+A free, all-in-one collection of online utility tools — fast, lightweight, and private. Built with Next.js and Tailwind CSS.
+
+---
+
+## What Is Jamro Tools?
+
+Jamro Tools is a comprehensive web platform offering hundreds of free online utilities across multiple categories. Whether you need to crunch numbers, convert files, generate passwords, format JSON, or compress images, Jamro Tools has you covered — no installs, no sign-ups, just open and use.
+
+### Tool Categories
+
+| Category | Description |
+|---|---|
+| **Calculators** | 120+ math, finance, health & science calculators |
+| **Converters** | 80+ unit, currency, file & data converters |
+| **Generators** | 45+ password, QR, UUID & code generators |
+| **Dev Tools** | 200+ JSON, Markdown, encoding & debugging tools |
+| **PDF Utils** | 32+ merge, split, compress & convert tools |
+| **Graphics** | 64+ image resize, crop, compress & filter tools |
+| **Text & SEO** | 112+ text manipulation, SEO & content tools |
+| **Cybersec** | 25+ hash, encrypt, encode & security tools |
+| **Finance** | 58+ loan, tax, budget & investment tools |
+| **Others** | 150+ miscellaneous utilities |
+
+### Highlights
+
+- ⚡ **Lightning Fast** — Tools load in under 100ms
+- 📱 **Any Device** — Fully responsive; seamless mobile experience
+- 🔌 **API Ready** — Developer endpoints available
+- 🔒 **Privacy First** — All processing happens client-side where possible
+
+---
+
+## Tech Stack
+
+- **[Next.js](https://nextjs.org/)** (v16) — React framework with App Router
+- **[React](https://react.dev/)** (v19) — UI library
+- **[Tailwind CSS](https://tailwindcss.com/)** (v4) — Utility-first CSS framework
+- **[Lucide React](https://lucide.dev/)** — Beautiful, consistent icon set
+- **[TypeScript](https://www.typescriptlang.org/)** — Type-safe JavaScript
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/jamro-tools.git
+cd jamro-tools
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server with Turbopack |
+| `npm run build` | Create an optimized production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint across the project |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+jamro-tools/
+├── app/                     # Next.js App Router pages
+│   ├── about/               # About page
+│   ├── privacy-policy/      # Privacy Policy page
+│   ├── terms/               # Terms of Service page
+│   ├── layout.tsx           # Root layout
+│   ├── page.tsx             # Landing page
+│   └── not-found.tsx        # Custom 404 page
+├── components/
+│   ├── about/               # About page components
+│   ├── landing/             # Landing page components
+│   ├── layout/              # Site header & footer
+│   ├── not-found/           # 404 page components
+│   ├── privacy/             # Privacy policy components
+│   ├── terms/               # Terms of service components
+│   └── ui/                  # Shared UI components
+├── lib/                     # Shared data & utilities
+├── public/                  # Static assets
+└── ...config files
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> 🚧 **Work in Progress**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The landing page, about page, privacy policy, terms of service, and 404 page are built. Individual tool pages and their interactive functionality are currently being developed.
+
+Planned & upcoming:
+
+- [ ] Individual tool pages with interactive functionality
+- [ ] Category listing pages
+- [ ] Search & filtering
+- [ ] Dark mode / theme switching
+- [ ] Public API endpoints
+- [ ] Tool favoriting & history
+
+---
+
+## License
+
+[License TBD]
+
+---
+
+<p align="center">Made with ❤️ for the community</p>
