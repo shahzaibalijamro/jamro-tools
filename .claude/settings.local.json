@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find c:/Users/user/Desktop -maxdepth 2 -name \"*.html\" ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" 2>/dev/null | head -20)",
+      "Read(//c/Users/user/Desktop/**)"
+    ]
+  }
+}
