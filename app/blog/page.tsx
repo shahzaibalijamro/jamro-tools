@@ -85,7 +85,7 @@ export default function BlogPage() {
           {/* ── Pagination ── */}
           <nav
             aria-label="Blog pagination"
-            className="mt-xl flex justify-center items-center gap-[16px]"
+            className="mt-[48px] flex justify-center items-center gap-[16px]"
           >
             {/* Previous */}
             <button
@@ -159,7 +159,7 @@ export default function BlogPage() {
               />
               <button
                 type="submit"
-                className="bg-primary-fixed text-on-primary-fixed text-label-md px-xl py-[16px] rounded-full hover:bg-white transition-colors whitespace-nowrap"
+                className="bg-primary-fixed text-on-primary-fixed text-label-md px-[48px] py-[16px] rounded-full hover:bg-white transition-colors whitespace-nowrap"
               >
                 Subscribe
               </button>
