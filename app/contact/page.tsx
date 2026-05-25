@@ -219,7 +219,7 @@ export default function ContactPage() {
               <div className="h-48 rounded-xl overflow-hidden relative">
                 <iframe
                   className="w-full h-full"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019276122601!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4443%3A0x1d5a1c0f0d2e0e0!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d776.8030225331245!2d67.15511448308483!3d24.918228710068036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb3384d985d7dfd%3A0xd79b5693f67c3717!2sW594%2B63C%2C%20Bhittai%20Abad%20Bhitaiabad%20Block%209%20Bhittaiabad%2C%20Karachi%2C%20Pakistan!5e1!3m2!1sen!2s!4v1779704412624!5m2!1sen!2s"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

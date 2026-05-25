@@ -13,18 +13,32 @@ export function PrivacyMobileNav() {
   }, []);
 
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+    // Collect the actual target elements using their IDs
+    const sectionElements = mobileJumpLinks
+      .map((link) => document.getElementById(link.href.replace("#", "")))
+      .filter(Boolean) as HTMLElement[];
+
+    if (sectionElements.length === 0) return;
 
     const handleScroll = () => {
       let current = "introduction";
-      const scrollY = window.scrollY;
 
-      sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top + scrollY;
-        if (scrollY >= sectionTop - 150) {
-          current = section.getAttribute("id") || current;
+      // Iterate in reverse so the last section whose top has passed (or is at)
+      // the top of the viewport wins — the section you're currently "in".
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const el = sectionElements[i];
+
+        // Skip hidden elements (e.g. desktop-only sections)
+        const style = window.getComputedStyle(el);
+        if (style.display === "none") continue;
+
+        const rect = el.getBoundingClientRect();
+        // The section is considered active once its top reaches the top of the viewport
+        if (rect.top <= 1) {
+          current = el.getAttribute("id") || current;
+          break;
         }
-      });
+      }
 
       setActiveId(current);
     };
@@ -39,7 +53,7 @@ export function PrivacyMobileNav() {
   };
 
   return (
-    <nav className="sticky top-16 z-40 border-b border-[#c3c6d7] bg-[#f9f9ff]/95 backdrop-blur-md md:hidden">
+    <nav className="sticky min-[700px]:top-18 top-14 z-40 border-b border-white/60 bg-[rgba(250,251,255,0.76)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 md:hidden">
       <div className="flex snap-x-mandatory gap-2 mx-4 sm:mx-6 overflow-x-auto whitespace-nowrap px-4 py-2 no-scrollbar sm:px-6">
         {mobileJumpLinks.map((link, index) => {
           const isActive = activeId === link.href.replace("#", "");
