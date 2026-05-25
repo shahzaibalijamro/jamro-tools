@@ -2,6 +2,7 @@
 
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ToolsCtaSection } from "@/components/tools/cta-section";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -138,32 +139,79 @@ export default function CalculatorsPage() {
           ))}
         </div>
 
-        {/* ── CTA Section (reused from tools/page.tsx) ── */}
-        <section className="mt-[48px] p-[48px] rounded-2xl bg-inverse-surface text-on-primary-fixed-variant flex flex-col md:flex-row items-center justify-between gap-[24px] overflow-hidden relative">
-          <div className="relative z-10">
-            <h2 className="text-headline-md text-surface-bright mb-[8px]">
-              Can't find a specific tool?
-            </h2>
-            <p className="text-body-md text-surface-variant opacity-80 max-w-lg">
-              We're constantly adding new utilities to our ecosystem. Let
-              us know what you're looking for and we'll build it for
-              the community.
-            </p>
-            <button className="mt-[24px] px-[48px] py-[16px] bg-primary-container text-on-primary rounded-full text-label-md font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-95 shadow-lg cursor-pointer">
-              Submit Tool Request
-            </button>
+        {/* ── Tool Highlights Section ── */}
+        <section className="mt-[48px] grid grid-cols-1 lg:grid-cols-2 gap-[24px]">
+          {/* Featured Tool */}
+          <div className="glass-card rounded-xl overflow-hidden flex flex-col md:flex-row">
+            <div className="md:w-1/2 h-48 md:h-auto relative">
+              <Image
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF4CTAs_y0eDSSSDwMDMFFUjvZiI20DLyFtCJEs0BXfm_zzJ3uXwt2Yb7wie3SnPCVwf0AfCtYHfWcclAGFrujYBX1Zn--WyP2PaTacmNj5KPEv3jMN17d_wyoVAtmny8zeL4RXNU4mKoSui5zW8H0z_NLySdAICQSUziBR3xhvKdnFu-Ixg2yMyrBjf_OcgJHkjQcBcLBR_RZmp2D2eWkJ0KZiEJ6TL_WimpveCNJJiKVQtjq_1qeuTU2bgymKxZI4WJOcpMqLb1L"
+                alt="A professional financial workstation featuring a sleek laptop displaying complex stock market charts and a high-end metal calculator"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="p-[24px] md:w-1/2 flex flex-col justify-center">
+              <span className="text-label-sm text-primary uppercase tracking-wider mb-[4px]">
+                Featured Tool
+              </span>
+              <h4 className="text-title-lg text-on-surface mb-[8px]">
+                Smart Mortgage Planner
+              </h4>
+              <p className="text-body-md text-on-surface-variant mb-[16px]">
+                Calculate exact monthly payments including taxes, insurance, and
+                HOA fees.
+              </p>
+              <Link
+                href="#"
+                className="text-primary text-label-md flex items-center gap-[4px] hover:underline decoration-2 underline-offset-4"
+              >
+                Try Now{" "}
+                <span className="material-symbols-outlined text-[18px]">
+                  open_in_new
+                </span>
+              </Link>
+            </div>
           </div>
-          <div className="w-[256px] h-[256px] md:w-[320px] md:h-[320px] bg-primary/20 rounded-full blur-[100px] absolute -right-[80px] -top-[80px]" />
-          <div className="w-full md:w-[400px] aspect-[3/2] relative z-10 rounded-xl overflow-hidden">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy3BakiwxG6qRWqcUxPr02ch-EMk444gMPbA9ODLZeyOtLhRBMoCkFYUjrTCzWetco9HRCViApNi2NuWrCnIJpf4YsYGBGUrDHIgwwS3VP8kJuH0w2tsNz8GAAtsH076s5FpnIVthYs8mFA5MLcrKm0zJtvbN4qLcd7KFEl04R4LHWZmyvxc_4HdIUMiB96U03T6ijbpy5PU2J-X9bGwa83k7WcIDcqoASQZdvHZIm9yuBCpgVNQWnvH44JA7oDhEeGHmQM4-X8C_L"
-              alt="Digital building blocks and floating interface elements illustration"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 400px"
-            />
+
+          {/* New Release */}
+          <div className="glass-card rounded-xl overflow-hidden flex flex-col md:flex-row">
+            <div className="md:w-1/2 h-48 md:h-auto relative">
+              <Image
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLvzu4aIghqC6O6n-FSj8ABOMucAWe06FY4uDoktZ08KIPG9HCpdUpLDVoQ88OpAEvkZNcy0lZbrIfKTXK0wfNbzUVhS6A7DuOlvPK91_O1BZyLg0EVUVh8CWVOTmDLSLQUyM056R9AI2pRuD3tIq2E-xLrR71pG4XIchwYpsWesGBz6---Mn9kyWON-BjKhal2VVlBtjfFNlixk0n_p4ufXT1D5w16SeBTodhrWAbzRZsvvQL8njzyZHcs_HxjzDm8kYulB14DOY0"
+                alt="A minimalist overhead shot of a modern fitness tracker and a glass of water on a clean white desk with a digital screen showing a health dashboard"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="p-[24px] md:w-1/2 flex flex-col justify-center">
+              <span className="text-label-sm text-primary uppercase tracking-wider mb-[4px]">
+                New Release
+              </span>
+              <h4 className="text-title-lg text-on-surface mb-[8px]">
+                Advanced BMR Analyzer
+              </h4>
+              <p className="text-body-md text-on-surface-variant mb-[16px]">
+                Get scientifically accurate basal metabolic rate data based on
+                your daily activity.
+              </p>
+              <Link
+                href="#"
+                className="text-primary text-label-md flex items-center gap-[4px] hover:underline decoration-2 underline-offset-4"
+              >
+                Check Stats{" "}
+                <span className="material-symbols-outlined text-[18px]">
+                  open_in_new
+                </span>
+              </Link>
+            </div>
           </div>
         </section>
+
+        {/* ── CTA Section ── */}
+        <ToolsCtaSection />
       </main>
 
       <SiteFooter />
