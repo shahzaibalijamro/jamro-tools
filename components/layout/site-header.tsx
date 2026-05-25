@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Search, Menu, X } from "lucide-react";
+import { Moon, Search, Menu, X, ArrowLeft } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const navItems = [
@@ -15,8 +15,10 @@ const navItems = [
 export function SiteHeader() {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchMode, setSearchMode] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   /* Derive active state from current pathname.
      /blog and /blog/* both highlight "Blog"; /about = "About", etc. */
@@ -52,7 +54,23 @@ export function SiteHeader() {
     setSidebarOpen(false);
   }, []);
 
+  const enableSearchMode = useCallback(() => {
+    setSearchMode(true);
+  }, []);
+
+  const disableSearchMode = useCallback(() => {
+    setSearchMode(false);
+  }, []);
+
   /* ----- effects --------------------------------------------------------- */
+
+  // Auto-focus search input when entering search mode
+  useEffect(() => {
+    if (searchMode) {
+      const timer = setTimeout(() => searchInputRef.current?.focus(), 50);
+      return () => clearTimeout(timer);
+    }
+  }, [searchMode]);
 
   // Recompute close button position on resize; close if >900px
   useEffect(() => {
@@ -90,6 +108,23 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ── CMD+K / Ctrl+K : open search ──
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        if (window.innerWidth <= 580) {
+          setSearchMode(true);
+        } else {
+          const searchInput = document.getElementById("site-search") as HTMLInputElement | null;
+          searchInput?.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   /* ----- render ---------------------------------------------------------- */
 
   return (
@@ -98,8 +133,18 @@ export function SiteHeader() {
       {/* HEADER                                                          */}
       {/* ================================================================ */}
       <header ref={headerRef} className="sticky top-0 z-50 h-14 border-b border-white/60 bg-[rgba(250,251,255,0.76)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-[72px]">
-        <div className="mx-auto flex h-full w-full max-w-[1300px] items-center justify-between max-[602px]:gap-2 gap-4 px-4 min-[700px]:px-9">
-          {/* LEFT: Logo + Search */}
+        {/* ================================================================ */}
+        {/* NORMAL MODE — logo, nav, search (desktop), actions              */}
+        {/* ================================================================ */}
+        <div
+          className="mx-auto flex h-full w-full max-w-[1300px] items-center justify-between max-[602px]:gap-2 gap-4 px-4 min-[700px]:px-9"
+          style={{
+            opacity: searchMode ? 0 : 1,
+            transition: "opacity 150ms ease-in-out",
+            pointerEvents: searchMode ? "none" : "auto",
+          }}
+        >
+          {/* LEFT: Logo + Search (desktop) */}
           <div className="flex h-full min-w-0 flex-1 items-center justify-between gap-3 min-[700px]:gap-5 xl:gap-8">
             <Link
               href="/"
@@ -129,7 +174,7 @@ export function SiteHeader() {
             </form>
           </div>
 
-          {/* RIGHT: nav · moon · cta · hamburger */}
+          {/* RIGHT: nav · moon · cta · search icon (mobile) · hamburger */}
           <div className="flex shrink-0 items-center gap-3 min-[700px]:gap-5 xl:gap-9">
             {/* Desktop nav — ≥901px */}
             <nav
@@ -171,6 +216,16 @@ export function SiteHeader() {
               Request a Tool
             </Link>
 
+            {/* Search icon — ≤580px only (triggers header-morph search) */}
+            <button
+              type="button"
+              aria-label="Search tools"
+              className="hidden max-[580px]:inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] transition hover:bg-[#e8eefc]"
+              onClick={enableSearchMode}
+            >
+              <Search className="size-6" strokeWidth={2.35} aria-hidden="true" />
+            </button>
+
             {/* Hamburger — ≤900px only */}
             <button
               ref={hamburgerRef}
@@ -187,6 +242,45 @@ export function SiteHeader() {
               <Menu className="size-7" strokeWidth={2.35} aria-hidden="true" />
             </button>
           </div>
+        </div>
+
+        {/* ================================================================ */}
+        {/* SEARCH MODE — full-width search form with back arrow (≤580px)   */}
+        {/* ================================================================ */}
+        <div
+          className="hidden max-[580px]:flex absolute inset-0 mx-auto h-full w-full max-w-[1300px] items-center gap-3 px-4"
+          style={{
+            opacity: searchMode ? 1 : 0,
+            transition: "opacity 150ms ease-in-out",
+            pointerEvents: searchMode ? "auto" : "none",
+          }}
+        >
+          {/* Back arrow — returns to normal mode */}
+          <button
+            type="button"
+            aria-label="Close search"
+            onClick={disableSearchMode}
+            className="shrink-0 inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] hover:bg-[#e8eefc] transition"
+          >
+            <ArrowLeft className="size-6" strokeWidth={2.25} aria-hidden="true" />
+          </button>
+
+          {/* Full-width search input */}
+          <form
+            role="search"
+            className="flex flex-1 items-center h-[44px] rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-4 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
+          >
+            <label htmlFor="site-search-mobile" className="sr-only">
+              Search tools
+            </label>
+            <input
+              ref={searchInputRef}
+              id="site-search-mobile"
+              type="search"
+              placeholder="Search tools..."
+              className="min-w-0 w-full bg-transparent text-[16px] font-medium outline-none placeholder:text-[#505a70]"
+            />
+          </form>
         </div>
       </header>
 
@@ -256,26 +350,6 @@ export function SiteHeader() {
 
             {/* Spacer */}
             <div className="flex-1" />
-
-            <form
-              role="search"
-              className="mb-4 h-12 w-full max-[580px]:flex hidden items-center rounded-full border border-(--color-border) bg-[#f4f7ff] px-4 text-(--color-muted) shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] min-[400px]:px-5  xl:px-6"
-            >
-              <Search
-                className="mr-3 size-5 shrink-0 text-[var(--color-ink)] opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
-                strokeWidth={2.25}
-                aria-hidden="true"
-              />
-              <label htmlFor="site-search" className="sr-only">
-                Search tools
-              </label>
-              <input
-                id="site-search"
-                type="search"
-                placeholder="Search tools..."
-                className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] min-[400px]:text-[16px] xl:text-[18px]"
-              />
-            </form>
 
             {/* Request a Tool */}
             <Link

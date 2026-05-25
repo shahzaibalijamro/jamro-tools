@@ -38,7 +38,7 @@ export function CategorySection() {
             Browse by Category
           </h2>
           <Link
-            href="/categories"
+            href="/tools"
             className="inline-flex items-center gap-2 text-[14px] font-extrabold leading-none text-[var(--color-brand)] transition hover:text-[#0649c5] min-[700px]:text-[14px]"
           >
             <span>View All</span>
