@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import Image from "next/image";
@@ -17,6 +18,7 @@ const toolCategories = [
       { icon: "monitor_heart", label: "Health & BMI" },
     ],
     count: "140+",
+    href: "/tools/calculators",
   },
   {
     icon: "sync_alt",
@@ -28,6 +30,7 @@ const toolCategories = [
       { icon: "database", label: "Data Formats" },
     ],
     count: "85+",
+    href: "/tools/converters",
   },
   {
     icon: "troubleshoot",
@@ -39,6 +42,7 @@ const toolCategories = [
       { icon: "label", label: "Meta Tag Generator" },
     ],
     count: "42",
+    href: "/tools/seo",
   },
   {
     icon: "terminal",
@@ -50,6 +54,7 @@ const toolCategories = [
       { icon: "auto_fix_high", label: "Code Beautifier" },
     ],
     count: "210+",
+    href: "/tools/dev-tools",
   },
   {
     icon: "image",
@@ -61,6 +66,7 @@ const toolCategories = [
       { icon: "transform", label: "Format Converter" },
     ],
     count: "55",
+    href: "/tools/image-tools",
   },
   {
     icon: "picture_as_pdf",
@@ -72,6 +78,7 @@ const toolCategories = [
       { icon: "edit_document", label: "Convert to Word" },
     ],
     count: "28",
+    href: "/tools/pdf-tools",
   },
   {
     icon: "subject",
@@ -83,6 +90,7 @@ const toolCategories = [
       { icon: "content_copy", label: "Remove Duplicates" },
     ],
     count: "64",
+    href: "/tools/text-tools",
   },
   {
     icon: "encrypted",
@@ -94,6 +102,7 @@ const toolCategories = [
       { icon: "lock_open", label: "Decryption" },
     ],
     count: "19",
+    href: "/tools/security",
   },
 ];
 
@@ -155,8 +164,9 @@ export default function ToolsPage() {
         {/* ── Tool Directory Grid ── */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
           {toolCategories.map((category) => (
-            <div
+            <Link
               key={category.title}
+              href={category.href}
               className="glass-card rounded-xl p-[24px] flex flex-col gap-[16px] transition-all duration-300 hover:shadow-lg hover:border-primary/30 group cursor-pointer"
             >
               {/* Icon */}
@@ -198,7 +208,7 @@ export default function ToolsPage() {
                   arrow_forward
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </section>
 
