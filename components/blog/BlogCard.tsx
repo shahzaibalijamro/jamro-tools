@@ -40,7 +40,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {post.excerpt}
         </p>
         <Link
-          href="#"
+          href={`/blog/${post.slug}`}
           className="inline-flex items-center text-primary text-label-md group/link"
         >
           Read More{" "}

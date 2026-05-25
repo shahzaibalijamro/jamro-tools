@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
@@ -17,21 +17,6 @@ export default function BlogPage() {
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE,
   );
-
-  // Scroll shadow for nav
-  useEffect(() => {
-    const handleScroll = () => {
-      const nav = document.querySelector("header");
-      if (!nav) return;
-      if (window.scrollY > 20) {
-        nav.classList.add("shadow-md");
-      } else {
-        nav.classList.remove("shadow-md");
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();

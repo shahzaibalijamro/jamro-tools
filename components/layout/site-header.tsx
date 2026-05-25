@@ -1,19 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Moon, Search, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const navItems = [
-  { label: "Tools", href: "/tools", active: true },
+  { label: "Tools", href: "/tools" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  /* Derive active state from current pathname.
+     /blog and /blog/* both highlight "Blog"; /about = "About", etc. */
+  function isActive(itemHref: string): boolean {
+    if (itemHref === "/") return pathname === "/";
+    return pathname.startsWith(itemHref);
+  }
 
   /* Close button coordinates (matches hamburger position exactly) */
   const [closePos, setClosePos] = useState<{ top: number; right: number }>({
@@ -65,6 +75,21 @@ export function SiteHeader() {
     };
   }, [sidebarOpen]);
 
+  // ── Scroll shadow: adds shadow-md when page is scrolled past 10px ──
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add("shadow-md");
+      } else {
+        header.classList.remove("shadow-md");
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   /* ----- render ---------------------------------------------------------- */
 
   return (
@@ -72,7 +97,7 @@ export function SiteHeader() {
       {/* ================================================================ */}
       {/* HEADER                                                          */}
       {/* ================================================================ */}
-      <header className="sticky top-0 z-50 h-14 border-b border-white/60 bg-[rgba(250,251,255,0.76)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-[72px]">
+      <header ref={headerRef} className="sticky top-0 z-50 h-14 border-b border-white/60 bg-[rgba(250,251,255,0.76)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-[72px]">
         <div className="mx-auto flex h-full w-full max-w-[1300px] items-center justify-between max-[602px]:gap-2 gap-4 px-4 min-[700px]:px-9">
           {/* LEFT: Logo + Search */}
           <div className="flex h-full min-w-0 flex-1 items-center justify-between gap-3 min-[700px]:gap-5 xl:gap-8">
@@ -111,19 +136,22 @@ export function SiteHeader() {
               aria-label="Primary navigation"
               className="hidden h-[30px] items-center gap-4 xl:gap-8 min-[901px]:flex"
             >
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${
-                    item.active
-                      ? "border-[var(--color-brand)] text-[var(--color-brand)]"
-                      : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)]"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${
+                      active
+                        ? "border-[var(--color-brand)] text-[var(--color-brand)]"
+                        : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Night mode — ≥901px only */}
@@ -207,20 +235,23 @@ export function SiteHeader() {
 
             {/* Nav links */}
             <nav className="flex flex-col">
-              {navItems.map((item) => (
+              {navItems.map((item) => {
+                const active = isActive(item.href);
+                return (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={closeSidebar}
                   className={`border-b text-center border-[var(--color-border)] py-4 text-[17px] font-semibold transition ${
-                    item.active
+                    active
                       ? "text-[var(--color-brand)]"
                       : "text-[var(--color-muted)] hover:text-[var(--color-brand)]"
                   }`}
                 >
                   {item.label}
                 </Link>
-              ))}
+                );
+              })}
             </nav>
 
             {/* Spacer */}
