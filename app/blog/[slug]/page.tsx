@@ -206,7 +206,7 @@ export default function BlogPostPage() {
               </h2>
               <div className="space-y-[16px]">
                 <details
-                  className="group glass-card rounded-xl p-[16px] cursor-pointer transition-all hover:bg-surface-container-high"
+                  className="group glass-card rounded-xl p-[16px] cursor-pointer transition-all "
                   open
                 >
                   <summary className="flex items-center justify-between text-title-lg text-on-surface list-none">
@@ -223,7 +223,7 @@ export default function BlogPostPage() {
                   </div>
                 </details>
 
-                <details className="group glass-card rounded-xl p-[16px] cursor-pointer transition-all hover:bg-surface-container-high">
+                <details className="group glass-card rounded-xl p-[16px] cursor-pointer transition-all ">
                   <summary className="flex items-center justify-between text-title-lg text-on-surface list-none">
                     What are the file size limits for free users?
                     <span className="material-symbols-outlined group-open:rotate-180 transition-transform">
@@ -237,7 +237,7 @@ export default function BlogPostPage() {
                   </div>
                 </details>
 
-                <details className="group glass-card rounded-xl p-[16px] cursor-pointer transition-all hover:bg-surface-container-high">
+                <details className="group glass-card rounded-xl p-[16px] cursor-pointer transition-all ">
                   <summary className="flex items-center justify-between text-title-lg text-on-surface list-none">
                     Will merging files preserve my bookmarks?
                     <span className="material-symbols-outlined group-open:rotate-180 transition-transform">

@@ -1,12 +1,22 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ToolsCtaSection } from "@/components/tools/cta-section";
 import { calculatorCategories } from "@/data/calculator-tools";
+import { getToolBySlug } from "@/data/tools";
+
+function toToolSlug(displayName: string): string {
+  return displayName
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+}
 
 export default function CalculatorTypePage() {
   const { type } = useParams<{ type: string }>();
@@ -23,28 +33,7 @@ export default function CalculatorTypePage() {
 
   if (!category) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <span className="material-symbols-outlined text-[64px] text-outline mb-[16px] block">
-            search_off
-          </span>
-          <h2 className="text-headline-md text-on-surface mb-[8px]">
-            Category Not Found
-          </h2>
-          <p className="text-body-md text-on-surface-variant mb-[24px]">
-            The calculator category you're looking for doesn't exist.
-          </p>
-          <Link
-            href="/tools/calculators"
-            className="inline-flex items-center gap-[4px] text-primary text-label-md hover:underline"
-          >
-            <span className="material-symbols-outlined text-[18px]">
-              arrow_back
-            </span>
-            Back to Calculators
-          </Link>
-        </div>
-      </div>
+      notFound()
     );
   }
 
@@ -114,7 +103,7 @@ export default function CalculatorTypePage() {
             {filteredTools.map((tool) => (
               <Link
                 key={tool}
-                href="#"
+                href={`/tools/calculators/${category.slug}/${toToolSlug(tool)}`}
                 className="glass-card p-[16px] rounded-lg flex items-center justify-between group hover:bg-primary/5 transition-all border border-outline-variant/30"
               >
                 <span className="text-label-md text-on-surface group-hover:text-primary transition-colors">
