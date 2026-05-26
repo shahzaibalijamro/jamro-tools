@@ -164,7 +164,7 @@ export function StoryValuesSection() {
               with intrusive ads, or lacked proper privacy standards.
             </p>
             <p className="text-[16px] leading-[1.6] text-[#434655]">
-              In 2024, we decided to polish these tools and open them to the world. What
+              In 2026, we decided to polish these tools and open them to the world. What
               began as 50 simple scripts has grown into a comprehensive ecosystem of over
               1,000 utilities, maintained by a community of contributors who believe in
               the democratization of digital tools.

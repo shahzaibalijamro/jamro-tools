@@ -9,7 +9,7 @@ export function NotFoundFooter() {
             Jamro Tools
           </span>
           <p className="text-[16px] leading-[1.6] text-on-surface-variant">
-            © 2024 Jamro Utility System. All rights reserved.
+            © 2026 Jamro Utility System. All rights reserved.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-6">

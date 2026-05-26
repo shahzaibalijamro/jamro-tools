@@ -64,7 +64,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
           </div>
 
           <div className="border-t border-white/[0.06] py-7 text-center text-[12px] font-medium leading-8  text-[#526075]">
-            <p>© 2024 Jamro Tools. Built for speed.</p>
+            <p>© 2026 Jamro Tools. Built for speed.</p>
             <p className="inline-flex items-center justify-center gap-1">
               Made with
               <Heart

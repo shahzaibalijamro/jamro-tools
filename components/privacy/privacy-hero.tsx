@@ -7,7 +7,7 @@ export function PrivacyHero() {
           Privacy Policy
         </h1>
         <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]">
-          Last updated: June 15, 2024
+          Last updated: May 26, 2026
         </p>
       </section>
 
@@ -17,7 +17,7 @@ export function PrivacyHero() {
           Privacy Policy
         </h1>
         <p className="text-[16px] leading-[1.6] text-[#434655]">
-          Last updated: May 24, 2024
+          Last updated: May 26, 2026
         </p>
         <hr className="mt-4 border-[#c3c6d7]" />
       </header>

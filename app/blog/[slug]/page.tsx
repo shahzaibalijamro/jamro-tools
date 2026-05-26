@@ -69,11 +69,11 @@ export default function BlogPostPage() {
                   </span>
                 </div>
                 {/* TODO: Replace with post.author when available */}
-                <span>Alex Jamro</span>
+                <span>Shahzaib Ali Jamro</span>
               </div>
               <span className="w-[4px] h-[4px] rounded-full bg-outline-variant" />
               {/* TODO: Replace with post.date when available */}
-              <span>Oct 24, 2024</span>
+              <span>Oct 24, 2026</span>
               <span className="w-[4px] h-[4px] rounded-full bg-outline-variant" />
               {/* TODO: Replace with post.readTime when available */}
               <span>8 min read</span>

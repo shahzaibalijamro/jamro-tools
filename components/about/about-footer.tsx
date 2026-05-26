@@ -30,7 +30,7 @@ export function AboutFooter() {
             Jamro Tools
           </Link>
           <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]">
-            &copy; 2024 Jamro Tools. All rights reserved.
+            &copy; 2026 Jamro Tools. All rights reserved.
           </p>
         </div>
 

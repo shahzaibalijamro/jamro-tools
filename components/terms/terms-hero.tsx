@@ -20,7 +20,7 @@ export function TermsHero() {
             Jamro Tools Legal
           </h1>
           <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]">
-            Last updated: October 24, 2024
+            Last updated: May 26, 2026
           </p>
         </div>
       </section>
@@ -34,7 +34,7 @@ export function TermsHero() {
           Terms of Service
         </h1>
         <p className="mb-2 text-[16px] leading-[1.6] text-[#434655]">
-          Last Updated: October 24, 2024. Please read these terms carefully before using Jamro Tools.
+          Last Updated: May 26, 2026. Please read these terms carefully before using Jamro Tools.
         </p>
       </header>
     </>
