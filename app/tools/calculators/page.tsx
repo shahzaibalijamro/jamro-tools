@@ -3,68 +3,9 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ToolsCtaSection } from "@/components/tools/cta-section";
+import { calculatorCategories } from "@/data/calculator-tools";
 import Image from "next/image";
 import Link from "next/link";
-
-/* ── Calculator category data ── */
-const calculatorCategories = [
-  {
-    icon: "payments",
-    title: "Financial",
-    iconBg: "bg-primary/10",
-    iconBgHover: "group-hover:bg-primary",
-    tools: ["Mortgage", "ROI", "Tip"],
-  },
-  {
-    icon: "calculate",
-    title: "Math",
-    iconBg: "bg-secondary/10",
-    iconBgHover: "group-hover:bg-secondary",
-    tools: ["Percentage", "Fraction", "Algebra"],
-  },
-  {
-    icon: "monitoring",
-    title: "Health",
-    iconBg: "bg-tertiary/10",
-    iconBgHover: "group-hover:bg-tertiary",
-    tools: ["BMI", "Calorie", "BMR"],
-  },
-  {
-    icon: "straighten",
-    title: "Unit",
-    iconBg: "bg-primary/10",
-    iconBgHover: "group-hover:bg-primary",
-    tools: ["Area", "Volume", "Speed"],
-  },
-  {
-    icon: "schedule",
-    title: "Date & Time",
-    iconBg: "bg-secondary/10",
-    iconBgHover: "group-hover:bg-secondary",
-    tools: ["Age", "Duration", "Time Zone"],
-  },
-  {
-    icon: "settings_suggest",
-    title: "Engineering",
-    iconBg: "bg-tertiary/10",
-    iconBgHover: "group-hover:bg-tertiary",
-    tools: ["Ohm's Law", "Torque", "Pressure"],
-  },
-  {
-    icon: "biotech",
-    title: "Science",
-    iconBg: "bg-primary/10",
-    iconBgHover: "group-hover:bg-primary",
-    tools: ["Molarity", "Half-Life", "Force"],
-  },
-  {
-    icon: "more_horiz",
-    title: "Others",
-    iconBg: "bg-on-surface-variant/10",
-    iconBgHover: "group-hover:bg-on-surface-variant",
-    tools: ["GPA", "Grade", "Random Number"],
-  },
-];
 
 export default function CalculatorsPage() {
   return (
@@ -100,42 +41,51 @@ export default function CalculatorsPage() {
           </p>
         </section>
 
-        {/* ── Bento Grid Categories ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[24px]">
+        {/* ── Category Cards Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
           {calculatorCategories.map((category) => (
-            <div
+            <Link
               key={category.title}
-              className="bg-surface-container-lowest p-[24px] rounded-xl shadow-sm border border-outline-variant hover:border-primary transition-all group"
+              href={`/tools/calculators/${category.slug}`}
+              className="glass-card rounded-xl p-[24px] flex flex-col gap-[16px] transition-all duration-300 hover:shadow-lg hover:border-primary/30 group cursor-pointer"
             >
               {/* Icon */}
-              <div
-                className={`w-[48px] h-[48px] ${category.iconBg} rounded-lg flex items-center justify-center mb-[16px] ${category.iconBgHover} group-hover:text-white transition-colors`}
-              >
-                <span className="material-symbols-outlined text-[28px]">
+              <div className="w-[48px] h-[48px] rounded-lg bg-primary-container/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <span className="material-symbols-outlined text-primary text-[32px]">
                   {category.icon}
                 </span>
               </div>
 
-              {/* Title */}
-              <h3 className="text-title-lg text-on-surface mb-[8px]">
-                {category.title}
-              </h3>
+              {/* Content */}
+              <div>
+                <h3 className="text-title-lg text-on-surface mb-[4px]">
+                  {category.title}
+                </h3>
+                <p className="text-label-sm text-on-surface-variant mb-[16px]">
+                  {category.description}
+                </p>
+                <ul className="space-y-[8px]">
+                  {category.sampleTools.map((tool) => (
+                    <li
+                      key={tool}
+                      className="text-body-md text-on-surface-variant group-hover:text-primary transition-colors"
+                    >
+                      {tool}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              {/* Tool List */}
-              <ul className="space-y-[16px]">
-                {category.tools.map((tool) => (
-                  <li
-                    key={tool}
-                    className="flex items-center gap-[8px] text-body-md text-on-surface-variant hover:text-primary cursor-pointer transition-colors"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">
-                      arrow_forward
-                    </span>
-                    {tool}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Footer */}
+              <div className="mt-auto pt-[16px] border-t border-outline-variant flex justify-between items-center">
+                <span className="text-label-sm text-outline">
+                  {category.count} Tools
+                </span>
+                <span className="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  arrow_forward
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
 
