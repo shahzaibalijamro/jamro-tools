@@ -1,5 +1,8 @@
 import { ComponentType } from "react";
 import MortgageCalculator from "./custom/mortgage-calculator";
+import ApushScoreCalculator from "./custom/apush-score-calculator";
+import CylinderVolumeCalculator from "./custom/cylinder-volume-calculator";
+import PercentageDecreaseCalculator from "./custom/percentage-decrease-calculator";
 
 /**
  * Registry maps custom component names (as stored in ToolConfig.customComponent)
@@ -12,6 +15,9 @@ import MortgageCalculator from "./custom/mortgage-calculator";
  */
 const customToolRegistry: Record<string, ComponentType> = {
   MortgageCalculator,
+  ApushScoreCalculator,
+  CylinderVolumeCalculator,
+  PercentageDecreaseCalculator,
 };
 
 export function getCustomToolComponent(
@@ -20,4 +26,4 @@ export function getCustomToolComponent(
   return customToolRegistry[name] || null;
 }
 
-export { MortgageCalculator };
+export { MortgageCalculator, ApushScoreCalculator, CylinderVolumeCalculator, PercentageDecreaseCalculator };
