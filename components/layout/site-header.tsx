@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Search, Menu, X, ArrowLeft } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { SearchDropdown } from "@/components/layout/search-dropdown";
 
 const navItems = [
   { label: "Tools", href: "/tools" },
@@ -16,9 +17,13 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchMode, setSearchMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const desktopInputRef = useRef<HTMLInputElement>(null);
+  const navOnEnterRef = useRef<(() => void) | null>(null);
 
   /* Derive active state from current pathname.
      /blog and /blog/* both highlight "Blog"; /about = "About", etc. */
@@ -60,7 +65,42 @@ export function SiteHeader() {
 
   const disableSearchMode = useCallback(() => {
     setSearchMode(false);
+    setSearchQuery("");
+    setDropdownOpen(false);
   }, []);
+
+  const closeDropdown = useCallback(() => {
+    setDropdownOpen(false);
+    setSearchQuery("");
+  }, []);
+
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(e.target.value);
+      if (e.target.value.trim().length > 0) {
+        setDropdownOpen(true);
+      } else {
+        setDropdownOpen(false);
+      }
+    },
+    []
+  );
+
+  const handleSearchKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter" && dropdownOpen) {
+        e.preventDefault();
+        navOnEnterRef.current?.();
+      }
+    },
+    [dropdownOpen]
+  );
+
+  const handleSearchFocus = useCallback(() => {
+    if (searchQuery.trim().length > 0) {
+      setDropdownOpen(true);
+    }
+  }, [searchQuery]);
 
   /* ----- effects --------------------------------------------------------- */
 
@@ -116,8 +156,7 @@ export function SiteHeader() {
         if (window.innerWidth <= 580) {
           setSearchMode(true);
         } else {
-          const searchInput = document.getElementById("site-search") as HTMLInputElement | null;
-          searchInput?.focus();
+          desktopInputRef.current?.focus();
         }
       }
     };
@@ -153,25 +192,40 @@ export function SiteHeader() {
             >
               Jamro Tools
             </Link>
-            <form
-              role="search"
-              className="flex h-[44px] min-w-[130px] max-w-[330px] max-[580px]:hidden flex-1 items-center rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-4 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] min-[400px]:h-[40px] min-[400px]:px-5 min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px] xl:px-6"
-            >
-              <Search
-                className="mr-3 size-5 shrink-0 text-[var(--color-ink)] opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
-                strokeWidth={2.25}
-                aria-hidden="true"
+            <div className="relative flex h-[44px] min-w-[130px] max-w-[330px] max-[580px]:hidden flex-1 items-center min-[400px]:h-[40px] min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px]">
+              <form
+                role="search"
+                className="flex h-full w-full items-center rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-4 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] min-[400px]:px-5 xl:px-6"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                <Search
+                  className="mr-3 size-5 shrink-0 text-[var(--color-ink)] opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
+                  strokeWidth={2.25}
+                  aria-hidden="true"
+                />
+                <label htmlFor="site-search" className="sr-only">
+                  Search tools
+                </label>
+                <input
+                  ref={desktopInputRef}
+                  id="site-search"
+                  type="search"
+                  placeholder="Search tools..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  onKeyDown={handleSearchKeyDown}
+                  onFocus={handleSearchFocus}
+                  className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] min-[400px]:text-[16px] xl:text-[18px]"
+                />
+              </form>
+              <SearchDropdown
+                query={searchQuery}
+                open={dropdownOpen}
+                onClose={closeDropdown}
+                inputRef={desktopInputRef}
+                navOnEnterRef={navOnEnterRef}
               />
-              <label htmlFor="site-search" className="sr-only">
-                Search tools
-              </label>
-              <input
-                id="site-search"
-                type="search"
-                placeholder="Search tools..."
-                className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] min-[400px]:text-[16px] xl:text-[18px]"
-              />
-            </form>
+            </div>
           </div>
 
           {/* RIGHT: nav · moon · cta · search icon (mobile) · hamburger */}
@@ -266,21 +320,35 @@ export function SiteHeader() {
           </button>
 
           {/* Full-width search input */}
-          <form
-            role="search"
-            className="flex flex-1 items-center h-[44px] rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-4 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
-          >
-            <label htmlFor="site-search-mobile" className="sr-only">
-              Search tools
-            </label>
-            <input
-              ref={searchInputRef}
-              id="site-search-mobile"
-              type="search"
-              placeholder="Search tools..."
-              className="min-w-0 w-full bg-transparent text-[16px] font-medium outline-none placeholder:text-[#505a70]"
+          <div className="relative flex flex-1 items-center">
+            <form
+              role="search"
+              className="flex flex-1 items-center h-[44px] rounded-full border border-[var(--color-border)] bg-[#f4f7ff] px-4 text-[var(--color-muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <label htmlFor="site-search-mobile" className="sr-only">
+                Search tools
+              </label>
+              <input
+                ref={searchInputRef}
+                id="site-search-mobile"
+                type="search"
+                placeholder="Search tools..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                onKeyDown={handleSearchKeyDown}
+                onFocus={handleSearchFocus}
+                className="min-w-0 w-full bg-transparent text-[16px] font-medium outline-none placeholder:text-[#505a70]"
+              />
+            </form>
+            <SearchDropdown
+              query={searchQuery}
+              open={dropdownOpen}
+              onClose={closeDropdown}
+              inputRef={searchInputRef}
+              navOnEnterRef={navOnEnterRef}
             />
-          </form>
+          </div>
         </div>
       </header>
 
