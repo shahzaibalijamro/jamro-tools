@@ -3,8 +3,11 @@ import { mortgageCalculator } from "./mortgage-calculator";
 import { apushScoreCalculator } from "./apush-score-calculator";
 import { cylinderVolumeCalculator } from "./cylinder-volume-calculator";
 import { percentageDecreaseCalculator } from "./percentage-decrease-calculator";
+import { ageDifferenceCalculator } from "./age-difference-calculator";
+import { middleSchoolGpaCalculator } from "./middle-school-gpa-calculator";
+import { tripleIntegralCalculator } from "./triple-integral-calculator";
 
-const allTools: ToolConfig[] = [mortgageCalculator, apushScoreCalculator, cylinderVolumeCalculator, percentageDecreaseCalculator];
+const allTools: ToolConfig[] = [mortgageCalculator, apushScoreCalculator, cylinderVolumeCalculator, percentageDecreaseCalculator, ageDifferenceCalculator, middleSchoolGpaCalculator, tripleIntegralCalculator];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {
   return allTools.find((t) => t.slug === slug);

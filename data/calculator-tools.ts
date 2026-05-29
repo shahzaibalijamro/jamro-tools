@@ -59,6 +59,8 @@ export const calculatorCategories: CalculatorCategory[] = [
       "Area Calculator",
       "Cylinder Volume Calculator",
       "Percentage Decrease Calculator",
+      "Age Difference Calculator",
+      "Triple Integral Calculator",
       "Volume Calculator",
       "Surface Area",
       "Pythagorean Theorem",
@@ -76,7 +78,7 @@ export const calculatorCategories: CalculatorCategory[] = [
       "Scientific Notation",
       "Rounding Calculator",
     ],
-    count: "23+",
+    count: "25+",
   },
   {
     slug: "health",
@@ -244,6 +246,7 @@ export const calculatorCategories: CalculatorCategory[] = [
       "AP exam score calculators, GPA planners, and academic tools to help students track and achieve their goals.",
     sampleTools: ["APUSH", "GPA", "Grade"],
     tools: [
+      "Middle School GPA Calculator",
       "APUSH Score Calculator",
       "AP Biology Score Calculator",
       "AP Chemistry Score Calculator",
@@ -264,7 +267,7 @@ export const calculatorCategories: CalculatorCategory[] = [
       "Essay Word Counter",
       "Citation Generator",
     ],
-    count: "19+",
+    count: "20+",
   },
   {
     slug: "others",

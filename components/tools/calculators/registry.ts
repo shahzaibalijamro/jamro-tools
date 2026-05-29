@@ -3,6 +3,9 @@ import MortgageCalculator from "./custom/mortgage-calculator";
 import ApushScoreCalculator from "./custom/apush-score-calculator";
 import CylinderVolumeCalculator from "./custom/cylinder-volume-calculator";
 import PercentageDecreaseCalculator from "./custom/percentage-decrease-calculator";
+import AgeDifferenceCalculator from "./custom/age-difference-calculator";
+import MiddleSchoolGpaCalculator from "./custom/middle-school-gpa-calculator";
+import TripleIntegralCalculator from "./custom/triple-integral-calculator";
 
 /**
  * Registry maps custom component names (as stored in ToolConfig.customComponent)
@@ -18,6 +21,9 @@ const customToolRegistry: Record<string, ComponentType> = {
   ApushScoreCalculator,
   CylinderVolumeCalculator,
   PercentageDecreaseCalculator,
+  AgeDifferenceCalculator,
+  MiddleSchoolGpaCalculator,
+  TripleIntegralCalculator,
 };
 
 export function getCustomToolComponent(
@@ -26,4 +32,4 @@ export function getCustomToolComponent(
   return customToolRegistry[name] || null;
 }
 
-export { MortgageCalculator, ApushScoreCalculator, CylinderVolumeCalculator, PercentageDecreaseCalculator };
+export { MortgageCalculator, ApushScoreCalculator, CylinderVolumeCalculator, PercentageDecreaseCalculator, AgeDifferenceCalculator, MiddleSchoolGpaCalculator, TripleIntegralCalculator };
