@@ -52,7 +52,7 @@ export default function RootLayout({
         <Script
           src="https://pulse-steel-two.vercel.app/tracker.js"
           data-api-key="pk_03163e73-628f-4d55-8e24-2a21bc6b8c5d"
-          data-endpoint="https://pulse-m7ns.onrender.com/ingest"
+          data-endpoint="https://pulse-m7ns.onrender.com/i"
           strategy="afterInteractive"
         />
       </head>
