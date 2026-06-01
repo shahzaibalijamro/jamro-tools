@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,13 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        />
+        {/* 👇 Add this */}
+        <Script
+          src="https://pulse-steel-two.vercel.app/tracker.js"
+          data-api-key="pk_03163e73-628f-4d55-8e24-2a21bc6b8c5d"
+          data-endpoint="https://pulse-m7ns.onrender.com/ingest"
+          strategy="afterInteractive"
         />
       </head>
       <GoogleAnalytics gaId="G-G787P55JXR" />
