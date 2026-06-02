@@ -187,8 +187,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "About Us", href: "/about" },
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms" },
-      { label: "Contact Support", href: "/support" },
-      { label: "Changelog", href: "/changelog" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];

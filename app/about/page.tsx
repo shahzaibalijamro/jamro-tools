@@ -9,9 +9,9 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
-  title: "About Us - Jamro Tools",
+  title: "About Jamro Tools – Free, Private & Browser-Based Utilities",
   description:
-    "Learn about the mission, story, and team behind Jamro Tools' library of free utilities.",
+    "Jamro Tools is a free, privacy-first toolbox for students, developers & professionals. Every tool runs locally in your browser — zero data collected, zero sign-up.",
 };
 
 export default function AboutPage() {

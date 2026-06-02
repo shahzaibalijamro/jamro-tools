@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -9,6 +10,53 @@ import { getCustomToolComponent } from "@/components/tools/calculators/registry"
 
 interface ToolPageProps {
   params: Promise<{ type: string; tool: string }>;
+}
+
+const TOOL_META: Record<string, { title: string; description: string }> = {
+  "mortgage-calculator": {
+    title: "Free Mortgage Calculator – Monthly Payment, PMI & Amortization",
+    description:
+      "Calculate your exact monthly mortgage payment with principal, interest, PMI & taxes. View full amortization schedule. Free, no sign-up, results in seconds.",
+  },
+  "cylinder-volume-calculator": {
+    title: "Cylinder Volume Calculator – V=πr²h | Free Online Tool",
+    description:
+      "Calculate cylinder volume instantly using V=πr²h. Enter radius & height — get volume, surface area & base area in cubic inches, cm³, liters & more. Free.",
+  },
+  "percentage-decrease-calculator": {
+    title: "Percentage Decrease Calculator – Instant % Drop & Formula",
+    description:
+      "Find the exact percentage decrease between any two values in seconds. See the absolute drop, retention rate & step-by-step formula. Free, no sign-up needed.",
+  },
+  "triple-integral-calculator": {
+    title: "Triple Integral Calculator – Step-by-Step, Free Online",
+    description:
+      "Evaluate definite triple integrals over rectangular regions with Fubini's Theorem. Step-by-step visualization included. Free online calculator — no sign-up.",
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: ToolPageProps): Promise<Metadata> {
+  const { tool } = await params;
+  const toolConfig = getToolBySlug(tool);
+  const override = TOOL_META[tool];
+
+  if (!toolConfig) {
+    return { title: "Tool Not Found | Jamro Tools" };
+  }
+
+  if (override) {
+    return {
+      title: override.title,
+      description: override.description,
+    };
+  }
+
+  return {
+    title: `${toolConfig.title} | Jamro Tools`,
+    description: toolConfig.description,
+  };
 }
 
 export default async function ToolPage({ params }: ToolPageProps) {

@@ -12,7 +12,7 @@ export function AboutFooter() {
         <div className="flex flex-col items-center gap-2 md:items-start md:gap-1">
           <div className="flex items-center gap-2 md:hidden">
             <Image
-              src="/jamro_tools_favicon.png"
+              src="/favicon.png"
               alt="Jamro Tools Logo"
               width={24}
               height={24}

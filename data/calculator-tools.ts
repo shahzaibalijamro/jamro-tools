@@ -59,7 +59,6 @@ export const calculatorCategories: CalculatorCategory[] = [
       "Area Calculator",
       "Cylinder Volume Calculator",
       "Percentage Decrease Calculator",
-      "Age Difference Calculator",
       "Triple Integral Calculator",
       "Volume Calculator",
       "Surface Area",
@@ -152,6 +151,7 @@ export const calculatorCategories: CalculatorCategory[] = [
     sampleTools: ["Age", "Duration", "Time Zone"],
     tools: [
       "Age Calculator",
+      "Age Difference Calculator",
       "Date Difference",
       "Time Zone Converter",
       "Add/Subtract Days",
@@ -241,7 +241,7 @@ export const calculatorCategories: CalculatorCategory[] = [
   {
     slug: "educational",
     icon: "school",
-    title: "Educational",
+    title: "Education",
     description:
       "AP exam score calculators, GPA planners, and academic tools to help students track and achieve their goals.",
     sampleTools: ["APUSH", "GPA", "Grade"],
