@@ -31,50 +31,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: url("/"),
       lastModified: NOW,
-      changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 1.00,
     },
     {
       url: url("/tools"),
       lastModified: NOW,
-      changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.80,
     },
     {
       url: url("/tools/calculators"),
       lastModified: NOW,
-      changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.80,
     },
     {
       url: url("/about"),
       lastModified: NOW,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.80,
     },
     {
       url: url("/blog"),
       lastModified: NOW,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.80,
     },
     {
       url: url("/contact"),
       lastModified: NOW,
-      changeFrequency: "yearly",
-      priority: 0.5,
+      priority: 0.80,
     },
     {
       url: url("/privacy-policy"),
       lastModified: NOW,
-      changeFrequency: "yearly",
-      priority: 0.3,
+      priority: 0.80,
     },
     {
       url: url("/terms"),
       lastModified: NOW,
-      changeFrequency: "yearly",
-      priority: 0.3,
+      priority: 0.80,
     },
   ];
 
@@ -82,8 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const categoryEntries: Entry[] = calculatorCategories.map((category) => ({
     url: url(`/tools/calculators/${category.slug}`),
     lastModified: NOW,
-    changeFrequency: "weekly",
-    priority: 0.8,
+    priority: 0.64,
   }));
 
   // ── Individual calculator pages — only those that have a registered component.
@@ -94,16 +85,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .map((tool) => ({
       url: url(`/tools/calculators/${tool.category}/${tool.slug}`),
       lastModified: NOW,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.51,
     }));
 
   // ── Blog posts ──
   const blogEntries: Entry[] = blogPosts.map((post) => ({
     url: url(`/blog/${post.slug}`),
     lastModified: NOW,
-    changeFrequency: "monthly",
-    priority: 0.6,
+    priority: 0.64,
   }));
 
   return [...staticEntries, ...categoryEntries, ...toolEntries, ...blogEntries];

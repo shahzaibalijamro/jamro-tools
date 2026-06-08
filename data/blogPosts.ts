@@ -348,7 +348,7 @@ Absolutely. Enter your **remaining loan balance** (not the original amount) as t
     description:
       "A first-time home buyer's complete guide to using a mortgage calculator. Learn what every input means, set a realistic budget, and compare loan scenarios with confidence.",
     category: "Tutorials",
-    imageUrl: "/VrQXCT.webp",
+    imageUrl: "/first-time-home-buyer-mortgage-calculator-guide.jpg",
     imageAlt:
       "Warm flat illustration of a young couple standing in front of their first home holding a house key, with subtle calculator and financial elements in the background, modern lifestyle design.",
     author: "Shahzaib Ali Jamro",

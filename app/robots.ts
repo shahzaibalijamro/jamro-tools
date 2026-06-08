@@ -8,10 +8,38 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Reserve room for future non-public areas (admin, API, internal).
-        // These don't exist yet but listing them now keeps the rules
-        // stable as the site grows.
-        disallow: ["/api/", "/admin/"],
+        disallow: [
+          "/admin/",
+          "/internal/",
+          "/temp/",
+          "/private/",
+          "/api/",
+          "/_next/static/",
+        ],
+      },
+      {
+        userAgent: "GPTBot",
+        allow: "/",
+      },
+      {
+        userAgent: "Google-Extended",
+        allow: "/",
+      },
+      {
+        userAgent: "CCBot",
+        allow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
+      {
+        userAgent: "Omgilibot",
+        allow: "/",
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: "/",
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
