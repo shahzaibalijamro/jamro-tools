@@ -270,6 +270,37 @@ export const calculatorCategories: CalculatorCategory[] = [
     count: "20+",
   },
   {
+    slug: "text-tools",
+    icon: "format_list_numbered",
+    title: "Text Tools",
+    description:
+      "Clean up, analyze, and transform text instantly — from word counting to case conversion and duplicate removal.",
+    sampleTools: ["Word Counter", "Case Converter", "Remove Duplicates"],
+    tools: [
+      "Word Counter",
+      "Case Converter",
+      "Remove Duplicates",
+      "Character Counter",
+      "Sentence Counter",
+      "Line Counter",
+      "Reading Time Estimator",
+      "Slug Generator",
+      "Text Summarizer",
+      "Text Extractor (Regex)",
+      "Find & Replace",
+      "Text Reformatter",
+      "Whitespace Cleaner",
+      "Uppercase Converter",
+      "Lowercase Converter",
+      "Title Case Converter",
+      "Remove Extra Spaces",
+      "Word Frequency Analyzer",
+      "Text to URL Encoder",
+      "URL Decode/Encode",
+    ],
+    count: "20+",
+  },
+  {
     slug: "others",
     icon: "more_horiz",
     title: "Others",
@@ -299,3 +330,4 @@ export const calculatorCategories: CalculatorCategory[] = [
     count: "18+",
   },
 ];
+

@@ -6,8 +6,18 @@ import { percentageDecreaseCalculator } from "./percentage-decrease-calculator";
 import { ageDifferenceCalculator } from "./age-difference-calculator";
 import { middleSchoolGpaCalculator } from "./middle-school-gpa-calculator";
 import { tripleIntegralCalculator } from "./triple-integral-calculator";
+import { wordCounterCalculator } from "./word-counter-calculator";
 
-const allTools: ToolConfig[] = [mortgageCalculator, apushScoreCalculator, cylinderVolumeCalculator, percentageDecreaseCalculator, ageDifferenceCalculator, middleSchoolGpaCalculator, tripleIntegralCalculator];
+const allTools: ToolConfig[] = [
+  mortgageCalculator,
+  apushScoreCalculator,
+  cylinderVolumeCalculator,
+  percentageDecreaseCalculator,
+  ageDifferenceCalculator,
+  middleSchoolGpaCalculator,
+  tripleIntegralCalculator,
+  wordCounterCalculator,
+];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {
   return allTools.find((t) => t.slug === slug);
@@ -18,3 +28,4 @@ export function getToolsByCategory(category: string): ToolConfig[] {
 }
 
 export { allTools };
+
