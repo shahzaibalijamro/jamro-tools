@@ -84,9 +84,9 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
         {/* ══════════════════════════════════════════════════════════
             THREE-COLUMN LAYOUT: Skyscraper · Content · Skyscraper
            ══════════════════════════════════════════════════════════ */}
-        <div className="max-w-[1280px] mx-auto px-[24px] flex flex-col xl:flex-row gap-[24px] justify-center items-start">
+        <div className="max-w-[1280px] mx-auto px-[24px] flex flex-col min-[1180px]:flex-row gap-[24px] justify-center items-start">
           {/* ── Left Skyscraper Ad (hidden below xl) ── */}
-          <aside className="hidden xl:flex w-[160px] h-[600px] sticky top-[100px] bg-surface-container flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden shrink-0">
+          <aside className="hidden min-[1180px]:flex w-[160px] h-[600px] sticky top-[100px] bg-surface-container flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden shrink-0">
             <span className="text-[10px] uppercase tracking-widest text-outline mb-[4px] text-label-sm">
               Advertisement
             </span>
@@ -96,7 +96,7 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
           </aside>
 
           {/* ── Central Content Column ── */}
-          <div className="flex-1 w-full max-w-3xl">
+          <div className="flex-1 w-full mx-auto max-w-3xl">
             {/* Leaderboard Ad */}
             <div className="mb-[48px] flex justify-center">
               <div className="w-full max-w-[728px] h-[90px] bg-surface-container flex flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden">
@@ -137,7 +137,7 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
           </div>
 
           {/* ── Right Skyscraper Ad (hidden below xl) ── */}
-          <aside className="hidden xl:flex w-[160px] h-[600px] sticky top-[100px] bg-surface-container flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden shrink-0">
+          <aside className="hidden min-[1180px]:flex w-[160px] h-[600px] sticky top-[100px] bg-surface-container flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden shrink-0">
             <span className="text-[10px] uppercase tracking-widest text-outline mb-[4px] text-label-sm">
               Advertisement
             </span>

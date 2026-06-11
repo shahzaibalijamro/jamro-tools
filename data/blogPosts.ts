@@ -350,7 +350,7 @@ Absolutely. Enter your **remaining loan balance** (not the original amount) as t
     category: "Tutorials",
     imageUrl: "/first-time-home-buyer-mortgage-calculator-guide.jpg",
     imageAlt:
-      "Warm flat illustration of a young couple standing in front of their first home holding a house key, with subtle calculator and financial elements in the background, modern lifestyle design.",
+      "First-time homebuyer couple standing in front of a modern house, reviewing mortgage documents and holding a key, with illustrated financial elements like a calculator, percentage symbols, charts, and savings icons representing affordability, down payments, and loan planning.",
     author: "Shahzaib Ali Jamro",
     date: "May 21, 2026",
     readTime: "15 min read",
