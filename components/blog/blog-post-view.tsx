@@ -290,7 +290,7 @@ function parseBlocks(md: string): Block[] {
     }
 
     // Table
-    if (isTableRow(line) && i + 1 < lines.length && /^\s*\|?\s*:?-{2,}/.test(lines[i + 1])) {
+    if (isTableRow(line) && i + 1 < lines.length && /^\s*\|?\s*:?-+/.test(lines[i + 1])) {
       const header = splitRow(line);
       i += 2; // skip header + separator
       const rows: string[][] = [];
@@ -416,13 +416,13 @@ function RichText({ text }: { text: string }) {
           case "bold":
             return (
               <strong key={idx} className="text-on-surface font-semibold">
-                {t.value}
+                <RichText text={t.value} />
               </strong>
             );
           case "italic":
             return (
               <em key={idx} className="italic">
-                {t.value}
+                <RichText text={t.value} />
               </em>
             );
           case "link":
@@ -432,7 +432,7 @@ function RichText({ text }: { text: string }) {
                 href={t.href ?? "#"}
                 className="text-primary underline underline-offset-2 hover:opacity-80"
               >
-                {t.value}
+                <RichText text={t.value} />
               </Link>
             );
           default:

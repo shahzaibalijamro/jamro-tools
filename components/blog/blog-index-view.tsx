@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
@@ -10,10 +10,65 @@ const POSTS_PER_PAGE = 9;
 
 export function BlogIndexView() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [sortBy, setSortBy] = useState<string>("newest");
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
 
-  // Visible posts for current page (all 12 for now, pagination handles slicing)
-  const visiblePosts = blogPosts.slice(
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const categories = ["All", "Tutorials", "Product Updates", "Privacy", "Efficiency"];
+  const sortOptions = [
+    { value: "newest", label: "Newest First" },
+    { value: "oldest", label: "Oldest First" },
+    { value: "shortest", label: "Shortest Read" },
+    { value: "longest", label: "Longest Read" },
+  ];
+
+  const handleCategoryChange = (cat: string) => {
+    setSelectedCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (val: string) => {
+    setSortBy(val);
+    setIsSortOpen(false);
+    setCurrentPage(1);
+  };
+
+  // Filter logic
+  let filteredPosts = blogPosts;
+  if (selectedCategory !== "All") {
+    filteredPosts = filteredPosts.filter((p) => p.category === selectedCategory);
+  }
+
+  // Sort logic
+  filteredPosts = [...filteredPosts].sort((a, b) => {
+    if (sortBy === "newest" || sortBy === "oldest") {
+      const dateA = a.date ? new Date(a.date).getTime() : 0;
+      const dateB = b.date ? new Date(b.date).getTime() : 0;
+      return sortBy === "newest" ? dateB - dateA : dateA - dateB;
+    }
+    if (sortBy === "shortest" || sortBy === "longest") {
+      const readA = a.readTime ? parseInt(a.readTime) : 0;
+      const readB = b.readTime ? parseInt(b.readTime) : 0;
+      return sortBy === "shortest" ? readA - readB : readB - readA;
+    }
+    return 0;
+  });
+
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE) || 1;
+
+  // Visible posts for current page
+  const visiblePosts = filteredPosts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE,
   );
@@ -61,63 +116,143 @@ export function BlogIndexView() {
 
         {/* ── Blog Grid ── */}
         <section className="max-w-container-max mx-auto px-gutter py-[48px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
-            {visiblePosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
+          {/* ── Filter & Sort Bar ── */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-[16px] mb-[32px] bg-surface-container rounded-2xl p-[8px] border border-outline-variant">
+            {/* Categories */}
+            <div className="flex overflow-x-auto w-full md:w-auto gap-[8px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => handleCategoryChange(cat)}
+                  className={`px-[16px] py-[8px] rounded-xl text-label-md transition-colors whitespace-nowrap ${selectedCategory === cat
+                      ? "bg-primary text-on-primary shadow-sm"
+                      : "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Sort Dropdown */}
+            <div className="relative w-full md:w-auto" ref={sortRef}>
+              <button
+                onClick={() => setIsSortOpen(!isSortOpen)}
+                className="w-auto flex items-center justify-between bg-surface px-[16px] py-[10px] rounded-xl border border-outline-variant text-label-md text-on-surface transition-colors hover:bg-surface-container-high"
+              >
+                <span className="flex items-center gap-[8px]">
+                  <span className="material-symbols-outlined text-[18px] text-on-surface-variant">
+                    sort
+                  </span>
+                  {sortOptions.find((o) => o.value === sortBy)?.label}
+                </span>
+                <span
+                  className={`material-symbols-outlined text-[18px] text-on-surface-variant transition-transform ${isSortOpen ? "rotate-180" : ""
+                    }`}
+                >
+                  expand_more
+                </span>
+              </button>
+
+              {isSortOpen && (
+                <div className="absolute top-[calc(100%+8px)] right-0 w-full md:w-[180px] bg-surface rounded-xl border border-outline-variant shadow-lg z-20 py-[8px]">
+                  {sortOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => handleSortChange(option.value)}
+                      className={`w-full text-left px-[16px] py-[8px] text-label-md transition-colors ${sortBy === option.value
+                          ? "bg-primary/10 text-primary"
+                          : "text-on-surface hover:bg-surface-container-high"
+                        }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* ── Pagination ── */}
-          <nav
-            aria-label="Blog pagination"
-            className="mt-[48px] flex justify-center items-center gap-[16px]"
-          >
-            {/* Previous */}
-            <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Previous page"
-            >
-              <span className="material-symbols-outlined">chevron_left</span>
-            </button>
-
-            {/* Page numbers */}
-            {pageNumbers.map((page, i) =>
-              page === "..." ? (
-                <span
-                  key={`ellipsis-${i}`}
-                  className="text-on-surface-variant px-[8px]"
-                >
-                  ...
+          {visiblePosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
+              {visiblePosts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-[80px] px-[24px] bg-surface-container rounded-2xl border border-outline-variant text-center">
+              <div className="w-[80px] h-[80px] mb-[24px] bg-surface rounded-full flex items-center justify-center shadow-sm border border-outline-variant/50">
+                <span className="material-symbols-outlined text-[40px] text-on-surface-variant">
+                  article
                 </span>
-              ) : (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page as number)}
-                  className={`w-10 h-10 flex items-center justify-center rounded-full text-label-md transition-colors ${
-                    currentPage === page
-                      ? "bg-primary text-on-primary"
-                      : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-high"
-                  }`}
-                >
-                  {page}
-                </button>
-              ),
-            )}
+              </div>
+              <h3 className="text-headline-sm text-on-surface mb-[12px]">
+                No posts found
+              </h3>
+              <p className="text-body-lg text-on-surface-variant max-w-md mb-[32px]">
+                We couldn't find any blogs in the &quot;{selectedCategory}&quot; category right now. Check back later for updates!
+              </p>
+              <button
+                onClick={() => handleCategoryChange("All")}
+                className="px-[32px] py-[14px] bg-primary text-on-primary rounded-full text-label-lg transition-all hover:shadow-md hover:opacity-90"
+              >
+                View all posts
+              </button>
+            </div>
+          )}
 
-            {/* Next */}
-            <button
-              onClick={() =>
-                setCurrentPage((p) => Math.min(totalPages, p + 1))
-              }
-              disabled={currentPage === totalPages}
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Next page"
+          {/* ── Pagination ── */}
+          {visiblePosts.length > 0 && (
+            <nav
+              aria-label="Blog pagination"
+              className="mt-[48px] flex justify-center items-center gap-[16px]"
             >
-              <span className="material-symbols-outlined">chevron_right</span>
-            </button>
-          </nav>
+              {/* Previous */}
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="Previous page"
+              >
+                <span className="material-symbols-outlined">chevron_left</span>
+              </button>
+
+              {/* Page numbers */}
+              {pageNumbers.map((page, i) =>
+                page === "..." ? (
+                  <span
+                    key={`ellipsis-${i}`}
+                    className="text-on-surface-variant px-[8px]"
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page as number)}
+                    className={`w-10 h-10 flex items-center justify-center rounded-full text-label-md transition-colors ${currentPage === page
+                        ? "bg-primary text-on-primary"
+                        : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-high"
+                      }`}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
+
+              {/* Next */}
+              <button
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages, p + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="Next page"
+              >
+                <span className="material-symbols-outlined">chevron_right</span>
+              </button>
+            </nav>
+          )}
         </section>
 
         {/* ── Newsletter ── */}

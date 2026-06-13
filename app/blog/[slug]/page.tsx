@@ -19,7 +19,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Jamro Tools Blog`,
+    title: post.seoTitle || `${post.title} | Jamro Tools Blog`,
     description: post.description,
   };
 }
