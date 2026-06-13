@@ -7,6 +7,8 @@ import { ageDifferenceCalculator } from "./age-difference-calculator";
 import { middleSchoolGpaCalculator } from "./middle-school-gpa-calculator";
 import { tripleIntegralCalculator } from "./triple-integral-calculator";
 import { wordCounterCalculator } from "./word-counter-calculator";
+import { basicCalculator } from "./basic-calculator";
+import { scientificCalculator } from "./scientific-calculator";
 
 const allTools: ToolConfig[] = [
   mortgageCalculator,
@@ -17,6 +19,8 @@ const allTools: ToolConfig[] = [
   middleSchoolGpaCalculator,
   tripleIntegralCalculator,
   wordCounterCalculator,
+  basicCalculator,
+  scientificCalculator,
 ];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {

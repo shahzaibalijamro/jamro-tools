@@ -77,6 +77,7 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
               className={`object-cover ${post.imageUrl === "/first-time-home-buyer-mortgage-calculator-guide.jpg" && "object-top"}`}
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 1024px, 1280px"
               priority
+              loading="eager"
             />
           </div>
         </header>

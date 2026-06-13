@@ -51,6 +51,8 @@ export const calculatorCategories: CalculatorCategory[] = [
       "Algebra, geometry, and statistical calculators for students, teachers, and researchers.",
     sampleTools: ["Percentage", "Fraction", "Algebra"],
     tools: [
+      "Scientific Calculator",
+      "Basic Calculator",
       "Percentage Calculator",
       "Fraction Calculator",
       "Algebra Solver",

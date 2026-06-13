@@ -7,6 +7,8 @@ import AgeDifferenceCalculator from "./custom/age-difference-calculator";
 import MiddleSchoolGpaCalculator from "./custom/middle-school-gpa-calculator";
 import TripleIntegralCalculator from "./custom/triple-integral-calculator";
 import WordCounterCalculator from "./custom/word-counter-calculator";
+import BasicCalculator from "./custom/basic-calculator";
+import ScientificCalculator from "./custom/scientific-calculator";
 
 /**
  * Registry maps custom component names (as stored in ToolConfig.customComponent)
@@ -26,6 +28,8 @@ const customToolRegistry: Record<string, ComponentType> = {
   MiddleSchoolGpaCalculator,
   TripleIntegralCalculator,
   WordCounterCalculator,
+  BasicCalculator,
+  ScientificCalculator,
 };
 
 export function getCustomToolComponent(
@@ -43,5 +47,7 @@ export {
   MiddleSchoolGpaCalculator,
   TripleIntegralCalculator,
   WordCounterCalculator,
+  BasicCalculator,
+  ScientificCalculator,
 };
 
