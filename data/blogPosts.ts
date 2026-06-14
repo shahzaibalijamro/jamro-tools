@@ -41,6 +41,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "how-to-calculate-monthly-mortgage-payment",
     title: "How to Calculate Your Monthly Mortgage Payment (Step-by-Step)",
+    seoTitle: "How to Calculate Your Monthly Mortgage Payment (Step-by-Step)",
     excerpt:
       "Learn the exact formula lenders use, walk through a worked example, and understand every component (PITI) bundled into your monthly bill.",
     description:
