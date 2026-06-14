@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Terms of Service - Jamro Tools",
   description:
     "Read the Terms of Service for Jamro Tools. Understand the rules, disclaimers, and legal conditions governing your use of our digital utility platform.",
+  alternates: { canonical: '/terms' },
 };
 
 export default function TermsPage() {

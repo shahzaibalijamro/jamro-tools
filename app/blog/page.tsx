@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Free Tool Guides, Tips & How-Tos | Jamro Tools Blog",
   description:
     "Step-by-step guides on calculators, converters & dev tools. Learn how to use free online tools to solve real problems — no jargon, always free to read.",
+  alternates: { canonical: '/blog' },
 };
 
 export default function BlogPage() {

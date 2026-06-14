@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     title: "Text Tools – Word Counter & More | Jamro Tools",
     description:
         "Free text tools including a live Word Counter. Paste text to instantly count words, characters, sentences, and more — no sign-up.",
+    alternates: { canonical: '/tools/text-tools' },
 };
 
 export default async function TextToolsPage() {

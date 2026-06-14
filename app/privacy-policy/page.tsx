@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy - Jamro Tools",
   description:
     "Learn how Jamro Tools collects, uses, and protects your personal data across our online tools and services.",
+  alternates: { canonical: '/privacy-policy' },
 };
 
 export default function PrivacyPage() {

@@ -38,7 +38,7 @@ const TOOL_META: Record<string, { title: string; description: string }> = {
 export async function generateMetadata({
   params,
 }: ToolPageProps): Promise<Metadata> {
-  const { tool } = await params;
+  const { type, tool } = await params;
   const toolConfig = getToolBySlug(tool);
   const override = TOOL_META[tool];
 
@@ -50,12 +50,14 @@ export async function generateMetadata({
     return {
       title: override.title,
       description: override.description,
+      alternates: { canonical: `/tools/calculators/${type}/${tool}` },
     };
   }
 
   return {
     title: `${toolConfig.title} | Jamro Tools`,
     description: toolConfig.description,
+    alternates: { canonical: `/tools/calculators/${type}/${tool}` },
   };
 }
 

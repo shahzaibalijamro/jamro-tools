@@ -23,6 +23,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shahzaibalijamro.vercel.app"),
   title: "JAMRO TOOLS",
   description:
     "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",

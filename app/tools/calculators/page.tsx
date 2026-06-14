@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Free Online Calculators – 120+ Tools Across Every Category",
   description:
     "Use 120+ free online calculators for math, finance, health, engineering, science & more. No sign-up, no downloads. Instant answers right in your browser.",
+  alternates: { canonical: '/tools/calculators' },
 };
 
 export default function CalculatorsPage() {

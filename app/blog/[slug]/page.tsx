@@ -21,6 +21,7 @@ export async function generateMetadata({
   return {
     title: post.seoTitle || `${post.title} | Jamro Tools Blog`,
     description: post.description,
+    alternates: { canonical: `/blog/${slug}` },
   };
 }
 

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Free Online Tools – No Sign-Up Required | Jamro Tools",
   description:
     "Access 1,000+ free calculators, converters, generators & developer tools. 100% private — all tools run in your browser. No account, no downloads, no cost. Ever.",
+  alternates: { canonical: '/' },
 };
 
 export default function Home() {

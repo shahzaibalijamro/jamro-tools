@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Contact Us – Request a Tool or Get Support | Jamro Tools",
   description:
     "Got a question, bug report, or tool idea? We read every message and build what our community asks for. Reach out — we usually respond within 48 hours.",
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {
