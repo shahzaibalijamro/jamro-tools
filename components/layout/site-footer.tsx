@@ -10,7 +10,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
       className={`bg-[#273247] min-[700px]:pb-0 text-[#d9e4f6] ${hasMarginBottom ? "pb-16" : ""}`}
     >
       <Container>
-        <div className="mx-auto max-w-[988px]">
+        <div className="mx-auto max-w-full">
           <div className="grid gap-12 justify-center min-[700px]:justify-start text-center min-[700px]:text-start py-14 min-[700px]:py-16 min-[700px]:grid-cols-[1fr_0.8fr_1fr_0.95fr] min-[700px]:gap-20">
             <div>
               <Link
@@ -21,8 +21,9 @@ export function SiteFooter({ hasMarginBottom = false }) {
                 Jamro Tools
               </Link>
               <p className="mt-6 max-w-[270px] text-[15px] font-medium leading-[1.7]  text-[#526075]">
-                The digital Swiss Army knife for the modern professional. Built
-                for speed, privacy, and utility.
+                500+ free tools, one platform. <br />
+                Math, converters, SEO, dev, images, PDFs, text, security. <br />
+                Built for accuracy and simplicity.
               </p>
             </div>
 
