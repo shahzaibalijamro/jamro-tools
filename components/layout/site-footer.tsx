@@ -24,22 +24,6 @@ export function SiteFooter({ hasMarginBottom = false }) {
                 The digital Swiss Army knife for the modern professional. Built
                 for speed, privacy, and utility.
               </p>
-              <div className="mt-8 flex items-center justify-center min-[700px]:justify-start gap-5 text-[#d9e4f6]">
-                <Link href="/community" aria-label="Jamro Tools community">
-                  <Globe2
-                    className="size-5"
-                    strokeWidth={2.25}
-                    aria-hidden="true"
-                  />
-                </Link>
-                <Link href="/contact" aria-label="Contact Jamro Tools">
-                  <AtSign
-                    className="size-5"
-                    strokeWidth={2.25}
-                    aria-hidden="true"
-                  />
-                </Link>
-              </div>
             </div>
 
             {footerColumns.map((column) => (
