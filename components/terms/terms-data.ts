@@ -8,17 +8,18 @@ export const termsDesktopNavItems = [
 ];
 
 export const termsSidebarLinks = [
-  { label: "1. Acceptance", href: "#acceptance", id: "link-acceptance", sectionId: "acceptance" },
-  { label: "2. Description", href: "#description", id: "link-description", sectionId: "description" },
-  { label: "3. Terms of Use", href: "#terms-of-use", id: "link-terms", sectionId: "terms-of-use" },
-  { label: "4. Responsibilities", href: "#responsibilities", id: "link-responsibilities", sectionId: "responsibilities" },
-  { label: "5. Intellectual Property", href: "#intellectual-property", id: "link-ip", sectionId: "intellectual-property" },
-  { label: "6. Warranties", href: "#warranties", id: "link-warranties", sectionId: "warranties" },
-  { label: "7. Liability", href: "#liability", id: "link-liability", sectionId: "liability" },
-  { label: "8. Privacy Policy", href: "#privacy", id: "link-privacy", sectionId: "privacy" },
-  { label: "9. Changes", href: "#changes", id: "link-changes", sectionId: "changes" },
-  { label: "10. Governing Law", href: "#governing-law", id: "link-law", sectionId: "governing-law" },
-  { label: "11. Contact", href: "#contact-us", id: "link-contact", sectionId: "contact-us" },
+  { label: "1. Acceptance of Terms", href: "#acceptance-of-terms", id: "link-acceptance", sectionId: "acceptance-of-terms" },
+  { label: "2. Use of the Website", href: "#use-of-the-website", id: "link-use", sectionId: "use-of-the-website" },
+  { label: "3. Tool Accuracy", href: "#tool-accuracy-disclaimer", id: "link-accuracy", sectionId: "tool-accuracy-disclaimer" },
+  { label: "4. Intellectual Property", href: "#intellectual-property", id: "link-ip", sectionId: "intellectual-property" },
+  { label: "5. Third-Party Links", href: "#third-party-links", id: "link-links", sectionId: "third-party-links" },
+  { label: "6. Advertisements", href: "#advertisements", id: "link-ads", sectionId: "advertisements" },
+  { label: "7. Limitation of Liability", href: "#limitation-of-liability", id: "link-liability", sectionId: "limitation-of-liability" },
+  { label: "8. Website Availability", href: "#website-availability", id: "link-availability", sectionId: "website-availability" },
+  { label: "9. Privacy", href: "#privacy", id: "link-privacy", sectionId: "privacy" },
+  { label: "10. Changes to Terms", href: "#changes-to-these-terms", id: "link-changes", sectionId: "changes-to-these-terms" },
+  { label: "11. Governing Law", href: "#governing-law", id: "link-law", sectionId: "governing-law" },
+  { label: "12. Contact Info", href: "#contact-information", id: "link-contact", sectionId: "contact-information" },
 ];
 
 export const termsFooterLinks = [

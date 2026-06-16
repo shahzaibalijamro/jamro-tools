@@ -26,7 +26,7 @@ export default function TermsPage() {
       <div className="min-h-screen bg-[#f9f9ff] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d]">
         <SiteHeader />
 
-        <main className="relative overflow-hidden pt-4 pb-8">
+        <main className="relative pt-4 pb-8">
           {/* Dot-grid pattern background (desktop only) */}
           <div className="pointer-events-none absolute inset-0 -z-10 hidden tos-grid-pattern md:block" />
 
