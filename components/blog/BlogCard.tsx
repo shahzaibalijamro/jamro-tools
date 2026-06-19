@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { BlogPost } from "@/data/blogPosts";
-import { categoryBadgeClasses } from "@/data/blogPosts";
+import type { BlogPost } from "@/lib/types/blog";
+import { categoryBadgeClasses } from "@/lib/types/blog";
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (

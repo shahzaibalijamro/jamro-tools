@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
-import { blogPosts } from "@/data/blogPosts";
 
 const POSTS_PER_PAGE = 9;
 
@@ -14,6 +13,26 @@ export function BlogIndexView() {
   const [sortBy, setSortBy] = useState<string>("newest");
   const [isSortOpen, setIsSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
+
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const res = await fetch('/api/blogs');
+        const json = await res.json();
+        if (json.success) {
+          setBlogs(json.data);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchBlogs();
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -45,7 +64,7 @@ export function BlogIndexView() {
   };
 
   // Filter logic
-  let filteredPosts = blogPosts;
+  let filteredPosts = blogs;
   if (selectedCategory !== "All") {
     filteredPosts = filteredPosts.filter((p) => p.category === selectedCategory);
   }
@@ -173,7 +192,11 @@ export function BlogIndexView() {
             </div>
           </div>
 
-          {visiblePosts.length > 0 ? (
+          {isLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <span className="material-symbols-outlined animate-spin text-4xl text-primary">progress_activity</span>
+            </div>
+          ) : visiblePosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
               {visiblePosts.map((post) => (
                 <BlogCard key={post.slug} post={post} />

@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 
 import { calculatorCategories } from "@/data/calculator-tools";
 import { allTools } from "@/data/tools";
-import { blogPosts } from "@/data/blogPosts";
+import dbConnect from "@/lib/mongoose";
+import BlogPostModel from "@/models/BlogPost";
 import { getCustomToolComponent } from "@/components/tools/calculators/registry";
 
 const SITE_URL = "https://jamro-tools.vercel.app";
@@ -25,8 +26,7 @@ function url(path: string): string {
   return `${SITE_URL}${path}`;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  // ── Top-level static pages ──
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: Entry[] = [
     {
       url: url("/"),
@@ -70,16 +70,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // ── Calculator category pages (9 of them) ──
   const categoryEntries: Entry[] = calculatorCategories.map((category) => ({
     url: url(`/tools/calculators/${category.slug}`),
     lastModified: NOW,
     priority: 0.64,
   }));
 
-  // ── Individual calculator pages — only those that have a registered component.
-  // This guarantees we never link to a 404. New tools show up automatically when
-  // they're added to the registry + data/tools registry.
   const toolEntries: Entry[] = allTools
     .filter((tool) => tool.customComponent && getCustomToolComponent(tool.customComponent))
     .map((tool) => ({
@@ -88,7 +84,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.51,
     }));
 
-  // ── Blog posts ──
+  await dbConnect();
+  const blogPosts = await BlogPostModel.find({}).select("slug").lean();
   const blogEntries: Entry[] = blogPosts.map((post) => ({
     url: url(`/blog/${post.slug}`),
     lastModified: NOW,

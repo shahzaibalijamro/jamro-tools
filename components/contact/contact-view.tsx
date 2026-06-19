@@ -26,18 +26,39 @@ export function ContactView() {
   }, []);
 
   /* ── Form: idle → submitting (1.5 s) → sent (3 s) → idle + reset ── */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus("submitting");
-
-    setTimeout(() => {
-      setFormStatus("sent");
-
-      setTimeout(() => {
+    
+    const form = e.target as HTMLFormElement;
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: (form.elements.namedItem('name') as HTMLInputElement).value,
+          email: (form.elements.namedItem('email') as HTMLInputElement).value,
+          subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
+          message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+        }),
+      });
+      
+      if (response.ok) {
+        setFormStatus("sent");
+        setTimeout(() => {
+          setFormStatus("idle");
+          form.reset();
+        }, 3000);
+      } else {
         setFormStatus("idle");
-        (e.target as HTMLFormElement).reset();
-      }, 3000);
-    }, 1500);
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      setFormStatus("idle");
+      alert("An error occurred. Please try again.");
+    }
   };
 
   return (
@@ -85,6 +106,7 @@ export function ContactView() {
                     <input
                       className="w-full px-[16px] py-[8px] bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md"
                       id="name"
+                      name="name"
                       placeholder="John Doe"
                       type="text"
                       required
@@ -100,6 +122,7 @@ export function ContactView() {
                     <input
                       className="w-full px-[16px] py-[8px] bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md"
                       id="email"
+                      name="email"
                       placeholder="john@example.com"
                       type="email"
                       required
@@ -117,6 +140,7 @@ export function ContactView() {
                   <input
                     className="w-full px-[16px] py-[8px] bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md"
                     id="subject"
+                    name="subject"
                     placeholder="Technical Assistance"
                     type="text"
                     required
@@ -133,6 +157,7 @@ export function ContactView() {
                   <textarea
                     className="w-full px-[16px] py-[8px] bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md resize-none"
                     id="message"
+                    name="message"
                     placeholder="How can we help you today?"
                     rows={5}
                     required

@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
-import { type BlogPost } from "@/data/blogPosts";
+import { type BlogPost } from "@/lib/types/blog";
 
 interface BlogPostViewProps {
   post: BlogPost;
@@ -62,7 +62,7 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
               {post.readTime && (
                 <>
                   <span className="w-[4px] h-[4px] rounded-full bg-outline-variant" />
-                  <span>{post.readTime}</span>
+                  <span>{post.readTime} min read</span>
                 </>
               )}
             </div>
@@ -207,7 +207,15 @@ function parseBlocks(md: string): Block[] {
   // Drop HTML comments (e.g. <!-- FEATURED IMAGE: ... -->) and strip
   // {#anchor} IDs from heading text. Both come up in the mortgage
   // posts and would otherwise leak into the rendered page.
+  //
+  // Some blog content is stored with escaped markdown backticks wrapped
+  // in extra backslashes (e.g. "\\`...\\"). Normalize those backtick wrappers
+  // back to standard inline code markers before parsing.
   const cleaned = md
+    // \`...\`  -> `...`
+    .replace(/\\`([^]*)\\`/g, "`$1`")
+    // \` (leading) or \` (trailing) leftovers -> `
+    .replace(/\\`/g, "`")
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/^(#{2,4}\s+.+?)\s*\{#[^}]+\}\s*$/gm, "$1");
 
