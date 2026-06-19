@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
   },
   verification: {
-    google: "IAiGibFhHc1E4PgoezOdgQVxtCxI06idO6FMJR3BNm4",
+    google: "Uz-tsuTDMUc4nsDWS0fkaCOLA54as0IUgIQiQ5YwU3o",
   },
 };
 
@@ -49,8 +50,11 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
       </head>
-      <Analytics />
-      <body className="bg-background text-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-full">{children}</body>
+      <body className="bg-background text-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-full">
+        {children}
+        <Analytics />
+        <GoogleAnalytics gaId="G-QD50R2JB1W" />
+      </body>
     </html>
   );
 }
