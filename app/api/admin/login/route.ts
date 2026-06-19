@@ -9,6 +9,10 @@ export async function POST(req: Request) {
     const adminUsername = process.env.ADMIN_USERNAME;
     const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
 
+    console.log(adminUsername, adminPasswordHash)
+
+    console.log(username, password)
+
     if (!adminUsername || !adminPasswordHash) {
       return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
     }
