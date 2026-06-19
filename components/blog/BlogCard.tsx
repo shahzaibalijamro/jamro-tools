@@ -7,7 +7,7 @@ import { categoryBadgeClasses } from "@/lib/types/blog";
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <article
+    <Link href={`/blog/${post.slug}`}
       className="group glass-card rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-2"
     >
       {/* Image */}
@@ -39,16 +39,13 @@ export function BlogCard({ post }: { post: BlogPost }) {
         <p className="text-body-md text-on-surface-variant mb-[24px] flex-grow">
           {post.excerpt}
         </p>
-        <Link
-          href={`/blog/${post.slug}`}
-          className="inline-flex items-center text-primary text-label-md group/link"
-        >
+        <span className="inline-flex items-center text-primary text-label-md">
           Read More{" "}
-          <span className="material-symbols-outlined ml-xs group-hover/link:translate-x-1 transition-transform">
+          <span className="material-symbols-outlined ml-xs group-hover:translate-x-1 transition-transform">
             arrow_forward
           </span>
-        </Link>
+        </span>
       </div>
-    </article>
+    </Link>
   );
 }
