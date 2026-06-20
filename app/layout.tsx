@@ -50,17 +50,17 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
-      </head>
-      <body className="bg-background text-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-full">
-        {children}
-        <Analytics />
-        <GoogleAnalytics gaId="G-QD50R2JB1W" />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9700447325625085"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+      </head>
+      <body className="bg-background text-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-full">
+        {children}
+        <Analytics />
+        <GoogleAnalytics gaId="G-QD50R2JB1W" />
       </body>
     </html>
   );
