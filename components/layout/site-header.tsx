@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Moon, Search, Menu, X, ArrowLeft } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { SearchDropdown } from "@/components/layout/search-dropdown";
+import { SafeLink } from "@/components/ui/safe-link";
 
 const navItems = [
   { label: "Tools", href: "/tools" },
@@ -241,11 +242,10 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${
-                      active
+                    className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${active
                         ? "border-[var(--color-brand)] text-[var(--color-brand)]"
                         : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)]"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -263,12 +263,12 @@ export function SiteHeader() {
             </button>
 
             {/* Request a Tool — ≥901px only */}
-            <Link
+            <SafeLink
               href="/request-tool"
               className="hidden min-[901px]:inline-flex h-10 w-[150px] shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-10 min-[700px]:w-[150px] min-[700px]:text-[14px] xl:h-[43px] xl:w-[150px]"
             >
               Request a Tool
-            </Link>
+            </SafeLink>
 
             {/* Search icon — ≤580px only (triggers header-morph search) */}
             <button
@@ -400,18 +400,17 @@ export function SiteHeader() {
               {navItems.map((item) => {
                 const active = isActive(item.href);
                 return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeSidebar}
-                  className={`border-b text-center border-[var(--color-border)] py-4 text-[17px] font-semibold transition ${
-                    active
-                      ? "text-[var(--color-brand)]"
-                      : "text-[var(--color-muted)] hover:text-[var(--color-brand)]"
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeSidebar}
+                    className={`border-b text-center border-[var(--color-border)] py-4 text-[17px] font-semibold transition ${active
+                        ? "text-[var(--color-brand)]"
+                        : "text-[var(--color-muted)] hover:text-[var(--color-brand)]"
+                      }`}
+                  >
+                    {item.label}
+                  </Link>
                 );
               })}
             </nav>

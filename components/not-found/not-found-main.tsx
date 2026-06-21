@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
@@ -12,7 +13,7 @@ export function NotFoundMain() {
   const floatRef = useRef<HTMLDivElement>(null);
   const glassCardRef = useRef<HTMLDivElement>(null);
 
-  /* ── Desktop parallax on the floating 404 icon ── */
+  /* Desktop parallax on the floating 404 icon */
   const handleDesktopParallax = useCallback((e: MouseEvent) => {
     const el = floatRef.current;
     if (!el) return;
@@ -22,7 +23,7 @@ export function NotFoundMain() {
     el.style.transform = `translate(${x}px, ${y}px)`;
   }, []);
 
-  /* ── Mobile glass-card 3D tilt (activates only > 768 px, as in the original HTML) ── */
+  /* Mobile glass-card 3D tilt (activates only > 768 px, as in the original HTML) */
   const handleGlassTilt = useCallback((e: MouseEvent) => {
     const card = glassCardRef.current;
     if (!card) return;
@@ -42,7 +43,7 @@ export function NotFoundMain() {
     };
   }, [handleDesktopParallax, handleGlassTilt]);
 
-  /* ── Search enter handler ── */
+  /* Search enter handler */
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const value = (e.target as HTMLInputElement).value.trim();
@@ -54,7 +55,7 @@ export function NotFoundMain() {
 
   return (
     <main className="flex-grow flex flex-col items-center justify-center pt-5 pb-12 px-4 sm:px-10 max-w-[1280px] mx-auto w-full relative overflow-hidden">
-      {/* ── Atmospheric blobs (mobile only) ── */}
+      {/* Atmospheric blobs (mobile only) */}
       <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl md:hidden" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl md:hidden" />
 
@@ -107,25 +108,30 @@ export function NotFoundMain() {
         <div className="flex flex-row gap-4 mb-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 bg-primary text-on-primary px-12 py-4 rounded-full text-[14px] font-semibold leading-[1.4] tracking-[0.01em] hover:shadow-md hover:-translate-y-0.5 transition-all active:scale-95"
+            className="inline-flex items-center gap-2 bg-primary text-on-primary px-12 py-4 rounded-full text-[14px] font-semibold leading-[1.4] tracking-[0.01em] shadow-sm hover:shadow-md active:scale-95 transition-all"
           >
-            <span className="material-symbols-outlined">home</span>
-            Back to Home
+            <span
+              className="material-symbols-outlined"
+              style={{ fontVariationSettings: "'FILL' 1" }}
+            >
+              home
+            </span>
+            Return Home
           </Link>
           <button
             type="button"
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant px-12 py-4 rounded-full text-[14px] font-semibold leading-[1.4] tracking-[0.01em] hover:bg-surface-container-low transition-all"
+            className="inline-flex items-center justify-center bg-surface-container-lowest border border-outline-variant text-on-surface-variant px-12 py-4 rounded-full text-[14px] font-semibold leading-[1.4] tracking-[0.01em] hover:bg-surface-container-low transition-all active:scale-95"
           >
-            <span className="material-symbols-outlined">arrow_back</span>
-            Previous Page
+            <span className="material-symbols-outlined mr-2">arrow_back</span>
+            Go Back
           </button>
         </div>
 
-        {/* Bento category grid (desktop only) */}
+        {/* Bento grid (desktop only) */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
           {bentoCategories.map((cat) => (
-            <Link
+            <SafeLink
               key={cat.href}
               href={cat.href}
               className="glass-panel p-6 rounded-xl flex flex-col items-center group hover:bg-surface-container-high transition-all"
@@ -138,7 +144,7 @@ export function NotFoundMain() {
               <span className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-on-surface">
                 {cat.label}
               </span>
-            </Link>
+            </SafeLink>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { ToastProvider } from "@/hooks/use-toast";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
@@ -23,7 +24,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shahzaibalijamro.vercel.app"),
+  metadataBase: new URL("https://jamrotools.com"),
   title: "JAMRO TOOLS",
   description:
     "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",
@@ -58,7 +59,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-full">
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
         <Analytics />
         <GoogleAnalytics gaId="G-QD50R2JB1W" />
       </body>

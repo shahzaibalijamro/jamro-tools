@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ToolsCtaSection } from "@/components/tools/cta-section";
 import { type CalculatorCategory } from "@/data/calculator-tools";
+import { SafeLink } from "@/components/ui/safe-link";
 
 function toToolSlug(displayName: string): string {
   return displayName
@@ -94,7 +95,7 @@ export function CalculatorTypeView({ category }: CalculatorTypeViewProps) {
         {filteredTools.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[16px]">
             {filteredTools.map((tool) => (
-              <Link
+              <SafeLink
                 key={tool}
                 href={`/tools/calculators/${category.slug}/${toToolSlug(tool)}`}
                 className="glass-card p-[16px] rounded-lg flex items-center justify-between group hover:bg-primary/5 transition-all border border-outline-variant/30"
@@ -105,7 +106,7 @@ export function CalculatorTypeView({ category }: CalculatorTypeViewProps) {
                 <span className="material-symbols-outlined text-[18px] text-primary opacity-0 group-hover:opacity-100 transition-all">
                   arrow_forward
                 </span>
-              </Link>
+              </SafeLink>
             ))}
           </div>
         ) : (

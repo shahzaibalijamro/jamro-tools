@@ -1,4 +1,6 @@
-import Link from "next/link";
+﻿"use client";
+
+import { SafeLink } from "@/components/ui/safe-link";
 import { ArrowRight, Shuffle } from "lucide-react";
 
 type ButtonVariant = "primary" | "secondary";
@@ -34,12 +36,12 @@ export function ButtonLink({
   const Icon = iconMap[icon];
 
   return (
-    <Link
+    <SafeLink
       href={href}
       className={`inline-flex items-center justify-center gap-4 rounded-full font-bold transition ${variantStyles[variant]} ${className}`}
     >
       <span>{children}</span>
       <Icon className="size-6 min-[700px]:size-8 lg:size-5" aria-hidden="true" />
-    </Link>
+    </SafeLink>
   );
 }

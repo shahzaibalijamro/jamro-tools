@@ -1,5 +1,6 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { Menu, Search } from "lucide-react";
 
 import { aboutNavItems } from "@/components/about/about-data";
@@ -53,12 +54,12 @@ export function AboutHeader() {
           </form>
 
           {/* Desktop Sign In */}
-          <Link
+          <SafeLink
             href="/signin"
             className="hidden h-10 items-center justify-center rounded-full bg-[#004ac6] px-6 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-white transition-all active:scale-95 md:inline-flex"
           >
             Sign In
-          </Link>
+          </SafeLink>
 
           {/* Mobile Menu Button */}
           <button

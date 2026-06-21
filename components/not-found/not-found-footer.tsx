@@ -1,4 +1,5 @@
-import Link from "next/link";
+﻿import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 
 export function NotFoundFooter() {
   return (
@@ -25,12 +26,12 @@ export function NotFoundFooter() {
           >
             Terms of Service
           </Link>
-          <Link
+          <SafeLink
             href="/api"
             className="text-[16px] leading-[1.6] text-on-surface-variant transition-all hover:text-primary hover:underline"
           >
             API Documentation
-          </Link>
+          </SafeLink>
           <Link
             href="/contact"
             className="text-[16px] leading-[1.6] text-on-surface-variant transition-all hover:text-primary hover:underline"

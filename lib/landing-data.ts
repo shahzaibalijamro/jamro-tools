@@ -164,7 +164,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Categories",
     links: [
-      { label: "Calculators", href: "/categories/calculators" },
+      { label: "Calculators", href: "/tools/calculators" },
       { label: "Converters", href: "/categories/converters" },
       { label: "Generators", href: "/categories/generators" },
       { label: "Developer Tools", href: "/categories/developer-tools" },

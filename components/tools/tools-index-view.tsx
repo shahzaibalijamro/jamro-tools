@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ToolsCtaSection } from "@/components/tools/cta-section";
+import { SafeLink } from "../ui/safe-link";
 
 /* ── Tool category data ── */
 const toolCategories = [
@@ -164,7 +165,7 @@ export function ToolsIndexView() {
         {/* ── Tool Directory Grid ── */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
           {toolCategories.map((category) => (
-            <Link
+            <SafeLink
               key={category.title}
               href={category.href}
               className="glass-card rounded-xl p-[24px] flex flex-col gap-[16px] transition-all duration-300 hover:shadow-lg hover:border-primary/30 group cursor-pointer"
@@ -208,7 +209,7 @@ export function ToolsIndexView() {
                   arrow_forward
                 </span>
               </div>
-            </Link>
+            </SafeLink>
           ))}
         </section>
 

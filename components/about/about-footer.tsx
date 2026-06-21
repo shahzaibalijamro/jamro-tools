@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+﻿import Image from "next/image";
+import { SafeLink } from "@/components/ui/safe-link";
 import { Mail, Share2 } from "lucide-react";
 
 import { footerLinks } from "@/components/about/about-data";
@@ -22,13 +22,13 @@ export function AboutFooter() {
               Jamro Tools
             </span>
           </div>
-          <Link
+          <SafeLink
             href="/"
             className="hidden text-[20px] font-bold leading-[1.4] text-[#111c2d] md:block"
             aria-label="Jamro Tools home"
           >
             Jamro Tools
-          </Link>
+          </SafeLink>
           <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]">
             &copy; 2026 Jamro Tools. All rights reserved.
           </p>
@@ -39,30 +39,30 @@ export function AboutFooter() {
           aria-label="Footer navigation"
           className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:hidden"
         >
-          <Link
+          <SafeLink
             href="/about"
             className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] underline"
           >
             About Us
-          </Link>
-          <Link
+          </SafeLink>
+          <SafeLink
             href="/privacy"
             className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]"
           >
             Privacy Policy
-          </Link>
-          <Link
+          </SafeLink>
+          <SafeLink
             href="/terms"
             className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]"
           >
             Terms of Service
-          </Link>
-          <Link
+          </SafeLink>
+          <SafeLink
             href="/contact"
             className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]"
           >
             Contact
-          </Link>
+          </SafeLink>
         </nav>
 
         {/* Desktop: full link list */}
@@ -71,13 +71,13 @@ export function AboutFooter() {
           className="hidden flex-wrap justify-center gap-6 md:flex"
         >
           {footerLinks.map((link) => (
-            <Link
+            <SafeLink
               key={link.href}
               href={link.href}
               className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] transition-colors duration-200 hover:text-[#0058be]"
             >
               {link.label}
-            </Link>
+            </SafeLink>
           ))}
         </nav>
 

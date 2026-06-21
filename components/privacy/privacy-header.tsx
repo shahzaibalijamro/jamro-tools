@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { useRouter } from "next/navigation";
 
 import { privacyDesktopNavItems } from "@/components/privacy/privacy-data";
@@ -40,13 +41,13 @@ export function PrivacyHeader() {
             className="ml-6 hidden gap-4 md:flex"
           >
             {privacyDesktopNavItems.map((item) => (
-              <Link
+              <SafeLink
                 key={item.href}
                 href={item.href}
                 className="cursor-pointer text-[16px] leading-[1.6] text-[#434655] transition-all hover:text-[#004ac6] active:scale-95"
               >
                 {item.label}
-              </Link>
+              </SafeLink>
             ))}
           </nav>
         </div>
@@ -81,12 +82,12 @@ export function PrivacyHeader() {
           </span>
 
           {/* Desktop Sign In */}
-          <Link
+          <SafeLink
             href="/signin"
             className="hidden items-center justify-center rounded-full bg-[#004ac6] px-6 py-2 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-white transition-all active:scale-95 hover:bg-[#0058be] md:inline-flex"
           >
             Sign In
-          </Link>
+          </SafeLink>
         </div>
       </div>
     </header>

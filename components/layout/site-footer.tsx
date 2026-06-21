@@ -1,4 +1,5 @@
-import Link from "next/link";
+﻿import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { AtSign, Globe2, Heart } from "lucide-react";
 
 import { Container } from "@/components/ui/container";
@@ -35,12 +36,12 @@ export function SiteFooter({ hasMarginBottom = false }) {
                 <ul className="mt-6 space-y-4">
                   {column.links.map((link) => (
                     <li key={link.href}>
-                      <Link
+                      <SafeLink
                         href={link.href}
                         className="text-[15px] font-medium  text-[#526075] transition hover:text-[#d9e4f6]"
                       >
                         {link.label}
-                      </Link>
+                      </SafeLink>
                     </li>
                   ))}
                 </ul>

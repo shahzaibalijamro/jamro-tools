@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { useState } from "react";
 
 import { notFoundNavItems } from "@/components/not-found/not-found-data";
@@ -12,7 +13,7 @@ export function NotFoundHeader() {
 
   return (
     <>
-      {/* ── Fixed glass header ── */}
+      {/* Fixed glass header */}
       <header className="fixed top-0 z-50 w-full bg-glass-bg/70 backdrop-blur-md border-b border-glass-border shadow-sm">
         <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6">
           {/* Brand */}
@@ -30,24 +31,24 @@ export function NotFoundHeader() {
             className="hidden items-center gap-6 md:flex"
           >
             {notFoundNavItems.map((item) => (
-              <Link
+              <SafeLink
                 key={item.href}
                 href={item.href}
                 className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-on-surface-variant transition-colors duration-200 hover:text-primary px-2 py-1 rounded"
               >
                 {item.label}
-              </Link>
+              </SafeLink>
             ))}
           </nav>
 
           {/* Right side: Sign In + hamburger */}
           <div className="flex items-center gap-3">
-            <Link
+            <SafeLink
               href="/signin"
               className="hidden items-center justify-center rounded-full bg-primary px-6 py-2 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-on-primary transition-all hover:shadow-md active:scale-95 md:inline-flex"
             >
               Sign In
-            </Link>
+            </SafeLink>
 
             {/* Mobile hamburger */}
             <button
@@ -62,7 +63,7 @@ export function NotFoundHeader() {
         </div>
       </header>
 
-      {/* ── Mobile navigation drawer ── */}
+      {/* Mobile navigation drawer */}
       <div
         className={`fixed inset-0 z-[60] transition-transform duration-300 md:hidden ${
           drawerOpen ? "translate-x-0" : "translate-x-full"
@@ -88,23 +89,23 @@ export function NotFoundHeader() {
           </div>
 
           {notFoundNavItems.map((item) => (
-            <Link
+            <SafeLink
               key={item.href}
               href={item.href}
               onClick={() => setDrawerOpen(false)}
               className="py-4 border-b border-outline-variant text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-on-surface"
             >
               {item.label}
-            </Link>
+            </SafeLink>
           ))}
 
-          <Link
+          <SafeLink
             href="/signin"
             onClick={() => setDrawerOpen(false)}
             className="mt-4 flex items-center justify-center rounded-full bg-primary py-4 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-on-primary transition-all active:scale-95"
           >
             Sign In
-          </Link>
+          </SafeLink>
         </div>
       </div>
     </>

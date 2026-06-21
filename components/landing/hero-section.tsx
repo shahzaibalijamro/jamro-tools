@@ -1,4 +1,5 @@
-import Link from "next/link";
+﻿import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import {
   BadgeCheck,
   Calculator,
@@ -14,7 +15,7 @@ import { featuredTools, type FeaturedTool } from "@/lib/landing-data";
 function FeaturedToolCard({ tool }: { tool: FeaturedTool }) {
   return (
     <li>
-      <Link
+      <SafeLink
         href={tool.href}
         className="flex h-[150px] flex-col items-center justify-center rounded-[18px] border border-[#e1e8f5] bg-[rgba(255,255,255,0.82)] text-center shadow-[0_4px_14px_rgba(36,61,107,0.06)] transition hover:-translate-y-0.5 hover:border-[#cbd7ed] hover:bg-white min-[700px]:h-[150px] min-[700px]:rounded-[12px]"
       >
@@ -27,7 +28,7 @@ function FeaturedToolCard({ tool }: { tool: FeaturedTool }) {
         <span className="mt-6 text-[18px] font-extrabold leading-none text-[var(--color-ink)] min-[700px]:mt-7 min-[700px]:text-[16px]">
           {tool.title}
         </span>
-      </Link>
+      </SafeLink>
     </li>
   );
 }

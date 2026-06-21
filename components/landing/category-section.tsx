@@ -1,4 +1,5 @@
-import Link from "next/link";
+﻿import Link from "next/link";
+import { SafeLink } from "@/components/ui/safe-link";
 import { ChevronRight } from "lucide-react";
 
 import { ToolIcon } from "@/components/landing/tool-icon";
@@ -8,7 +9,7 @@ import { categories, type ToolCategory } from "@/lib/landing-data";
 function CategoryCard({ category }: { category: ToolCategory }) {
   return (
     <li>
-      <Link
+      <SafeLink
         href={category.href}
         className="flex min-h-[180px] text-center justify-center min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] min-[700px]:min-h-[210px] min-[700px]:rounded-[12px] min-[700px]:p-7 xl:min-h-[190px]"
       >
@@ -24,7 +25,7 @@ function CategoryCard({ category }: { category: ToolCategory }) {
         <p className="mt-4 text-[14px] font-medium leading-none text-[var(--color-ink)] min-[700px]:text-[13px] xl:mt-4 xl:text-[12px]">
           {category.count}
         </p>
-      </Link>
+      </SafeLink>
     </li>
   );
 }

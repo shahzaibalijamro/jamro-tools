@@ -1,5 +1,5 @@
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+﻿import { ArrowRight } from "lucide-react";
+import { SafeLink } from "@/components/ui/safe-link";
 
 export function AboutCta() {
   return (
@@ -12,13 +12,13 @@ export function AboutCta() {
         <p className="mb-6 text-[16px] leading-[1.6] text-[#c3c6d7]">
           Join millions of users who rely on Jamro Tools daily.
         </p>
-        <Link
+        <SafeLink
           href="/tools"
           className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#004ac6] py-4 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-white transition-transform active:scale-95"
         >
           Explore All Tools
           <ArrowRight className="size-5" strokeWidth={2} aria-hidden="true" />
-        </Link>
+        </SafeLink>
       </section>
 
       {/* DESKTOP CTA */}
@@ -31,18 +31,18 @@ export function AboutCta() {
           utilities today.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link
+          <SafeLink
             href="/tools"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#004ac6] px-12 py-3 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-white transition-all active:scale-95 hover:shadow-[0_10px_24px_rgba(0,74,198,0.18)]"
           >
             Explore All Tools
-          </Link>
-          <Link
+          </SafeLink>
+          <SafeLink
             href="/support"
             className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#004ac6] px-12 py-3 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6] transition-all active:scale-95 hover:bg-[#004ac6]/5"
           >
             Support the Project
-          </Link>
+          </SafeLink>
         </div>
       </section>
     </>
