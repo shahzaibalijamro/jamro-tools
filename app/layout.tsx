@@ -3,6 +3,7 @@ import { ToastProvider } from "@/hooks/use-toast";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
           {children}
         </ToastProvider>
         <Analytics />
+        <SpeedInsights />
         <GoogleAnalytics gaId="G-QD50R2JB1W" />
       </body>
     </html>
