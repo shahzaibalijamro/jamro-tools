@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongoose';
-import ContactQuery from '@/models/ContactQuery';
+import { writeClient } from '@/lib/sanity';
 
 export async function POST(req: Request) {
   try {
-    await dbConnect();
     const body = await req.json();
 
     const { name, email, subject, message } = body;
@@ -13,11 +11,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
-    const newQuery = await ContactQuery.create({
+    const newQuery = await writeClient.create({
+      _type: 'contactQuery',
       name,
       email,
       subject,
       message,
+      createdAt: new Date().toISOString(),
     });
 
     return NextResponse.json({ success: true, data: newQuery }, { status: 201 });

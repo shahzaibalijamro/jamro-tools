@@ -19,15 +19,18 @@ export function BlogCard({ post }: { post: BlogPost }) {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        {/* Category badge */}
-        <div className="absolute top-[16px] left-[16px]">
-          <span
-            className={`px-[16px] py-xs rounded-full text-label-sm ${
-              categoryBadgeClasses[post.category]
-            }`}
-          >
-            {post.category}
-          </span>
+        {/* Category badges */}
+        <div className="absolute top-[16px] left-[16px] flex flex-wrap gap-1.5 max-w-[calc(100%-32px)]">
+          {post.categories?.map((cat) => (
+            <span
+              key={cat}
+              className={`px-[12px] py-xs rounded-full text-label-sm ${
+                categoryBadgeClasses[cat] || "bg-primary text-on-primary"
+              }`}
+            >
+              {cat}
+            </span>
+          ))}
         </div>
       </div>
 

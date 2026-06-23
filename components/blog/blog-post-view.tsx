@@ -30,13 +30,26 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
            ══════════════════════════════════════════════════════════ */}
         <header className="max-w-[1280px] mx-auto px-[24px] mb-[48px]">
           <div className="flex flex-col items-center text-center mb-[24px]">
-            {/* Category badge */}
-            <span className="inline-flex items-center gap-[4px] px-[12px] py-[4px] rounded-full bg-primary-fixed text-on-primary-fixed text-label-md mb-[16px]">
-              <span className="material-symbols-outlined text-[18px]">
-                auto_awesome
-              </span>
-              {post.category ? post.category.toUpperCase() : "GUIDE"}
-            </span>
+            {/* Category badges */}
+            <div className="flex flex-wrap gap-2 justify-center mb-[16px]">
+              {post.categories && post.categories.length > 0 ? (
+                post.categories.map((cat) => (
+                  <span key={cat} className="inline-flex items-center gap-[4px] px-[12px] py-[4px] rounded-full bg-primary-fixed text-on-primary-fixed text-label-md">
+                    <span className="material-symbols-outlined text-[18px]">
+                      auto_awesome
+                    </span>
+                    {cat.toUpperCase()}
+                  </span>
+                ))
+              ) : (
+                <span className="inline-flex items-center gap-[4px] px-[12px] py-[4px] rounded-full bg-primary-fixed text-on-primary-fixed text-label-md">
+                  <span className="material-symbols-outlined text-[18px]">
+                    auto_awesome
+                  </span>
+                  GUIDE
+                </span>
+              )}
+            </div>
 
             {/* Title */}
             <h1 className="text-display-lg-mobile md:text-display-lg text-on-surface max-w-4xl mb-[16px]">

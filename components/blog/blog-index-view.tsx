@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
+import { client } from "@/lib/sanity";
 
 const POSTS_PER_PAGE = 9;
 
@@ -15,15 +16,40 @@ export function BlogIndexView() {
   const sortRef = useRef<HTMLDivElement>(null);
 
   const [blogs, setBlogs] = useState<any[]>([]);
+  const [categories, setCategories] = useState<string[]>(["All"]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchBlogs() {
+    async function fetchBlogsAndCategories() {
       try {
-        const res = await fetch('/api/blogs');
-        const json = await res.json();
-        if (json.success) {
-          setBlogs(json.data);
+        const query = `*[_type == "blogPost" && publishedAt <= now()] | order(publishedAt desc, _createdAt desc) {
+          _id,
+          title,
+          "slug": slug.current,
+          excerpt,
+          seoTitle,
+          description,
+          "categories": categories[]->title,
+          "imageUrl": mainImage.asset->url,
+          "imageAlt": mainImage.alt,
+          author,
+          date,
+          readTime,
+          content,
+          publishedAt,
+          "createdAt": _createdAt,
+          updatedAt
+        }`;
+        const categoriesQuery = `*[_type == "category"] | order(title asc) { title }`;
+
+        const [postsData, categoriesData] = await Promise.all([
+          client.fetch(query),
+          client.fetch<Array<{ title: string }>>(categoriesQuery),
+        ]);
+
+        setBlogs(postsData || []);
+        if (categoriesData) {
+          setCategories(["All", ...categoriesData.map(c => c.title)]);
         }
       } catch (err) {
         console.error(err);
@@ -31,7 +57,7 @@ export function BlogIndexView() {
         setIsLoading(false);
       }
     }
-    fetchBlogs();
+    fetchBlogsAndCategories();
   }, []);
 
   useEffect(() => {
@@ -44,7 +70,6 @@ export function BlogIndexView() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const categories = ["All", "Tutorials", "Product Updates", "Privacy", "Efficiency"];
   const sortOptions = [
     { value: "newest", label: "Newest First" },
     { value: "oldest", label: "Oldest First" },
@@ -66,7 +91,7 @@ export function BlogIndexView() {
   // Filter logic
   let filteredPosts = blogs;
   if (selectedCategory !== "All") {
-    filteredPosts = filteredPosts.filter((p) => p.category === selectedCategory);
+    filteredPosts = filteredPosts.filter((p) => p.categories?.includes(selectedCategory));
   }
 
   // Sort logic

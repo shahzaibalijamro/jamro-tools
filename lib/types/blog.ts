@@ -11,16 +11,18 @@ export type BlogPost = {
   excerpt: string;
   seoTitle?: string;
   description: string;
-  category: BlogCategory;
+  category?: string;      // Backwards compatibility fallback
+  categories: string[];   // Multiple categories
   imageUrl: string;
   imageAlt: string;
   author?: string;
   date?: string;
   readTime?: string;
   content?: string;
+  publishedAt?: string;
 };
 
-export const categoryBadgeClasses: Record<BlogCategory, string> = {
+export const categoryBadgeClasses: Record<string, string> = {
   Finance: "bg-primary text-on-primary",
   "Product Updates": "bg-primary text-on-primary",
   Privacy: "bg-secondary text-on-secondary",
