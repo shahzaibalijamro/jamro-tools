@@ -129,7 +129,7 @@ export default function ScientificCalculator() {
       {/* Calculator Interface */}
       <section className="mx-auto mb-12 max-w-container-max grid grid-cols-1 xl:grid-cols-12 gap-[24px] items-start">
         {/* Main Calculator Card */}
-        <div className="xl:col-span-8 glass-card rounded-4xl p-6 shadow-xl relative overflow-hidden bg-white/70 backdrop-blur-md border border-glass-border">
+        <div className="xl:col-span-8 glass-card rounded-4xl p-6 shadow-xl relative overflow-hidden bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-glass-border">
           {/* Settings / Mode Toggle */}
           <div className="absolute top-[24px] left-[24px] flex gap-2 z-10">
             <button
@@ -257,7 +257,7 @@ export default function ScientificCalculator() {
 
       {/* History Section Full Width */}
       <section className="mx-auto max-w-container-max pb-[48px]">
-        <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 backdrop-blur-md">
+        <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-slate-800/70 backdrop-blur-md">
           <div className="flex items-center justify-between mb-[16px]">
             <h4 className="font-label-md text-primary uppercase tracking-widest">History</h4>
             {history.length > 0 && (

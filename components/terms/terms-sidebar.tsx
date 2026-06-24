@@ -20,13 +20,16 @@ export function TermsSidebar() {
               link?.classList.remove(
                 "border-l-[4px]",
                 "border-[#004ac6]",
+                "dark:border-blue-400",
                 "font-bold",
-                "text-[#004ac6]"
+                "text-[#004ac6]",
+                "dark:text-blue-400"
               );
               link?.classList.add(
                 "border-l-[4px]",
                 "border-transparent",
-                "text-[#434655]"
+                "text-[#434655]",
+                "dark:text-slate-300"
               );
             });
             // Add to current
@@ -35,13 +38,16 @@ export function TermsSidebar() {
             if (link) {
               link.classList.remove(
                 "border-transparent",
-                "text-[#434655]"
+                "text-[#434655]",
+                "dark:text-slate-300"
               );
               link.classList.add(
                 "border-l-[4px]",
                 "border-[#004ac6]",
+                "dark:border-blue-400",
                 "font-bold",
-                "text-[#004ac6]"
+                "text-[#004ac6]",
+                "dark:text-blue-400"
               );
             }
           }
@@ -66,8 +72,8 @@ export function TermsSidebar() {
   return (
     <aside className="hidden w-64 shrink-0 lg:block">
       <div className="sticky top-24">
-        <div className="rounded-xl border border-[#c3c6d7] bg-white p-4 shadow-sm">
-          <h2 className="mb-4 px-2 text-[12px] font-normal uppercase leading-[1.4] tracking-wider text-[#737686]">
+        <div className="rounded-xl border border-[#c3c6d7] dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
+          <h2 className="mb-4 px-2 text-[12px] font-normal uppercase leading-[1.4] tracking-wider text-[#737686] dark:text-slate-400">
             Contents
           </h2>
           <ul className="space-y-1">
@@ -80,7 +86,7 @@ export function TermsSidebar() {
                   href={link.href}
                   id={link.id}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="block border-l-[4px] border-transparent px-2 py-1 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] transition-colors hover:bg-[#e7eeff]"
+                  className="block border-l-[4px] border-transparent px-2 py-1 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-slate-300 transition-colors hover:bg-[#e7eeff] dark:hover:bg-slate-700"
                 >
                   {link.label}
                 </a>

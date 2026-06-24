@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { SafeLink } from "@/components/ui/safe-link";
 import { ChevronRight } from "lucide-react";
 
@@ -11,7 +11,7 @@ function CategoryCard({ category }: { category: ToolCategory }) {
     <li>
       <SafeLink
         href={category.href}
-        className="flex min-h-[180px] text-center justify-center min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] min-[700px]:min-h-[210px] min-[700px]:rounded-[12px] min-[700px]:p-7 xl:min-h-[190px]"
+        className="flex min-h-[180px] text-center justify-center min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] dark:border-[var(--color-border)] bg-white dark:bg-[var(--color-surface)] p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] dark:hover:border-[var(--color-brand-light)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.4)] min-[700px]:min-h-[210px] min-[700px]:rounded-[12px] min-[700px]:p-7 xl:min-h-[190px]"
       >
         <ToolIcon
           icon={category.icon}
@@ -40,8 +40,9 @@ export function CategorySection() {
           </h2>
           <Link
             href="/tools"
-            className="inline-flex items-center gap-2 text-[14px] font-extrabold leading-none text-[var(--color-brand)] transition hover:text-[#0649c5] min-[700px]:text-[14px]"
+            className="inline-flex items-center gap-2 text-[14px] font-extrabold leading-none text-[var(--color-brand)] dark:text-[var(--color-brand-light)] transition hover:text-[#0649c5] dark:hover:text-[#60a5fa] min-[700px]:text-[14px]"
           >
+
             <span>View All</span>
             <ChevronRight className="size-5 min-[700px]:size-4" strokeWidth={2.5} aria-hidden="true" />
           </Link>

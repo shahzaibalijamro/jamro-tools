@@ -16,10 +16,10 @@ export function TermsHero() {
           <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-xl bg-[#2563eb] text-[#eeefff] shadow-sm">
             <Icon name="gavel" className="text-4xl" />
           </div>
-          <h1 className="mb-1 text-[24px] font-semibold leading-[1.2] text-[#111c2d]">
+          <h1 className="mb-1 text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100">
             Jamro Tools Legal
           </h1>
-          <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]">
+          <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-slate-300">
             Last updated: May 26, 2026
           </p>
         </div>
@@ -27,13 +27,13 @@ export function TermsHero() {
 
       {/* Desktop Hero — inside the main content card */}
       <header className="hidden md:mb-12 md:block">
-        <span className="mb-3 inline-block rounded-full bg-[#dbe1ff] px-4 py-1 text-[12px] font-normal uppercase leading-[1.4] tracking-widest text-[#00174b]">
+        <span className="mb-3 inline-block rounded-full bg-[#dbe1ff] dark:bg-slate-800 px-4 py-1 text-[12px] font-normal uppercase leading-[1.4] tracking-widest text-[#00174b] dark:text-slate-200">
           Legal Document
         </span>
-        <h1 className="mb-2 text-[32px] font-semibold leading-[1.2] text-[#111c2d]">
+        <h1 className="mb-2 text-[32px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100">
           Terms of Service
         </h1>
-        <p className="mb-2 text-[16px] leading-[1.6] text-[#434655]">
+        <p className="mb-2 text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
           Last Updated: May 26, 2026. Please read these terms carefully before using Jamro Tools.
         </p>
       </header>

@@ -2,12 +2,12 @@ import Image from "next/image";
 
 export function ToolsCtaSection() {
   return (
-    <section className="mt-[48px] p-[48px] rounded-2xl bg-inverse-surface text-on-primary-fixed-variant flex flex-col md:flex-row items-center justify-between gap-[24px] overflow-hidden relative">
+    <section className="mt-[48px] p-[48px] rounded-2xl bg-inverse-surface dark:bg-slate-800 text-on-primary-fixed-variant flex flex-col md:flex-row items-center justify-between gap-[24px] overflow-hidden relative">
       <div className="relative z-10">
-        <h2 className="text-headline-md text-surface-bright mb-[8px]">
+        <h2 className="text-headline-md text-surface-bright dark:text-white mb-[8px]">
           Can't find a specific tool?
         </h2>
-        <p className="text-body-md text-surface-variant opacity-80 max-w-lg">
+        <p className="text-body-md text-surface-variant dark:text-slate-300 opacity-80 max-w-lg">
           We're constantly adding new utilities to our ecosystem. Let
           us know what you're looking for and we'll build it for
           the community.

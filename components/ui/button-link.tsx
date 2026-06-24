@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { SafeLink } from "@/components/ui/safe-link";
 import { ArrowRight, Shuffle } from "lucide-react";
@@ -10,7 +10,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-[var(--color-brand)] text-white shadow-[0_12px_24px_rgba(4,84,207,0.12)] hover:bg-[#0649c5]",
   secondary:
-    "border border-[var(--color-border-strong)] bg-white text-[var(--color-ink)] shadow-[0_12px_24px_rgba(15,23,42,0.03)] hover:border-[var(--color-brand)]",
+    "border border-[var(--color-border-strong)] bg-white dark:bg-[#111b2e] text-[var(--color-ink)] shadow-[0_12px_24px_rgba(15,23,42,0.03)] hover:border-[var(--color-brand)]",
 };
 
 const iconMap = {

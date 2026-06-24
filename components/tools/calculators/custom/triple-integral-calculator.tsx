@@ -348,7 +348,7 @@ export default function TripleIntegralCalculator() {
             }}
           >
             <h3 className="text-[20px] leading-[1.4] font-semibold mb-[24px]">Formula Used</h3>
-            <div className="bg-white p-[48px] rounded-lg text-center overflow-x-auto">
+            <div className="bg-white dark:bg-slate-800 p-[48px] rounded-lg text-center overflow-x-auto">
               <div
                 className="inline-block text-on-surface"
                 style={{

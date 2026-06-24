@@ -45,11 +45,11 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={`text-center ${className}`}>
-      <h2 className="text-[24px] font-semibold leading-[1.2] text-[#111c2d] md:text-[32px]">
+      <h2 className="text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100 md:text-[32px]">
         {title}
       </h2>
       {description ? (
-        <p className="mx-auto mt-2 max-w-2xl text-[16px] leading-[1.6] text-[#434655]">
+        <p className="mx-auto mt-2 max-w-2xl text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
           {description}
         </p>
       ) : null}
@@ -65,7 +65,7 @@ type PanelProps = {
 export function Panel({ children, className = "" }: PanelProps) {
   return (
     <div
-      className={`rounded-[12px] border border-[#c3c6d7] bg-[#e7eeff] shadow-sm ${className}`}
+      className={`rounded-[12px] border border-[#c3c6d7] dark:border-slate-700 bg-[#e7eeff] dark:bg-slate-800 shadow-sm ${className}`}
     >
       {children}
     </div>

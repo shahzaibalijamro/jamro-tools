@@ -148,7 +148,7 @@ export default function MiddleSchoolGpaCalculator() {
               {courses.map((course) => (
                 <div
                   key={course.id}
-                  className="p-[16px] rounded-lg bg-white border border-[#c3c6d6]/30 transition-all hover:border-primary/30"
+                  className="p-[16px] rounded-lg bg-white dark:bg-slate-800 border border-[#c3c6d6]/30 dark:border-slate-700 transition-all hover:border-primary/30"
                 >
                   <div className="grid grid-cols-2 gap-[8px] mb-[8px]">
                     <input

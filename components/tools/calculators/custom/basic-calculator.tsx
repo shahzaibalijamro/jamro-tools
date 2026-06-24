@@ -86,7 +86,7 @@ export default function BasicCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[24px]">
           {/* Calculator Interface */}
           <div className="lg:col-span-8">
-            <div className="glass-card rounded-[2rem] p-[24px] shadow-xl relative overflow-hidden bg-white/70 backdrop-blur-md border border-glass-border">
+            <div className="glass-card rounded-[2rem] p-[24px] shadow-xl relative overflow-hidden bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-glass-border">
               {/* Interior Decorative Blur */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary-container/10 blur-3xl rounded-full"></div>
               {/* Display */}
@@ -212,7 +212,7 @@ export default function BasicCalculator() {
             </div>
             
             {/* History Section */}
-            <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 backdrop-blur-md mt-[24px]">
+            <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-slate-800/70 backdrop-blur-md mt-[24px]">
               <div className="flex items-center justify-between mb-[16px]">
                 <h4 className="font-label-md text-primary uppercase tracking-widest">History</h4>
                 {history.length > 0 && (
@@ -268,7 +268,7 @@ export default function BasicCalculator() {
                 </span>
               </div>
             </div>
-            <div className="glass-card rounded-[2rem] p-[24px] border-dashed border-2 border-outline-variant bg-white/50 backdrop-blur-sm">
+            <div className="glass-card rounded-[2rem] p-[24px] border-dashed border-2 border-outline-variant bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
               <h4 className="font-label-md text-primary uppercase tracking-widest mb-[16px]">
                 Quick Tips
               </h4>

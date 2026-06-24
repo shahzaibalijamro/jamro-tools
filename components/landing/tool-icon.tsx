@@ -37,11 +37,12 @@ const iconComponents = {
 
 const toneStyles: Record<IconTone, string> = {
   blue: "bg-[var(--color-brand-light)] text-white",
-  blueSoft: "bg-[#e2efff] text-[#0666d3]",
-  orange: "bg-[#bd4a00] text-white",
-  peach: "bg-[#f6e8e1] text-[#a74600]",
-  redSoft: "bg-[#fae5e9] text-[#dd3638]",
+  blueSoft: "bg-[#e2efff] text-[#0666d3] dark:bg-blue-950/40 dark:text-blue-400",
+  orange: "bg-[#bd4a00] text-white dark:bg-orange-600",
+  peach: "bg-[#f6e8e1] text-[#a74600] dark:bg-orange-950/40 dark:text-orange-400",
+  redSoft: "bg-[#fae5e9] text-[#dd3638] dark:bg-red-950/40 dark:text-red-400",
 };
+
 
 type ToolIconProps = {
   icon: LandingIcon;

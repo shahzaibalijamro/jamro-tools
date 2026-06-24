@@ -23,7 +23,7 @@ export default function TermsPage() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       />
 
-      <div className="min-h-screen bg-[#f9f9ff] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d]">
+      <div className="min-h-screen bg-[#f9f9ff] dark:bg-[#0b1120] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d] dark:text-slate-200">
         <SiteHeader />
 
         <main className="relative pt-4 pb-8">

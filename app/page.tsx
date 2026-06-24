@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main className="home-page">
         <HeroSection />
         <CategorySection />
         <TrustSection />

@@ -24,10 +24,10 @@ export function StoryValuesSection() {
             <div className="h-px flex-1 bg-[#c3c6d7]" />
           </div>
 
-          <h3 className="text-[24px] font-semibold leading-[1.2] text-[#111c2d]">
+          <h3 className="text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100">
             From a single script to a global suite.
           </h3>
-          <p className="text-[16px] leading-[1.6] text-[#434655]">
+          <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
             Jamro Tools started as a personal collection of utility scripts meant to solve
             recurring tasks in development and design. We realized that thousands of
             creators were facing the same friction points—switching between twenty tabs
@@ -45,7 +45,7 @@ export function StoryValuesSection() {
             />
           </div>
 
-          <p className="text-[16px] leading-[1.6] text-[#434655]">
+          <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
             Today, we serve a global community, offering hundreds of optimized tools while
             maintaining the same lightweight, no-nonsense approach that defined our very
             first tool.
@@ -53,14 +53,14 @@ export function StoryValuesSection() {
         </div>
 
         {/* Built on Values heading */}
-        <h2 className="mb-6 mt-12 text-center text-[24px] font-semibold leading-[1.2] text-[#111c2d]">
+        <h2 className="mb-6 mt-12 text-center text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100">
           Built on Values
         </h2>
 
         {/* Value cards — vertical stack */}
         <div className="space-y-4">
           {/* Card 1 */}
-          <div className="rounded-xl border border-[#c3c6d7] bg-[#d8e3fb] p-6 transition-transform active:scale-[0.98]">
+          <div className="rounded-xl border border-[#c3c6d7] dark:border-slate-700 bg-[#d8e3fb] dark:bg-slate-800 p-6 transition-transform active:scale-[0.98]">
             <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-[#004ac6]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,17 +77,17 @@ export function StoryValuesSection() {
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d]">
+            <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-slate-100">
               Privacy First
             </h4>
-            <p className="text-[16px] leading-[1.6] text-[#434655]">
+            <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
               Your data never leaves your browser. We prioritize client-side processing
               for ultimate security.
             </p>
           </div>
 
           {/* Card 2 — primary highlight */}
-          <div className="rounded-xl bg-[#004ac6] p-6 shadow-lg transition-transform active:scale-[0.98]">
+          <div className="rounded-xl bg-[#004ac6] dark:bg-blue-900 p-6 shadow-lg transition-transform active:scale-[0.98]">
             <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-white/20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ export function StoryValuesSection() {
           </div>
 
           {/* Card 3 */}
-          <div className="rounded-xl border border-[#c3c6d7] bg-[#dee8ff] p-6 transition-transform active:scale-[0.98]">
+          <div className="rounded-xl border border-[#c3c6d7] dark:border-slate-700 bg-[#dee8ff] dark:bg-slate-800 p-6 transition-transform active:scale-[0.98]">
             <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-[#0058be]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,10 +137,10 @@ export function StoryValuesSection() {
                 <path d="M17.7 5.6c1.7 3 .8 5.4-1.2 7.4" />
               </svg>
             </div>
-            <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d]">
+            <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-slate-100">
               Lightweight Footprint
             </h4>
-            <p className="text-[16px] leading-[1.6] text-[#434655]">
+            <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
               We strip away the bloat. Jamro Tools loads instantly, saving you time and
               battery life.
             </p>
@@ -154,16 +154,16 @@ export function StoryValuesSection() {
       <section className="mb-12 hidden gap-4 md:grid md:grid-cols-12">
         <Panel className="flex flex-col justify-between p-6 md:col-span-7">
           <div>
-            <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#111c2d] md:text-[32px]">
+            <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100 md:text-[32px]">
               Our Story
             </h2>
-            <p className="mb-4 text-[16px] leading-[1.6] text-[#434655]">
+            <p className="mb-4 text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
               Jamro Tools started as a small internal collection of scripts used by a
               group of developers to automate repetitive daily tasks. We realized that
               many of the tools available online were either behind paywalls, cluttered
               with intrusive ads, or lacked proper privacy standards.
             </p>
-            <p className="text-[16px] leading-[1.6] text-[#434655]">
+            <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
               In 2026, we decided to polish these tools and open them to the world. What
               began as 50 simple scripts has grown into a comprehensive ecosystem of over
               1,000 utilities, maintained by a community of contributors who believe in
@@ -171,22 +171,22 @@ export function StoryValuesSection() {
             </p>
           </div>
 
-          <div className="mt-6 flex items-center gap-4 rounded-[12px] bg-[#f0f3ff] p-4">
+          <div className="mt-6 flex items-center gap-4 rounded-[12px] bg-[#f0f3ff] dark:bg-slate-800 p-4">
             <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#004ac6] text-white">
               <HighlightIcon className="size-6" strokeWidth={2} aria-hidden="true" />
             </div>
             <div>
-              <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6]">
+              <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6] dark:text-blue-400">
                 {storyHighlight.title}
               </p>
-              <p className="text-[12px] leading-[1.4] text-[#111c2d]">
+              <p className="text-[12px] leading-[1.4] text-[#111c2d] dark:text-slate-300">
                 {storyHighlight.description}
               </p>
             </div>
           </div>
         </Panel>
 
-        <div className="flex flex-col items-center justify-center rounded-[12px] bg-[#2563eb] p-6 text-center text-[#eeefff] shadow-lg md:col-span-5">
+        <div className="flex flex-col items-center justify-center rounded-[12px] bg-[#2563eb] dark:bg-blue-900 p-6 text-center text-[#eeefff] shadow-lg md:col-span-5">
           <MetricIcon className="mb-4 size-16" strokeWidth={1.6} aria-hidden="true" />
           <h3 className="text-[48px] font-bold leading-none">{precisionMetric.value}</h3>
           <p className="mt-2 text-[20px] font-semibold leading-[1.4]">
@@ -203,17 +203,17 @@ export function StoryValuesSection() {
           return (
             <div
               key={card.title}
-              className="group cursor-default rounded-[12px] border border-[#c3c6d7] bg-[#dee8ff] p-6 transition-colors hover:border-[#004ac6] md:col-span-4"
+              className="group cursor-default rounded-[12px] border border-[#c3c6d7] dark:border-slate-700 bg-[#dee8ff] dark:bg-slate-800 p-6 transition-colors hover:border-[#004ac6] md:col-span-4"
             >
               <Icon
                 className="mb-4 size-6 text-[#004ac6]"
                 strokeWidth={2}
                 aria-hidden="true"
               />
-              <h3 className="mb-2 text-[20px] font-semibold leading-[1.4] text-[#111c2d]">
+              <h3 className="mb-2 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-slate-100">
                 {card.title}
               </h3>
-              <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655]">
+              <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-slate-300">
                 {card.description}
               </p>
             </div>

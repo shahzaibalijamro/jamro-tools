@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
 
@@ -44,7 +44,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={toast.id}
             role="status"
-            className={`pointer-events-auto rounded-xl border border-[var(--color-border)] bg-white px-5 py-3.5 text-[15px] font-semibold text-[var(--color-ink)] shadow-[0_8px_32px_rgba(15,23,42,0.12)] ${toast.exiting ? "toast-exit" : "toast-enter"
+            className={`pointer-events-auto rounded-xl border border-[var(--color-border)] bg-white dark:bg-slate-800 px-5 py-3.5 text-[15px] font-semibold text-[var(--color-ink)] shadow-[0_8px_32px_rgba(15,23,42,0.12)] ${toast.exiting ? "toast-exit" : "toast-enter"
               }`}
           >
             {toast.message}

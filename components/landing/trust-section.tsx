@@ -16,8 +16,8 @@ const highlightIcons = {
 };
 
 const highlightTone = {
-  blue: "text-[var(--color-brand)]",
-  orange: "text-[#a74600]",
+  blue: "text-[var(--color-brand)] dark:text-[var(--color-brand-light)]",
+  orange: "text-[#a74600] dark:text-orange-400",
 };
 
 function HighlightCard({
@@ -31,7 +31,7 @@ function HighlightCard({
 
   return (
     <li
-      className={`rounded-[10px] bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.02)] min-[700px]:p-4 xl:p-[17px] ${
+      className={`rounded-[10px] bg-white dark:bg-[var(--color-surface)] p-6 shadow-[0_1px_0_rgba(15,23,42,0.02)] dark:shadow-none min-[700px]:p-4 xl:p-[17px] ${
         isTall ? "xl:min-h-[170px]" : "xl:min-h-[97px]"
       }`}
     >
@@ -43,7 +43,7 @@ function HighlightCard({
       <h3 className="mt-4 text-[20px] font-extrabold leading-tight text-[var(--color-ink)] min-[700px]:text-[18px]">
         {highlight.title}
       </h3>
-      <p className="mt-3 text-[15px] font-medium leading-relaxed text-[#273247] min-[700px]:text-[13px]">
+      <p className="mt-3 text-[15px] font-medium leading-relaxed text-[#273247] dark:text-[var(--color-muted)] min-[700px]:text-[13px]">
         {highlight.description}
       </p>
     </li>
@@ -55,12 +55,12 @@ export function TrustSection() {
     <section className="bg-[var(--color-page)] py-20 min-[700px]:py-[120px]">
       <Container>
         <div className="mx-auto grid max-w-[988px] gap-6 min-[700px]:grid-cols-[minmax(0,647px)_317px]">
-          <div className="flex min-h-[420px] flex-col rounded-[14px] bg-[linear-gradient(135deg,#273247_0%,#223b68_100%)] p-8 text-white shadow-[0_18px_48px_rgba(15,23,42,0.12)] min-[700px]:min-h-[480px] min-[700px]:p-[38px]">
+          <div className="flex min-h-[420px] flex-col rounded-[14px] bg-[linear-gradient(135deg,#273247_0%,#223b68_100%)] dark:bg-[linear-gradient(135deg,#1e293b_0%,#0f172a_100%)] dark:border dark:border-[#1e293b] p-8 text-white shadow-[0_18px_48px_rgba(15,23,42,0.12)] min-[700px]:min-h-[480px] min-[700px]:p-[38px]">
             <div>
               <h2 className="text-[30px] font-extrabold leading-tight tracking-[-0.01em] min-[700px]:text-[28px]">
                 No Sign-up. Ever.
               </h2>
-              <p className="mt-5 max-w-[430px] text-[17px] font-medium leading-[1.55] text-[#d8e0ee] min-[700px]:text-[16px]">
+              <p className="mt-5 max-w-[430px] text-[17px] font-medium leading-[1.55] text-[#d8e0ee] dark:text-[#94a3b8] min-[700px]:text-[16px]">
                 We value your privacy. All Jamro tools process your data locally in your browser.
                 We don't see, store, or sell your data.
               </p>
@@ -78,7 +78,7 @@ export function TrustSection() {
             </div>
           </div>
 
-          <aside className="rounded-[14px] bg-[#dce8ff] p-6 min-[700px]:p-[38px]">
+          <aside className="rounded-[14px] bg-[#dce8ff] dark:bg-[#111e35] p-6 min-[700px]:p-[38px]">
             <ul className="grid gap-6 min-[700px]:grid-cols-1 min-[700px]:gap-5">
               {trustHighlights.map((highlight, index) => (
                 <HighlightCard
@@ -94,3 +94,4 @@ export function TrustSection() {
     </section>
   );
 }
+

@@ -1,4 +1,6 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #fafbff;
@@ -13,6 +15,68 @@
   --color-page: #fbfbff;
   --color-surface: #fbfbff;
 }
+
+.dark {
+  --background: #0b1120;
+  --foreground: #f1f5f9;
+  --color-brand: #3b82f6;
+  --color-brand-light: #60a5fa;
+  --color-border: #1e293b;
+  --color-border-strong: #334155;
+  --color-hero: #0f172a;
+  --color-ink: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-page: #0b1120;
+  --color-surface: #111b2e;
+
+  /* Dark mode variants for MD3 utility tokens */
+  --color-primary: #3b82f6;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #1d4ed8;
+  --color-on-primary-container: #eff6ff;
+  --color-surface-dim: #0b1120;
+  --color-surface-bright: #1e293b;
+  --color-surface-container-lowest: #070c17;
+  --color-surface-container-low: #0b1120;
+  --color-surface-container: #111b2e;
+  --color-surface-container-high: #1e293b;
+  --color-surface-container-highest: #334155;
+  --color-on-surface: #f1f5f9;
+  --color-on-surface-variant: #94a3b8;
+  --color-outline: #475569;
+  --color-outline-variant: #334155;
+  --color-inverse-surface: #1e293b; /* Changed to dark blue instead of white for CTA */
+  --color-inverse-on-surface: #f1f5f9;
+  --color-on-background: #f1f5f9;
+  --color-glass-bg: rgba(11, 17, 32, 0.8);
+  --color-glass-border: rgba(30, 41, 59, 0.6);
+
+  /* Glass panel & card overrides */
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.7);
+    border-color: rgba(30, 41, 59, 0.8);
+  }
+  .glass-card {
+    background-color: rgba(15, 23, 42, 0.7);
+    border-color: rgba(30, 41, 59, 0.8);
+  }
+
+  /* Hero mesh overrides */
+  .hero-mesh {
+    background-color: #0b1120;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(17, 27, 46, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(30, 41, 59, 0.5) 0px, transparent 50%);
+  }
+}
+
+.dark body {
+  background: #0b1120;
+  color: #f1f5f9;
+}
+
 
 @theme {
   --color-background: var(--background);

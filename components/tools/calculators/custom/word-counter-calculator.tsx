@@ -48,12 +48,7 @@ export default function WordCounterCalculator() {
                 {/* Inputs Panel */}
                 <div className="lg:col-span-5 space-y-[16px]">
                     <div
-                        className="p-[24px] rounded-xl shadow-sm"
-                        style={{
-                            backdropFilter: "blur(12px)",
-                            background: "rgba(255, 255, 255, 0.7)",
-                            border: "1px solid rgba(226, 232, 240, 0.8)",
-                        }}
+                        className="p-[24px] rounded-xl shadow-sm backdrop-blur-[12px] bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80"
                     >
                         <h3 className="text-[22px] leading-[28px] font-semibold mb-[16px] flex items-center gap-[8px]">
                             <span className="material-symbols-outlined text-primary">text_fields</span>
@@ -92,12 +87,7 @@ export default function WordCounterCalculator() {
                 {/* Results Panel */}
                 <div className="lg:col-span-7">
                     <div
-                        className="rounded-xl overflow-hidden h-full flex flex-col shadow-sm"
-                        style={{
-                            backdropFilter: "blur(12px)",
-                            background: "rgba(255, 255, 255, 0.7)",
-                            border: "1px solid rgba(226, 232, 240, 0.8)",
-                        }}
+                        className="rounded-xl overflow-hidden h-full flex flex-col shadow-sm backdrop-blur-[12px] bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80"
                     >
                         <div className="p-[24px] flex-grow">
                             <h3 className="text-[18px] leading-[26px] font-semibold mb-[16px] text-on-surface">
@@ -105,7 +95,7 @@ export default function WordCounterCalculator() {
                             </h3>
 
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-[16px]">
-                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40">
+                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40 dark:bg-slate-800/40">
                                     <div className="text-[12px] font-semibold text-outline uppercase tracking-tight">
                                         Words
                                     </div>
@@ -114,7 +104,7 @@ export default function WordCounterCalculator() {
                                     </div>
                                 </div>
 
-                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40">
+                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40 dark:bg-slate-800/40">
                                     <div className="text-[12px] font-semibold text-outline uppercase tracking-tight">
                                         Characters
                                     </div>
@@ -123,7 +113,7 @@ export default function WordCounterCalculator() {
                                     </div>
                                 </div>
 
-                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40">
+                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40 dark:bg-slate-800/40">
                                     <div className="text-[12px] font-semibold text-outline uppercase tracking-tight">
                                         No Spaces
                                     </div>
@@ -132,7 +122,7 @@ export default function WordCounterCalculator() {
                                     </div>
                                 </div>
 
-                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40">
+                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40 dark:bg-slate-800/40">
                                     <div className="text-[12px] font-semibold text-outline uppercase tracking-tight">
                                         Sentences
                                     </div>
@@ -141,7 +131,7 @@ export default function WordCounterCalculator() {
                                     </div>
                                 </div>
 
-                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40">
+                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40 dark:bg-slate-800/40">
                                     <div className="text-[12px] font-semibold text-outline uppercase tracking-tight">
                                         Lines
                                     </div>
@@ -150,7 +140,7 @@ export default function WordCounterCalculator() {
                                     </div>
                                 </div>
 
-                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40">
+                                <div className="p-[16px] rounded-xl border border-outline-variant/60 bg-white/40 dark:bg-slate-800/40">
                                     <div className="text-[12px] font-semibold text-outline uppercase tracking-tight">
                                         Reading Time
                                     </div>
@@ -199,12 +189,7 @@ export default function WordCounterCalculator() {
                     ].map((item, i) => (
                         <details
                             key={i}
-                            className="group rounded-xl"
-                            style={{
-                                backdropFilter: "blur(12px)",
-                                background: "rgba(255, 255, 255, 0.7)",
-                                border: "1px solid rgba(226, 232, 240, 0.8)",
-                            }}
+                            className="group rounded-xl backdrop-blur-[12px] bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80"
                         >
                             <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
                                 <span className="text-[14px] font-semibold text-on-surface">

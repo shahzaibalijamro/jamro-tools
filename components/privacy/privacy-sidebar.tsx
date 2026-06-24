@@ -20,8 +20,11 @@ export function PrivacySidebar() {
               link?.classList.remove(
                 "border-l-[3px]",
                 "border-[#004ac6]",
+                "dark:border-blue-400",
                 "bg-[#e7eeff]",
-                "text-[#004ac6]"
+                "dark:bg-slate-700",
+                "text-[#004ac6]",
+                "dark:text-blue-400"
               );
             });
             // Add to current
@@ -31,8 +34,11 @@ export function PrivacySidebar() {
               link.classList.add(
                 "border-l-[3px]",
                 "border-[#004ac6]",
+                "dark:border-blue-400",
                 "bg-[#e7eeff]",
-                "text-[#004ac6]"
+                "dark:bg-slate-700",
+                "text-[#004ac6]",
+                "dark:text-blue-400"
               );
             }
           }
@@ -57,8 +63,8 @@ export function PrivacySidebar() {
   return (
     <aside className="hidden w-64 lg:block shrink-0">
       <div className="sticky top-20">
-        <div className="rounded-xl border border-[#c3c6d7] bg-white p-4 shadow-sm">
-          <h2 className="mb-4 px-2 text-[12px] font-normal uppercase leading-[1.4] tracking-wider text-[#737686]">
+        <div className="rounded-xl border border-[#c3c6d7] dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
+          <h2 className="mb-4 px-2 text-[12px] font-normal uppercase leading-[1.4] tracking-wider text-[#737686] dark:text-slate-400">
             Table of Contents
           </h2>
           <ul className="space-y-1">
@@ -71,7 +77,7 @@ export function PrivacySidebar() {
                   href={link.href}
                   id={link.id}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="block rounded-lg border-l-[3px] border-transparent px-2 py-1 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] transition-colors hover:bg-[#e7eeff]"
+                  className="block rounded-lg border-l-[3px] border-transparent px-2 py-1 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-slate-300 transition-colors hover:bg-[#e7eeff] dark:hover:bg-slate-700"
                 >
                   {link.label}
                 </a>

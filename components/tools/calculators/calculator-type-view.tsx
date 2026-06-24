@@ -81,7 +81,7 @@ export function CalculatorTypeView({ category }: CalculatorTypeViewProps) {
                 </span>
               </div>
               <input
-                className="block w-full pl-[48px] pr-[16px] py-[16px] bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm outline-none"
+                className="block w-full pl-[48px] pr-[16px] py-[16px] bg-white dark:bg-slate-800 border border-outline-variant dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm outline-none"
                 placeholder={`Search ${category.title.toLowerCase()} tools...`}
                 type="text"
                 value={search}
