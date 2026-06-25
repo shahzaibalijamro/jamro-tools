@@ -24,7 +24,7 @@ function NavIcon({ name }: { name: string }) {
 
 export function MobileBottomNav() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 flex h-16 items-center justify-around border-t border-[#c3c6d7] bg-[#f9f9ff] shadow-lg md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 flex h-16 items-center justify-around border-t border-[#c3c6d7] bg-[#f9f9ff] dark:bg-background shadow-lg md:hidden">
       {navItems.map((item) =>
         item.active ? (
           <Link

@@ -195,7 +195,7 @@ export function SiteHeader() {
       {/* ================================================================ */}
       {/* HEADER                                                          */}
       {/* ================================================================ */}
-      <header ref={headerRef} className="sticky top-0 z-50 h-14 border-b border-white/60 dark:border-slate-800/60 bg-[rgba(250,251,255,0.76)] dark:bg-[rgba(11,17,32,0.8)] shadow-[0_8px_30px_rgba(15,23,42,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-[72px]">
+      <header ref={headerRef} className="sticky top-0 z-50 h-14 border-b border-white/60 dark:border-outline/60 bg-[rgba(250,251,255,0.76)] dark:bg-glass-bg shadow-[0_8px_30px_rgba(15,23,42,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-2xl backdrop-saturate-150 transition-shadow min-[700px]:h-[72px]">
         {/* ================================================================ */}
         {/* NORMAL MODE — logo, nav, search (desktop), actions              */}
         {/* ================================================================ */}
@@ -211,7 +211,7 @@ export function SiteHeader() {
           <div className="flex h-full min-w-0 flex-1 items-center justify-between gap-3 min-[700px]:gap-5 xl:gap-8">
             <Link
               href="/"
-              className="shrink-0 whitespace-nowrap text-[22px] font-extrabold leading-none text-[var(--color-brand)] dark:text-blue-500 min-[700px]:text-[23px]"
+              className="shrink-0 whitespace-nowrap text-[22px] font-extrabold leading-none text-[var(--color-brand)] dark:text-primary-fixed-dim min-[700px]:text-[23px]"
               aria-label="Jamro Tools home"
             >
               Jamro Tools
@@ -219,11 +219,11 @@ export function SiteHeader() {
             <div className="relative flex h-[44px] min-w-[130px] max-w-[330px] max-[580px]:hidden flex-1 items-center min-[400px]:h-[40px] min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px]">
               <form
                 role="search"
-                className="flex h-full w-full items-center rounded-full border border-[var(--color-border)] dark:border-slate-700/50 bg-[#f4f7ff] dark:bg-slate-800/50 px-4 text-[var(--color-muted)] dark:text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] min-[400px]:px-5 xl:px-6"
+                className="flex h-full w-full items-center rounded-full border border-[var(--color-border)] dark:border-outline-variant/50 bg-[#f4f7ff] dark:bg-surface-container/50 px-4 text-[var(--color-muted)] dark:text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] min-[400px]:px-5 xl:px-6"
                 onSubmit={(e) => e.preventDefault()}
               >
                 <Search
-                  className="mr-3 size-5 shrink-0 text-[var(--color-ink)] dark:text-slate-300 opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
+                  className="mr-3 size-5 shrink-0 text-[var(--color-ink)] dark:text-on-surface-variant opacity-80 min-[400px]:mr-4 min-[400px]:size-6 xl:mr-5"
                   strokeWidth={2.25}
                   aria-hidden="true"
                 />
@@ -239,7 +239,7 @@ export function SiteHeader() {
                   onChange={handleSearchChange}
                   onKeyDown={handleSearchKeyDown}
                   onFocus={handleSearchFocus}
-                  className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] dark:placeholder:text-slate-400 dark:text-slate-200 min-[400px]:text-[16px] xl:text-[18px]"
+                  className="min-w-0 w-full bg-transparent text-[14px] font-medium outline-none placeholder:text-[#505a70] dark:placeholder:text-slate-400 dark:text-on-surface-variant min-[400px]:text-[16px] xl:text-[18px]"
                 />
               </form>
               <SearchDropdown
@@ -266,8 +266,8 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     className={`flex h-full items-center whitespace-nowrap border-b-2 px-0 text-[15px] font-medium transition min-[1180px]:text-[16px] xl:text-[17px] ${active
-                        ? "border-[var(--color-brand)] text-[var(--color-brand)] dark:border-blue-500 dark:text-blue-500"
-                        : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)] dark:text-slate-400 dark:hover:text-blue-500"
+                        ? "border-[var(--color-brand)] text-[var(--color-brand)] dark:border-primary dark:text-primary-fixed-dim"
+                        : "border-transparent text-[var(--color-muted)] hover:text-[var(--color-brand)] dark:text-on-surface-variant dark:hover:text-primary-fixed-dim"
                       }`}
                   >
                     {item.label}
@@ -281,7 +281,7 @@ export function SiteHeader() {
               type="button"
               aria-label="Toggle dark mode"
               onClick={toggleTheme}
-              className="hidden min-[901px]:inline-flex size-8 items-center justify-center rounded-full text-[#111827] dark:text-white transition hover:bg-[#e8eefc] dark:hover:bg-slate-800 min-[700px]:size-8 xl:size-9"
+              className="hidden min-[901px]:inline-flex size-8 items-center justify-center rounded-full text-[#111827] dark:text-on-surface transition hover:bg-[#e8eefc] dark:hover:bg-surface-container min-[700px]:size-8 xl:size-9"
             >
               {theme === "dark" ? (
                 <Sun className="size-6 min-[700px]:size-6" strokeWidth={2.35} aria-hidden="true" />
@@ -294,7 +294,7 @@ export function SiteHeader() {
             {/* Request a Tool — ≥901px only */}
             <SafeLink
               href="/request-tool"
-              className="hidden min-[901px]:inline-flex h-10 w-[150px] shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-10 min-[700px]:w-[150px] min-[700px]:text-[14px] xl:h-[43px] xl:w-[150px]"
+              className="hidden min-[901px]:inline-flex h-10 w-[150px] shrink-0 items-center justify-center rounded-full bg-[#004ac6] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5] min-[700px]:h-10 min-[700px]:w-[150px] min-[700px]:text-[14px] xl:h-[43px] xl:w-[150px]"
             >
               Request a Tool
             </SafeLink>
@@ -303,7 +303,7 @@ export function SiteHeader() {
             <button
               type="button"
               aria-label="Search tools"
-              className="hidden max-[580px]:inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] dark:text-slate-400 transition hover:bg-[#e8eefc] dark:hover:bg-slate-800"
+              className="hidden max-[580px]:inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] dark:text-on-surface-variant transition hover:bg-[#e8eefc] dark:hover:bg-surface-container"
               onClick={enableSearchMode}
             >
               <Search className="size-6" strokeWidth={2.35} aria-hidden="true" />
@@ -314,7 +314,7 @@ export function SiteHeader() {
               ref={hamburgerRef}
               type="button"
               aria-label="Open navigation menu"
-              className="hidden max-[900px]:inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] dark:text-slate-400 transition hover:bg-[#e8eefc] dark:hover:bg-slate-800"
+              className="hidden max-[900px]:inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] dark:text-on-surface-variant transition hover:bg-[#e8eefc] dark:hover:bg-surface-container"
               style={{
                 opacity: sidebarOpen ? 0 : 1,
                 transition: "opacity 150ms ease-in-out",
@@ -343,7 +343,7 @@ export function SiteHeader() {
             type="button"
             aria-label="Close search"
             onClick={disableSearchMode}
-            className="shrink-0 inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] hover:bg-[#e8eefc] transition"
+            className="shrink-0 inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] hover:bg-[#e8eefc] dark:hover:bg-surface-container transition"
           >
             <ArrowLeft className="size-6" strokeWidth={2.25} aria-hidden="true" />
           </button>
@@ -405,7 +405,7 @@ export function SiteHeader() {
 
         {/* PANEL — slides in from the right edge */}
         <div
-          className="absolute inset-0 flex flex-col bg-[#fafbff] dark:bg-[#0b1120] shadow-xl"
+          className="absolute inset-0 flex flex-col bg-[#fafbff] dark:bg-background shadow-xl"
           style={{
             transform: sidebarOpen ? "translateX(0)" : "translateX(100%)",
             transition: "transform 300ms ease-in-out",
@@ -419,7 +419,7 @@ export function SiteHeader() {
               className="mb-8 flex items-center"
               style={{ paddingRight: "48px" }}
             >
-              <span className="text-[22px] relative -top-3 -left-2 font-extrabold text-[var(--color-brand)] dark:text-blue-500">
+              <span className="text-[22px] relative -top-3 -left-2 font-extrabold text-[var(--color-brand)] dark:text-primary-fixed-dim">
                 Jamro Tools
               </span>
             </div>
@@ -433,9 +433,9 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={closeSidebar}
-                    className={`border-b text-center border-[var(--color-border)] dark:border-slate-800 py-4 text-[17px] font-semibold transition ${active
-                        ? "text-[var(--color-brand)] dark:text-blue-500"
-                        : "text-[var(--color-muted)] hover:text-[var(--color-brand)] dark:text-slate-400 dark:hover:text-blue-500"
+                    className={`border-b text-center border-[var(--color-border)] dark:border-outline py-4 text-[17px] font-semibold transition ${active
+                        ? "text-[var(--color-brand)] dark:text-primary-fixed-dim"
+                        : "text-[var(--color-muted)] hover:text-[var(--color-brand)] dark:text-on-surface-variant dark:hover:text-primary-fixed-dim"
                       }`}
                   >
                     {item.label}
@@ -451,7 +451,7 @@ export function SiteHeader() {
             <Link
               href="/request-tool"
               onClick={closeSidebar}
-              className="mb-4 flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-brand)] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5]"
+              className="mb-4 flex h-12 w-full items-center justify-center rounded-full bg-[#004ac6] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5]"
             >
               Request a Tool
             </Link>
@@ -461,7 +461,7 @@ export function SiteHeader() {
               type="button"
               aria-label="Toggle dark mode"
               onClick={toggleTheme}
-              className="flex h-12 w-full items-center justify-center gap-3 rounded-full border border-[var(--color-border)] dark:border-slate-700 text-[16px] font-semibold text-[var(--color-ink)] dark:text-slate-200 transition hover:bg-[#e8eefc] dark:hover:bg-slate-800"
+              className="flex h-12 w-full items-center justify-center gap-3 rounded-full border border-[var(--color-border)] dark:border-outline-variant text-[16px] font-semibold text-[var(--color-ink)] dark:text-on-surface-variant transition hover:bg-[#e8eefc] dark:hover:bg-surface-container"
             >
               {theme === "dark" ? (
                 <>
@@ -483,7 +483,7 @@ export function SiteHeader() {
         <button
           type="button"
           aria-label="Close navigation menu"
-          className="fixed inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] dark:text-slate-400 hover:bg-[#e8eefc] dark:hover:bg-slate-800"
+          className="fixed inline-flex size-10 items-center justify-center rounded-lg text-[var(--color-muted)] dark:text-on-surface-variant hover:bg-[#e8eefc] dark:hover:bg-surface-container"
           style={{
             top: `${closePos.top}px`,
             right: `${closePos.right}px`,

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { SafeLink } from "@/components/ui/safe-link";
@@ -10,7 +10,7 @@ export function PrivacyHeader() {
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#c3c6d7] bg-[#f9f9ff] shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-[#c3c6d7] bg-[#f9f9ff] dark:bg-background shadow-sm">
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6">
         {/* Mobile Left: Back arrow + Brand */}
         <div className="flex items-center gap-2 md:hidden">
@@ -55,7 +55,7 @@ export function PrivacyHeader() {
         {/* Right side */}
         <div className="flex items-center gap-4">
           {/* Desktop Search */}
-          <div className="hidden items-center rounded-full border border-[#c3c6d7] bg-[#e7eeff] px-4 py-1 sm:flex">
+          <div className="hidden items-center rounded-full border border-[#c3c6d7] bg-[#e7eeff] dark:bg-surface-container px-4 py-1 sm:flex">
             <span
               className="material-symbols-outlined text-[#737686]"
               aria-hidden="true"

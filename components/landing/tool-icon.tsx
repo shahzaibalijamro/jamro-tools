@@ -36,11 +36,11 @@ const iconComponents = {
 } satisfies Record<LandingIcon, LucideIcon>;
 
 const toneStyles: Record<IconTone, string> = {
-  blue: "bg-[var(--color-brand-light)] text-white",
-  blueSoft: "bg-[#e2efff] text-[#0666d3] dark:bg-blue-950/40 dark:text-blue-400",
-  orange: "bg-[#bd4a00] text-white dark:bg-orange-600",
-  peach: "bg-[#f6e8e1] text-[#a74600] dark:bg-orange-950/40 dark:text-orange-400",
-  redSoft: "bg-[#fae5e9] text-[#dd3638] dark:bg-red-950/40 dark:text-red-400",
+  blue: "bg-[var(--color-brand-light)] text-white dark:bg-[#004ac6] dark:text-white",
+  blueSoft: "bg-[#e2efff] text-[#0666d3] dark:bg-[#004ac6] dark:text-white",
+  orange: "bg-[#bd4a00] text-white dark:bg-tertiary dark:text-white",
+  peach: "bg-[#f6e8e1] text-[#a74600] dark:bg-[#7c2d12] dark:text-tertiary",
+  redSoft: "bg-[#fae5e9] text-[#dd3638] dark:bg-[#7f1d1d] dark:text-error",
 };
 
 

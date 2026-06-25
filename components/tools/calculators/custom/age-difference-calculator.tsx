@@ -70,7 +70,7 @@ export default function AgeDifferenceCalculator() {
           </div>
 
           <div
-            className="rounded-xl shadow-sm p-[24px] space-y-[16px] backdrop-blur-[12px] bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80"
+            className="rounded-xl shadow-sm p-[24px] space-y-[16px] backdrop-blur-[12px] bg-white/70 dark:bg-surface-container/70 border border-slate-200/80 dark:border-outline-variant/80"
           >
             <h2 className="text-[20px] leading-[1.4] font-semibold text-[var(--color-brand)]">
               Enter Birth Dates
@@ -88,7 +88,7 @@ export default function AgeDifferenceCalculator() {
                 type="date"
                 value={dob1}
                 onChange={(e) => setDob1(e.target.value)}
-                className="w-full bg-[#e7eeff] dark:bg-slate-900 border border-[#c3c6d6] dark:border-slate-700 rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px] dark:text-slate-200"
+                className="w-full bg-[#e7eeff] dark:bg-background border border-[#c3c6d6] dark:border-outline-variant rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px] dark:text-on-surface-variant"
               />
             </div>
 
@@ -104,7 +104,7 @@ export default function AgeDifferenceCalculator() {
                 type="date"
                 value={dob2}
                 onChange={(e) => setDob2(e.target.value)}
-                className="w-full bg-[#e7eeff] dark:bg-slate-900 border border-[#c3c6d6] dark:border-slate-700 rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px] dark:text-slate-200"
+                className="w-full bg-[#e7eeff] dark:bg-background border border-[#c3c6d6] dark:border-outline-variant rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px] dark:text-on-surface-variant"
               />
             </div>
 
@@ -119,7 +119,7 @@ export default function AgeDifferenceCalculator() {
 
           {/* Contextual Hint */}
           <div
-            className="rounded-xl p-[16px] flex gap-[8px] items-start bg-[#d8e2ff] dark:bg-slate-800 text-[#001a42] dark:text-slate-200"
+            className="rounded-xl p-[16px] flex gap-[8px] items-start bg-[#d8e2ff] dark:bg-surface-container text-[#001a42] dark:text-on-surface-variant"
           >
             <span className="material-symbols-outlined text-[var(--color-brand)]">info</span>
             <p className="text-[14px] leading-[1.6]">
@@ -131,7 +131,7 @@ export default function AgeDifferenceCalculator() {
         {/* Right – Results */}
         <section className="lg:col-span-8">
           <div
-            className="rounded-xl p-[48px] h-full flex flex-col items-center justify-center text-center gap-[24px] relative overflow-hidden backdrop-blur-[12px] bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80"
+            className="rounded-xl p-[48px] h-full flex flex-col items-center justify-center text-center gap-[24px] relative overflow-hidden backdrop-blur-[12px] bg-white/70 dark:bg-surface-container/70 border border-slate-200/80 dark:border-outline-variant/80"
           >
             {/* Subtle background dot pattern */}
             <div
@@ -205,7 +205,7 @@ export default function AgeDifferenceCalculator() {
                 )}
               </svg>
               <div
-                className="absolute inset-0 flex flex-col items-center justify-center rounded-full m-10 border border-glass-border shadow-inner backdrop-blur-[12px] bg-white/40 dark:bg-slate-900/40"
+                className="absolute inset-0 flex flex-col items-center justify-center rounded-full m-10 border border-glass-border shadow-inner backdrop-blur-[12px] bg-white/40 dark:bg-background/40"
               >
                 <span className="text-[14px] text-on-surface-variant">Total Days</span>
                 <span className="text-[24px] font-bold text-on-surface">
@@ -238,12 +238,12 @@ export default function AgeDifferenceCalculator() {
 
             {/* Stats row */}
             <div className="w-full mt-auto pt-[24px] border-t border-outline-variant grid grid-cols-2 gap-[16px] relative z-10">
-              <div className="bg-[#f0f3ff] dark:bg-slate-900 p-[16px] rounded-xl flex flex-col items-center border border-[#c3c6d6]/30 dark:border-slate-700/50">
-                <span className="text-[12px] leading-[1.4] text-[#737685] dark:text-slate-400 uppercase">Precision</span>
+              <div className="bg-[#f0f3ff] dark:bg-background p-[16px] rounded-xl flex flex-col items-center border border-[#c3c6d6]/30 dark:border-outline-variant/50">
+                <span className="text-[12px] leading-[1.4] text-[#737685] dark:text-on-surface-variant uppercase">Precision</span>
                 <span className="text-[20px] leading-[1.4] font-semibold text-on-surface">High</span>
               </div>
-              <div className="bg-[#f0f3ff] dark:bg-slate-900 p-[16px] rounded-xl flex flex-col items-center border border-[#c3c6d6]/30 dark:border-slate-700/50">
-                <span className="text-[12px] leading-[1.4] text-[#737685] dark:text-slate-400 uppercase">Calendar</span>
+              <div className="bg-[#f0f3ff] dark:bg-background p-[16px] rounded-xl flex flex-col items-center border border-[#c3c6d6]/30 dark:border-outline-variant/50">
+                <span className="text-[12px] leading-[1.4] text-[#737685] dark:text-on-surface-variant uppercase">Calendar</span>
                 <span className="text-[20px] leading-[1.4] font-semibold text-on-surface">Gregorian</span>
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function AgeDifferenceCalculator() {
           {faqItems.map((item, i) => (
             <details
               key={i}
-              className="group rounded-xl backdrop-blur-[12px] bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80"
+              className="group rounded-xl backdrop-blur-[12px] bg-white/70 dark:bg-surface-container/70 border border-slate-200/80 dark:border-outline-variant/80"
             >
               <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
                 <span className="text-[20px] leading-[1.4] font-semibold text-on-surface">

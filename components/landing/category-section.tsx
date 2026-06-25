@@ -11,7 +11,7 @@ function CategoryCard({ category }: { category: ToolCategory }) {
     <li>
       <SafeLink
         href={category.href}
-        className="flex min-h-[180px] text-center justify-center min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] dark:border-[var(--color-border)] bg-white dark:bg-[var(--color-surface)] p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] dark:hover:border-[var(--color-brand-light)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.4)] min-[700px]:min-h-[210px] min-[700px]:rounded-[12px] min-[700px]:p-7 xl:min-h-[190px]"
+        className="flex min-h-[180px] text-center justify-center min-w-0 flex-col rounded-[18px] border border-[var(--color-border-strong)] dark:border-0 bg-white dark:bg-surface p-6 transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] dark:hover:border-[var(--color-brand-light)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.07)] dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.4)] min-[700px]:min-h-[210px] min-[700px]:rounded-[12px] min-[700px]:p-7 xl:min-h-[190px]"
       >
         <ToolIcon
           icon={category.icon}
@@ -34,21 +34,25 @@ export function CategorySection() {
   return (
     <section className="bg-[var(--color-page)] pt-20 pb-20 min-[700px]:pt-[111px] min-[700px]:pb-[130px]">
       <Container>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center flex-col gap-3">
           <h2 className="text-[28px] font-extrabold leading-none text-[var(--color-ink)] min-[700px]:text-[36px]">
-            Browse by Category
+            Explore by Category
           </h2>
-          <Link
+          <p className="max-w-[760px] text-[16px] font-medium leading-[1.45] text-[var(--color-muted)] min-[700px]:max-w-[760px] min-[700px]:text-[18px] min-[700px]:leading-[1.45]">
+            Organized for every workflow.
+          </p>
+
+          {/* <Link
             href="/tools"
-            className="inline-flex items-center gap-2 text-[14px] font-extrabold leading-none text-[var(--color-brand)] dark:text-[var(--color-brand-light)] transition hover:text-[#0649c5] dark:hover:text-[#60a5fa] min-[700px]:text-[14px]"
+            className="inline-flex items-center gap-2 text-[14px] font-extrabold leading-none text-[var(--color-brand)] dark:text-brand-light transition hover:text-[#0649c5] dark:hover:text-brand min-[700px]:text-[14px]"
           >
 
             <span>View All</span>
             <ChevronRight className="size-5 min-[700px]:size-4" strokeWidth={2.5} aria-hidden="true" />
-          </Link>
+          </Link> */}
         </div>
 
-        <ul className="mt-10 grid grid-cols-1 gap-9 min-[700px]:mt-[57px] min-[700px]:grid-cols-4 min-[700px]:gap-7 xl:grid-cols-5">
+        <ul className="mt-10 grid grid-cols-1 gap-9 min-[700px]:mt-[57px] min-[700px]:grid-cols-4 min-[700px]:gap-7">
           {categories.map((category) => (
             <CategoryCard key={category.title} category={category} />
           ))}

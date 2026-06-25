@@ -96,13 +96,6 @@ export const categories: ToolCategory[] = [
     tone: "blue",
   },
   {
-    title: "PDF Utils",
-    count: "32+ tools",
-    href: "/tools/pdf-utils",
-    icon: "pdf",
-    tone: "blue",
-  },
-  {
     title: "Graphics",
     count: "64+ tools",
     href: "/tools/graphics",
@@ -129,35 +122,34 @@ export const categories: ToolCategory[] = [
     href: "/tools/finance",
     icon: "finance",
     tone: "orange",
-  },
-  {
-    title: "Others",
-    count: "150+ tools",
-    href: "/tools/others",
-    icon: "others",
-    tone: "blue",
-  },
+  }
 ];
 
 export const trustHighlights = [
   {
-    title: "Lightning Fast",
-    description: "Tools load in under 100ms.",
-    icon: "gauge",
+    title: "1000+ Tools",
+    description: "Growing library",
+    icon: "toolBox",
     tone: "blue",
   },
   {
-    title: "Any Device",
-    description: "Seamless mobile experience.",
-    icon: "devices",
+    title: "100% Client-side",
+    description: "Zero data uploads",
+    icon: "shield",
     tone: "blue",
   },
   {
-    title: "API Ready",
-    description: "Developer endpoints available.",
-    icon: "api",
+    title: "0ms Latency",
+    description: "Instant processing",
+    icon: "bolt",
     tone: "orange",
   },
+  {
+    title: "2M+ Users",
+    description: "Trusted Worldwide",
+    icon: "users",
+    tone: "orange",
+  }
 ] as const;
 
 export const footerColumns: FooterColumn[] = [

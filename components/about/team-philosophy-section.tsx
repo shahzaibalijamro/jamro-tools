@@ -5,8 +5,8 @@ import { SectionHeading } from "@/components/about/about-ui";
 
 function TeamCard({ member }: { member: (typeof teamMembers)[number] }) {
   return (
-    <article className="rounded-[12px] border border-[#e2e8f0]/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 p-6 text-center backdrop-blur-[10px]">
-      <div className="mx-auto mb-4 size-24 overflow-hidden rounded-full bg-[#cfdaf2] dark:bg-slate-700">
+    <article className="rounded-[12px] border border-[#e2e8f0]/80 dark:border-outline-variant/80 bg-white/70 dark:bg-surface-container/70 p-6 text-center backdrop-blur-[10px]">
+      <div className="mx-auto mb-4 size-24 overflow-hidden rounded-full bg-[#cfdaf2] dark:bg-surface-container-high">
         <Image
           src={member.image}
           alt={member.alt}
@@ -15,13 +15,13 @@ function TeamCard({ member }: { member: (typeof teamMembers)[number] }) {
           className="size-full object-cover"
         />
       </div>
-      <h3 className="text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-slate-100">
+      <h3 className="text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-on-surface">
         {member.name}
       </h3>
-      <p className="mb-2 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6] dark:text-blue-400">
+      <p className="mb-2 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6] dark:text-primary">
         {member.role}
       </p>
-      <p className="text-[14px] font-semibold italic leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-slate-300">
+      <p className="text-[14px] font-semibold italic leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-on-surface-variant">
         {member.quote}
       </p>
     </article>

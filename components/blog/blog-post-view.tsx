@@ -638,18 +638,21 @@ function findFAQLineRange(
   lines: string[]
 ): [number, number] | null {
   let startIdx = -1;
+  let headingLevel = 0;
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^#{2,4}\s+(.*)/);
-    if (m && /frequently asked questions/i.test(m[1])) {
+    const m = lines[i].match(/^(#{2,4})\s+(.*)/);
+    if (m && /frequently asked questions/i.test(m[2])) {
       startIdx = i;
+      headingLevel = m[1].length;
       break;
     }
   }
   if (startIdx === -1) return null;
 
+  const endPattern = new RegExp(`^#{1,${headingLevel}}\\s+`);
   let endIdx = lines.length;
   for (let i = startIdx + 1; i < lines.length; i++) {
-    if (/^#{2,4}\s+/.test(lines[i])) {
+    if (endPattern.test(lines[i])) {
       endIdx = i;
       break;
     }
@@ -660,20 +663,23 @@ function findFAQLineRange(
 function extractFAQSection(md: string): { qa: Array<{ q: string; a: string }> } | null {
   const lines = md.replace(/\r\n/g, "\n").split("\n");
   let startIdx = -1;
+  let headingLevel = 0;
 
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^#{2,4}\s+(.*)/);
-    if (m && /frequently asked questions/i.test(m[1])) {
+    const m = lines[i].match(/^(#{2,4})\s+(.*)/);
+    if (m && /frequently asked questions/i.test(m[2])) {
       startIdx = i;
+      headingLevel = m[1].length;
       break;
     }
   }
   if (startIdx === -1) return null;
 
-  // Find the next heading after startIdx to bound the section
+  // Find the next same-or-higher heading after startIdx to bound the section
   let endIdx = lines.length;
+  const endPattern = new RegExp(`^#{1,${headingLevel}}\\s+`);
   for (let i = startIdx + 1; i < lines.length; i++) {
-    if (/^#{2,4}\s+/.test(lines[i])) {
+    if (endPattern.test(lines[i])) {
       endIdx = i;
       break;
     }
@@ -682,8 +688,8 @@ function extractFAQSection(md: string): { qa: Array<{ q: string; a: string }> } 
   const body = lines.slice(startIdx + 1, endIdx).join("\n");
   const qa: Array<{ q: string; a: string }> = [];
 
-  // Match paragraphs that start with "**Q: ..." (used by these blog posts)
-  const re = /\*\*Q:\s*([^*]+?)\*\*\s*([\s\S]*?)(?=\*\*Q:|\s*$)/g;
+  // Match ### question headings followed by answer paragraphs
+  const re = /(?:^|\n)#{3,4}\s+(.+?)\n([\s\S]*?)(?=\n#{3,4}\s+|$)/g;
   let match: RegExpExecArray | null;
   while ((match = re.exec(body)) !== null) {
     const q = match[1].trim();

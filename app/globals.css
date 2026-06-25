@@ -17,70 +17,122 @@
 }
 
 .dark {
-  --background: #0b1120;
-  --foreground: #f1f5f9;
-  --color-brand: #3b82f6;
-  --color-brand-light: #60a5fa;
-  --color-border: #1e293b;
-  --color-border-strong: #334155;
-  --color-hero: #0f172a;
-  --color-ink: #f8fafc;
-  --color-muted: #94a3b8;
-  --color-page: #0b1120;
-  --color-surface: #111b2e;
+  --background: #09090b;
+  --foreground: #fafafa;
+  --color-brand: #60a5fa;
+  --color-brand-light: #93c5fd;
+  --color-border: #27272a;
+  --color-border-strong: #3f3f46;
+  --color-hero: #0a0a0f;
+  --color-ink: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-page: #09090b;
+  --color-surface: #18181b;
 
-  /* Dark mode variants for MD3 utility tokens */
-  --color-primary: #3b82f6;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #1d4ed8;
-  --color-on-primary-container: #eff6ff;
-  --color-surface-dim: #0b1120;
-  --color-surface-bright: #1e293b;
-  --color-surface-container-lowest: #070c17;
-  --color-surface-container-low: #0b1120;
-  --color-surface-container: #111b2e;
-  --color-surface-container-high: #1e293b;
-  --color-surface-container-highest: #334155;
-  --color-on-surface: #f1f5f9;
-  --color-on-surface-variant: #94a3b8;
-  --color-outline: #475569;
-  --color-outline-variant: #334155;
-  --color-inverse-surface: #1e293b; /* Changed to dark blue instead of white for CTA */
-  --color-inverse-on-surface: #f1f5f9;
-  --color-on-background: #f1f5f9;
-  --color-glass-bg: rgba(11, 17, 32, 0.8);
-  --color-glass-border: rgba(30, 41, 59, 0.6);
+  /* Primary (blue accent family) */
+  --color-primary: #60a5fa;
+  --color-on-primary: #0a0a0b;
+  --color-primary-container: #1e3a8a;
+  --color-on-primary-container: #bfdbfe;
+  --color-primary-fixed: #1e40af;
+  --color-primary-fixed-dim: #3b82f6;
+  --color-on-primary-fixed: #dbeafe;
+  --color-on-primary-fixed-variant: #93c5fd;
+
+  /* Secondary (muted blue family) */
+  --color-secondary: #3b82f6;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #1e3a8a;
+  --color-on-secondary-container: #bfdbfe;
+  --color-secondary-fixed: #1e40af;
+  --color-secondary-fixed-dim: #3b82f6;
+  --color-on-secondary-fixed: #dbeafe;
+  --color-on-secondary-fixed-variant: #93c5fd;
+
+  /* Tertiary (amber accent family) */
+  --color-tertiary: #fbbf24;
+  --color-on-tertiary: #0a0a0b;
+  --color-tertiary-container: #78350f;
+  --color-on-tertiary-container: #fcd34d;
+  --color-tertiary-fixed: #78350f;
+  --color-tertiary-fixed-dim: #fbbf24;
+  --color-on-tertiary-fixed: #fef3c7;
+  --color-on-tertiary-fixed-variant: #fcd34d;
+
+  /* Error (red family) */
+  --color-error: #f87171;
+  --color-on-error: #0a0a0b;
+  --color-error-container: #7f1d1d;
+  --color-on-error-container: #fca5a5;
+
+  /* Surface elevation scale */
+  --color-surface-dim: #050507;
+  --color-surface-bright: #232328;
+  --color-surface-container-lowest: #09090b;
+  --color-surface-container-low: #0f0f11;
+  --color-surface-container: #18181b;
+  --color-surface-container-high: #1f1f23;
+  --color-surface-container-highest: #27272a;
+  --color-surface-variant: #27272a;
+  --color-surface-tint: #3b82f6;
+
+  /* Text, outlines, inverse */
+  --color-on-surface: #fafafa;
+  --color-on-surface-variant: #a1a1aa;
+  --color-outline: #52525b;
+  --color-outline-variant: #27272a;
+  --color-inverse-surface: #fafafa;
+  --color-inverse-on-surface: #09090b;
+  --color-inverse-primary: #2563eb;
+  --color-on-background: #fafafa;
+
+  /* Glass */
+  --color-glass-bg: rgba(9, 9, 11, 0.72);
+  --color-glass-border: rgba(63, 63, 70, 0.5);
+
+  /* Hero gradient stops */
+  --color-hero-gradient-start: #1e1b4b;
+  --color-hero-gradient-mid: #0f0f11;
+  --color-hero-gradient-end: #09090b;
 
   /* Glass panel & card overrides */
   .glass-panel {
-    background: rgba(15, 23, 42, 0.7);
-    border-color: rgba(30, 41, 59, 0.8);
+    background: rgba(15, 15, 20, 0.72);
+    border-color: rgba(63, 63, 70, 0.5);
   }
   .glass-card {
-    background-color: rgba(15, 23, 42, 0.7);
-    border-color: rgba(30, 41, 59, 0.8);
+    background-color: rgba(15, 15, 20, 0.72);
+    border-color: rgba(63, 63, 70, 0.5);
   }
 
   /* Hero mesh overrides */
   .hero-mesh {
-    background-color: #0b1120;
+    background-color: #09090b;
     background-image:
-      radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.5) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(17, 27, 46, 0.5) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(30, 41, 59, 0.5) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(96, 165, 250, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(15, 15, 20, 0.5) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
   }
 }
 
 .dark body {
-  background: #0b1120;
-  color: #f1f5f9;
+  background: #09090b;
+  color: #fafafa;
 }
 
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: #0755d8;
+  --color-brand-light: #2f6bed;
+  --color-ink: #111827;
+  --color-muted: #50586a;
+  --color-border: #d7dfef;
+  --color-border-strong: #bcc8dd;
+  --color-hero: #eef4ff;
+  --color-page: #fbfbff;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 

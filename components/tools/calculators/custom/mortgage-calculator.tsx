@@ -108,12 +108,7 @@ export default function MortgageCalculator() {
         {/* Inputs Panel */}
         <div className="lg:col-span-5 space-y-[16px]">
           <div
-            className="p-[24px] rounded-xl shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="glass-panel p-[24px] rounded-xl shadow-sm"
           >
             <h3 className="text-[22px] leading-[28px] font-semibold mb-[24px] flex items-center gap-[8px]">
               <span className="material-symbols-outlined text-primary">
@@ -228,7 +223,7 @@ export default function MortgageCalculator() {
           </div>
 
           {/* Savings Tip */}
-          <div className="bg-[#263143] text-[#ecf1ff] p-[24px] rounded-xl shadow-lg relative overflow-hidden group cursor-pointer">
+          <div className="bg-[#263143] dark:bg-surface-container-high text-[#ecf1ff] dark:text-on-surface p-[24px] rounded-xl shadow-lg relative overflow-hidden group cursor-pointer">
             <div className="relative z-10">
               <h4 className="text-[22px] leading-[28px] font-semibold mb-[8px]">
                 Maximize Your Savings
@@ -258,17 +253,12 @@ export default function MortgageCalculator() {
         {/* Results Panel */}
         <div className="lg:col-span-7">
           <div
-            className="rounded-xl overflow-hidden h-full flex flex-col shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="glass-panel rounded-xl overflow-hidden h-full flex flex-col shadow-sm"
           >
             <div className="p-[24px] flex-grow grid grid-cols-1 md:grid-cols-2 gap-[24px]">
               {/* Donut Chart */}
               <div className="flex flex-col items-center justify-center relative min-h-[250px]">
-                <div className="relative w-48 h-48 rounded-full border-[24px] border-[#e7eeff] flex items-center justify-center">
+                <div className="relative w-48 h-48 rounded-full border-[24px] border-[#e7eeff] dark:border-surface-container-high flex items-center justify-center">
                   {/* P&I segment */}
                   <div
                     className="absolute inset-[-24px] rounded-full border-[24px] border-primary"
@@ -278,7 +268,7 @@ export default function MortgageCalculator() {
                   />
                   {/* Taxes segment */}
                   <div
-                    className="absolute inset-[-24px] rounded-full border-[24px] border-[#5b94fd]"
+                    className="absolute inset-[-24px] rounded-full border-[24px] border-[#5b94fd] dark:border-primary-fixed-dim"
                     style={{
                       clipPath:
                         piFraction >= 1
@@ -301,11 +291,11 @@ export default function MortgageCalculator() {
                     <span className="text-[12px] font-medium">P&I</span>
                   </div>
                   <div className="flex items-center gap-[4px]">
-                    <span className="w-3 h-3 rounded-full bg-[#5b94fd]"></span>
+                    <span className="w-3 h-3 rounded-full bg-[#5b94fd] dark:bg-primary-fixed-dim"></span>
                     <span className="text-[12px] font-medium">Taxes</span>
                   </div>
                   <div className="flex items-center gap-[4px]">
-                    <span className="w-3 h-3 rounded-full bg-[#d8e3fb]"></span>
+                    <span className="w-3 h-3 rounded-full bg-[#d8e3fb] dark:bg-surface-container-high"></span>
                     <span className="text-[12px] font-medium">Insurance</span>
                   </div>
                 </div>
@@ -380,12 +370,7 @@ export default function MortgageCalculator() {
       {showSchedule && (
         <section className="mb-[48px]">
           <div
-            className="rounded-xl overflow-hidden shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="glass-panel rounded-xl overflow-hidden shadow-sm"
           >
             <div className="p-[24px] border-b border-outline-variant/30 flex items-center justify-between">
               <h3 className="text-[20px] leading-[28px] font-semibold text-on-surface flex items-center gap-[8px]">
@@ -423,10 +408,10 @@ export default function MortgageCalculator() {
                       <td className="p-[16px] whitespace-nowrap">
                         ${row.payment > 0 ? row.payment.toFixed(2) : "0.00"}
                       </td>
-                      <td className="p-[16px] whitespace-nowrap text-green-700 font-medium">
+                      <td className="p-[16px] whitespace-nowrap text-green-700 dark:text-green-400 font-medium">
                         ${row.principal > 0 ? row.principal.toFixed(2) : "0.00"}
                       </td>
-                      <td className="p-[16px] whitespace-nowrap text-amber-700">
+                      <td className="p-[16px] whitespace-nowrap text-amber-700 dark:text-amber-400">
                         ${row.interest > 0 ? row.interest.toFixed(2) : "0.00"}
                       </td>
                       <td className="p-[16px] whitespace-nowrap">
@@ -450,12 +435,7 @@ export default function MortgageCalculator() {
           {faqItems.map((item, i) => (
             <details
               key={i}
-              className="group rounded-xl"
-              style={{
-                backdropFilter: "blur(12px)",
-                background: "rgba(255, 255, 255, 0.7)",
-                border: "1px solid rgba(226, 232, 240, 0.8)",
-              }}
+              className="glass-panel group rounded-xl"
             >
               <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
                 <span className="text-[14px] font-semibold text-on-surface">

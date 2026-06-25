@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { SafeLink } from "@/components/ui/safe-link";
 import { Mail, Share2 } from "lucide-react";
 
@@ -85,14 +85,14 @@ export function AboutFooter() {
           <button
             type="button"
             aria-label="Share Jamro Tools"
-            className="flex size-10 items-center justify-center rounded-full bg-[#dee8ff] text-[#434655] transition-colors hover:text-[#004ac6]"
+            className="flex size-10 items-center justify-center rounded-full bg-[#dee8ff] text-[#434655] dark:bg-surface-container dark:text-on-surface-variant transition-colors hover:text-[#004ac6]"
           >
             <Share2 className="size-5" strokeWidth={2} aria-hidden="true" />
           </button>
           <button
             type="button"
             aria-label="Email Jamro Tools"
-            className="flex size-10 items-center justify-center rounded-full bg-[#dee8ff] text-[#434655] transition-colors hover:text-[#004ac6]"
+            className="flex size-10 items-center justify-center rounded-full bg-[#dee8ff] text-[#434655] dark:bg-surface-container dark:text-on-surface-variant transition-colors hover:text-[#004ac6]"
           >
             <Mail className="size-5" strokeWidth={2} aria-hidden="true" />
           </button>

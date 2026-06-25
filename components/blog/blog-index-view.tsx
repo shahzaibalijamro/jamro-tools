@@ -169,8 +169,8 @@ export function BlogIndexView() {
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
                   className={`px-[16px] py-[8px] rounded-xl text-label-md transition-colors whitespace-nowrap ${selectedCategory === cat
-                      ? "bg-primary text-on-primary shadow-sm"
-                      : "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
+                    ? "bg-primary text-on-primary shadow-sm"
+                    : "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
                     }`}
                 >
                   {cat}
@@ -205,8 +205,8 @@ export function BlogIndexView() {
                       key={option.value}
                       onClick={() => handleSortChange(option.value)}
                       className={`w-full text-left px-[16px] py-[8px] text-label-md transition-colors ${sortBy === option.value
-                          ? "bg-primary/10 text-primary"
-                          : "text-on-surface hover:bg-surface-container-high"
+                        ? "bg-primary/10 text-primary"
+                        : "text-on-surface hover:bg-surface-container-high"
                         }`}
                     >
                       {option.label}
@@ -279,8 +279,8 @@ export function BlogIndexView() {
                     key={page}
                     onClick={() => setCurrentPage(page as number)}
                     className={`w-10 h-10 flex items-center justify-center rounded-full text-label-md transition-colors ${currentPage === page
-                        ? "bg-primary text-on-primary"
-                        : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-high"
+                      ? "bg-primary text-on-primary"
+                      : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-high"
                       }`}
                   >
                     {page}
@@ -304,7 +304,7 @@ export function BlogIndexView() {
         </section>
 
         {/* ── Newsletter ── */}
-        <section className="max-w-container-max mx-auto px-gutter pb-[48px]">
+        {/* <section className="max-w-container-max mx-auto px-gutter pb-[48px]">
           <div className="bg-inverse-surface rounded-2xl p-[48px] text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-[48px]">
             <div>
               <h3 className="text-headline-md text-inverse-on-surface mb-[8px]">
@@ -333,7 +333,7 @@ export function BlogIndexView() {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <SiteFooter hasMarginBottom={false} />

@@ -94,7 +94,7 @@ export function SearchDropdown({ query, open, onClose, inputRef, navOnEnterRef }
       ref={dropdownRef}
       role="listbox"
       aria-label="Search results"
-      className="absolute left-0 top-full mt-2 w-full max-h-[420px] overflow-y-auto rounded-xl shadow-2xl z-[60] backdrop-blur-[20px] bg-[#fafbff]/95 dark:bg-slate-800/95 border border-slate-200/90 dark:border-slate-700/90"
+      className="absolute left-0 top-full mt-2 w-full max-h-[420px] overflow-y-auto rounded-xl shadow-2xl z-[60] backdrop-blur-[20px] bg-[#fafbff]/95 dark:bg-surface-container/95 border border-slate-200/90 dark:border-outline-variant/90"
       style={{
         boxShadow: "0 20px 50px rgba(15, 23, 42, 0.15), 0 4px 12px rgba(15, 23, 42, 0.08)",
       }}
@@ -129,7 +129,7 @@ export function SearchDropdown({ query, open, onClose, inputRef, navOnEnterRef }
                   role="option"
                   aria-selected={selected}
                   data-search-index={i}
-                  className="w-full text-left px-4 py-3 rounded-lg transition-colors mx-1 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700"
+                  className="w-full text-left px-4 py-3 rounded-lg transition-colors mx-1 cursor-pointer hover:bg-slate-100 dark:hover:bg-surface-container-high"
                   style={{
                     backgroundColor: selected ? "var(--color-surface-container)" : "transparent",
                     color: "var(--color-ink)",
@@ -187,9 +187,9 @@ export function SearchDropdown({ query, open, onClose, inputRef, navOnEnterRef }
             className="px-5 py-2 text-[11px] text-center border-t"
             style={{ borderColor: "rgba(226, 232, 240, 0.7)", color: "var(--color-muted)", opacity: 0.6 }}
           >
-            <kbd className="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-200/50 dark:bg-slate-700">↑↓</kbd> Navigate &nbsp;
-            <kbd className="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-200/50 dark:bg-slate-700">↵</kbd> Open &nbsp;
-            <kbd className="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-200/50 dark:bg-slate-700">Esc</kbd> Close
+            <kbd className="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-200/50 dark:bg-surface-container-high">↑↓</kbd> Navigate &nbsp;
+            <kbd className="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-200/50 dark:bg-surface-container-high">↵</kbd> Open &nbsp;
+            <kbd className="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-200/50 dark:bg-surface-container-high">Esc</kbd> Close
           </div>
         </>
       )}

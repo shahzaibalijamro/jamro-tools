@@ -22,11 +22,11 @@ export function AboutCta() {
       </section>
 
       {/* DESKTOP CTA */}
-      <section className="hidden rounded-[12px] border border-[#c3c6d7] dark:border-slate-700 bg-[#e7eeff] dark:bg-slate-800 p-8 text-center md:block md:p-12">
-        <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-slate-100 md:text-[32px]">
+      <section className="hidden rounded-[12px] border border-[#c3c6d7] dark:border-outline-variant bg-[#e7eeff] dark:bg-surface-container p-8 text-center md:block md:p-12">
+        <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-on-surface md:text-[32px]">
           Ready to start working faster?
         </h2>
-        <p className="mx-auto mb-6 max-w-xl text-[16px] leading-[1.6] text-[#434655] dark:text-slate-300">
+        <p className="mx-auto mb-6 max-w-xl text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
           Explore our collection of over 1,000 calculators, converters, and developer
           utilities today.
         </p>
@@ -39,7 +39,7 @@ export function AboutCta() {
           </SafeLink>
           <SafeLink
             href="/support"
-            className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#004ac6] dark:border-blue-400 px-12 py-3 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6] dark:text-blue-400 transition-all active:scale-95 hover:bg-[#004ac6]/5 dark:hover:bg-blue-400/10"
+            className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#004ac6] dark:border-primary px-12 py-3 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#004ac6] dark:text-primary transition-all active:scale-95 hover:bg-[#004ac6]/5 dark:hover:bg-primary/10"
           >
             Support the Project
           </SafeLink>

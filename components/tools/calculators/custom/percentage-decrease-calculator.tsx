@@ -89,7 +89,7 @@ export default function PercentageDecreaseCalculator() {
                 type="number"
                 value={initialValue}
                 onChange={(e) => setInitialValue(parseFloat(e.target.value) || 0)}
-                className="w-full bg-[#e7eeff] border border-[#c3c6d6] rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px]"
+                className="w-full bg-[#e7eeff] dark:bg-background border border-[#c3c6d6] dark:border-outline-variant rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px]"
               />
             </div>
 
@@ -105,7 +105,7 @@ export default function PercentageDecreaseCalculator() {
                 type="number"
                 value={finalValue}
                 onChange={(e) => setFinalValue(parseFloat(e.target.value) || 0)}
-                className="w-full bg-[#e7eeff] border border-[#c3c6d6] rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px]"
+                className="w-full bg-[#e7eeff] dark:bg-background border border-[#c3c6d6] dark:border-outline-variant rounded-lg p-[16px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px]"
               />
             </div>
 
@@ -243,7 +243,7 @@ export default function PercentageDecreaseCalculator() {
               <div className="px-[24px] pb-[24px] text-[16px] leading-[1.6] text-on-surface-variant">
                 {item.a}
                 {"formula" in item && (
-                  <div className="mt-[16px] p-[16px] bg-[#e7eeff] rounded-lg font-mono text-[14px]">
+                  <div className="mt-[16px] p-[16px] bg-[#e7eeff] dark:bg-surface-container rounded-lg font-mono text-[14px]">
                     {item.formula}
                   </div>
                 )}

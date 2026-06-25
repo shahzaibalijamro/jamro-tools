@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       />
 
-      <div className="min-h-screen bg-[#f9f9ff] dark:bg-[#0b1120] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d] dark:text-slate-200">
+      <div className="min-h-screen bg-[#f9f9ff] dark:bg-background font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d] dark:text-on-surface-variant">
         <SiteHeader />
 
         <main>
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
           <div className="mx-auto hidden max-w-[1280px] gap-12 px-4 py-12 md:flex sm:px-6">
             <PrivacySidebar />
 
-            <div className="min-w-0 flex-1 rounded-xl border border-[#c3c6d7] dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
+            <div className="min-w-0 flex-1 rounded-xl border border-[#c3c6d7] dark:border-outline-variant bg-white dark:bg-surface-container p-8 shadow-sm">
               <PrivacyHero />
               <PrivacySections />
             </div>

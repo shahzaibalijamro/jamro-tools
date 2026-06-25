@@ -68,7 +68,7 @@ export function PrivacyMobileNav() {
               className={`snap-start flex-none rounded-full border px-4 py-1 text-[14px] font-semibold leading-[1.4] tracking-[0.01em] transition-all ${
                 isActive
                   ? "border-[#004ac6]/10 bg-[#2563eb] text-[#eeefff]"
-                  : "border-[#c3c6d7] bg-[#e7eeff] text-[#434655]"
+                  : "border-[#c3c6d7] bg-[#e7eeff] dark:bg-surface-container dark:text-on-surface-variant"
               }`}
             >
               {link.label}

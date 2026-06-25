@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { SafeLink } from "@/components/ui/safe-link";
 import { AtSign, Globe2, Heart } from "lucide-react";
 
@@ -8,7 +8,7 @@ import { footerColumns } from "@/lib/landing-data";
 export function SiteFooter({ hasMarginBottom = false }) {
   return (
     <footer
-      className={`bg-[#273247] min-[700px]:pb-0 text-[#d9e4f6] ${hasMarginBottom ? "pb-16" : ""}`}
+      className={`bg-[#273247] dark:bg-surface-container-highest min-[700px]:pb-0 text-[#d9e4f6] dark:text-on-surface ${hasMarginBottom ? "pb-16" : ""}`}
     >
       <Container>
         <div className="mx-auto max-w-full">
@@ -16,12 +16,12 @@ export function SiteFooter({ hasMarginBottom = false }) {
             <div>
               <Link
                 href="/"
-                className="text-[20px] font-extrabold leading-none text-[#c9dbff]"
+                className="text-[20px] font-extrabold leading-none text-[#c9dbff] dark:text-on-surface"
                 aria-label="Jamro Tools home"
               >
                 Jamro Tools
               </Link>
-              <p className="mt-6 max-w-[270px] text-[15px] font-medium leading-[1.7]  text-[#526075]">
+              <p className="mt-6 max-w-[270px] text-[15px] font-medium leading-[1.7]  text-[#9fb3d0] dark:text-on-surface-variant">
                 500+ free tools, one platform. <br />
                 Math, converters, SEO, dev, images, PDFs, text, security. <br />
                 Built for accuracy and simplicity.
@@ -30,7 +30,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
 
             {footerColumns.map((column) => (
               <div key={column.title}>
-                <h2 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#d9e4f6]">
+                <h2 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#d9e4f6] dark:text-on-surface">
                   {column.title}
                 </h2>
                 <ul className="mt-6 space-y-4">
@@ -38,7 +38,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
                     <li key={link.href}>
                       <SafeLink
                         href={link.href}
-                        className="text-[15px] font-medium  text-[#526075] transition hover:text-[#d9e4f6]"
+                        className="text-[15px] font-medium text-[#9fb3d0] dark:text-on-surface-variant transition hover:text-[#d9e4f6] dark:hover:text-on-surface"
                       >
                         {link.label}
                       </SafeLink>
@@ -49,7 +49,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
             ))}
           </div>
 
-          <div className="border-t border-white/[0.06] py-7 text-center text-[12px] font-medium leading-8  text-[#526075]">
+          <div className="border-t border-white/10 dark:border-outline-variant py-7 text-center text-[12px] font-medium leading-8  text-[#9fb3d0] dark:text-on-surface-variant">
             <p>© 2026 Jamro Tools. Built for speed.</p>
             <p className="inline-flex items-center justify-center gap-1">
               Made with
@@ -60,7 +60,7 @@ export function SiteFooter({ hasMarginBottom = false }) {
               by{" "}
               <a
                 href="https://github.com/shahzaibalijamro"
-                className="underline hover:text-[#d9e4f6]"
+                className="underline hover:text-[#d9e4f6] dark:hover:text-on-surface"
               >
                 Shahzaib Ali
               </a>

@@ -150,7 +150,7 @@ export function ToolsIndexView() {
             </div>
             <input
               ref={searchRef}
-              className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full pl-[48px] pr-[16px] py-[16px] focus:ring-2 focus:ring-primary/50 transition-all text-body-md shadow-sm outline-none dark:text-slate-100"
+              className="w-full bg-white dark:bg-surface-container border border-slate-200 dark:border-outline-variant rounded-full pl-[48px] pr-[16px] py-[16px] focus:ring-2 focus:ring-primary/50 transition-all text-body-md shadow-sm outline-none dark:text-on-surface"
               placeholder="Search for a tool (e.g. JSON formatter, PDF merge)..."
               type="text"
             />

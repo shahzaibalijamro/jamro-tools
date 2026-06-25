@@ -24,7 +24,7 @@ export default function AboutPage() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       />
 
-      <div className="min-h-screen bg-[#f9f9ff] dark:bg-[#0b1120] font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d] dark:text-slate-200">
+      <div className="min-h-screen bg-[#f9f9ff] dark:bg-background font-[Inter,var(--font-inter),var(--font-geist-sans),Arial,sans-serif] text-[#111c2d] dark:text-on-surface-variant">
         <SiteHeader />
 
         <main className="mx-auto max-w-[1280px] px-4 pb-8 sm:px-6 md:pb-12">

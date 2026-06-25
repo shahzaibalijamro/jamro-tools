@@ -36,7 +36,7 @@ export function TermsContentCard({ children }: TermsContentCardProps) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-w-0 flex-1 rounded-xl border border-[#c3c6d7] dark:border-slate-700 bg-white dark:bg-slate-800 p-8 transition-shadow duration-150"
+      className="min-w-0 flex-1 rounded-xl border border-[#c3c6d7] dark:border-outline-variant bg-white dark:bg-surface-container p-8 transition-shadow duration-150"
       style={{ boxShadow: shadowStyle }}
     >
       {children}

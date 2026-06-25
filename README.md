@@ -18,7 +18,6 @@ Jamro Tools is a comprehensive web platform offering hundreds of free online uti
 | **Converters** | 80+ unit, currency, file & data converters |
 | **Generators** | 45+ password, QR, UUID & code generators |
 | **Dev Tools** | 200+ JSON, Markdown, encoding & debugging tools |
-| **PDF Utils** | 32+ merge, split, compress & convert tools |
 | **Graphics** | 64+ image resize, crop, compress & filter tools |
 | **Text & SEO** | 112+ text manipulation, SEO & content tools |
 | **Cybersec** | 25+ hash, encrypt, encode & security tools |

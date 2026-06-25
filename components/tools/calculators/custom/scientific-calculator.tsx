@@ -129,7 +129,7 @@ export default function ScientificCalculator() {
       {/* Calculator Interface */}
       <section className="mx-auto mb-12 max-w-container-max grid grid-cols-1 xl:grid-cols-12 gap-[24px] items-start">
         {/* Main Calculator Card */}
-        <div className="xl:col-span-8 glass-card rounded-4xl p-6 shadow-xl relative overflow-hidden bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-glass-border">
+        <div className="xl:col-span-8 glass-card rounded-4xl p-6 shadow-xl relative overflow-hidden bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-glass-border">
           {/* Settings / Mode Toggle */}
           <div className="absolute top-[24px] left-[24px] flex gap-2 z-10">
             <button
@@ -231,10 +231,10 @@ export default function ScientificCalculator() {
           </div>
 
           {/* Statistics Card */}
-          <div className="bg-inverse-surface rounded-[2rem] p-[24px] text-on-primary shadow-xl">
+          <div className="bg-[#e7eeff] dark:bg-surface-container rounded-[2rem] p-[24px] text-[#111c2d] dark:text-on-surface shadow-xl">
             <div className="flex items-center gap-[16px] mb-[16px]">
-              <div className="w-12 h-12 rounded-xl bg-primary-fixed-dim flex items-center justify-center">
-                <span className="material-symbols-outlined text-primary text-[24px]">rocket_launch</span>
+              <div className="w-12 h-12 rounded-xl bg-[#004ac6] flex items-center justify-center">
+                <span className="material-symbols-outlined text-white text-[24px]">rocket_launch</span>
               </div>
               <h3 className="text-title-lg font-title-lg">Fast Processing</h3>
             </div>
@@ -257,7 +257,7 @@ export default function ScientificCalculator() {
 
       {/* History Section Full Width */}
       <section className="mx-auto max-w-container-max pb-[48px]">
-        <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-slate-800/70 backdrop-blur-md">
+        <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-surface-container/70 backdrop-blur-md">
           <div className="flex items-center justify-between mb-[16px]">
             <h4 className="font-label-md text-primary uppercase tracking-widest">History</h4>
             {history.length > 0 && (

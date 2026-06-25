@@ -67,7 +67,7 @@ export function ContactView() {
 
       <main
         ref={heroRef}
-        className="hero-mesh pt-[48px] pb-[48px]"
+        className="pt-[48px] pb-[48px]"
       >
         <div className="max-w-[1280px] mx-auto px-[24px]">
           {/* ── Header Section ── */}
@@ -165,10 +165,10 @@ export function ContactView() {
                 </div>
 
                 <button
-                  className={`w-full md:w-auto px-[48px] py-[16px] text-on-primary text-label-md rounded-full shadow-lg transition-all flex items-center justify-center gap-[8px] ${
+                  className={`w-full md:w-auto px-[48px] py-[16px] text-white text-label-md rounded-full shadow-lg transition-all flex items-center justify-center gap-[8px] ${
                     formStatus === "sent"
                       ? "bg-tertiary-container"
-                      : "bg-primary hover:bg-secondary hover:-translate-y-0.5 active:scale-95"
+                      : "bg-[#004ac6] hover:bg-[#0649c5] hover:-translate-y-0.5 active:scale-95"
                   }`}
                   type="submit"
                   disabled={formStatus !== "idle"}
@@ -208,7 +208,7 @@ export function ContactView() {
               {/* Contact Details Card */}
               <div className="glass-panel p-[24px] rounded-xl flex flex-col gap-[24px]">
                 <div className="flex items-start gap-[16px]">
-                  <div className="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-xl text-primary shrink-0">
+                  <div className="w-12 h-12 bg-[#004ac6] flex items-center justify-center rounded-xl text-white shrink-0">
                     <span className="material-symbols-outlined">mail</span>
                   </div>
                   <div>
@@ -222,7 +222,7 @@ export function ContactView() {
                 </div>
 
                 <div className="flex items-start gap-[16px]">
-                  <div className="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-xl text-primary shrink-0">
+                  <div className="w-12 h-12 bg-[#004ac6] flex items-center justify-center rounded-xl text-white shrink-0">
                     <span className="material-symbols-outlined">
                       location_on
                     </span>

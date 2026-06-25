@@ -86,7 +86,7 @@ export default function BasicCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[24px]">
           {/* Calculator Interface */}
           <div className="lg:col-span-8">
-            <div className="glass-card rounded-[2rem] p-[24px] shadow-xl relative overflow-hidden bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-glass-border">
+            <div className="glass-card rounded-[2rem] p-[24px] shadow-xl relative overflow-hidden bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-glass-border">
               {/* Interior Decorative Blur */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary-container/10 blur-3xl rounded-full"></div>
               {/* Display */}
@@ -212,7 +212,7 @@ export default function BasicCalculator() {
             </div>
             
             {/* History Section */}
-            <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-slate-800/70 backdrop-blur-md mt-[24px]">
+            <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-surface-container/70 backdrop-blur-md mt-[24px]">
               <div className="flex items-center justify-between mb-[16px]">
                 <h4 className="font-label-md text-primary uppercase tracking-widest">History</h4>
                 {history.length > 0 && (
@@ -249,16 +249,16 @@ export default function BasicCalculator() {
           {/* Functional Sidebar (Promo/Features) */}
           <div className="lg:col-span-4 space-y-[24px]">
 
-            <div className="bg-inverse-surface text-on-primary p-[24px] rounded-[2rem] shadow-lg relative overflow-hidden group">
+            <div className="bg-[#e7eeff] dark:bg-surface-container text-[#111c2d] dark:text-on-surface p-[24px] rounded-[2rem] shadow-lg relative overflow-hidden group">
               <div className="relative z-10">
-                <span className="bg-primary-container/30 px-[8px] py-[4px] rounded text-label-sm mb-[16px] inline-block">
+                <span className="bg-[#004ac6] text-white px-[8px] py-[4px] rounded text-label-sm mb-[16px] inline-block">
                   Pro Feature
                 </span>
                 <h3 className="font-title-lg text-title-lg mb-[8px]">Memory Slots</h3>
                 <p className="text-label-md opacity-80 mb-[16px]">
                   Store up to 10 variables for complex multi-stage calculations.
                 </p>
-                <button className="bg-on-primary text-primary px-[24px] py-[8px] rounded-full font-label-md hover:shadow-xl transition-all active:scale-95">
+                <button className="bg-[#004ac6] text-white px-[24px] py-[8px] rounded-full font-label-md hover:shadow-xl transition-all active:scale-95">
                   Try Jamro Pro
                 </button>
               </div>
@@ -268,7 +268,7 @@ export default function BasicCalculator() {
                 </span>
               </div>
             </div>
-            <div className="glass-card rounded-[2rem] p-[24px] border-dashed border-2 border-outline-variant bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
+            <div className="glass-card rounded-[2rem] p-[24px] border-dashed border-2 border-outline-variant bg-white/50 dark:bg-surface-container/50 backdrop-blur-sm">
               <h4 className="font-label-md text-primary uppercase tracking-widest mb-[16px]">
                 Quick Tips
               </h4>
@@ -297,7 +297,7 @@ export default function BasicCalculator() {
 
       {/* Subtle Ad Placeholder */}
       <div className="mx-auto mb-[48px] max-w-container-max">
-        <div className="w-full h-24 bg-surface-container rounded-2xl flex items-center justify-center border border-outline-variant/30 text-outline-variant font-label-sm uppercase tracking-widest">
+        <div className="w-full h-24 bg-surface-container rounded-2xl flex items-center justify-center border border-outline-variant/30 text-on-surface-variant font-label-sm uppercase tracking-widest">
           <span>Advertisement - Support Jamro Tools</span>
         </div>
       </div>
