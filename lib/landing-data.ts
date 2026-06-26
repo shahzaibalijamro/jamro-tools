@@ -183,3 +183,156 @@ export const footerColumns: FooterColumn[] = [
     ],
   },
 ];
+
+﻿export type PrivacyFeature = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export const privacyFeatures: PrivacyFeature[] = [
+  {
+    icon: "shield_person",
+    title: "Absolute Privacy",
+    description: "All processing happens locally in your browser. We never see your data, nor do we store it on our servers. Your security is our priority.",
+  },
+  {
+    icon: "bolt",
+    title: "Instant Speed",
+    description: "Optimized for sub-100ms response times. No waiting for server responses or bloated dependencies. Just immediate results.",
+  },
+  {
+    icon: "offline_bolt",
+    title: "Works Offline",
+    description: "Full Progressive Web App (PWA) support allows you to use your favorite tools even when you are completely disconnected from the web.",
+  },
+];
+
+export type SimplicityStep = {
+  step: string;
+  title: string;
+  description: string;
+};
+
+export const simplicitySteps: SimplicityStep[] = [
+  {
+    step: "1",
+    title: "Select Tool",
+    description: "Pick from our library of 50+ specialized utilities.",
+  },
+  {
+    step: "2",
+    title: "Input Data",
+    description: "Paste your text, upload your files, or enter values.",
+  },
+  {
+    step: "3",
+    title: "Instant Results",
+    description: "Get your output instantly. No loading bars, no wait.",
+  },
+];
+
+export type PopularTool = {
+  icon: string;
+  category: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+export const popularTools: PopularTool[] = [
+  {
+    icon: "data_object",
+    category: "Dev",
+    title: "JSON Formatter",
+    description: "Clean, validate, and beautify messy JSON strings instantly for better readability.",
+    href: "/tools/json-formatter",
+  },
+  {
+    icon: "password",
+    category: "Security",
+    title: "Password Generator",
+    description: "Generate cryptographically secure passwords with custom entropy requirements.",
+    href: "/tools/password-generator",
+  },
+  {
+    icon: "image",
+    category: "Graphics",
+    title: "Image Compressor",
+    description: "Reduce file size of PNG/JPG/WebP images without losing visual quality.",
+    href: "/tools/image-compressor",
+  },
+  {
+    icon: "qr_code_2",
+    category: "Utility",
+    title: "QR Code Generator",
+    description: "Create custom QR codes for URLs, WiFi, or text with high-resolution export.",
+    href: "/tools/qr-code",
+  },
+  {
+    icon: "currency_exchange",
+    category: "Finance",
+    title: "Currency Converter",
+    description: "Real-time conversion rates for 150+ global currencies and crypto assets.",
+    href: "/tools/currency",
+  },
+  {
+    icon: "straighten",
+    category: "Text",
+    title: "Unit Converter",
+    description: "Switch between metric and imperial units for length, weight, and volume.",
+    href: "/tools/unit-converter",
+  },
+];
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  accent: "blue" | "secondary" | "tertiary";
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    quote: "The JSON formatter is a life-saver for my daily debugging. No ads, no lag, just speed.",
+    name: "Sarah K.",
+    role: "Fullstack Engineer",
+    accent: "blue",
+  },
+  {
+    quote: "Privacy is huge for me. Knowing my client data never leaves my machine makes Jamro my go-to.",
+    name: "Michael T.",
+    role: "Security Analyst",
+    accent: "secondary",
+  },
+  {
+    quote: "I use the image compressor for every blog post. The quality retention is absolutely insane.",
+    name: "Elena R.",
+    role: "Content Creator",
+    accent: "tertiary",
+  },
+];
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export const homeFaqItems: FaqItem[] = [
+  {
+    question: "Is my data really secure?",
+    answer: "Yes. Jamro Tools uses client-side JavaScript for all operations. This means your data is processed directly in your browser and is never uploaded to any server. You can even use the site while offline.",
+  },
+  {
+    question: "Is Jamro Tools really free?",
+    answer: "Yes, every tool is 100% free with no hidden costs or premium tiers. We maintain low overhead by running tools locally and support the project through optional corporate sponsorships and minor non-intrusive affiliate links.",
+  },
+  {
+    question: "Can I suggest a new tool?",
+    answer: "Absolutely! We love community input. Please visit our Contact page or reach out on social media to suggest new features or specific tools you would like to see added to the system.",
+  },
+  {
+    question: "Does it work on mobile devices?",
+    answer: "Yes, Jamro Tools is fully responsive and designed to work seamlessly on smartphones, tablets, and desktops. The experience is optimized for touch and keyboard input alike.",
+  },
+];

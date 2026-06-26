@@ -35,7 +35,7 @@ function FeaturedToolCard({ tool }: { tool: FeaturedTool }) {
 
 export function HeroSection() {
   return (
-    <section className="relative lg:py-48 overflow-hidden bg-[linear-gradient(180deg,#eef4ff_0%,#edf3ff_75%,#f2f5ff_100%)] dark:bg-none dark:bg-surface-container-low pt-10 pb-20 min-[700px]:pt-[55px] min-[700px]:pb-[105px]">
+    <section className="relative lg:py-32 overflow-hidden bg-[linear-gradient(180deg,#eef4ff_0%,#edf3ff_75%,#f2f5ff_100%)] dark:bg-none dark:bg-surface-container-low pt-10 pb-20 min-[700px]:pt-[55px] min-[700px]:pb-[105px]">
       <Calculator
         className="absolute left-7 top-24 size-12 text-[#a9c4ff] dark:text-primary-container/60 opacity-60 min-[700px]:left-[54px] min-[700px]:top-[98px] min-[700px]:size-[52px]"
         strokeWidth={3}

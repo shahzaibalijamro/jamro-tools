@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Fragment } from "react";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { type BlogPost } from "@/lib/types/blog";
+import { Mail } from "lucide-react";
 
 interface BlogPostViewProps {
   post: BlogPost;
@@ -25,9 +26,9 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
       <SiteHeader />
 
       <main className="pt-9  pb-[48px]">
-        {/* ══════════════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             HERO SECTION
-           ══════════════════════════════════════════════════════════ */}
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <header className="max-w-[1280px] mx-auto px-[24px] mb-[48px]">
           <div className="flex flex-col items-center text-center mb-[24px]">
             {/* Category badges */}
@@ -95,11 +96,11 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
           </div>
         </header>
 
-        {/* ══════════════════════════════════════════════════════════
-            THREE-COLUMN LAYOUT: Skyscraper · Content · Skyscraper
-           ══════════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            THREE-COLUMN LAYOUT: Skyscraper Â· Content Â· Skyscraper
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="max-w-[1280px] mx-auto px-[24px] flex flex-col min-[1180px]:flex-row gap-[24px] justify-center items-start">
-          {/* ── Left Skyscraper Ad (hidden below xl) ── */}
+          {/* â”€â”€ Left Skyscraper Ad (hidden below xl) â”€â”€ */}
           <aside className="hidden min-[1180px]:flex w-[160px] h-[600px] sticky top-[100px] bg-surface-container flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden shrink-0">
             <span className="text-[10px] uppercase tracking-widest text-outline mb-[4px] text-label-sm">
               Advertisement
@@ -109,7 +110,7 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
             </div>
           </aside>
 
-          {/* ── Central Content Column ── */}
+          {/* â”€â”€ Central Content Column â”€â”€ */}
           <div className="flex-1 w-full mx-auto max-w-3xl">
             {/* Leaderboard Ad */}
             <div className="mb-[48px] flex justify-center">
@@ -123,7 +124,7 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
               </div>
             </div>
 
-            {/* ── Article Body ── */}
+            {/* â”€â”€ Article Body â”€â”€ */}
             <article className="text-body-lg text-on-surface-variant leading-relaxed">
               {post.content ? (
                 <Markdown content={post.content} />
@@ -146,11 +147,11 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
               </div>
             </div>
 
-            {/* ── FAQ Section (auto-extracted from "## Frequently Asked Questions") ── */}
+            {/* â”€â”€ FAQ Section (auto-extracted from "## Frequently Asked Questions") â”€â”€ */}
             <FAQFromContent content={post.content} />
           </div>
 
-          {/* ── Right Skyscraper Ad (hidden below xl) ── */}
+          {/* â”€â”€ Right Skyscraper Ad (hidden below xl) â”€â”€ */}
           <aside className="hidden min-[1180px]:flex w-[160px] h-[600px] sticky top-[100px] bg-surface-container flex-col items-center justify-center border border-outline-variant rounded-lg overflow-hidden shrink-0">
             <span className="text-[10px] uppercase tracking-widest text-outline mb-[4px] text-label-sm">
               Advertisement
@@ -161,9 +162,74 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
           </aside>
         </div>
 
-        {/* ══════════════════════════════════════════════════════════
+        {/* 
+            AUTHOR CARD
+        */}
+        <section className="max-w-[1280px] mx-auto px-[24px] mt-[48px]">
+          <div className="glass-card rounded-2xl border border-outline-variant p-[32px] md:p-[40px] flex flex-col md:flex-row items-center md:items-start gap-[24px] md:gap-[32px]">
+            {/* Avatar */}
+            <div className="w-[96px] h-[96px] md:w-[112px] md:h-[112px] shrink-0 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container border-2 border-outline-variant">
+              <img src="https://secure.gravatar.com/avatar/01a107cf38b86d6375dfc125b405d97f9545d8495fdd8b636b29082f99d0fbab?s=192&d=mm&r=g" alt="Profile Pic of Shahzaib Ali" className="w-full h-full object-cover rounded-full" />
+            </div>
+
+            {/* Text content */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-title-lg text-on-surface mb-[8px]">
+                Written by Umer Ali
+              </h2>
+              <p className="text-body-md text-on-surface-variant leading-relaxed">
+                Umer Ali is an SEO expert and founder of Jamro Tools, helping websites improve visibility, rankings, and organic growth through modern search optimization and AI-driven strategies.
+              </p>
+
+              {/* Social links */}
+              <div className="mt-[16px] flex items-center justify-center md:justify-start gap-[12px]">
+                <a
+                  href="mailto:umeralijamro@gmail.com"
+                  className="group w-[40px] h-[40px] rounded-full bg-surface-container-highest flex items-center justify-center transition-colors border border-outline-variant hover:border-[#EA4335] hover:bg-[#EA4335]/10"
+                  aria-label="Email Shahzaib Ali"
+                >
+                  <Mail className="w-[20px] h-[20px] text-[#EA4335]" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/umeralijamro/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-[40px] h-[40px] rounded-full bg-surface-container-highest flex items-center justify-center transition-colors border border-outline-variant hover:border-[#0A66C2] hover:bg-[#0A66C2]/10"
+                  aria-label="Shahzaib Ali on LinkedIn"
+                >
+                  <svg className="w-[20px] h-[20px] text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.instagram.com/theprofessionalmarketer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-[40px] h-[40px] rounded-full bg-surface-container-highest flex items-center justify-center transition-colors border border-outline-variant hover:border-[#E1306C] hover:bg-[#E1306C]/10"
+                  aria-label="Shahzaib Ali on Instagram"
+                >
+                  <svg className="w-[20px] h-[20px]" fill="url(#ig-gradient)" viewBox="0 0 24 24" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#feda75" />
+                        <stop offset="30%" stopColor="#fa7e1e" />
+                        <stop offset="50%" stopColor="#d62976" />
+                        <stop offset="75%" stopColor="#962fbf" />
+                        <stop offset="100%" stopColor="#4f5bd5" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.351.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.667 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.717 2.126-1.384.667-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227a3.81 3.81 0 0 1-.899 1.382 3.744 3.744 0 0 1-1.38.896c-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421a3.716 3.716 0 0 1-1.379-.899 3.644 3.644 0 0 1-.9-1.38c-.179-.464-.358-1.097-.414-2.227-.057-1.274-.07-1.649-.07-4.859s.015-3.585.07-4.85c.057-1.171.249-1.814.414-2.235.222-.56.477-.96.896-1.381.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413C8.415 2.175 8.797 2.16 12 2.16zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             RELATED ARTICLES
-           ══════════════════════════════════════════════════════════ */}
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <section className="max-w-[1280px] mx-auto px-[24px] mt-[48px]">
           <div className="flex items-center justify-between mb-[24px]">
             <h2 className="text-headline-md text-on-surface">
@@ -193,12 +259,12 @@ export function BlogPostView({ post, relatedPosts }: BlogPostViewProps) {
   );
 }
 
-// ────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Markdown renderer (block-level + inline)
 // Supports: H2/H3/H4, paragraphs, blockquotes, code blocks,
 // ordered/unordered lists, tables, horizontal rules,
 // inline **bold**, *italic*, `code`, [text](url).
-// ────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 type Block =
   | { kind: "h"; level: 2 | 3 | 4; text: string }
@@ -236,7 +302,7 @@ function parseBlocks(md: string): Block[] {
   const blocks: Block[] = [];
   let i = 0;
   // Track which lines belong to the FAQ section so we can drop them
-  // from the body — that section is rendered separately by
+  // from the body â€” that section is rendered separately by
   // FAQFromContent. The FAQ is the last H2/H3/H4 section whose title
   // matches "Frequently Asked Questions" before the next same-or-higher
   // heading or end of file.
@@ -295,7 +361,7 @@ function parseBlocks(md: string): Block[] {
       const level = h[1].length as 2 | 3 | 4;
       const headingText = h[2].trim();
       // Skip the auto-generated "Table of Contents" block at the top of
-      // the post — it duplicates navigation that's already in the page.
+      // the post â€” it duplicates navigation that's already in the page.
       if (/^table of contents$/i.test(headingText)) {
         i++;
         while (
@@ -587,12 +653,12 @@ function Markdown({ content }: { content: string }) {
   );
 }
 
-// ────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Extract a "Frequently Asked Questions" section from the
 // markdown and render it as a collapsible list. The post's
 // FAQ lives in the body already, so this hides that section
 // and surfaces it in the design's FAQ block.
-// ────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function FAQFromContent({ content }: { content?: string }) {
   if (!content) return null;
 
