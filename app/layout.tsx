@@ -29,9 +29,6 @@ export const metadata: Metadata = {
   title: "JAMRO TOOLS",
   description:
     "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",
-  icons: {
-    icon: "/favicon.png",
-  },
   verification: {
     google: "Uz-tsuTDMUc4nsDWS0fkaCOLA54as0IUgIQiQ5YwU3o",
   },
