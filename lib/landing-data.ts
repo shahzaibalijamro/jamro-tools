@@ -10,6 +10,7 @@ export type LandingIcon =
   | "others"
   | "password"
   | "pdf"
+  | "text"
   | "qr"
   | "security"
   | "text-seo";
@@ -82,9 +83,9 @@ export const categories: ToolCategory[] = [
     tone: "blue",
   },
   {
-    title: "Generators",
+    title: "SEO Tools",
     count: "45+ tools",
-    href: "/tools/generators",
+    href: "/tools/seo-tools",
     icon: "generator",
     tone: "orange",
   },
@@ -96,31 +97,31 @@ export const categories: ToolCategory[] = [
     tone: "blue",
   },
   {
-    title: "Graphics",
+    title: "Image Tools",
     count: "64+ tools",
-    href: "/tools/graphics",
+    href: "/tools/image-tools",
     icon: "graphics",
     tone: "orange",
   },
   {
-    title: "Text & SEO",
+    title: "PDF Tools",
     count: "112+ tools",
-    href: "/tools/text-seo",
-    icon: "text-seo",
+    href: "/tools/pdf-tools",
+    icon: "pdf",
     tone: "blue",
   },
   {
-    title: "Cybersec",
+    title: "Text Tools",
     count: "25+ tools",
-    href: "/tools/cybersec",
-    icon: "security",
+    href: "/tools/text-tools",
+    icon: "text",
     tone: "blue",
   },
   {
-    title: "Finance",
+    title: "Security Tools",
     count: "58+ tools",
-    href: "/tools/finance",
-    icon: "finance",
+    href: "/tools/security-tools",
+    icon: "security",
     tone: "orange",
   }
 ];
@@ -184,7 +185,7 @@ export const footerColumns: FooterColumn[] = [
   },
 ];
 
-﻿export type PrivacyFeature = {
+export type PrivacyFeature = {
   icon: string;
   title: string;
   description: string;
@@ -193,18 +194,18 @@ export const footerColumns: FooterColumn[] = [
 export const privacyFeatures: PrivacyFeature[] = [
   {
     icon: "shield_person",
-    title: "Absolute Privacy",
-    description: "All processing happens locally in your browser. We never see your data, nor do we store it on our servers. Your security is our priority.",
+    title: "Absolute Data Privacy",
+    description: "As a strict privacy-first web utility platform, all data processing happens locally within your browser sandbox. Your sensitive files, strings, and inputs are never uploaded to remote servers or stored in databases. What stays on your machine stays yours.",
   },
   {
     icon: "bolt",
-    title: "Instant Speed",
-    description: "Optimized for sub-100ms response times. No waiting for server responses or bloated dependencies. Just immediate results.",
+    title: "Sub-100ms Performance",
+    description: "Engineered for ultimate efficiency, our free online web utilities leverage advanced client-side JavaScript. By eliminating slow server roundtrips and API delays, you get near-instantaneous output. This ensures a fluid experience even on low-bandwidth connections.",
   },
   {
     icon: "offline_bolt",
-    title: "Works Offline",
-    description: "Full Progressive Web App (PWA) support allows you to use your favorite tools even when you are completely disconnected from the web.",
+    title: "Zero Installation Required",
+    description: "Access a comprehensive digital workshop instantly from any device. There are no bulky software downloads, browser extensions, or account sign-ups required. You get pure, web-based utility tools available whenever you are connected.",
   },
 ];
 
@@ -320,19 +321,28 @@ export type FaqItem = {
 
 export const homeFaqItems: FaqItem[] = [
   {
-    question: "Is my data really secure?",
-    answer: "Yes. Jamro Tools uses client-side JavaScript for all operations. This means your data is processed directly in your browser and is never uploaded to any server. You can even use the site while offline.",
+    question: "What are the best free online web utilities for developers?",
+    answer:
+      "Jamro Tools provides a comprehensive suite of free online web utilities designed for developers, creators, and SEO professionals. Our cloud-based workshop features over 50 specialized tools, including a client-side JSON formatter, an efficient image compressor, and a secure password generator to help streamline daily technical workflows instantly.",
   },
   {
-    question: "Is Jamro Tools really free?",
-    answer: "Yes, every tool is 100% free with no hidden costs or premium tiers. We maintain low overhead by running tools locally and support the project through optional corporate sponsorships and minor non-intrusive affiliate links.",
+    question: "Do client-side web tools require an internet connection?",
+    answer:
+      "Yes, Jamro Tools is a fully online web utility platform that requires an active internet connection to load and initialize its scripts. Once the web-based utility is loaded on your screen, the processing executes securely inside your browser sandbox, eliminating the need to upload files or private text to a remote database.",
   },
   {
-    question: "Can I suggest a new tool?",
-    answer: "Absolutely! We love community input. Please visit our Contact page or reach out on social media to suggest new features or specific tools you would like to see added to the system.",
+    question: "How does internet connection affect online tool performance?",
+    answer:
+      "Because Jamro Tools operates as an online service, your initial loading times depend on your current internet speed. A stable, high-speed connection ensures that complex developer tools, calculators, and graphics scripts render quickly in your browser for immediate, real-time data processing.",
   },
   {
-    question: "Does it work on mobile devices?",
-    answer: "Yes, Jamro Tools is fully responsive and designed to work seamlessly on smartphones, tablets, and desktops. The experience is optimized for touch and keyboard input alike.",
+    question: "Are there safe online tools that don't upload my data?",
+    answer:
+      "Absolutely. Jamro Tools is engineered as a privacy-first web utility platform. Even though the platform is accessed online over the internet, we never upload your data, input strings, or sensitive files to our servers. All operations happen directly inside your web browser to maintain strict data privacy.",
+  },
+  {
+    question: "Can I access free web tools without downloading software?",
+    answer:
+      "Yes, you can access the entire catalog at Jamro Tools instantly through any modern web browser without downloading bulky software, desktop applications, or third-party browser extensions. Simply visit the website to access professional-grade utilities completely free with no registration required.",
   },
 ];

@@ -13,6 +13,7 @@ import {
   Shapes,
   ShieldCheck,
   Wrench,
+  Text,
   type LucideIcon,
 } from "lucide-react";
 
@@ -33,6 +34,7 @@ const iconComponents = {
   qr: QrCode,
   security: ShieldCheck,
   "text-seo": Languages,
+  "text": Text
 } satisfies Record<LandingIcon, LucideIcon>;
 
 const toneStyles: Record<IconTone, string> = {

@@ -70,14 +70,12 @@ export function HeroSection() {
               100% free. No sign-up.
             </span>
             <span className="hidden min-[700px]:inline">
-              Every tool you need. 100% free.<br /> No
-
-              sign-up.
+              Every Web Utility You Need. 100% Free. <br /> Zero Server Uploads.
             </span>
           </h1>
 
           <p className="mt-6 max-w-[760px] text-[20px] font-medium leading-[1.45] text-[var(--color-muted)] min-[700px]:mt-6 min-[700px]:max-w-[760px] min-[700px]:text-[21px] min-[700px]:leading-[1.45]">
-            Experience lightning-fast, privacy-first utility tools that run entirely in your browser. No data leaves your machine—everything stays local and secure.
+            Streamline your workflow with lightning-fast, privacy-first online tools that run entirely in your web browser.
           </p>
 
           <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 min-[700px]:mt-[56px] min-[700px]:flex-row min-[700px]:gap-5">
