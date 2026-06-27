@@ -1,4 +1,4 @@
-﻿import { Container } from "@/components/ui/container";
+import { Container } from "@/components/ui/container";
 import { simplicitySteps } from "@/lib/landing-data";
 
 export function SimplicitySection() {
@@ -26,9 +26,9 @@ export function SimplicitySection() {
               <div className="flex size-24 items-center justify-center rounded-full bg-[var(--color-brand)] text-white text-[36px] font-extrabold shadow-lg border-8 border-[var(--color-page)] dark:border-surface-container dark:text-on-primary dark:bg-primary">
                 {step.step}
               </div>
-              <h4 className="mt-4 text-[20px] font-extrabold leading-tight text-[var(--color-ink)] min-[700px]:text-[18px]">
+              <h3 className="mt-4 text-[20px] font-extrabold leading-tight text-[var(--color-ink)] min-[700px]:text-[18px]">
                 {step.title}
-              </h4>
+              </h3>
               <p className="mt-2 text-[15px] font-medium leading-relaxed text-[var(--color-muted)] dark:text-on-surface-variant min-[700px]:text-[14px]">
                 {step.description}
               </p>

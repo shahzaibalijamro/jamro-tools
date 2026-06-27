@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useCallback } from "react";
 import Link from "next/link";
@@ -32,7 +32,16 @@ export function SafeLink({
     [hrefStr, onClick, showToast, toastMessage]
   );
 
-  return <Link href={href} onClick={handleClick} {...rest} />;
+  const isInvalid = Boolean(hrefStr && !isValidRoute(hrefStr));
+
+  return (
+    <Link
+      href={href}
+      onClick={handleClick}
+      prefetch={isInvalid ? false : rest.prefetch}
+      {...rest}
+    />
+  );
 }
 
 
