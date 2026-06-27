@@ -30,7 +30,7 @@ const materialSymbols = localFont({
   variable: "--font-material-symbols",
   weight: "400",
   style: "normal",
-  display: "block",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
