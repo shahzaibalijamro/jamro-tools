@@ -448,13 +448,13 @@ export function SiteHeader() {
             <div className="flex-1" />
 
             {/* Request a Tool */}
-            <Link
+            <SafeLink
               href="/request-tool"
               onClick={closeSidebar}
               className="mb-4 flex h-12 w-full items-center justify-center rounded-full bg-[#004ac6] text-[16px] font-extrabold text-white transition hover:bg-[#0649c5]"
             >
               Request a Tool
-            </Link>
+            </SafeLink>
 
             {/* Night mode toggle */}
             <button
