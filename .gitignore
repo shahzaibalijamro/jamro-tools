@@ -9,6 +9,8 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+jamrotools.com-20260701T205131.json
+parse-lh.js
 
 # testing
 /coverage
