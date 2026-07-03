@@ -1,4 +1,5 @@
 "use client";
+import { FaqSection } from "@/components/ui/faq-section";
 
 import { useState, useMemo } from "react";
 
@@ -217,41 +218,7 @@ export default function PercentageDecreaseCalculator() {
       </section>
 
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto py-[48px] border-t border-outline-variant">
-        <h2 className="text-[32px] leading-[1.2] font-semibold mb-[24px] text-center">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-[16px]">
-          {faqItems.map((item, i) => (
-            <details
-              key={i}
-              className="group rounded-xl"
-              style={{
-                backdropFilter: "blur(12px)",
-                background: "rgba(255, 255, 255, 0.7)",
-                border: "1px solid rgba(226, 232, 240, 0.8)",
-              }}
-            >
-              <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
-                <span className="text-[20px] leading-[1.4] font-semibold text-on-surface">
-                  {item.q}
-                </span>
-                <span className="material-symbols-outlined group-open:rotate-180 transition-transform">
-                  expand_more
-                </span>
-              </summary>
-              <div className="px-[24px] pb-[24px] text-[16px] leading-[1.6] text-on-surface-variant">
-                {item.a}
-                {"formula" in item && (
-                  <div className="mt-[16px] p-[16px] bg-[#e7eeff] dark:bg-surface-container rounded-lg font-mono text-[14px]">
-                    {item.formula}
-                  </div>
-                )}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
+      <FaqSection items={faqItems} />
     </>
   );
 }

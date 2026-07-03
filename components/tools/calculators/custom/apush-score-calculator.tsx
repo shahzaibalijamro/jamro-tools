@@ -1,4 +1,5 @@
 "use client";
+import { FaqSection } from "@/components/ui/faq-section";
 
 import { useState, useMemo } from "react";
 
@@ -78,12 +79,7 @@ export default function ApushScoreCalculator() {
         {/* ── Inputs Panel ── */}
         <div className="lg:col-span-4 space-y-[16px]">
           <div
-            className="p-[24px] rounded-xl shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="p-[24px] rounded-xl shadow-sm bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             <h3 className="text-[22px] leading-[28px] font-semibold mb-[24px] flex items-center gap-[8px]">
               <span className="material-symbols-outlined text-primary">
@@ -198,12 +194,7 @@ export default function ApushScoreCalculator() {
         {/* ── Results Panel ── */}
         <div className="lg:col-span-8">
           <div
-            className="rounded-xl overflow-hidden h-full flex flex-col shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="rounded-xl overflow-hidden h-full flex flex-col shadow-sm bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             <div className="p-[24px] flex-grow flex flex-col">
               {/* Score Hero */}
@@ -298,37 +289,8 @@ export default function ApushScoreCalculator() {
         </div>
       </section>
 
-      {/* ── FAQ Section ── */}
-      <section className="max-w-4xl mx-auto py-[48px] border-t border-outline-variant">
-        <h2 className="text-[28px] leading-[36px] font-semibold mb-[24px] text-center">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-[16px]">
-          {faqItems.map((item, i) => (
-            <details
-              key={i}
-              className="group rounded-xl"
-              style={{
-                backdropFilter: "blur(12px)",
-                background: "rgba(255, 255, 255, 0.7)",
-                border: "1px solid rgba(226, 232, 240, 0.8)",
-              }}
-            >
-              <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
-                <span className="text-[14px] font-semibold text-on-surface">
-                  {item.q}
-                </span>
-                <span className="material-symbols-outlined group-open:rotate-180 transition-transform">
-                  expand_more
-                </span>
-              </summary>
-              <div className="px-[24px] pb-[24px] text-on-surface-variant">
-                {item.a}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
+      {/* FAQ Section */}
+      <FaqSection items={faqItems} />
     </>
   );
 }

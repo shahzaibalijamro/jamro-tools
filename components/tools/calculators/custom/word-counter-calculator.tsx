@@ -1,4 +1,5 @@
 "use client";
+import { FaqSection } from "@/components/ui/faq-section";
 
 import { useMemo, useState } from "react";
 
@@ -164,48 +165,24 @@ export default function WordCounterCalculator() {
             </section>
 
             {/* FAQ Section */}
-            <section className="max-w-4xl mx-auto py-[48px] border-t border-outline-variant">
-                <h2 className="text-[28px] leading-[36px] font-semibold mb-[24px] text-center">
-                    Frequently Asked Questions
-                </h2>
-                <div className="space-y-[16px]">
-                    {[
-                        {
-                            q: "How is word count calculated?",
-                            a: "Words are counted by splitting your text on whitespace (spaces, tabs, and newlines). Multiple spaces are treated as a single separator.",
-                        },
-                        {
-                            q: "What does ‘No Spaces’ mean?",
-                            a: "It’s the number of characters after removing all whitespace (spaces, tabs, and newlines).",
-                        },
-                        {
-                            q: "Why might sentence count differ from other counters?",
-                            a: "Sentence detection uses a simple punctuation heuristic ([.!?]) and may not match every writing style or abbreviation pattern.",
-                        },
-                        {
-                            q: "Is this tool private?",
-                            a: "Yes. Everything runs in your browser; your text is not sent to a server.",
-                        },
-                    ].map((item, i) => (
-                        <details
-                            key={i}
-                            className="group rounded-xl backdrop-blur-[12px] bg-white/70 dark:bg-surface-container/70 border border-slate-200/80 dark:border-outline-variant/80"
-                        >
-                            <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
-                                <span className="text-[14px] font-semibold text-on-surface">
-                                    {item.q}
-                                </span>
-                                <span className="material-symbols-outlined group-open:rotate-180 transition-transform">
-                                    expand_more
-                                </span>
-                            </summary>
-                            <div className="px-[24px] pb-[24px] text-on-surface-variant">
-                                {item.a}
-                            </div>
-                        </details>
-                    ))}
-                </div>
-            </section>
+            <FaqSection items={[
+                {
+                    q: "How is word count calculated?",
+                    a: "Words are counted by splitting your text on whitespace (spaces, tabs, and newlines). Multiple spaces are treated as a single separator.",
+                },
+                {
+                    q: "What does 'No Spaces' mean?",
+                    a: "It's the number of characters after removing all whitespace (spaces, tabs, and newlines).",
+                },
+                {
+                    q: "Why might sentence count differ from other counters?",
+                    a: "Sentence detection uses a simple punctuation heuristic ([.!?]) and may not match every writing style or abbreviation pattern.",
+                },
+                {
+                    q: "Is this tool private?",
+                    a: "Yes. Everything runs in your browser; your text is not sent to a server.",
+                },
+            ]} />
         </>
     );
 }

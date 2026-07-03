@@ -1,4 +1,5 @@
 "use client";
+import { FaqSection } from "@/components/ui/faq-section";
 
 import { useState, useMemo } from "react";
 
@@ -427,31 +428,7 @@ export default function MortgageCalculator() {
       )}
 
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto py-[48px] border-t border-outline-variant">
-        <h2 className="text-[28px] leading-[36px] font-semibold mb-[24px] text-center">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-[16px]">
-          {faqItems.map((item, i) => (
-            <details
-              key={i}
-              className="glass-panel group rounded-xl"
-            >
-              <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
-                <span className="text-[14px] font-semibold text-on-surface">
-                  {item.q}
-                </span>
-                <span className="material-symbols-outlined group-open:rotate-180 transition-transform">
-                  expand_more
-                </span>
-              </summary>
-              <div className="px-[24px] pb-[24px] text-on-surface-variant">
-                {item.a}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
+      <FaqSection items={faqItems} />
     </>
   );
 }

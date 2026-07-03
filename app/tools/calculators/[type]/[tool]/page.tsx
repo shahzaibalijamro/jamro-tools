@@ -46,18 +46,25 @@ export async function generateMetadata({
     return { title: "Tool Not Found | Jamro Tools" };
   }
 
-  if (override) {
-    return {
-      title: override.title,
-      description: override.description,
-      alternates: { canonical: `/tools/calculators/${type}/${tool}` },
-    };
-  }
+  const title = override ? override.title : `${toolConfig.title} | Jamro Tools`;
+  const description = override ? override.description : toolConfig.description;
+  const url = `https://jamrotools.com/tools/calculators/${type}/${tool}`;
 
   return {
-    title: `${toolConfig.title} | Jamro Tools`,
-    description: toolConfig.description,
-    alternates: { canonical: `/tools/calculators/${type}/${tool}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

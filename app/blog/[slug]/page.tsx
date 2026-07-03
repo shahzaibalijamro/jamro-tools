@@ -16,7 +16,8 @@ export async function generateMetadata({
   const query = `*[_type == "blogPost" && slug.current == $slug && publishedAt <= now()][0] {
     title,
     seoTitle,
-    description
+    description,
+    "imageUrl": mainImage.asset->url
   }`;
   
   const post = await client.fetch(query, { slug });
@@ -25,10 +26,26 @@ export async function generateMetadata({
     return { title: "Post Not Found | Jamro Tools Blog" };
   }
 
+  const title = post.seoTitle || `${post.title} | Jamro Tools Blog`;
+  const url = `https://jamrotools.com/blog/${slug}`;
+
   return {
-    title: post.seoTitle || `${post.title} | Jamro Tools Blog`,
+    title,
     description: post.description,
-    alternates: { canonical: `/blog/${slug}` },
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description: post.description,
+      url,
+      type: "article",
+      images: post.imageUrl ? [{ url: post.imageUrl }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: post.description,
+      images: post.imageUrl ? [post.imageUrl] : [],
+    },
   };
 }
 

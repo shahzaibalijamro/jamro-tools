@@ -1,4 +1,5 @@
 "use client";
+import { FaqSection } from "@/components/ui/faq-section";
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 
@@ -133,12 +134,7 @@ export default function MiddleSchoolGpaCalculator() {
           </div>
 
           <div
-            className="rounded-xl shadow-sm p-[24px] space-y-[16px]"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="rounded-xl shadow-sm p-[24px] space-y-[16px] bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             <h2 className="text-[20px] leading-[1.4] font-semibold text-[var(--color-brand)]">
               Course Grades
@@ -152,7 +148,7 @@ export default function MiddleSchoolGpaCalculator() {
                 >
                   <div className="grid grid-cols-2 gap-[8px] mb-[8px]">
                     <input
-                      className="col-span-2 bg-[#f0f3ff] border-none rounded-lg p-[8px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px]"
+                      className="col-span-2 bg-[#f0f3ff] dark:bg-surface-container-highest text-on-surface border-none rounded-lg p-[8px] focus:ring-2 focus:ring-primary/20 transition-all outline-none text-[16px]"
                       placeholder="Course (e.g. Math)"
                       type="text"
                       value={course.name}
@@ -164,7 +160,7 @@ export default function MiddleSchoolGpaCalculator() {
                   <div className="grid grid-cols-2 gap-[8px]">
                     <div className="relative">
                       <select
-                        className="bg-[#f0f3ff] border-none rounded-lg p-[8px] pr-[32px] text-[14px] font-semibold appearance-none cursor-pointer w-full"
+                        className="bg-[#f0f3ff] dark:bg-surface-container-highest text-on-surface border-none rounded-lg p-[8px] pr-[32px] text-[14px] font-semibold appearance-none cursor-pointer w-full"
                         value={course.grade}
                         onChange={(e) =>
                           handleCourseChange(
@@ -186,7 +182,7 @@ export default function MiddleSchoolGpaCalculator() {
                     </div>
                     <div className="relative">
                       <input
-                        className="bg-[#f0f3ff] border-none rounded-lg p-[8px] text-[14px] font-semibold w-full focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                        className="bg-[#f0f3ff] dark:bg-surface-container-highest text-on-surface border-none rounded-lg p-[8px] text-[14px] font-semibold w-full focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                         placeholder="Credits"
                         type="number"
                         step="0.5"
@@ -237,12 +233,7 @@ export default function MiddleSchoolGpaCalculator() {
         {/* Right – Results */}
         <section className="lg:col-span-8 flex flex-col gap-[24px]">
           <div
-            className="rounded-xl p-[48px] flex flex-col items-center text-center gap-[24px] relative overflow-hidden"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="rounded-xl p-[48px] flex flex-col items-center text-center gap-[24px] relative overflow-hidden bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             {/* Background Decoration */}
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
@@ -265,7 +256,7 @@ export default function MiddleSchoolGpaCalculator() {
                   fill="transparent"
                   strokeWidth="20"
                   stroke="currentColor"
-                  className="text-[#d8e3fb]"
+                  className="text-[#d8e3fb] dark:text-surface-container-highest"
                 />
                 <circle
                   cx="128"
@@ -299,8 +290,8 @@ export default function MiddleSchoolGpaCalculator() {
               </div>
             )}
             {calcTriggered && gpaResult.gpa < 3.5 && gpaResult.isValid && (
-              <div className="bg-[#d8e2ff] px-[24px] py-[8px] rounded-full relative z-10">
-                <p className="text-[18px] leading-[1.6] text-[#001a42] font-bold">
+              <div className="bg-[#d8e2ff] dark:bg-primary-container px-[24px] py-[8px] rounded-full relative z-10">
+                <p className="text-[18px] leading-[1.6] text-[#001a42] dark:text-on-primary-container font-bold">
                   Keep going! A little more effort can boost your grades significantly.
                 </p>
               </div>
@@ -308,7 +299,7 @@ export default function MiddleSchoolGpaCalculator() {
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 gap-[24px] w-full max-w-md relative z-10">
-              <div className="bg-[#f0f3ff] rounded-xl p-[16px] border border-[#c3c6d6]/20">
+              <div className="bg-[#f0f3ff] dark:bg-surface-container rounded-xl p-[16px] border border-[#c3c6d6]/20 dark:border-outline-variant/30">
                 <span className="block text-[14px] leading-[1.4] font-semibold tracking-[0.01em] text-on-surface-variant mb-[4px]">
                   Total Credits
                 </span>
@@ -316,7 +307,7 @@ export default function MiddleSchoolGpaCalculator() {
                   {gpaResult.totalCredits.toFixed(1)}
                 </span>
               </div>
-              <div className="bg-[#f0f3ff] rounded-xl p-[16px] border border-[#c3c6d6]/20">
+              <div className="bg-[#f0f3ff] dark:bg-surface-container rounded-xl p-[16px] border border-[#c3c6d6]/20 dark:border-outline-variant/30">
                 <span className="block text-[14px] leading-[1.4] font-semibold tracking-[0.01em] text-on-surface-variant mb-[4px]">
                   Avg Percentage
                 </span>
@@ -330,12 +321,7 @@ export default function MiddleSchoolGpaCalculator() {
           {/* Bento Style Features */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
             <div
-              className="rounded-xl p-[24px] flex items-center gap-[24px]"
-              style={{
-                backdropFilter: "blur(12px)",
-                background: "rgba(255, 255, 255, 0.7)",
-                border: "1px solid rgba(226, 232, 240, 0.8)",
-              }}
+              className="rounded-xl p-[24px] flex items-center gap-[24px] bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
             >
               <div className="w-12 h-12 rounded-full bg-[#5b94fd] flex items-center justify-center text-white shrink-0">
                 <span className="material-symbols-outlined">auto_awesome</span>
@@ -350,12 +336,7 @@ export default function MiddleSchoolGpaCalculator() {
               </div>
             </div>
             <div
-              className="rounded-xl p-[24px] flex items-center gap-[24px]"
-              style={{
-                backdropFilter: "blur(12px)",
-                background: "rgba(255, 255, 255, 0.7)",
-                border: "1px solid rgba(226, 232, 240, 0.8)",
-              }}
+              className="rounded-xl p-[24px] flex items-center gap-[24px] bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
             >
               <div className="w-12 h-12 rounded-full bg-[#ffdbcd] flex items-center justify-center text-[#360f00] shrink-0">
                 <span className="material-symbols-outlined">verified_user</span>
@@ -374,36 +355,7 @@ export default function MiddleSchoolGpaCalculator() {
       </section>
 
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto py-[48px] border-t border-outline-variant">
-        <h2 className="text-[32px] leading-[1.2] font-semibold mb-[24px] text-center">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-[16px]">
-          {faqItems.map((item, i) => (
-            <details
-              key={i}
-              className="group rounded-xl"
-              style={{
-                backdropFilter: "blur(12px)",
-                background: "rgba(255, 255, 255, 0.7)",
-                border: "1px solid rgba(226, 232, 240, 0.8)",
-              }}
-            >
-              <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
-                <span className="text-[20px] leading-[1.4] font-semibold text-on-surface">
-                  {item.q}
-                </span>
-                <span className="material-symbols-outlined group-open:rotate-180 transition-transform">
-                  expand_more
-                </span>
-              </summary>
-              <div className="px-[24px] pb-[24px] text-[16px] leading-[1.6] text-on-surface-variant">
-                {item.a}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
+      <FaqSection items={faqItems} />
     </>
   );
 }

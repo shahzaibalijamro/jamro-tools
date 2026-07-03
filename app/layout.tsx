@@ -40,6 +40,19 @@ export const metadata: Metadata = {
   verification: {
     google: "Uz-tsuTDMUc4nsDWS0fkaCOLA54as0IUgIQiQ5YwU3o",
   },
+  openGraph: {
+    title: "JAMRO TOOLS",
+    description: "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",
+    url: "https://jamrotools.com",
+    siteName: "Jamro Tools",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JAMRO TOOLS",
+    description: "Explore free calculators, converters, generators, and utilities from JAMRO TOOLS.",
+  },
 };
 
 export default function RootLayout({
@@ -70,14 +83,6 @@ export default function RootLayout({
             `
           }}
         />
-        {isProd && (
-          <Script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9700447325625085"
-            crossOrigin="anonymous"
-            strategy="lazyOnload"
-          />
-        )}
       </head>
       <body className="bg-background text-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-full">
         <ToastProvider>
