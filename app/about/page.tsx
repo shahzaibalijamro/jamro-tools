@@ -12,7 +12,18 @@ export const metadata: Metadata = {
   title: "About Jamro Tools – Free, Private & Browser-Based Utilities",
   description:
     "Jamro Tools is a free, privacy-first toolbox for students, developers & professionals. Every tool runs locally in your browser — zero data collected, zero sign-up.",
-  alternates: { canonical: '/about' },
+  alternates: { canonical: '/about' },,
+  openGraph: {
+    title: "About Jamro Tools - Free, Private & Browser-Based Utilities",
+    description: "Jamro Tools is a free, privacy-first toolbox for students, developers & professionals. Every tool runs locally in your browser - zero data collected, zero sign-up.",
+    url: "https://jamrotools.com/about",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Jamro Tools - Free, Private & Browser-Based Utilities",
+    description: "Jamro Tools is a free, privacy-first toolbox for students, developers & professionals. Every tool runs locally in your browser - zero data collected, zero sign-up.",
+  }
 };
 
 export default function AboutPage() {
