@@ -1,4 +1,6 @@
 "use client";
+import { FaqSection } from "@/components/ui/faq-section";
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -115,6 +117,41 @@ export default function ScientificCalculator() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentInput, previousInput, isDegrees]);
+
+  const faqItems = [
+  {
+    q: `What is a scientific calculator?`,
+    a: `A scientific calculator is an advanced electronic or digital calculator designed to solve complex mathematical, engineering, and scientific problems. Unlike a basic calculator, it includes dedicated buttons for trigonometry, logarithms, exponential functions, and scientific notation, allowing users to process multi-step equations efficiently.`,
+  },
+  {
+    q: `What is the exact difference between a standard and scientific calculator?`,
+    a: `A standard calculator is limited to the four fundamental arithmetic operations: addition, subtraction, multiplication, and division (along with basic percentages). A scientific calculator includes those basic functions but adds specialized operations like sine, cosine, tangent, square roots, exponents, and the ability to process the correct order of operations automatically.`,
+  },
+  {
+    q: `What do the "sin," "cos," and "tan" buttons do?`,
+    a: `These buttons represent the core trigonometric functions: Sine, Cosine, and Tangent. They are used to calculate the relationship between the angles and the sides of a right-angled triangle. These functions are essential for students and professionals working in geometry, architecture, physics, and engineering to determine unknown distances and angles.`,
+  },
+  {
+    q: `How does this calculator handle the order of operations (PEMDAS)?`,
+    a: `A high-quality scientific calculator automatically follows the mathematical rule of PEMDAS (Parentheses, Exponents, Multiplication, Division, Addition, Subtraction). If you type a long equation like 5 + 3 * 2, the calculator will correctly multiply 3 and 2 first, and then add 5, giving you the correct answer of 11 (rather than incorrectly reading left to right and giving you 16).`,
+  },
+  {
+    q: `What is the "log" button used for?`,
+    a: `The "log" (logarithm) button is the mathematical inverse of an exponent. It is used to determine what power a base number must be raised to in order to produce a specific number. In science and finance, logarithms are heavily used to track things that grow exponentially, such as compound interest, population growth, or the magnitude of earthquakes (the Richter scale).`,
+  },
+  {
+    q: `What does the "Pi" (π) button do?`,
+    a: `The Pi (π) button instantly inserts the mathematical constant representing the ratio of a circle's circumference to its diameter. Instead of manually typing out 3.14159 every time you need to calculate the area or volume of a circle, cylinder, or sphere, pressing this button inputs the highly precise, infinite value of Pi to ensure your final answer is perfectly accurate.`,
+  },
+  {
+    q: `Can a scientific calculator compute scientific notation?`,
+    a: `Yes, processing scientific notation is one of the primary features of this tool. Scientific notation allows you to easily work with numbers that are too large or too small to be written in standard decimal form (for example, the speed of light or the mass of an atom). The calculator often represents this with an "EXP" or "EE" button, allowing you to multiply a base number by 10 to a specific power.`,
+  },
+  {
+    q: `How do I calculate a number to a specific power (exponents)?`,
+    a: `To calculate an exponent, you use the power function, often represented on calculators by a caret symbol ( ^ ) or an "x^y" button. For example, to find out what 5 to the 3rd power is, you would enter the base number (5), press the exponent button ( ^ ), and then enter the power (3). The calculator will process the plain text formula 5 ^ 3 and output the correct answer of 125.`,
+  },
+];
 
   return (
     <div className="w-full">
@@ -291,6 +328,25 @@ export default function ScientificCalculator() {
           </div>
         </div>
       </section>
+    
+      {/* Tool Info Section */}
+      <ToolInfoCard 
+        title="Your all-in-one digital workshop."
+        content={[
+          `About the Scientific Calculator`,
+          `Tackling advanced mathematics requires more than just basic addition and subtraction. The JamroTools Scientific Calculator is a robust, fully online web utility designed to solve complex equations in physics, engineering, trigonometry, and advanced algebra. Because this platform is built specifically for online use and relies on your active internet speed rather than your device's local memory, it delivers instant, real-time computational results without requiring any offline app downloads or installations.`,
+          `Whether you are a high school student graphing sine waves, an engineering major calculating load limits, or a professional analyzing statistical data, this tool provides the comprehensive functions of a premium physical calculator directly in your browser.`,
+          `Advanced Mathematics Made Accessible`,
+          `A scientific calculator unlocks the ability to solve multi-step problems with precision. By using this online utility, you can easily transition from basic arithmetic to higher-level mathematics.`,
+          `* Master Trigonometry: Instantly calculate angles and side lengths using Sine (sin), Cosine (cos), and Tangent (tan) functions for geometry and physics applications.`,
+          `* Handle Complex Exponents: Calculate square roots, cube roots, and advanced powers without doing manual, error-prone multiplication.`,
+          `* Utilize Logarithms: Easily solve logarithmic equations (log and ln) essential for calculating exponential growth, decay, and scientific notation.`,
+          `Whether you are double-checking a difficult homework assignment or running quick calculations for a mechanical project, this calculator provides the exact mathematical data you need with lightning-fast accuracy.`,
+        ]}
+      />
+
+      {/* FAQ Section */}
+      <FaqSection items={faqItems} />
     </div>
   );
 }

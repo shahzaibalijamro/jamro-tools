@@ -1,26 +1,45 @@
 "use client";
 import { FaqSection } from "@/components/ui/faq-section";
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo, useCallback } from "react";
 
 const faqItems = [
   {
-    q: "What is a triple integral?",
-    a: "A triple integral generalizes the idea of a double integral to three dimensions. It represents the volume or mass of a solid region in space given a density function f(x, y, z).",
+    q: `What is a triple integral calculator?`,
+    a: `A triple integral calculator is an advanced digital math tool that automates the process of integrating a multivariable function three consecutive times. By inputting a mathematical function containing three variables (typically x, y, and z) along with their specific boundary limits, the tool calculates the accumulated value over a three-dimensional region, bypassing the need for long-form manual calculus.`,
   },
   {
-    q: "Can I integrate over non-rectangular regions?",
-    a: "Current version supports rectangular boundaries. For complex regions, please define your limits as constant values covering the bounding box of the solid.",
+    q: `What is the difference between a double and a triple integral?`,
+    a: `A double integral integrates a function over a two-dimensional area (x and y), which is most commonly used to calculate the volume underneath a 2D surface. A triple integral takes this one dimension further. It integrates a function over a three-dimensional solid region (x, y, and z). While a double integral measures a 3D volume, a triple integral is often used to measure a 4D concept, such as the total mass of a 3D object that has a variable, changing density.`,
   },
   {
-    q: "What units are used?",
-    a: "The results are dimensionless unless specified. If integrating density, the result is mass. If integrating f(x, y, z) = 1, the result is volume.",
+    q: `What is the plain-text format of a triple integral equation?`,
+    a: `Because standard keyboards lack advanced calculus symbols, a triple integral is written in plain text by stacking the integration commands from the outside in. The standard format is:
+Integral [ Integral [ Integral f(x,y,z) dz ] dy ] dx
+When evaluating this manually or entering it into a calculator, you must always solve the problem from the inside out. You integrate with respect to "z" first, then take that result and integrate it with respect to "y", and finally integrate that result with respect to "x".`,
   },
   {
-    q: "Is there a limit on function complexity?",
-    a: "Our engine supports standard algebraic, trigonometric, and exponential functions. Highly oscillating functions may require more computation time.",
+    q: `In what order should I evaluate the variables (dx, dy, dz)?`,
+    a: `According to Fubini's Theorem, if the integration limits are all constant numbers, the order of integration (e.g., dz dy dx versus dx dy dz) does not matter; you will get the exact same answer. However, if your limits involve variables (like integrating y from 0 to x), the order strictly matters. You must evaluate the integrals with variable limits first (on the inside) and save the integrals with constant numerical limits for the very last, outermost step.`,
   },
-];
+  {
+    q: `Can a triple integral be used to find simple volume?`,
+    a: `Yes. If you set the mathematical function inside the triple integral to exactly 1 — written as Integral [ Integral [ Integral 1 dz ] dy ] dx — the result of the calculation will give you the exact geometric volume of the three-dimensional region defined by your boundaries.`,
+  },
+  {
+    q: `Why do some triple integrals use r, theta, and z instead of x, y, and z?`,
+    a: `In multivariable calculus, shapes like cylinders and cones are notoriously difficult to calculate using standard rectangular Cartesian coordinates (x, y, z). To make the math easier, mathematicians convert the problem into Cylindrical Coordinates (radius, angle theta, and height z). This circular coordinate system vastly simplifies the boundary limits when the 3D object has a circular base.`,
+  },
+  {
+    q: `What are spherical coordinates in triple integrals?`,
+    a: `Similar to cylindrical coordinates, Spherical Coordinates are used to calculate the triple integral of perfectly round objects like spheres or half-spheres. Instead of x, y, and z, the calculator evaluates the Greek variables rho (the distance from the center), theta (the horizontal angle), and phi (the vertical angle). Converting an equation to spherical coordinates turns a massive, complex algebraic problem into a highly manageable one.`,
+  },
+  {
+    q: `What are the real-world applications of calculating triple integrals?`,
+    a: `Triple integrals are essential for advanced engineering and theoretical physics. Civil and mechanical engineers use them to calculate the "center of mass" and "moment of inertia" to ensure bridges and vehicles are structurally balanced. Physicists use them to calculate the total electrical charge within a three-dimensional space or to model complex fluid dynamics in aerospace design.`,
+  },
+]
 
 // Simple function parser and numeric integrator
 function evaluateFunction(expr: string, x: number, y: number, z: number): number {
@@ -370,6 +389,22 @@ export default function TripleIntegralCalculator() {
           </div>
         </section>
       </section>
+
+      {/* Tool Info Section */}
+      <ToolInfoCard
+        title="Your all-in-one digital workshop."
+        content={[
+          "About the Triple Integral Calculator",
+          "Solving multivariable calculus problems by hand is a time-consuming process where a single arithmetic mistake in the first step can ruin the entire equation. The JamroTools Triple Integral Calculator is an advanced, web-based mathematical utility designed to evaluate definite and indefinite integrals across three variables instantly. Built to operate entirely online, this tool leverages your browser to process complex computational math without requiring heavy software downloads.",
+          "Whether you are a university student navigating Calculus III, a physicist determining the center of mass, or an engineer calculating fluid dynamics, this tool eliminates manual calculation errors. By simply entering your function and the upper and lower limits for your x, y, and z variables, the calculator processes the inside-out integration steps automatically, delivering the precise final result in seconds.",
+          "Simplify Multivariable Calculus",
+          "Triple integrals are the backbone of advanced 3D spatial mathematics. Using an automated calculator allows you to bypass tedious manual arithmetic and focus purely on the applied science.",
+          "* Calculate 3D Volume: Instantly compute the exact spatial volume of complex, irregular three-dimensional solid regions.",
+          "* Determine Mass and Density: Apply a density function to your calculation to find the total mass of an object that has varying density throughout its structure.",
+          "* Solve Physics Applications: Easily compute advanced engineering metrics like the center of mass, moments of inertia, and electromagnetic fields.",
+          "Whether you are checking your work on a difficult university assignment or running high-level physics models, this calculator provides the exact computational data required for accurate 3D analysis.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />

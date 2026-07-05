@@ -1,5 +1,6 @@
 "use client";
 import { FaqSection } from "@/components/ui/faq-section";
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo } from "react";
 
@@ -7,19 +8,42 @@ const CIRCUMFERENCE = 691; // 2 * π * 110 ≈ 691.15
 
 const faqItems = [
   {
-    q: "How is percentage decrease calculated?",
-    a: "The percentage decrease is calculated by subtracting the final value from the initial value, dividing the difference by the absolute value of the initial value, and then multiplying by 100.",
-    formula: "Formula: ((Initial - Final) / Initial) × 100",
+    q: `What is a percentage decrease calculator?`,
+    a: `A percentage decrease calculator is an online mathematical tool that determines the rate of decline between an original starting number and a new, smaller number. By automating the calculation, it instantly tells you exactly how much a value has shrunk in terms of a percentage, making it an essential utility for calculating discounts, financial losses, and statistical drops.`,
   },
   {
-    q: "When should I use a percent decrease calculator?",
-    a: "Use this calculator whenever you need to quantify a reduction. Common use cases include calculating retail discounts, stock market dips, population decline, or weight loss progress.",
+    q: `What is the exact formula for percentage decrease?`,
+    a: `The universally accepted mathematical formula for finding a percentage decrease is:
+Percentage Decrease = ((Original Value - New Value) / Original Value) * 100
+To calculate this manually: first, subtract the new value from the original value to find the difference. Next, divide that difference by the original value. Finally, multiply that decimal result by 100 to convert it into a percentage.`,
   },
   {
-    q: "What's the difference between decrease and negative increase?",
-    a: 'Mathematically, they represent the same change. However, conceptually, "decrease" implies the direction of change is downward from a starting point, while "negative increase" is often used in broader statistical reporting where all changes are framed as positive or negative growth.',
+    q: `What is the difference between percentage decrease and percentage increase?`,
+    a: `Both calculations measure the relative change between two numbers, but they track opposite directions of movement. Percentage decrease measures how much a value has shrunk compared to its starting point (where the new number is smaller). Percentage increase measures how much a value has grown compared to its starting point (where the new number is larger).`,
   },
-];
+  {
+    q: `Why is my percentage decrease calculation showing a negative number?`,
+    a: `If you are calculating a percentage decrease and the result is a negative number, it means the value actually went up, not down. This happens when the "New Value" you entered is larger than your "Original Value." In mathematical terms, a negative decrease is simply a percentage increase.`,
+  },
+  {
+    q: `Can I use this calculator to figure out store discounts?`,
+    a: `Yes, this calculator is perfect for figuring out exact store discounts. If a jacket originally cost $150 and is now on sale for $90, you can plug those numbers into the calculator. It will instantly reveal that the price dropped by $60, which equals a 40% percentage decrease (or a 40% off discount).`,
+  },
+  {
+    q: `How do I find the original value if I only know the new value and the percent decrease?`,
+    a: `To work backward and find the original starting value, you must divide the new value by 1 minus the percentage decrease (expressed as a decimal). The formula is:
+Original Value = New Value / (1 - Percentage Decrease)
+For example, if you bought an item for $80 after a 20% decrease, you divide 80 by 0.80 (which is 1 - 0.20) to find the original price of $100.`,
+  },
+  {
+    q: `Does a 100% decrease mean the value is zero?`,
+    a: `Yes, a 100% decrease means the entire original value has been subtracted, leaving you with exactly zero. For example, if you have 50 items in inventory and experience a 100% decrease, you have lost all 50 items, and your new inventory count is 0.`,
+  },
+  {
+    q: `How is calculating a percentage drop useful in SEO and digital marketing?`,
+    a: `In digital marketing, tracking percentage decreases is vital for auditing performance drops. Marketers use this specific calculation to measure a sudden decline in organic search traffic, a drop in keyword rankings, or a reduction in bounce rates. Understanding the exact percentage of the drop helps professionals gauge the severity of an algorithm update or a technical site error.`,
+  },
+]
 
 export default function PercentageDecreaseCalculator() {
   const [initialValue, setInitialValue] = useState(100);
@@ -216,6 +240,22 @@ export default function PercentageDecreaseCalculator() {
           </div>
         </section>
       </section>
+
+      {/* Tool Info Section */}
+      <ToolInfoCard
+        title="Your all-in-one digital workshop."
+        content={[
+          "About the Percentage Decrease Calculator",
+          "Calculating a drop in value should not require manual math or complicated spreadsheet formulas. The JamroTools Percentage Decrease Calculator is a fast, streamlined web utility designed to help you instantly determine the exact percentage drop between any two numbers. Built as a fully online platform, this tool leverages your active internet connection to deliver lightning-fast, real-time results directly in your browser without requiring any offline downloads or installations.",
+          "Whether you are tracking a drop in website traffic, calculating retail discounts, or analyzing financial losses, this calculator provides immediate clarity. By simply entering your starting number and your ending number, you eliminate human error and get the precise percentage reduction in a fraction of a second.",
+          "Optimize Your Data Analysis",
+          "Understanding the rate at which a metric decreases is crucial for both personal finance and business analytics. When you use this calculator, you instantly translate raw numbers into actionable percentage data.",
+          "* Track Business Metrics: Quickly assess month-over-month drops in sales revenue, user churn rates, or overhead costs to make informed operational decisions.",
+          "* Calculate Shopping Discounts: Verify exactly how much money you are saving during a sale by finding the true percentage difference between the original retail price and the clearance price.",
+          "* Monitor Goal Progress: Measure personal milestones, such as a percentage reduction in daily screen time, caloric intake, or debt balances.",
+          "Whether you are a student double-checking math homework or a business owner analyzing quarterly losses, this calculator gives you the accurate data required to understand your downward trends.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />

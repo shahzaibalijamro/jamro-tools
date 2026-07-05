@@ -1,6 +1,6 @@
 "use client";
 import { FaqSection } from "@/components/ui/faq-section";
-
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 import { useState, useMemo } from "react";
 
 export default function MortgageCalculator() {
@@ -81,26 +81,41 @@ export default function MortgageCalculator() {
 
   const faqItems = [
     {
-      q: "What is the difference between a fixed-rate and adjustable-rate mortgage?",
-      a: "A fixed-rate mortgage maintains the same interest rate for the entire life of the loan, providing predictable payments. An adjustable-rate mortgage (ARM) typically offers a lower initial rate for a set period, after which the rate fluctuates based on market indices.",
+      q: `What is a mortgage calculator and how does it help me?`,
+      a: `A mortgage calculator is a digital financial tool that estimates your future monthly housing payments based on a specific set of loan variables. By entering details like the total home purchase price, down payment amount, interest rate, and loan length, you receive an instant breakdown of your upcoming financial commitments. This helps you avoid overextending your budget and determines exactly how much house you can comfortably afford before engaging with lenders.`,
     },
     {
-      q: "How much should I spend on a home monthly?",
-      a: "A common rule of thumb is the 28/36 rule: your mortgage payment shouldn't exceed 28% of your gross monthly income, and your total debt payments shouldn't exceed 36%.",
+      q: `What is the difference between principal and interest in a mortgage?`,
+      a: `Your base mortgage payment is split into two primary components:
+* Principal: The actual balance of the money you borrowed from the lender to buy the home. Paying this down directly builds your home equity.
+* Interest: The ongoing fee the bank or lender charges you for borrowing that money, calculated as a percentage of the remaining loan balance.
+In the initial years of a long-term loan, your monthly payments are heavily weighted toward paying off interest, shifting gradually toward the principal as the years progress.`,
     },
     {
-      q: "What is Private Mortgage Insurance (PMI)?",
-      a: "PMI is a type of insurance that protects the lender if you default on your loan. It's usually required if your down payment is less than 20% of the home's purchase price.",
+      q: `How do loan terms affect my monthly payment and lifetime interest?`,
+      a: `The length of your loan dramatically alters your financial strategy. A 30-year fixed mortgage spreads your payments over a longer duration, resulting in lower, highly manageable monthly payments but a much higher total interest cost over the life of the loan. Conversely, a 15-year fixed mortgage features significantly higher monthly payments but secures a lower interest rate, allowing you to build equity twice as fast and save tens of thousands of dollars in lifetime interest.`,
     },
     {
-      q: "Can I pay off my mortgage early?",
-      a: "Yes, most modern mortgages allow for early repayment or extra principal payments without penalty. This can significantly reduce the total interest paid over the life of the loan.",
+      q: `Why is a 20% down payment highly recommended for home buyers?`,
+      a: `Putting 20% down is the industry benchmark because it immediately establishes a solid equity stake in your property and minimizes your total loan balance. Most importantly, crossing the 20% threshold eliminates the requirement for Private Mortgage Insurance (PMI) on conventional loans. PMI is an extra monthly fee that protects the lender—not you—if you default on the loan, adding zero value to your actual home equity.`,
     },
     {
-      q: "How do interest rates affect my purchasing power?",
-      a: "Even a 1% increase in interest rates can reduce your purchasing power by roughly 10%. As rates go up, your monthly payment for the same loan amount increases, often forcing buyers to look at lower-priced homes.",
+      q: `What is the 28% rule in mortgage affordability?`,
+      a: `The 28% rule is a classic financial framework used by underwriters and financial planners to gauge borrowing safety. It dictates that a household should spend a maximum of 28% of its gross (pre-tax) monthly income on total housing expenses, including your principal, interest, property taxes, and home insurance. Sticking to this threshold ensures you maintain a comfortable financial buffer for daily life and emergency savings.`,
     },
-  ];
+    {
+      q: `Does using a mortgage calculator guarantee loan pre-approval?`,
+      a: `No, a mortgage calculator provides an informational estimate based entirely on the data you supply; it does not guarantee loan approval. Real-world qualification requires a comprehensive financial review by a licensed lender. The bank will evaluate variable factors that a standalone calculator cannot verify, such as your official credit score, debt-to-income (DTI) ratio, steady employment history, and verified asset statements.`,
+    },
+    {
+      q: `How does an interest rate increase impact my buying power?`,
+      a: `Even a minor bump in interest rates significantly reduces the size of the loan you can qualify for. When interest rates climb, a larger share of your fixed monthly budget is instantly consumed by interest payments rather than purchasing power. For example, a 1% or 2% hike in market interest rates can easily add hundreds of dollars to a monthly payment, forcing many buyers to lower their target home price to keep payments affordable.`,
+    },
+    {
+      q: `What additional costs should I budget for besides the base mortgage payment?`,
+      a: `Owning a home involves several expenses beyond the core loan payment. A complete housing budget should account for property taxes levied by your local municipality, homeowners insurance premiums, and potentially HOA (Homeowners Association) fees if you live in a managed community. Additionally, you must factor in one-time closing costs (typically 2% to 5% of the total loan amount due when signing the paperwork) and an ongoing maintenance fund for unexpected home repairs.`,
+    },
+  ]
 
   return (
     <>
@@ -352,9 +367,8 @@ export default function MortgageCalculator() {
                       </span>
 
                       <span
-                        className={`material-symbols-outlined transition-transform group-hover:translate-x-1 ${
-                          showSchedule ? "rotate-90" : ""
-                        }`}
+                        className={`material-symbols-outlined transition-transform group-hover:translate-x-1 ${showSchedule ? "rotate-90" : ""
+                          }`}
                       >
                         {showSchedule ? "expand_more" : "arrow_forward_ios"}
                       </span>
@@ -426,6 +440,22 @@ export default function MortgageCalculator() {
           </div>
         </section>
       )}
+
+      {/* Tool Info Section */}
+      <ToolInfoCard
+        title="Your all-in-one digital workshop."
+        content={[
+          "About the Mortgage Calculator",
+          "Buying a home is one of the most significant financial milestones you will ever achieve. However, before you start browsing listings or attending open houses, you need a clear picture of what that investment actually costs month-to-month. The JamroTools Mortgage Calculator is designed to take the guesswork out of home financing.",
+          "By calculating your estimated Principal and Interest (P&I), our tool helps you map out your financial future in seconds. Rather than relying on vague estimates, you can plug in your specific home price, down payment, loan term, and current market interest rates to see an instant breakdown of your projected monthly obligations.",
+          "Master Your Mortgage Math",
+          "A predictable monthly budget is the foundation of long-term financial health. When you use this calculator, you aren't just getting a single number—you are gaining insight into the moving pieces of a home loan.",
+          "* Visualize the Amortization Shift: See exactly how your early payments heavily cover interest charges, and watch how that balance transitions toward building equity over the lifetime of the loan.",
+          "* Test Diverse Scenarios: Compare the short-term budgeting friction of a 15-year fixed loan against the long-term breathing room (but higher lifetime interest) of a traditional 30-year fixed term.",
+          "* Optimize Your Down Payment: Instantly see how hitting the 20% down payment threshold alters your loan-to-value (LTV) ratio, reducing your total loan amount and eliminating the need for costly private mortgage insurance (PMI).",
+          "Whether you are a first-time homebuyer testing the waters or an experienced homeowner calculating the benefits of a potential refinance, this calculator gives you the objective data required to make an informed, stress-free decision."
+        ]}
+      />
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />

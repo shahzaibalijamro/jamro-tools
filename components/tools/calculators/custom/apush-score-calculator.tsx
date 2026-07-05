@@ -1,5 +1,6 @@
 "use client";
 import { FaqSection } from "@/components/ui/faq-section";
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo } from "react";
 
@@ -59,18 +60,48 @@ export default function ApushScoreCalculator() {
 
   const faqItems = [
     {
-      q: "How is the raw score calculated?",
-      a: "The raw score is simply the sum of all points earned. Multiple choice is 55 points, SAQs are 9 points total (3 per question), DBQ is 7 points, and LEQ is 6 points, making a total raw score of 77.",
+      q: `What is an APUSH score calculator?`,
+      a: `An APUSH score calculator is a digital educational tool that predicts a student's final Advanced Placement US History exam score on the standard 1 to 5 scale. By taking a student's raw scores from the four different sections of the test and applying the College Board's specific percentage weights, the calculator generates an accurate estimated final composite score.`,
     },
     {
-      q: "What are the score boundaries?",
-      a: "Score boundaries vary each year based on difficulty, but generally a composite score of 105+ equates to a 5. A 4 is typically achieved between 88–104, a 3 between 70–87, and a 2 between 50–69.",
+      q: `What are the four sections of the AP US History exam?`,
+      a: `To accurately calculate your score, you must understand the four distinct sections of the exam. They are:
+* MCQ (Multiple-Choice Questions): 55 questions assessing historical knowledge and source analysis.
+* SAQ (Short-Answer Questions): 3 questions requiring brief, specific historical explanations.
+* DBQ (Document-Based Question): 1 essay requiring you to analyze provided historical documents to build an argument.
+* LEQ (Long Essay Question): 1 essay requiring you to build a historical argument purely from your own knowledge.`,
     },
     {
-      q: "Is this official College Board data?",
-      a: "No, this tool uses estimates based on publicly available score curves from previous exam cycles. Actual scores are determined by the College Board during the grading process.",
+      q: `How are the different sections weighted in the final APUSH score?`,
+      a: `The College Board does not treat every section equally. The final composite score is calculated using the following strict percentage weights:
+* Multiple-Choice (MCQ): 40% of the total score
+* Document-Based Question (DBQ): 25% of the total score
+* Short-Answer (SAQ): 20% of the total score
+* Long Essay (LEQ): 15% of the total score`,
     },
-  ];
+    {
+      q: `What is the plain-text formula for calculating an APUSH composite score?`,
+      a: `While the exact multiplier curve changes slightly every year to account for test difficulty, the standard plain-text formula for finding your total composite points out of 150 is:
+Composite Score = (MCQ Raw Score * 1.09) + (SAQ Raw Score * 3.33) + (DBQ Raw Score * 5.35) + (LEQ Raw Score * 3.75)
+Once this final number is calculated, it is compared against the year's specific grading curve to assign a final score of 1, 2, 3, 4, or 5.`,
+    },
+    {
+      q: `What is considered a passing score on the APUSH exam?`,
+      a: `According to the College Board, a score of 3 is considered "qualified" and is generally viewed as the baseline passing grade. A score of 4 is considered "well qualified," and a score of 5 is "extremely well qualified." Scoring a 1 or a 2 means the student has not demonstrated the proficiency required to pass the college-level material.`,
+    },
+    {
+      q: `Can I score a 5 on APUSH if I do poorly on the DBQ?`,
+      a: `Yes, but it is very difficult. Because the exam uses compensatory grading, a remarkably high score on the Multiple-Choice (40%) and Short-Answer (20%) sections can mathematically offset a low score on the Document-Based Question (25%). However, because the DBQ carries a massive quarter of the test's total weight, earning at least a mid-range score on it is usually necessary to secure a 5.`,
+    },
+    {
+      q: `Does this calculator guarantee my actual College Board AP score?`,
+      a: `No, an online APUSH calculator provides a highly accurate estimate, but it cannot offer a 100% guarantee. The College Board uses a statistical process called "equating" to adjust the final grading curve every single year based on the overall difficulty of that specific test. Therefore, a raw score of 110 might be a 5 one year, but only a 4 the next year if the test was considered slightly easier.`,
+    },
+    {
+      q: `Do all colleges give college credit for an APUSH score of 3?`,
+      a: `No. While a 3 is officially considered a passing score by the College Board, individual universities set their own credit acceptance policies. Many highly competitive universities require a minimum score of 4 or 5 to grant actual course credit or allow you to skip introductory history classes. You should always check the specific AP credit policy of the colleges you are applying to.`,
+    },
+  ]
 
   return (
     <>
@@ -288,6 +319,22 @@ export default function ApushScoreCalculator() {
           </div>
         </div>
       </section>
+
+      {/* Tool Info Section */}
+      <ToolInfoCard
+        title="Your all-in-one digital workshop."
+        content={[
+          "About the APUSH Score Calculator",
+          "Preparing for the Advanced Placement United States History (APUSH) exam requires more than just memorizing historical dates and treaties; it requires a deep understanding of how the test is actually graded. The JamroTools APUSH Score Calculator is a fast, web-based educational utility designed to help high school students instantly predict their final 1-to-5 AP score. Operating entirely online, this tool applies the official College Board weighting structure to your raw practice test scores right in your browser.",
+          "Rather than guessing how your multiple-choice performance balances out a weak essay, you can simply input your raw scores from your practice sessions. The calculator instantly processes the complex math, giving you a highly accurate estimate of your final composite score so you know exactly where you stand before exam day.",
+          "Strategize Your AP Exam Prep",
+          "Understanding the math behind your AP score is the fastest way to improve it. When you use this calculator, you transform raw practice data into a targeted study plan.",
+          "* Identify Weak Areas: Instantly see whether you need to spend more time drilling multiple-choice facts or improving your historical argumentation in the essays.",
+          "* Test Scoring Scenarios: Play with the numbers to see exactly how earning just one more rubric point on the DBQ can push your final score from a 3 to a 4.",
+          "* Set Realistic Goals: Calculate exactly how much breathing room you have. If you excel at multiple-choice, find out how many essay points you can safely afford to lose while still scoring a 5.",
+          "Whether you are a student taking a weekend practice test or an AP teacher grading midterms, this calculator provides the immediate, accurate scoring data required to study smarter.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />

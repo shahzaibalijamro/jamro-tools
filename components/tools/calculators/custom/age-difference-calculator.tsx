@@ -1,22 +1,50 @@
 "use client";
 import { FaqSection } from "@/components/ui/faq-section";
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo, useCallback } from "react";
 
 const faqItems = [
   {
-    q: "How does the tool handle leap years?",
-    a: "Our calculator uses Gregorian calendar algorithms to precisely account for every February 29th that occurs between the two provided dates, ensuring your total day count is mathematically perfect.",
+    q: `What is an age difference calculator?`,
+    a: `An age difference calculator is an automated digital tool that determines the exact span of time between two distinct dates, most commonly two dates of birth. Instead of just subtracting birth years, the calculator accounts for specific months, varying days in a month, and leap years to provide a highly accurate age gap expressed in years, months, and days.`,
   },
   {
-    q: "Can I calculate differences for BC dates?",
-    a: "Currently, Jamro Tools supports modern standard date formats. While we are expanding our historical tools, the current engine is optimized for AD/CE dates from the year 0001 onwards.",
+    q: `How do you calculate the exact age difference between two people manually?`,
+    a: `To calculate the age difference manually, you must align both birth dates and subtract the older person's date from the younger person's date.
+* First, subtract the days. If the younger person's day is smaller, borrow a month (typically 30 or 31 days) to complete the subtraction.
+* Next, subtract the months. If you need to borrow, take 12 months from the year column.
+* Finally, subtract the years. Using an online calculator bypasses this complex borrowing process and prevents human error.`,
   },
   {
-    q: "Is my data stored or tracked?",
-    a: "No. Jamro Tools prioritizes privacy. Your calculations are performed entirely in your browser. We do not store, log, or transmit any birth dates or calculation results to our servers.",
+    q: `Does this calculator account for leap years?`,
+    a: `Yes, a high-quality age difference calculator automatically factors in leap years. A leap year adds an extra day (February 29) to the calendar every four years. If the time span between your two dates includes a leap year, the calculator adjusts the total day count internally so your final age gap is 100% historically and mathematically accurate.`,
   },
-];
+  {
+    q: `What is the mathematical formula for finding an age gap?`,
+    a: `In plain text, the basic chronological formula for finding an age gap is:
+Age Gap = Younger Person's Date of Birth - Older Person's Date of Birth
+When doing simple year-only math, you just subtract the older birth year from the younger birth year (e.g., 1995 - 1990 = 5 years). However, for precise dates, borrowing days and months is required, which is why digital calculators are preferred.`,
+  },
+  {
+    q: `What is the "half your age plus seven" rule?`,
+    a: `The "half your age plus seven" rule is a popular societal formula used to determine the socially acceptable minimum age of a dating partner. The plain text formula is:
+Minimum Partner Age = (Your Current Age / 2) + 7
+For example, if you are 30 years old, half your age is 15. Add 7, and the rule suggests your youngest acceptable partner is 22. This calculator can help you determine your exact age gap to see where you fall within this cultural rule.`,
+  },
+  {
+    q: `Can I calculate the age difference between someone who is alive and someone who has passed away?`,
+    a: `Yes. The calculator strictly measures the time between two specific dates, regardless of life status. You simply enter the deceased person's date of birth as one input, and the living person's date of birth as the second input. The tool will output the exact chronological gap between when those two individuals were born.`,
+  },
+  {
+    q: `Why do some calculators show age difference in total days?`,
+    a: `Showing an age difference in total days (e.g., "1,500 days apart") removes the variability of months, which can have 28, 29, 30, or 31 days. Total days provide an absolute, unified measurement of time. This is often used by statisticians, programmers, and medical professionals who require a standardized unit of time rather than a conversational "years and months" format.`,
+  },
+  {
+    q: `Is the age difference calculator only for human ages?`,
+    a: `No, you can use the age difference calculator for any two dates in history. You can use it to find the age gap between two pets, the time between the construction of two historical monuments, or the difference between the founding dates of two companies. As long as you have a starting date and an ending date, the tool will calculate the gap.`,
+  },
+]
 
 export default function AgeDifferenceCalculator() {
   const [dob1, setDob1] = useState("1990-01-01");
@@ -251,6 +279,22 @@ export default function AgeDifferenceCalculator() {
           </div>
         </section>
       </section>
+
+      {/* Tool Info Section */}
+      <ToolInfoCard
+        title="Your all-in-one digital workshop."
+        content={[
+          "About the Age Difference Calculator",
+          "Comparing two dates of birth manually can be surprisingly complex when you factor in varying month lengths and leap years. The JamroTools Age Difference Calculator is a precision web utility designed to instantly compute the exact chronological gap between two individuals, events, or historical dates. Built for speed and accuracy, this online tool calculates the difference down to the exact year, month, and day.",
+          "Whether you are comparing ages for a relationship, verifying age gaps for legal documentation, or conducting genealogical research, this calculator eliminates manual counting errors. By simply entering two dates, our tool runs the calendar logic instantly in your browser, providing a clear, formatted breakdown of the exact time that separates them.",
+          "Perfect for Everyday and Professional Use",
+          "Understanding the precise age gap between two dates is useful across multiple scenarios. When you use this calculator, you instantly turn raw calendar dates into readable chronological data.",
+          "* Relationship & Compatibility Tracking: Quickly determine the exact age gap between you and your partner down to the day.",
+          "* Genealogical & Historical Research: Accurately calculate the time between the births of historical figures or ancestors without manually tracking centuries of leap years.",
+          "* Legal & Administrative Verification: Ensure age differences meet specific legal thresholds for contracts, guardianship, or insurance policies.",
+          "Whether you are settling a friendly debate or processing official documents, this calculator gives you the exact chronological data you need in seconds.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />

@@ -1,5 +1,6 @@
 "use client";
 import { FaqSection } from "@/components/ui/faq-section";
+import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo } from "react";
 
@@ -55,22 +56,43 @@ export default function CylinderVolumeCalculator() {
 
   const faqItems = [
     {
-      q: "How do I calculate the volume of a cylinder?",
-      a: "To find the volume of a cylinder, you need its radius (distance from the center of the base to the edge) and its height. Square the radius, multiply by π (approx 3.14159), and then multiply by the height: V = πr²h.",
+      q: `What is a cylinder volume calculator?`,
+      a: `A cylinder volume calculator is an automated online geometry tool that calculates the total three-dimensional space enclosed within a cylinder. By entering basic physical dimensions—specifically the height of the cylinder and the radius or diameter of its circular base—the tool instantly computes the total cubic volume, saving you from doing complex manual mathematics.`,
     },
     {
-      q: "What are the units for cylinder volume?",
-      a: "Volume is always expressed in cubic units. If your dimensions are in centimeters, the volume will be in cm³. If in feet, the volume will be in cubic feet (ft³).",
+      q: `What is the exact formula for the volume of a cylinder?`,
+      a: `The universal mathematical formula for finding the volume of a cylinder is:
+Volume = π * (Radius * Radius) * Height
+(V = πr²h)
+To calculate this manually: first, multiply the radius of the circular base by itself (radius squared). Next, multiply that result by the mathematical constant Pi (approximately 3.14159). Finally, multiply that number by the total height of the cylinder to get your final cubic volume.`,
     },
     {
-      q: "What is the difference between volume and capacity?",
-      a: "Volume refers to the amount of 3D space an object occupies, while capacity refers to the amount of substance (like liquid or gas) that a container can hold. This calculator measures the geometric volume.",
+      q: `What is the difference between radius and diameter when calculating volume?`,
+      a: `The radius is the distance from the exact center of a circle to its outer edge. The diameter is the total distance across the widest part of the circle, passing straight through the center. The standard volume formula requires the radius. If you only know the diameter of your cylinder, you must divide the diameter by two to find the radius before doing any volume calculations.`,
     },
     {
-      q: "How accurate is this calculator?",
-      a: "This tool uses JavaScript's native Math.PI (approximately 15 decimal places) to ensure professional-grade accuracy suitable for architecture and engineering tasks.",
+      q: `Why is the value of Pi (π) used in this calculation?`,
+      a: `Pi (often written as 3.14159) is a mathematical constant that represents the ratio of a circle's circumference to its diameter. Because a cylinder is essentially a tall stack of circles piled on top of each other, you must first calculate the two-dimensional area of the circular base using Pi. Once you have the area of that base circle, multiplying it by the total height gives you the 3D volume.`,
     },
-  ];
+    {
+      q: `Can I calculate the volume in different units like liters or gallons?`,
+      a: `Yes, but it requires a two-step process. First, the calculator determines the geometric volume in standard cubic units (such as cubic inches, cubic centimeters, or cubic meters). Once you have that cubic volume, you can convert it into liquid capacity. For example, 1 cubic meter is exactly equal to 1,000 liters, and 1 cubic foot equals roughly 7.48 U.S. liquid gallons.`,
+    },
+    {
+      q: `How do I calculate the volume if I only know the circumference of the cylinder?`,
+      a: `If you only have the measurement around the outside of the cylinder (the circumference), you must work backward to find the radius first. The formula to find the radius is:
+Radius = Circumference / (2 * π)
+Once you calculate the radius using this formula, you can plug it into the standard volume calculator alongside the height to find your total volume.`,
+    },
+    {
+      q: `Does a cylinder's volume change if it is hollow versus solid?`,
+      a: `Mathematically, the external volume calculation is exactly the same regardless of whether the cylinder is solid or hollow. However, in real-world applications, a hollow cylinder (like a water pipe) has an "internal volume" (capacity) and an "external volume." To find the internal capacity, you must measure the inside radius of the cylinder, excluding the physical thickness of the pipe's walls.`,
+    },
+    {
+      q: `What are common real-world uses for calculating cylinder volume?`,
+      a: `Cylinder volume calculations are used daily across multiple industries. Plumbers use it to determine the water flow capacity of pipes. Engineers use it to design safe storage tanks for chemicals and fuels. Architects use it to calculate the concrete required for structural columns. It is also utilized in manufacturing to optimize the sizing of canned goods, batteries, and cosmetics packaging.`,
+    },
+  ]
 
   return (
     <>
@@ -79,12 +101,7 @@ export default function CylinderVolumeCalculator() {
         {/* ── Inputs Panel ── */}
         <div className="lg:col-span-5 space-y-[16px]">
           <div
-            className="p-[24px] rounded-xl shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="p-[24px] rounded-xl shadow-sm bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             <h3 className="text-[22px] leading-[28px] font-semibold mb-[24px] flex items-center gap-[8px]">
               <span className="material-symbols-outlined text-primary">
@@ -152,12 +169,7 @@ export default function CylinderVolumeCalculator() {
 
           {/* Formula Card */}
           <div
-            className="p-[24px] rounded-xl shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="p-[24px] rounded-xl shadow-sm bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             <h3 className="text-[14px] font-semibold text-primary uppercase tracking-wider mb-[16px]">
               The Formula
@@ -178,12 +190,7 @@ export default function CylinderVolumeCalculator() {
         {/* ── Results Panel ── */}
         <div className="lg:col-span-7 space-y-[16px]">
           <div
-            className="rounded-xl overflow-hidden shadow-sm relative"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
+            className="rounded-xl overflow-hidden shadow-sm relative bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30"
           >
             {/* Background icon */}
             <div className="absolute top-0 right-0 p-[24px] opacity-10 pointer-events-none">
@@ -316,6 +323,22 @@ export default function CylinderVolumeCalculator() {
           </div>
         </div>
       </section>
+
+      {/* Tool Info Section */}
+      <ToolInfoCard
+        title="Your all-in-one digital workshop."
+        content={[
+          "About the Cylinder Volume Calculator",
+          "Finding the exact cubic capacity of a cylindrical object shouldn't require you to memorize complex geometric formulas. The JamroTools Cylinder Volume Calculator is a fast, web-based mathematical utility designed to instantly compute the three-dimensional space inside any cylinder. Operating entirely online, this tool delivers immediate, highly accurate results directly in your browser.",
+          "Whether you are a student solving geometry homework, an engineer calculating fluid capacity for a storage tank, or a DIY enthusiast estimating materials for a project, this calculator provides instant clarity. By simply inputting the radius (or diameter) and the height of your cylinder, the tool executes the math perfectly, eliminating the risk of human error.",
+          "Simplify Your Geometric Calculations",
+          "Calculating 3D volume is essential for both academic exercises and real-world industrial applications. Using this calculator translates raw dimensions into usable spatial data.",
+          "* Fluid Storage & Capacity: Instantly determine exactly how much water, oil, or gas a cylindrical tank, pipe, or pool can hold.",
+          "* Manufacturing & Packaging: Calculate the exact volume of aluminum cans, shipping tubes, or cylindrical containers for accurate product sizing.",
+          "* Construction & DIY: Estimate the amount of concrete needed for cylindrical pillars, fence posts, or garden features.",
+          "Whether you are auditing manufacturing specs or working on a weekend home improvement task, this calculator gives you the precise geometric data required to move forward with confidence.",
+        ]}
+      />
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />
