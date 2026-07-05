@@ -326,12 +326,11 @@ Once you calculate the radius using this formula, you can plug it into the stand
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the Cylinder Volume Calculator."
         content={[
-          "About the Cylinder Volume Calculator",
           "Finding the exact cubic capacity of a cylindrical object shouldn't require you to memorize complex geometric formulas. The JamroTools Cylinder Volume Calculator is a fast, web-based mathematical utility designed to instantly compute the three-dimensional space inside any cylinder. Operating entirely online, this tool delivers immediate, highly accurate results directly in your browser.",
           "Whether you are a student solving geometry homework, an engineer calculating fluid capacity for a storage tank, or a DIY enthusiast estimating materials for a project, this calculator provides instant clarity. By simply inputting the radius (or diameter) and the height of your cylinder, the tool executes the math perfectly, eliminating the risk of human error.",
-          "Simplify Your Geometric Calculations",
+          "/ Simplify Your Geometric Calculations",
           "Calculating 3D volume is essential for both academic exercises and real-world industrial applications. Using this calculator translates raw dimensions into usable spatial data.",
           "* Fluid Storage & Capacity: Instantly determine exactly how much water, oil, or gas a cylindrical tank, pipe, or pool can hold.",
           "* Manufacturing & Packaging: Calculate the exact volume of aluminum cans, shipping tubes, or cylindrical containers for accurate product sizing.",

@@ -384,12 +384,11 @@ export default function MiddleSchoolGpaCalculator() {
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the Middle School GPA Calculator."
         content={[
-          "About the Middle School GPA Calculator",
           "Middle school is a critical transitional period where students learn the study habits they will carry into high school and beyond. However, trying to figure out an overall grade average by looking at a report card full of mixed letters and percentages can be confusing. The JamroTools Middle School GPA Calculator is a fast, streamlined web utility designed to instantly convert your letter or percentage grades into a standard 4.0 Grade Point Average.",
           "Operating entirely online, this tool removes the guesswork from academic tracking. By simply selecting your grades for each class, the calculator processes the math in real-time within your browser, providing an accurate, immediate snapshot of your current academic standing without requiring any manual math or complicated spreadsheets.",
-          "Build a Foundation for High School Success",
+          "/ Build a Foundation for High School Success",
           "Understanding how a GPA works before high school is one of the best ways to set a student up for long-term academic success. Using this calculator helps parents and students transform confusing report cards into actionable educational data.",
           "* Track Academic Progress: Instantly see how a single low grade in math or science brings down an overall average, allowing you to identify exactly where tutoring or extra study time is needed.",
           "* Qualify for Advanced Placements: Many high schools use 7th and 8th-grade GPAs to determine which students are eligible for freshman Honors, Advanced Placement (AP), or accelerated STEM tracks.",

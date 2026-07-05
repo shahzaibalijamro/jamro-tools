@@ -14,7 +14,7 @@ export default function BasicCalculator() {
     if (saved) {
       try {
         setHistory(JSON.parse(saved));
-      } catch (e) {}
+      } catch (e) { }
     }
   }, []);
 
@@ -82,45 +82,45 @@ export default function BasicCalculator() {
   }, [currentInput, previousInput]);
 
   const faqItems = [
-  {
-    q: `What is a basic calculator?`,
-    a: `A basic calculator is a digital or physical mathematical tool designed exclusively for fundamental arithmetic. Unlike scientific or financial calculators that feature complex equations, a basic calculator features a simple keypad limited to numbers 0 through 9 and the four primary mathematical operations: addition, subtraction, multiplication, and division.`,
-  },
-  {
-    q: `What exact mathematical operations can this calculator perform?`,
-    a: `A basic calculator is built to perform the four core pillars of arithmetic:
+    {
+      q: `What is a basic calculator?`,
+      a: `A basic calculator is a digital or physical mathematical tool designed exclusively for fundamental arithmetic. Unlike scientific or financial calculators that feature complex equations, a basic calculator features a simple keypad limited to numbers 0 through 9 and the four primary mathematical operations: addition, subtraction, multiplication, and division.`,
+    },
+    {
+      q: `What exact mathematical operations can this calculator perform?`,
+      a: `A basic calculator is built to perform the four core pillars of arithmetic:
 * Addition (+): Finding the total sum of two or more numbers.
 * Subtraction (-): Deducting one number from another to find the difference.
 * Multiplication ( or x):* Scaling one number by another.
 * Division (/ or ÷): Splitting a number into equal parts. Many basic calculators also include a simple percentage (%) button for calculating tips or retail taxes.`,
-  },
-  {
-    q: `What is the difference between a basic calculator and a scientific calculator?`,
-    a: `A basic calculator is limited to everyday arithmetic (adding, subtracting, multiplying, dividing). A scientific calculator includes these basic features but adds advanced mathematical functions like trigonometry (sine, cosine, tangent), logarithms, exponents, and square roots. If you are doing taxes or budgeting, a basic calculator is best; if you are doing physics or calculus, you need a scientific calculator.`,
-  },
-  {
-    q: `Does a basic calculator follow the order of operations (PEMDAS)?`,
-    a: `Most basic calculators do not automatically follow the mathematical order of operations (PEMDAS). Instead, they process numbers sequentially, exactly as you type them from left to right. For example, if you type 2 + 3 * 4, a basic calculator will add 2 and 3 first (5), then multiply by 4, giving you 20. A scientific calculator would correctly multiply 3 and 4 first (12), then add 2, giving you 14.`,
-  },
-  {
-    q: `What do the "C" and "AC" buttons mean?`,
-    a: `These buttons are used to clear data from the calculator's memory so you can start a new math problem or fix an error:
+    },
+    {
+      q: `What is the difference between a basic calculator and a scientific calculator?`,
+      a: `A basic calculator is limited to everyday arithmetic (adding, subtracting, multiplying, dividing). A scientific calculator includes these basic features but adds advanced mathematical functions like trigonometry (sine, cosine, tangent), logarithms, exponents, and square roots. If you are doing taxes or budgeting, a basic calculator is best; if you are doing physics or calculus, you need a scientific calculator.`,
+    },
+    {
+      q: `Does a basic calculator follow the order of operations (PEMDAS)?`,
+      a: `Most basic calculators do not automatically follow the mathematical order of operations (PEMDAS). Instead, they process numbers sequentially, exactly as you type them from left to right. For example, if you type 2 + 3 * 4, a basic calculator will add 2 and 3 first (5), then multiply by 4, giving you 20. A scientific calculator would correctly multiply 3 and 4 first (12), then add 2, giving you 14.`,
+    },
+    {
+      q: `What do the "C" and "AC" buttons mean?`,
+      a: `These buttons are used to clear data from the calculator's memory so you can start a new math problem or fix an error:
 * C (Clear): This clears only the most recent entry. If you are typing a long string of additions and make a mistake on the last number, pressing "C" deletes just that mistake without wiping out the entire equation.
 * AC (All Clear): This completely wipes the calculator's memory and resets the screen to zero, allowing you to start an entirely new calculation.`,
-  },
-  {
-    q: `How do I calculate a percentage using a basic calculator?`,
-    a: `To find a percentage on a basic calculator, you convert the percentage into a decimal first by dividing it by 100. For example, to find 20% of 50, you change 20% to 0.20. You then multiply 50 by 0.20 to get the answer, which is 10. Some basic calculators feature a dedicated "%" button that automates this decimal conversion for you.`,
-  },
-  {
-    q: `Can a basic calculator handle fractions?`,
-    a: `No, a basic calculator does not feature a dedicated fraction input format (like 1/2 or 3/4). However, you can easily convert any fraction into a usable decimal by dividing the top number (numerator) by the bottom number (denominator). For example, to calculate using the fraction 3/4, you simply divide 3 by 4 to get 0.75, and then use that decimal in your calculation.`,
-  },
-  {
-    q: `Why use an online basic calculator instead of a physical app?`,
-    a: `Using a fully online basic calculator saves local storage space on your device and requires zero updates or installations. Because it operates through your web browser, it is instantly accessible across any device—whether you are on a desktop computer, a tablet, or a mobile phone—ensuring you always have a reliable math utility ready the moment you open a new tab.`,
-  },
-];
+    },
+    {
+      q: `How do I calculate a percentage using a basic calculator?`,
+      a: `To find a percentage on a basic calculator, you convert the percentage into a decimal first by dividing it by 100. For example, to find 20% of 50, you change 20% to 0.20. You then multiply 50 by 0.20 to get the answer, which is 10. Some basic calculators feature a dedicated "%" button that automates this decimal conversion for you.`,
+    },
+    {
+      q: `Can a basic calculator handle fractions?`,
+      a: `No, a basic calculator does not feature a dedicated fraction input format (like 1/2 or 3/4). However, you can easily convert any fraction into a usable decimal by dividing the top number (numerator) by the bottom number (denominator). For example, to calculate using the fraction 3/4, you simply divide 3 by 4 to get 0.75, and then use that decimal in your calculation.`,
+    },
+    {
+      q: `Why use an online basic calculator instead of a physical app?`,
+      a: `Using a fully online basic calculator saves local storage space on your device and requires zero updates or installations. Because it operates through your web browser, it is instantly accessible across any device—whether you are on a desktop computer, a tablet, or a mobile phone—ensuring you always have a reliable math utility ready the moment you open a new tab.`,
+    },
+  ];
 
   return (
     <div className="w-full">
@@ -253,13 +253,13 @@ export default function BasicCalculator() {
                 </button>
               </div>
             </div>
-            
+
             {/* History Section */}
             <div className="glass-card rounded-[2rem] p-[24px] shadow-lg border border-glass-border bg-white/70 dark:bg-surface-container/70 backdrop-blur-md mt-[24px]">
               <div className="flex items-center justify-between mb-[16px]">
                 <h4 className="font-label-md text-primary uppercase tracking-widest">History</h4>
                 {history.length > 0 && (
-                  <button 
+                  <button
                     onClick={() => { setHistory([]); localStorage.removeItem("jamro_basic_calc_history"); }}
                     className="text-label-sm text-on-surface-variant hover:text-error transition-colors"
                   >
@@ -272,7 +272,7 @@ export default function BasicCalculator() {
                   <p className="text-body-sm text-on-surface-variant opacity-70">No history yet. Your last 10 calculations will appear here.</p>
                 ) : (
                   history.map((item, idx) => (
-                    <button 
+                    <button
                       key={idx}
                       onClick={() => loadHistory(item)}
                       className="w-full text-right p-[12px] rounded-xl hover:bg-surface-container-high transition-colors group flex flex-col items-end border border-transparent hover:border-outline-variant/30"
@@ -344,15 +344,14 @@ export default function BasicCalculator() {
           <span>Advertisement - Support Jamro Tools</span>
         </div>
       </div>
-    
+
       {/* Tool Info Section */}
-      <ToolInfoCard 
-        title="Your all-in-one digital workshop."
+      <ToolInfoCard
+        title="About the Basic Calculator."
         content={[
-          `About the Basic Calculator`,
           `Not every mathematical problem requires advanced engineering equations or a complex graphing tool. For everyday math, you need speed, simplicity, and immediate results. The JamroTools Basic Calculator is a streamlined, fully online web utility designed to handle your daily calculations instantly. Built to operate directly in your browser without any offline downloads or app installations, this tool provides a clean, distraction-free interface for fundamental arithmetic.`,
           `Whether you are balancing a personal household budget, calculating a quick tip at a restaurant, or double-checking a grocery bill, this calculator delivers lightning-fast accuracy. By stripping away the cluttered interfaces of scientific calculators, it allows you to focus purely on the standard operations you need most: addition, subtraction, multiplication, and division.`,
-          `Simplify Your Daily Mathematics`,
+          `/ Simplify Your Daily Mathematics`,
           `A reliable, easy-to-use calculator is an essential utility for daily life and basic administration. When you use this online tool, you get immediate answers to foundational math problems.`,
           `* Manage Personal Finances: Quickly add up monthly bills, subtract daily expenses from your bank balance, or multiply hourly wages by hours worked.`,
           `* Calculate Retail Costs: Easily multiply item prices by quantities or subtract standard discounts to find your final checkout total.`,

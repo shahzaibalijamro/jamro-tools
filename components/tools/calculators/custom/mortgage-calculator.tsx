@@ -443,12 +443,11 @@ In the initial years of a long-term loan, your monthly payments are heavily weig
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the Mortgage Calculator."
         content={[
-          "About the Mortgage Calculator",
           "Buying a home is one of the most significant financial milestones you will ever achieve. However, before you start browsing listings or attending open houses, you need a clear picture of what that investment actually costs month-to-month. The JamroTools Mortgage Calculator is designed to take the guesswork out of home financing.",
           "By calculating your estimated Principal and Interest (P&I), our tool helps you map out your financial future in seconds. Rather than relying on vague estimates, you can plug in your specific home price, down payment, loan term, and current market interest rates to see an instant breakdown of your projected monthly obligations.",
-          "Master Your Mortgage Math",
+          "/ Master Your Mortgage Math",
           "A predictable monthly budget is the foundation of long-term financial health. When you use this calculator, you aren't just getting a single number—you are gaining insight into the moving pieces of a home loan.",
           "* Visualize the Amortization Shift: See exactly how your early payments heavily cover interest charges, and watch how that balance transitions toward building equity over the lifetime of the loan.",
           "* Test Diverse Scenarios: Compare the short-term budgeting friction of a 15-year fixed loan against the long-term breathing room (but higher lifetime interest) of a traditional 30-year fixed term.",

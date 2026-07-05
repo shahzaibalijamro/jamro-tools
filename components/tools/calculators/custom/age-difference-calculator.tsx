@@ -282,12 +282,11 @@ export default function AgeDifferenceCalculator() {
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the Age Difference Calculator."
         content={[
-          "About the Age Difference Calculator",
           "Comparing two dates of birth manually can be surprisingly complex when you factor in varying month lengths and leap years. The JamroTools Age Difference Calculator is a precision web utility designed to instantly compute the exact chronological gap between two individuals, events, or historical dates. Built for speed and accuracy, this online tool calculates the difference down to the exact year, month, and day.",
           "Whether you are comparing ages for a relationship, verifying age gaps for legal documentation, or conducting genealogical research, this calculator eliminates manual counting errors. By simply entering two dates, our tool runs the calendar logic instantly in your browser, providing a clear, formatted breakdown of the exact time that separates them.",
-          "Perfect for Everyday and Professional Use",
+          "/ Perfect for Everyday and Professional Use",
           "Understanding the precise age gap between two dates is useful across multiple scenarios. When you use this calculator, you instantly turn raw calendar dates into readable chronological data.",
           "* Relationship & Compatibility Tracking: Quickly determine the exact age gap between you and your partner down to the day.",
           "* Genealogical & Historical Research: Accurately calculate the time between the births of historical figures or ancestors without manually tracking centuries of leap years.",

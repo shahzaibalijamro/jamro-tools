@@ -243,12 +243,11 @@ export default function PercentageDecreaseCalculator() {
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the Percentage Decrease Calculator."
         content={[
-          "About the Percentage Decrease Calculator",
           "Calculating a drop in value should not require manual math or complicated spreadsheet formulas. The JamroTools Percentage Decrease Calculator is a fast, streamlined web utility designed to help you instantly determine the exact percentage drop between any two numbers. Built as a fully online platform, this tool leverages your active internet connection to deliver lightning-fast, real-time results directly in your browser without requiring any offline downloads or installations.",
           "Whether you are tracking a drop in website traffic, calculating retail discounts, or analyzing financial losses, this calculator provides immediate clarity. By simply entering your starting number and your ending number, you eliminate human error and get the precise percentage reduction in a fraction of a second.",
-          "Optimize Your Data Analysis",
+          "/ Optimize Your Data Analysis",
           "Understanding the rate at which a metric decreases is crucial for both personal finance and business analytics. When you use this calculator, you instantly translate raw numbers into actionable percentage data.",
           "* Track Business Metrics: Quickly assess month-over-month drops in sales revenue, user churn rates, or overhead costs to make informed operational decisions.",
           "* Calculate Shopping Discounts: Verify exactly how much money you are saving during a sale by finding the true percentage difference between the original retail price and the clearance price.",

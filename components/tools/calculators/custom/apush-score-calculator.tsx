@@ -322,12 +322,11 @@ Once this final number is calculated, it is compared against the year's specific
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the APUSH Score Calculator."
         content={[
-          "About the APUSH Score Calculator",
           "Preparing for the Advanced Placement United States History (APUSH) exam requires more than just memorizing historical dates and treaties; it requires a deep understanding of how the test is actually graded. The JamroTools APUSH Score Calculator is a fast, web-based educational utility designed to help high school students instantly predict their final 1-to-5 AP score. Operating entirely online, this tool applies the official College Board weighting structure to your raw practice test scores right in your browser.",
           "Rather than guessing how your multiple-choice performance balances out a weak essay, you can simply input your raw scores from your practice sessions. The calculator instantly processes the complex math, giving you a highly accurate estimate of your final composite score so you know exactly where you stand before exam day.",
-          "Strategize Your AP Exam Prep",
+          "/ Strategize Your AP Exam Prep",
           "Understanding the math behind your AP score is the fastest way to improve it. When you use this calculator, you transform raw practice data into a targeted study plan.",
           "* Identify Weak Areas: Instantly see whether you need to spend more time drilling multiple-choice facts or improving your historical argumentation in the essays.",
           "* Test Scoring Scenarios: Play with the numbers to see exactly how earning just one more rubric point on the DBQ can push your final score from a 3 to a 4.",

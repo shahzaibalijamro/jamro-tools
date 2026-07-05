@@ -392,12 +392,11 @@ export default function TripleIntegralCalculator() {
 
       {/* Tool Info Section */}
       <ToolInfoCard
-        title="Your all-in-one digital workshop."
+        title="About the Triple Integral Calculator."
         content={[
-          "About the Triple Integral Calculator",
           "Solving multivariable calculus problems by hand is a time-consuming process where a single arithmetic mistake in the first step can ruin the entire equation. The JamroTools Triple Integral Calculator is an advanced, web-based mathematical utility designed to evaluate definite and indefinite integrals across three variables instantly. Built to operate entirely online, this tool leverages your browser to process complex computational math without requiring heavy software downloads.",
           "Whether you are a university student navigating Calculus III, a physicist determining the center of mass, or an engineer calculating fluid dynamics, this tool eliminates manual calculation errors. By simply entering your function and the upper and lower limits for your x, y, and z variables, the calculator processes the inside-out integration steps automatically, delivering the precise final result in seconds.",
-          "Simplify Multivariable Calculus",
+          "/ Simplify Multivariable Calculus",
           "Triple integrals are the backbone of advanced 3D spatial mathematics. Using an automated calculator allows you to bypass tedious manual arithmetic and focus purely on the applied science.",
           "* Calculate 3D Volume: Instantly compute the exact spatial volume of complex, irregular three-dimensional solid regions.",
           "* Determine Mass and Density: Apply a density function to your calculation to find the total mass of an object that has varying density throughout its structure.",

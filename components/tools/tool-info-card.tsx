@@ -22,6 +22,11 @@ export function ToolInfoCard({ title, content }: ToolInfoCardProps) {
                 </ul>
               );
             }
+            if (paragraph.startsWith("/ ")) {
+              return (
+                <p className="font-bold text-white dark:text-on-surface" key={index}>{paragraph.substring(2)}</p>
+              );
+            }
             return <p key={index}>{paragraph}</p>;
           })}
         </div>
