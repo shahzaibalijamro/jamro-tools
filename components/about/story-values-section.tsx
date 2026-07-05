@@ -25,13 +25,10 @@ export function StoryValuesSection() {
           </div>
 
           <h3 className="text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-on-surface">
-            From a single script to a global suite.
+            How It All Began
           </h3>
           <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-            Jamro Tools started as a personal collection of utility scripts meant to solve
-            recurring tasks in development and design. We realized that thousands of
-            creators were facing the same friction points—switching between twenty tabs
-            just to format a string or convert a unit.
+            Jamro Tools was born from a simple frustration: getting everyday digital tasks done meant bouncing between dozens of different websites, each with its own sign‑up, paywall, or privacy risk. In 2026, we decided to fix that. What started as a small private collection of scripts has grown into a comprehensive ecosystem of over 1,000 tools, all accessible from a single, distraction‑free workspace.
           </p>
 
           {/* Story image */}
@@ -46,15 +43,13 @@ export function StoryValuesSection() {
           </div>
 
           <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-            Today, we serve a global community, offering hundreds of optimized tools while
-            maintaining the same lightweight, no-nonsense approach that defined our very
-            first tool.
+            Every tool is built on a straightforward belief: you should be able to get things done instantly, without handing over your data, and without having to remember which site does what.
           </p>
         </div>
 
         {/* Built on Values heading */}
         <h2 className="mb-6 mt-12 text-center text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-on-surface">
-          Built on Values
+          Why Creators and Developers Choose Jamro Tools
         </h2>
 
         {/* Value cards — vertical stack */}
@@ -78,11 +73,10 @@ export function StoryValuesSection() {
               </svg>
             </div>
             <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-on-surface">
-              Privacy First
+              One Medium for All Tools
             </h4>
             <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-              Your data never leaves your browser. We prioritize client-side processing
-              for ultimate security.
+              No more bookmarks to ten different sites. From JSON formatters to PDF editors, image compressors to password generators – every utility lives on Jamro Tools. One platform, one experience, zero fragmentation.
             </p>
           </div>
 
@@ -107,11 +101,10 @@ export function StoryValuesSection() {
               </svg>
             </div>
             <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-white">
-              Universal Access
+              Private by Default
             </h4>
             <p className="text-[16px] leading-[1.6] text-white/80">
-              Every tool is designed to be accessible, regardless of your technical
-              background or device.
+              There’s no sign‑up, no login, and no server‑side processing. Everything you type, paste, or upload stays locked inside your browser. We never see, store, or touch your data – because we physically can’t.
             </p>
           </div>
 
@@ -138,11 +131,67 @@ export function StoryValuesSection() {
               </svg>
             </div>
             <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-on-surface">
-              Lightweight Footprint
+              99.9% Accuracy Standard
             </h4>
             <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-              We strip away the bloat. Jamro Tools loads instantly, saving you time and
-              battery life.
+              Every calculator, converter, and formatter is tested against industry benchmarks. We obsess over precision so you can trust the output every time.
+            </p>
+          </div>
+
+          {/* Card 2 — primary highlight */}
+          <div className="rounded-xl bg-[#004ac6] dark:bg-primary-container p-6 shadow-lg transition-transform active:scale-[0.98]">
+            <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-white/20">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+            </div>
+            <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-white">
+              Unrivaled Speed
+            </h4>
+            <p className="text-[16px] leading-[1.6] text-white/80">
+              All tools run locally using JavaScript and WebAssembly. No server round trips. Instant results, every time.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-[#c3c6d7] dark:border-outline-variant bg-[#dee8ff] dark:bg-surface-container p-6 transition-transform active:scale-[0.98]">
+            <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-[#0058be]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M7 20h10" />
+                <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+                <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.6" />
+                <path d="M5.5 13.4C3.8 11.8 2 9.4 3.6 6.8" />
+                <path d="M17.7 5.6c1.7 3 .8 5.4-1.2 7.4" />
+              </svg>
+            </div>
+            <h4 className="mb-1 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-on-surface">
+              Zero Friction
+            </h4>
+            <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
+              Pick a tool, drop in your input, get your output. No accounts, no tutorials, no onboarding – just pure, undiluted utility.
             </p>
           </div>
         </div>
@@ -155,19 +204,13 @@ export function StoryValuesSection() {
         <Panel className="flex flex-col justify-between p-6 md:col-span-7">
           <div>
             <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-on-surface md:text-[32px]">
-              Our Story
+              How It All Began
             </h2>
             <p className="mb-4 text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-              Jamro Tools started as a small internal collection of scripts used by a
-              group of developers to automate repetitive daily tasks. We realized that
-              many of the tools available online were either behind paywalls, cluttered
-              with intrusive ads, or lacked proper privacy standards.
+              Jamro Tools was born from a simple frustration: getting everyday digital tasks done meant bouncing between dozens of different websites, each with its own sign‑up, paywall, or privacy risk. In 2026, we decided to fix that. What started as a small private collection of scripts has grown into a comprehensive ecosystem of over 1,000 tools, all accessible from a single, distraction‑free workspace.
             </p>
             <p className="text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-              In 2026, we decided to polish these tools and open them to the world. What
-              began as 50 simple scripts has grown into a comprehensive ecosystem of over
-              1,000 utilities, maintained by a community of contributors who believe in
-              the democratization of digital tools.
+              Every tool is built on a straightforward belief: you should be able to get things done instantly, without handing over your data, and without having to remember which site does what.
             </p>
           </div>
 

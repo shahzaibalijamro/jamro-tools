@@ -24,10 +24,10 @@ export function AboutHero() {
           Our Journey
         </span>
         <h1 className="mb-2 text-[32px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#111c2d] dark:text-on-surface md:text-[48px] md:leading-[1.1] md:tracking-[-0.02em]">
-          Tools for the Modern Creator.
+          One Platform. Every Tool You Need.
         </h1>
         <p className="max-w-sm text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant md:max-w-xl md:text-[18px]">
-          We build the digital Swiss Army knife for your everyday productivity needs.
+          No sign‑up. No clutter. Everything runs privately on your device.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">

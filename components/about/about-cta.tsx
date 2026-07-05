@@ -24,11 +24,10 @@ export function AboutCta() {
       {/* DESKTOP CTA */}
       <section className="hidden rounded-[12px] border border-[#c3c6d7] dark:border-outline-variant bg-[#e7eeff] dark:bg-surface-container p-8 text-center md:block md:p-12">
         <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#111c2d] dark:text-on-surface md:text-[32px]">
-          Ready to start working faster?
+          Ready to Simplify Your Workflow?
         </h2>
         <p className="mx-auto mb-6 max-w-xl text-[16px] leading-[1.6] text-[#434655] dark:text-on-surface-variant">
-          Explore our collection of over 1,000 calculators, converters, and developer
-          utilities today.
+          Explore 1,000+ tools, all under one roof, with the privacy and speed you deserve.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <SafeLink

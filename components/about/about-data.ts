@@ -33,39 +33,39 @@ export const precisionMetric = {
 export const valueCards = [
   {
     icon: Zap,
-    title: "Unrivaled Speed",
+    title: "Zero Friction",
     description:
-      "Optimized for performance. Our tools process data locally in your browser whenever possible for instant results.",
+      "Pick a tool, drop in your input, get your output. No accounts, no tutorials, no onboarding – just pure, undiluted utility.",
   },
   {
     icon: ShieldCheck,
-    title: "Privacy First",
+    title: "Unrivaled Speed",
     description:
-      "Your data stays with you. We don't store the text, images, or files you process on our platform.",
+      "All tools run locally using JavaScript and WebAssembly. No server round trips. Instant results, every time.",
   },
   {
     icon: LayoutGrid,
-    title: "Pure Utility",
+    title: "Private by Default",
     description:
-      "No bloat. No complex workflows. Just enter your input and get your output in seconds.",
+      "There’s no sign‑up, no login, and no server‑side processing. Everything you type, paste, or upload stays locked inside your browser.",
   },
 ];
 
 export const teamMembers = [
   {
-    name: "David Chen",
-    role: "Founder & Lead Engineer",
+    name: "Umer",
+    role: "Founder & SEO Expert",
     quote:
-      '"Tools should be invisible\u2014they should just work so you can focus on the result."',
+      '"We wanted to eliminate the hassle of chasing tools across the internet. One website should be enough for any digital task."',
     image: "/about/david-chen.png",
-    alt: "David Chen, Founder and Lead Engineer",
+    alt: "Umer, Founder & SEO Expert",
   },
   {
-    name: "Sarah Jenkins",
-    role: "Head of Product Design",
-    quote: '"Simplicity is the ultimate sophistication in utility design."',
+    name: "Shahzaib Ali",
+    role: "Co‑Founder & Software Engineer",
+    quote: '"The best tools are the ones you don’t notice. Our job is to make sure everything just works, so you can stay in your flow."',
     image: "/about/sarah-jenkins.png",
-    alt: "Sarah Jenkins, Head of Product Design",
+    alt: "Shahzaib Ali, Co‑Founder & Software Engineer",
   },
 ];
 
@@ -73,7 +73,7 @@ export const philosophy = {
   icon: Heart,
   title: "Our Philosophy",
   description:
-    "We believe that professional-grade tools shouldn't require a professional budget. Accessibility is our primary metric of success.",
+    "Accessibility isn’t just about price – it’s about removing every possible barrier. No sign‑ups, no separate sites to remember, no data leaving your machine. The moment you need a tool, it should already be there, ready to work.",
 };
 
 export const footerLinks = [

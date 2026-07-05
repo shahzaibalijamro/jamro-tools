@@ -2,7 +2,7 @@ import { Bolt, ShieldCheck } from "lucide-react";
 
 export function AboutMission() {
   return (
-    <section className="mb-12 md:hidden">
+    <section className="mb-12">
       <div className="glass-card rounded-xl border border-[#c3c6d7] dark:border-outline-variant bg-white/80 dark:bg-surface-container/80 p-6 shadow-sm backdrop-blur-[12px]">
         <h2 className="mb-4 text-[24px] font-semibold leading-[1.2] text-[#004ac6] dark:text-primary">
           Our Mission
