@@ -459,7 +459,7 @@ export default function RentVsBuyCalculator() {
                     width={80}
                   />
                   <Tooltip
-                    formatter={(value: number) => `$${value.toLocaleString()}`}
+                    formatter={(value: any) => `$${Number(value).toLocaleString()}`}
                     labelFormatter={(label) => `Year ${label}`}
                     contentStyle={{ borderRadius: '8px', border: '1px solid var(--outline-variant)', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                   />
