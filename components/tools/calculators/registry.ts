@@ -9,6 +9,8 @@ import TripleIntegralCalculator from "./custom/triple-integral-calculator";
 import WordCounterCalculator from "./custom/word-counter-calculator";
 import BasicCalculator from "./custom/basic-calculator";
 import ScientificCalculator from "./custom/scientific-calculator";
+import LoanCalculator from "./custom/loan-calculator";
+import RentVsBuyCalculator from "./custom/rent-vs-buy"
 
 /**
  * Registry maps custom component names (as stored in ToolConfig.customComponent)
@@ -30,6 +32,8 @@ const customToolRegistry: Record<string, ComponentType> = {
   WordCounterCalculator,
   BasicCalculator,
   ScientificCalculator,
+  LoanCalculator,
+  RentVsBuyCalculator,
 };
 
 export function getCustomToolComponent(
@@ -49,5 +53,7 @@ export {
   WordCounterCalculator,
   BasicCalculator,
   ScientificCalculator,
+  LoanCalculator,
+  RentVsBuyCalculator,
 };
 

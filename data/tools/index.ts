@@ -9,6 +9,8 @@ import { tripleIntegralCalculator } from "./triple-integral-calculator";
 import { wordCounterCalculator } from "./word-counter-calculator";
 import { basicCalculator } from "./basic-calculator";
 import { scientificCalculator } from "./scientific-calculator";
+import { loanCalculator } from "./loan-calculator";
+import { rentVsBuyCalculator } from "./rent-vs-buy";
 
 const allTools: ToolConfig[] = [
   mortgageCalculator,
@@ -21,6 +23,8 @@ const allTools: ToolConfig[] = [
   wordCounterCalculator,
   basicCalculator,
   scientificCalculator,
+  loanCalculator,
+  rentVsBuyCalculator,
 ];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {

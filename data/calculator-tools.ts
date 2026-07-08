@@ -18,10 +18,10 @@ export const calculatorCategories: CalculatorCategory[] = [
     sampleTools: ["Mortgage", "ROI", "Tip"],
     tools: [
       "Mortgage Calculator",
-      "EMI Calculator",
-      "Loan Refinance",
-      "Affordability Calculator",
+      "Loan Calculator",
       "Rent vs Buy",
+      "EMI Calculator",
+      "Affordability Calculator",
       "Personal Loan",
       "Auto Loan",
       "Credit Card Payoff",

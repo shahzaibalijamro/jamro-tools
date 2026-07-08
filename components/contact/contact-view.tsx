@@ -29,9 +29,9 @@ export function ContactView() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus("submitting");
-    
+
     const form = e.target as HTMLFormElement;
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -43,7 +43,7 @@ export function ContactView() {
           message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
         }),
       });
-      
+
       if (response.ok) {
         setFormStatus("sent");
         setTimeout(() => {
@@ -165,11 +165,10 @@ export function ContactView() {
                 </div>
 
                 <button
-                  className={`w-full md:w-auto px-[48px] py-[16px] text-white text-label-md rounded-full shadow-lg transition-all flex items-center justify-center gap-[8px] ${
-                    formStatus === "sent"
-                      ? "bg-tertiary-container"
-                      : "bg-[#004ac6] hover:bg-[#0649c5] hover:-translate-y-0.5 active:scale-95"
-                  }`}
+                  className={`w-full md:w-auto px-[48px] py-[16px] text-white text-label-md rounded-full shadow-lg transition-all flex items-center justify-center gap-[8px] ${formStatus === "sent"
+                    ? "bg-tertiary-container"
+                    : "bg-[#004ac6] hover:bg-[#0649c5] hover:-translate-y-0.5 active:scale-95"
+                    }`}
                   type="submit"
                   disabled={formStatus !== "idle"}
                 >
@@ -206,7 +205,7 @@ export function ContactView() {
             {/* ── Info Sidebar ── */}
             <div className="lg:col-span-4 flex flex-col gap-[24px]">
               {/* Contact Details Card */}
-              <div className="glass-panel p-[24px] rounded-xl flex flex-col gap-[24px]">
+              {/* <div className="glass-panel p-[24px] rounded-xl flex flex-col gap-[24px]">
                 <div className="flex items-start gap-[16px]">
                   <div className="w-12 h-12 bg-[#004ac6] flex items-center justify-center rounded-xl text-white shrink-0">
                     <span className="material-symbols-outlined">mail</span>
@@ -238,7 +237,7 @@ export function ContactView() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* ── Map (real Google Maps embed) ── */}
               <div className="h-48 rounded-xl overflow-hidden relative">
@@ -299,7 +298,7 @@ export function ContactView() {
           </div>
 
           {/* ── FAQ Section Preview ── */}
-          <section className="mt-[48px] py-[48px] border-t border-outline-variant">
+          {/* <section className="mt-[48px] py-[48px] border-t border-outline-variant">
             <div className="text-center mb-[48px]">
               <h2 className="text-headline-md mb-[8px]">
                 Common Questions
@@ -337,7 +336,7 @@ export function ContactView() {
                 </p>
               </div>
             </div>
-          </section>
+          </section> */}
         </div>
       </main>
 
