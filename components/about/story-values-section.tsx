@@ -138,7 +138,7 @@ export function StoryValuesSection() {
             </p>
           </div>
 
-          {/* Card 2 — primary highlight */}
+          {/* Card 4 — primary highlight */}
           <div className="rounded-xl bg-[#004ac6] dark:bg-primary-container p-6 shadow-lg transition-transform active:scale-[0.98]">
             <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-white/20">
               <svg
@@ -240,9 +240,9 @@ export function StoryValuesSection() {
           </p>
         </div>
 
+        {/* Original three value cards */}
         {valueCards.map((card) => {
           const Icon = card.icon;
-
           return (
             <div
               key={card.title}
@@ -262,6 +262,62 @@ export function StoryValuesSection() {
             </div>
           );
         })}
+
+        {/* Additional fourth card — Unrivaled Speed (50% width) */}
+        <div className="group cursor-default rounded-[12px] border border-[#c3c6d7] dark:border-outline-variant bg-[#dee8ff] dark:bg-surface-container p-6 transition-colors hover:border-[#004ac6] md:col-span-6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#004ac6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="mb-4 size-6"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+          <h3 className="mb-2 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-on-surface">
+            One Medium for All Tools
+          </h3>
+          <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-on-surface-variant">
+            No more bookmarks to ten different sites. From JSON formatters to PDF editors, image compressors to password generators – every utility lives on Jamro Tools. One platform, one experience, zero fragmentation.
+          </p>
+        </div>
+
+        {/* Additional fifth card — Zero Friction (50% width) */}
+        <div className="group cursor-default rounded-[12px] border border-[#c3c6d7] dark:border-outline-variant bg-[#dee8ff] dark:bg-surface-container p-6 transition-colors hover:border-[#004ac6] md:col-span-6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#004ac6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="mb-4 size-6"
+          >
+            <path d="M7 20h10" />
+            <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.6" />
+            <path d="M5.5 13.4C3.8 11.8 2 9.4 3.6 6.8" />
+            <path d="M17.7 5.6c1.7 3 .8 5.4-1.2 7.4" />
+          </svg>
+          <h3 className="mb-2 text-[20px] font-semibold leading-[1.4] text-[#111c2d] dark:text-on-surface">
+            99.9% Accuracy Standard
+          </h3>
+          <p className="text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-[#434655] dark:text-on-surface-variant">
+            Every calculator, converter, and formatter is tested against industry benchmarks. We obsess over precision so you can trust the output every time.
+          </p>
+        </div>
       </section>
     </>
   );

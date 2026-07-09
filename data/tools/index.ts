@@ -11,6 +11,7 @@ import { basicCalculator } from "./basic-calculator";
 import { scientificCalculator } from "./scientific-calculator";
 import { loanCalculator } from "./loan-calculator";
 import { rentVsBuyCalculator } from "./rent-vs-buy";
+import { homeAffordabilityCalculator } from "./home-affordability-calculator";
 
 const allTools: ToolConfig[] = [
   mortgageCalculator,
@@ -25,6 +26,7 @@ const allTools: ToolConfig[] = [
   scientificCalculator,
   loanCalculator,
   rentVsBuyCalculator,
+  homeAffordabilityCalculator,
 ];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {

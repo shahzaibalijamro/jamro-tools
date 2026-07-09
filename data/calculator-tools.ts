@@ -21,7 +21,7 @@ export const calculatorCategories: CalculatorCategory[] = [
       "Loan Calculator",
       "Rent vs Buy",
       "EMI Calculator",
-      "Affordability Calculator",
+      "Home Affordability Calculator",
       "Personal Loan",
       "Auto Loan",
       "Credit Card Payoff",
