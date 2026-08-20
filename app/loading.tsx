@@ -58,14 +58,7 @@ export default function Loading() {
           </h2>
 
           {/* Glass-card fact */}
-          <div
-            className="rounded-xl p-[24px] shadow-sm"
-            style={{
-              backdropFilter: "blur(12px)",
-              background: "rgba(255, 255, 255, 0.7)",
-              border: "1px solid rgba(226, 232, 240, 0.8)",
-            }}
-          >
+          <div className="rounded-xl border border-slate-200/80 bg-white/70 p-[24px] shadow-sm backdrop-blur-[12px] dark:border-outline-variant/80 dark:bg-surface-container/70">
             <div className="flex items-start gap-[12px]">
               <span
                 className="material-symbols-outlined text-primary text-[20px] mt-[2px] shrink-0"

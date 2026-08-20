@@ -13,6 +13,30 @@ interface ToolPageProps {
 }
 
 const TOOL_META: Record<string, { title: string; description: string }> = {
+  "net-worth-calculator": {
+    title: "Net Worth Calculator - Assets, Liabilities & Age Benchmark",
+    description: "Calculate your net worth instantly by totaling assets, subtracting liabilities, and comparing your result with 2026 age-based median benchmarks.",
+  },
+  "roi-calculator": {
+    title: "ROI Calculator - Return on Investment & Profit Margin",
+    description: "Calculate simple and annualized ROI, plus gross, operating, and net profit margins for any investment or business scenario.",
+  },
+  "401k-planner": {
+    title: "401(k) Planner - Retirement Savings & Employer Match Calculator",
+    description: "Project your 401(k) balance, employer match, compound growth, and estimated retirement income.",
+  },
+  "student-loan-calculator": {
+    title: "Student Loan Calculator - Standard vs. Income-Driven Plans",
+    description: "Compare Standard, Tiered Standard, IBR, and RAP student loan payments and projected costs using your balance, interest rate, and income.",
+  },
+  "credit-card-payoff-calculator": {
+    title: "Credit Card Payoff Calculator - Avalanche vs. Snowball",
+    description: "Compare credit card payoff timelines and interest using minimum payments, debt avalanche, or debt snowball strategies.",
+  },
+  "income-tax-calculator": {
+    title: "Income Tax Calculator - 2026 Federal Brackets, Deductions & Withholding",
+    description: "Estimate your 2026 federal income tax, taxable income, effective rate, marginal rate, and projected refund or balance due.",
+  },
   "mortgage-calculator": {
     title: "Free Mortgage Calculator – Monthly Payment, PMI & Amortization",
     description:

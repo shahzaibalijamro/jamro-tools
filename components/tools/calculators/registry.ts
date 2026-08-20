@@ -12,6 +12,12 @@ import ScientificCalculator from "./custom/scientific-calculator";
 import LoanCalculator from "./custom/loan-calculator";
 import RentVsBuyCalculator from "./custom/rent-vs-buy";
 import HomeAffordabilityCalculator from "./custom/home-affordability-calculator";
+import NetWorthCalculator from "./custom/net-worth-calculator";
+import RoiCalculator from "./custom/roi-calculator";
+import FourOhOneKPlanner from "./custom/401k-planner";
+import StudentLoanCalculator from "./custom/student-loan-calculator";
+import CreditCardPayoffCalculator from "./custom/credit-card-payoff-calculator";
+import IncomeTaxCalculator from "./custom/income-tax-calculator";
 
 /**
  * Registry maps custom component names (as stored in ToolConfig.customComponent)
@@ -36,6 +42,12 @@ const customToolRegistry: Record<string, ComponentType> = {
   LoanCalculator,
   RentVsBuyCalculator,
   HomeAffordabilityCalculator,
+  NetWorthCalculator,
+  RoiCalculator,
+  FourOhOneKPlanner,
+  StudentLoanCalculator,
+  CreditCardPayoffCalculator,
+  IncomeTaxCalculator,
 };
 
 export function getCustomToolComponent(
@@ -58,5 +70,11 @@ export {
   LoanCalculator,
   RentVsBuyCalculator,
   HomeAffordabilityCalculator,
+  NetWorthCalculator,
+  RoiCalculator,
+  FourOhOneKPlanner,
+  StudentLoanCalculator,
+  CreditCardPayoffCalculator,
+  IncomeTaxCalculator,
 };
 

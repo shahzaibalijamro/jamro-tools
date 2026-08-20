@@ -12,6 +12,12 @@ import { scientificCalculator } from "./scientific-calculator";
 import { loanCalculator } from "./loan-calculator";
 import { rentVsBuyCalculator } from "./rent-vs-buy";
 import { homeAffordabilityCalculator } from "./home-affordability-calculator";
+import { netWorthCalculator } from "./net-worth-calculator";
+import { roiCalculator } from "./roi-calculator";
+import { fourOhOneKPlanner } from "./401k-planner";
+import { studentLoanCalculator } from "./student-loan-calculator";
+import { creditCardPayoffCalculator } from "./credit-card-payoff-calculator";
+import { incomeTaxCalculator } from "./income-tax-calculator";
 
 const allTools: ToolConfig[] = [
   mortgageCalculator,
@@ -27,6 +33,12 @@ const allTools: ToolConfig[] = [
   loanCalculator,
   rentVsBuyCalculator,
   homeAffordabilityCalculator,
+  netWorthCalculator,
+  roiCalculator,
+  fourOhOneKPlanner,
+  studentLoanCalculator,
+  creditCardPayoffCalculator,
+  incomeTaxCalculator,
 ];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {
