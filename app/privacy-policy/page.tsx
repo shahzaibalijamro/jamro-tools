@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { PrivacyHero } from "@/components/privacy/privacy-hero";
-import { PrivacyMobileNav } from "@/components/privacy/privacy-mobile-nav";
+import { mobileJumpLinks } from "@/components/privacy/privacy-data";
 import { PrivacySections } from "@/components/privacy/privacy-sections";
 import { PrivacySidebar } from "@/components/privacy/privacy-sidebar";
 import { SiteHeader } from "@/components/layout/site-header";
+import { MobileSectionNav } from "@/components/ui/mobile-section-nav";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - Jamro Tools",
@@ -30,7 +31,10 @@ export default function PrivacyPage() {
           {/* Mobile hero (full-bleed bg) + Mobile jump nav */}
           <div className="md:hidden">
             <PrivacyHero />
-            <PrivacyMobileNav />
+            <MobileSectionNav
+              ariaLabel="Privacy Policy sections"
+              links={mobileJumpLinks}
+            />
             <PrivacySections />
           </div>
 

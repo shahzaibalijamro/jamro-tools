@@ -26,6 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url("/contact"), lastModified: NOW, priority: 0.80 },
     { url: url("/privacy-policy"), lastModified: NOW, priority: 0.80 },
     { url: url("/terms"), lastModified: NOW, priority: 0.80 },
+    { url: url("/write-for-us"), lastModified: NOW, priority: 0.80 },
   ];
 
   const categoryEntries: Entry[] = calculatorCategories.map((category) => ({

@@ -11,6 +11,7 @@ const navItems = [
   { label: "Tools", href: "/tools" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
+  { label: "Write for Us", href: "/write-for-us" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -216,7 +217,7 @@ export function SiteHeader() {
             >
               Jamro Tools
             </Link>
-            <div className="relative flex h-[44px] min-w-[130px] max-w-[330px] max-[580px]:hidden flex-1 items-center min-[400px]:h-[40px] min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px]">
+            <div className="relative flex h-[44px] min-w-[130px] max-w-[330px] max-[580px]:hidden flex-1 items-center min-[400px]:h-[40px] min-[901px]:min-w-[96px] min-[1180px]:min-w-[130px] min-[1180px]:max-w-[410px] xl:h-[57px] xl:max-w-[508px]">
               <form
                 role="search"
                 className="flex h-full w-full items-center rounded-full border border-[var(--color-border)] dark:border-outline-variant/50 bg-[#f4f7ff] dark:bg-surface-container/50 px-4 text-[var(--color-muted)] dark:text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] min-[400px]:px-5 xl:px-6"

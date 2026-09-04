@@ -8,6 +8,7 @@
   "/contact",
   "/privacy-policy",
   "/terms",
+  "/write-for-us",
   "/tools",
   "/tools/calculators",
   "/tools/text-tools",
