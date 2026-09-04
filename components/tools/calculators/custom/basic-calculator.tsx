@@ -123,7 +123,7 @@ export default function BasicCalculator() {
   ];
 
   return (
-    <div className="w-full">
+    <>
       {/* Calculator Core */}
       <section className="mx-auto mb-[48px] max-w-container-max">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[24px]">
@@ -338,13 +338,6 @@ export default function BasicCalculator() {
         </div>
       </section>
 
-      {/* Subtle Ad Placeholder */}
-      <div className="mx-auto mb-[48px] max-w-container-max">
-        <div className="w-full h-24 bg-surface-container rounded-2xl flex items-center justify-center border border-outline-variant/30 text-on-surface-variant font-label-sm uppercase tracking-widest">
-          <span>Advertisement - Support Jamro Tools</span>
-        </div>
-      </div>
-
       {/* Tool Info Section */}
       <ToolInfoCard
         title="About the Basic Calculator."
@@ -362,6 +355,6 @@ export default function BasicCalculator() {
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />
-    </div>
+    </>
   );
 }

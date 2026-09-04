@@ -3,10 +3,19 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { ToolsCtaSection } from "@/components/tools/cta-section";
 import { calculatorCategories } from "@/data/calculator-tools";
-import { getToolBySlug } from "@/data/tools/index";
-import { getCustomToolComponent } from "@/components/tools/calculators/registry";
+import { allTools, getToolBySlug } from "@/data/tools/index";
+import {
+  CustomToolRenderer,
+  hasCustomToolComponent,
+} from "@/components/tools/calculators/registry";
+import { FaqSection } from "@/components/ui/faq-section";
+import {
+  ToolEditorialContent,
+  ToolPageRail,
+} from "@/components/tools/tool-page-content";
+import { getRandomBlogTeasers } from "@/lib/blog-teasers";
+import type { ToolConfig, ToolLink } from "@/data/tools/types";
 
 interface ToolPageProps {
   params: Promise<{ type: string; tool: string }>;
@@ -64,7 +73,7 @@ export async function generateMetadata({
 }: ToolPageProps): Promise<Metadata> {
   const { type, tool } = await params;
   const toolConfig = getToolBySlug(tool);
-  const override = TOOL_META[tool];
+  const override = toolConfig?.metadata ?? TOOL_META[tool];
 
   if (!toolConfig) {
     return { title: "Tool Not Found | Jamro Tools" };
@@ -110,11 +119,15 @@ export default async function ToolPage({ params }: ToolPageProps) {
   const category = calculatorCategories.find((c) => c.slug === type);
   const categoryTitle = category ? category.title : type;
 
-  // Determine what to render
-  let ToolContent: React.ComponentType | null = null;
-  if (toolConfig.customComponent) {
-    ToolContent = getCustomToolComponent(toolConfig.customComponent);
-  }
+  const componentName = toolConfig.customComponent;
+  const hasInteractiveTool = Boolean(
+    componentName && hasCustomToolComponent(componentName),
+  );
+  const blogs = await getRandomBlogTeasers(3);
+  const relatedTools = getRelatedTools(toolConfig);
+  const jsonLd = toolConfig.pageContent
+    ? buildToolJsonLd(toolConfig, categoryTitle)
+    : null;
 
   return (
     <div className="min-h-screen">
@@ -165,32 +178,145 @@ export default async function ToolPage({ params }: ToolPageProps) {
           </div>
         </section>
 
-        {/* Tool Content */}
-        {ToolContent ? (
-          <ToolContent />
-        ) : toolConfig.sections ? (
-          <div className="text-center py-[48px] text-on-surface-variant">
-            <span className="material-symbols-outlined text-[48px] mb-[16px] block">
-              construction
-            </span>
-            <p>This tool uses section-based rendering (not yet implemented).</p>
-          </div>
-        ) : (
-          <div className="text-center py-[48px] text-on-surface-variant">
-            <span className="material-symbols-outlined text-[48px] mb-[16px] block">
-              construction
-            </span>
-            <p>This tool is coming soon.</p>
-          </div>
-        )}
+        {jsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+            }}
+          />
+        ) : null}
 
-        {/* CTA Section */}
-        <div className="mt-[48px]">
-          <ToolsCtaSection />
+        <div className="tool-page-layout">
+          {hasInteractiveTool && componentName ? (
+            <CustomToolRenderer name={componentName} />
+          ) : (
+            <div data-tool-workspace aria-hidden="true" className="min-h-[360px]" />
+          )}
+
+          {toolConfig.pageContent ? (
+            <ToolEditorialContent blocks={toolConfig.pageContent.blocks} />
+          ) : null}
+
+          <ToolPageRail
+            relatedTools={relatedTools}
+            blogs={blogs}
+          />
+
+          {toolConfig.pageContent?.faq ? (
+            <FaqSection items={toolConfig.pageContent.faq} />
+          ) : null}
+
         </div>
       </main>
 
       <SiteFooter />
     </div>
   );
+}
+
+function getRelatedTools(currentTool: ToolConfig): ToolLink[] {
+  const sameCategoryTools = allTools.filter(
+    (tool) =>
+      tool.slug !== currentTool.slug &&
+      tool.category === currentTool.category,
+  );
+  const configuredHrefs = new Set(
+    currentTool.pageContent?.relatedTools?.map((tool) => tool.href) ?? [],
+  );
+
+  return sameCategoryTools
+    .sort((first, second) => {
+      const firstHref = `/tools/calculators/${first.category}/${first.slug}`;
+      const secondHref = `/tools/calculators/${second.category}/${second.slug}`;
+      return Number(configuredHrefs.has(secondHref)) - Number(configuredHrefs.has(firstHref));
+    })
+    .slice(0, 4)
+    .map((tool) => ({
+      title: tool.title,
+      href: `/tools/calculators/${tool.category}/${tool.slug}`,
+    }));
+}
+
+function buildToolJsonLd(toolConfig: ToolConfig, categoryTitle: string) {
+  const siteUrl = "https://jamrotools.com";
+  const path = `/tools/calculators/${toolConfig.category}/${toolConfig.slug}`;
+  const pageUrl = `${siteUrl}${path}`;
+  const websiteId = `${siteUrl}#website`;
+  const webpageId = `${pageUrl}#webpage`;
+  const webappId = `${pageUrl}#webapp`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+  const metadata = toolConfig.metadata ?? {
+    title: `${toolConfig.title} | Jamro Tools`,
+    description: toolConfig.description,
+  };
+  const faq = toolConfig.pageContent?.faq ?? [];
+
+  const webpage: Record<string, unknown> = {
+    "@type": "WebPage",
+    "@id": webpageId,
+    url: pageUrl,
+    name: metadata.title,
+    description: metadata.description,
+    isPartOf: { "@id": websiteId },
+    breadcrumb: { "@id": breadcrumbId },
+    mainEntity: { "@id": webappId },
+  };
+
+  if (faq.length > 0) {
+    webpage.hasPart = { "@id": faqId };
+  }
+
+  const graph: Array<Record<string, unknown>> = [
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: siteUrl,
+      name: "Jamro Tools",
+      description: metadata.description,
+    },
+    webpage,
+    {
+      "@type": "WebApplication",
+      "@id": webappId,
+      url: pageUrl,
+      name: toolConfig.title,
+      description: toolConfig.description,
+      applicationCategory: "UtilityApplication",
+      operatingSystem: "All",
+      browserRequirements: "Requires JavaScript",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      inLanguage: "en",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": breadcrumbId,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Tools", item: `${siteUrl}/tools/` },
+        { "@type": "ListItem", position: 3, name: "Calculators", item: `${siteUrl}/tools/calculators/` },
+        { "@type": "ListItem", position: 4, name: categoryTitle, item: `${siteUrl}/tools/calculators/${toolConfig.category}/` },
+        { "@type": "ListItem", position: 5, name: toolConfig.title, item: pageUrl },
+      ],
+    },
+  ];
+
+  if (faq.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": faqId,
+      mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    });
+  }
+
+  return { "@context": "https://schema.org", "@graph": graph };
 }

@@ -1,16 +1,6 @@
-export interface ToolConfig {
-  slug: string;
-  title: string;
-  description: string;
-  category: string;
-  customComponent?: string;
-  sections?: ToolSection[];
-}
+import type { ToolConfig } from "./types";
 
-export interface ToolSection {
-  type: "inputs" | "donut-chart" | "bar-chart" | "results-grid" | "info-banner" | "faq" | "amortization-table";
-  [key: string]: unknown;
-}
+export type { ToolConfig, ToolSection } from "./types";
 
 export const mortgageCalculator: ToolConfig = {
   slug: "mortgage-calculator",

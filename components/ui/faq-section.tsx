@@ -13,25 +13,25 @@ export function FaqSection({ items }: FaqSectionProps) {
   if (!items || items.length === 0) return null;
 
   return (
-    <section className="max-w-4xl mx-auto py-[48px] border-t border-outline-variant">
-      <h2 className="text-[32px] leading-[1.2] font-semibold mb-[24px] text-center">
+    <section data-tool-faq className="border-t border-outline-variant pt-[40px]">
+      <h2 className="mb-[18px] text-[28px] font-bold leading-tight tracking-[-0.02em] text-on-surface">
         Frequently Asked Questions
       </h2>
-      <div className="space-y-[16px]">
+      <div className="overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest shadow-sm dark:bg-surface-container-low">
         {items.map((item, i) => (
           <details
             key={i}
-            className="group rounded-xl bg-white/70 dark:bg-surface-container/70 backdrop-blur-md border border-outline-variant/30 transition-all"
+            className="group border-b border-outline-variant last:border-b-0"
           >
-            <summary className="flex justify-between items-center p-[24px] cursor-pointer list-none">
-              <span className="text-[20px] leading-[1.4] font-semibold text-on-surface pr-4">
+            <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-[16px] px-[18px] py-[14px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary">
+              <span className="pr-4 text-[16px] font-semibold leading-[1.45] text-on-surface">
                 {item.q}
               </span>
-              <span className="material-symbols-outlined group-open:rotate-180 transition-transform text-on-surface-variant shrink-0">
+              <span className="material-symbols-outlined shrink-0 text-[20px] text-on-surface-variant transition-transform group-open:rotate-180">
                 expand_more
               </span>
             </summary>
-            <div className="px-[24px] pb-[24px] text-[16px] leading-[1.6] text-on-surface-variant">
+            <div className="px-[18px] pb-[18px] text-[15px] leading-[1.65] text-on-surface-variant">
               {item.a}
             </div>
           </details>

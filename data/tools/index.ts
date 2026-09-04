@@ -1,4 +1,4 @@
-import { ToolConfig } from "./mortgage-calculator";
+import type { ToolConfig } from "./types";
 import { mortgageCalculator } from "./mortgage-calculator";
 import { apushScoreCalculator } from "./apush-score-calculator";
 import { cylinderVolumeCalculator } from "./cylinder-volume-calculator";
@@ -18,6 +18,7 @@ import { fourOhOneKPlanner } from "./401k-planner";
 import { studentLoanCalculator } from "./student-loan-calculator";
 import { creditCardPayoffCalculator } from "./credit-card-payoff-calculator";
 import { incomeTaxCalculator } from "./income-tax-calculator";
+import { percentageCalculator } from "./percentage-calculator";
 
 const allTools: ToolConfig[] = [
   mortgageCalculator,
@@ -39,6 +40,7 @@ const allTools: ToolConfig[] = [
   studentLoanCalculator,
   creditCardPayoffCalculator,
   incomeTaxCalculator,
+  percentageCalculator,
 ];
 
 export function getToolBySlug(slug: string): ToolConfig | undefined {

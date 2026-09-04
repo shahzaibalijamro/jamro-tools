@@ -114,6 +114,7 @@
       radial-gradient(at 100% 100%, rgba(15, 15, 20, 0.5) 0px, transparent 50%),
       radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
   }
+
 }
 
 .dark body {
@@ -332,6 +333,71 @@ a {
   }
 
   /* â”€â”€ 404 Page Â· Float animation (desktop) â”€â”€ */
+  /* Shared calculator detail-page composition. Calculator components keep
+     their specialized internals while these slots establish one page rhythm. */
+  .tool-page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 0.9fr);
+    grid-auto-flow: row dense;
+    align-items: start;
+    column-gap: 32px;
+    row-gap: 48px;
+  }
+
+  .tool-page-layout > section:not([data-tool-editorial]):not([data-tool-faq]),
+  .tool-page-layout > [data-tool-workspace] {
+    grid-column: 1 / -1;
+  }
+
+  .tool-page-layout > [data-tool-editorial] {
+    grid-column: 1;
+  }
+
+  .tool-page-layout > [data-tool-rail] {
+    grid-column: 2;
+  }
+
+  .tool-page-layout > [data-tool-faq] {
+    grid-column: 1 / -1;
+  }
+
+  .tool-page-layout > section {
+    margin-bottom: 0 !important;
+  }
+
+  /* A few legacy calculators repeat the route-level page title internally. */
+  .tool-page-layout > section:not([data-tool-editorial]):not([data-tool-faq]) h1 {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .tool-page-layout {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 40px;
+    }
+
+    .tool-page-layout > * {
+      grid-column: 1 !important;
+    }
+
+    .tool-page-layout > section:not([data-tool-editorial]):not([data-tool-faq]),
+    .tool-page-layout > [data-tool-workspace] {
+      order: 1;
+    }
+
+    .tool-page-layout > [data-tool-editorial] {
+      order: 2;
+    }
+
+    .tool-page-layout > [data-tool-rail] {
+      order: 3;
+    }
+
+    .tool-page-layout > [data-tool-faq] {
+      order: 4;
+    }
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
     will-change: transform;

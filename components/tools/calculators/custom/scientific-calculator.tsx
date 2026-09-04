@@ -154,7 +154,7 @@ export default function ScientificCalculator() {
   ];
 
   return (
-    <div className="w-full">
+    <>
       {/* Tool Header */}
       <section className="mb-12 text-center md:text-left mx-auto max-w-container-max">
         <div className="inline-flex items-center gap-1 px-4 py-1 rounded-full bg-primary-container/10 text-primary border border-primary-container/20 mb-4 font-label-md text-label-md">
@@ -346,6 +346,6 @@ export default function ScientificCalculator() {
 
       {/* FAQ Section */}
       <FaqSection items={faqItems} />
-    </div>
+    </>
   );
 }
