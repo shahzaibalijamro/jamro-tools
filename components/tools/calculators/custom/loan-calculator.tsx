@@ -2,29 +2,14 @@
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 import { useState } from "react";
+import { calculateLoan } from "../logic/loan-calculator";
 
 export default function LoanCalculator() {
   const [loanAmount, setLoanAmount] = useState(25000);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(5);
 
-  const monthlyRate = interestRate / 100 / 12;
-  const numPayments = loanTerm * 12;
-
-  let monthlyPayment = 0;
-  if (loanAmount > 0 && monthlyRate > 0 && numPayments > 0) {
-    monthlyPayment =
-      (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) /
-      (Math.pow(1 + monthlyRate, numPayments) - 1);
-  } else if (loanAmount > 0 && monthlyRate === 0) {
-    monthlyPayment = loanAmount / numPayments;
-  }
-
-  const totalCost = monthlyPayment * numPayments;
-  const totalInterest = totalCost > loanAmount ? totalCost - loanAmount : 0;
-
-  const principalPct = totalCost > 0 ? (loanAmount / totalCost) * 100 : 0;
-  const interestPct = totalCost > 0 ? (totalInterest / totalCost) * 100 : 0;
+  const { monthlyPayment, totalCost, totalInterest, principalPercent: principalPct, interestPercent: interestPct } = calculateLoan(loanAmount, interestRate, loanTerm);
 
   const faqItems = [
     {

@@ -62,6 +62,10 @@ export function hasCustomToolComponent(name: string): boolean {
   return Boolean(customToolRegistry[name]);
 }
 
+export function getRegisteredCustomToolNames(): string[] {
+  return Object.keys(customToolRegistry);
+}
+
 export function CustomToolRenderer({ name }: { name: string }) {
   const component = customToolRegistry[name];
   return component ? createElement(component) : null;

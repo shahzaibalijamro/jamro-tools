@@ -3,53 +3,17 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo } from "react";
-
-const UNITS: Record<string, { label: string; abbr: string }> = {
-  inches: { label: "Cubic Inches", abbr: "in³" },
-  cm: { label: "Cubic Centimeters", abbr: "cm³" },
-  meters: { label: "Cubic Meters", abbr: "m³" },
-  feet: { label: "Cubic Feet", abbr: "ft³" },
-  mm: { label: "Cubic Millimeters", abbr: "mm³" },
-};
+import { calculateCylinder, cylinderUnits } from "../logic/cylinder-volume-calculator";
 
 export default function CylinderVolumeCalculator() {
   const [radius, setRadius] = useState(5);
   const [height, setHeight] = useState(10);
   const [units, setUnits] = useState("inches");
 
-  const results = useMemo(() => {
-    const r = radius || 0;
-    const h = height || 0;
+  const calculated = useMemo(() => calculateCylinder(radius, height), [radius, height]);
+  const results = { ...calculated, basePct: calculated.basePercent, lateralPct: calculated.lateralPercent };
 
-    if (r <= 0 || h <= 0) {
-      return { volume: 0, baseArea: 0, lateralArea: 0, basePct: 50, lateralPct: 50, ratio: "--" };
-    }
-
-    const baseArea = Math.PI * Math.pow(r, 2);
-    const lateralArea = 2 * Math.PI * r * h;
-    const volume = baseArea * h;
-    const totalSurface = baseArea * 2 + lateralArea;
-
-    // For the donut chart, we show ratio of 2×baseArea vs lateralArea on the full ring
-    const basePct = totalSurface > 0 ? ((baseArea * 2) / totalSurface) * 100 : 50;
-    const lateralPct = totalSurface > 0 ? (lateralArea / totalSurface) * 100 : 50;
-
-    const ratio =
-      lateralArea > 0
-        ? `${Math.round((baseArea / lateralArea) * 100)}%`
-        : "--";
-
-    return {
-      volume,
-      baseArea: baseArea * 2,
-      lateralArea,
-      basePct,
-      lateralPct,
-      ratio,
-    };
-  }, [radius, height]);
-
-  const unitInfo = UNITS[units] || UNITS["inches"];
+  const unitInfo = cylinderUnits[units as keyof typeof cylinderUnits] || cylinderUnits.inches;
 
   const fmt = (v: number) =>
     v.toLocaleString(undefined, { maximumFractionDigits: 2 });

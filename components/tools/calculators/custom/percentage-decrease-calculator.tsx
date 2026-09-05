@@ -3,6 +3,7 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo } from "react";
+import { calculatePercentageDecrease } from "../logic/percentage-decrease-calculator";
 
 const CIRCUMFERENCE = 691; // 2 * π * 110 ≈ 691.15
 
@@ -49,36 +50,7 @@ export default function PercentageDecreaseCalculator() {
   const [initialValue, setInitialValue] = useState(100);
   const [finalValue, setFinalValue] = useState(85);
 
-  const results = useMemo(() => {
-    const initial = initialValue || 0;
-    const final = finalValue || 0;
-
-    if (initial === 0) {
-      return {
-        percentage: 0,
-        absoluteDrop: 0,
-        retention: 0,
-        dashOffset: CIRCUMFERENCE,
-        isValid: false,
-        displayText: "Invalid Input",
-      };
-    }
-
-    const decrease = initial - final;
-    const percentage = (decrease / Math.abs(initial)) * 100;
-    const clampedPct = Math.max(0, Math.min(100, percentage));
-    const retention = (final / initial) * 100;
-    const dashOffset = CIRCUMFERENCE - (clampedPct / 100) * CIRCUMFERENCE;
-
-    return {
-      percentage,
-      absoluteDrop: decrease,
-      retention,
-      dashOffset,
-      isValid: true,
-      displayText: `${percentage.toFixed(2)}% Decrease`,
-    };
-  }, [initialValue, finalValue]);
+  const results = useMemo(() => calculatePercentageDecrease(initialValue, finalValue), [initialValue, finalValue]);
 
   return (
     <>

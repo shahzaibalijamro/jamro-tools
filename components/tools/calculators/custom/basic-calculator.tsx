@@ -3,6 +3,7 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useEffect } from "react";
+import { evaluateBasicExpression, parseCalculatorHistory, prependCalculatorHistory } from "../logic/basic-calculator";
 
 export default function BasicCalculator() {
   const [currentInput, setCurrentInput] = useState("0");
@@ -12,9 +13,7 @@ export default function BasicCalculator() {
   useEffect(() => {
     const saved = localStorage.getItem("jamro_basic_calc_history");
     if (saved) {
-      try {
-        setHistory(JSON.parse(saved));
-      } catch (e) { }
+      setHistory(parseCalculatorHistory(saved));
     }
   }, []);
 
@@ -37,20 +36,16 @@ export default function BasicCalculator() {
   };
 
   const calculate = () => {
-    try {
-      const expression = previousInput + currentInput;
-      // Using Function instead of eval for slightly better safety, though still should be careful
-      const result = new Function('return ' + expression.replace('×', '*').replace('−', '-'))();
-      const resStr = result.toString();
-      setPreviousInput(expression + " =");
-      setCurrentInput(resStr);
-
-      const newHistory = [{ expression, result: resStr }, ...history].slice(0, 10);
-      setHistory(newHistory);
-      localStorage.setItem("jamro_basic_calc_history", JSON.stringify(newHistory));
-    } catch (e) {
+    const calculation = evaluateBasicExpression(previousInput, currentInput);
+    if (calculation.error) {
       setCurrentInput("Error");
+      return;
     }
+    setPreviousInput(calculation.expression + " =");
+    setCurrentInput(calculation.result);
+    const newHistory = prependCalculatorHistory(history, calculation);
+    setHistory(newHistory);
+    localStorage.setItem("jamro_basic_calc_history", JSON.stringify(newHistory));
   };
 
   const loadHistory = (item: { expression: string; result: string }) => {

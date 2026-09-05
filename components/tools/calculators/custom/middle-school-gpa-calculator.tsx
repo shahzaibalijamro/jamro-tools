@@ -3,6 +3,7 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import { calculateMiddleSchoolGpa } from "../logic/middle-school-gpa-calculator";
 
 interface Course {
   id: number;
@@ -76,25 +77,8 @@ export default function MiddleSchoolGpaCalculator() {
   const [displayGpa, setDisplayGpa] = useState(0);
   const [calcTriggered, setCalcTriggered] = useState(false);
 
-  const gpaResult = useMemo(() => {
-    if (courses.length === 0) {
-      return { gpa: 0, totalCredits: 0, avgPct: 0, isValid: false };
-    }
-    let weightedSum = 0;
-    let totalCredits = 0;
-    for (const c of courses) {
-      if (c.credits > 0) {
-        weightedSum += c.grade * c.credits;
-        totalCredits += c.credits;
-      }
-    }
-    if (totalCredits === 0) {
-      return { gpa: 0, totalCredits: 0, avgPct: 0, isValid: false };
-    }
-    const gpa = weightedSum / totalCredits;
-    const avgPct = Math.round((gpa / 4.0) * 100);
-    return { gpa, totalCredits, avgPct, isValid: true };
-  }, [courses]);
+  const calculation = useMemo(() => calculateMiddleSchoolGpa(courses), [courses]);
+  const gpaResult = { ...calculation, avgPct: calculation.averagePercent };
 
   // Animate GPA display
   const animRef = useRef<number | null>(null);

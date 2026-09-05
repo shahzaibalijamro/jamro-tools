@@ -2,6 +2,7 @@
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 import { useState, useMemo } from "react";
+import { calculateMortgage, syncDownPaymentFromPercent, syncDownPaymentPercent } from "../logic/mortgage-calculator";
 
 export default function MortgageCalculator() {
   const [homePrice, setHomePrice] = useState(450000);
@@ -11,72 +12,31 @@ export default function MortgageCalculator() {
   const [loanTerm, setLoanTerm] = useState(30);
   const [showSchedule, setShowSchedule] = useState(false);
 
-  const loanAmount = homePrice - downAmt;
-  const monthlyRate = interestRate / 100 / 12;
-  const numPayments = loanTerm * 12;
-
-  let monthlyPI = 0;
-  if (loanAmount > 0 && monthlyRate > 0 && numPayments > 0) {
-    monthlyPI =
-      (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) /
-      (Math.pow(1 + monthlyRate, numPayments) - 1);
-  } else if (loanAmount > 0 && monthlyRate === 0) {
-    monthlyPI = loanAmount / numPayments;
-  }
-
-  const monthlyTax = homePrice * 0.0011;
-  const monthlyInsurance = 150;
-  const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance;
-  const totalInterest = monthlyPI * numPayments - loanAmount;
-  const totalCost = monthlyPI * numPayments;
+  const mortgage = useMemo(() => calculateMortgage({ homePrice, downPayment: downAmt, interestRate, loanTermYears: loanTerm }), [homePrice, downAmt, interestRate, loanTerm]);
+  const { monthlyPrincipalAndInterest: monthlyPI, monthlyTax, monthlyInsurance, totalMonthly, totalInterest, totalCost } = mortgage;
 
   const totalForPie = monthlyPI + monthlyTax + monthlyInsurance;
   const piFraction = totalForPie > 0 ? monthlyPI / totalForPie : 0;
   const taxFraction = totalForPie > 0 ? monthlyTax / totalForPie : 0;
 
-  const amortizationSchedule = useMemo(() => {
-    const rows: {
-      month: number;
-      year: number;
-      payment: number;
-      principal: number;
-      interest: number;
-      balance: number;
-    }[] = [];
-    let balance = loanAmount;
-    for (let i = 1; i <= numPayments && balance > 0; i++) {
-      const interestPayment = balance * monthlyRate;
-      const principalPayment = monthlyPI - interestPayment;
-      balance = balance - principalPayment;
-      if (balance < 0) balance = 0;
-      rows.push({
-        month: i,
-        year: Math.ceil(i / 12),
-        payment: monthlyPI,
-        principal: principalPayment,
-        interest: interestPayment,
-        balance,
-      });
-    }
-    return rows;
-  }, [loanAmount, monthlyPI, monthlyRate, numPayments]);
+  const amortizationSchedule = mortgage.schedule;
 
   const handleDownPctChange = (val: number) => {
     setDownPct(val);
-    setDownAmt(Math.round(homePrice * (val / 100)));
+    setDownAmt(syncDownPaymentFromPercent(homePrice, val));
   };
 
   const handleDownAmtChange = (val: number) => {
     setDownAmt(val);
     if (homePrice > 0) {
-      setDownPct(parseFloat(((val / homePrice) * 100).toFixed(1)));
+      setDownPct(syncDownPaymentPercent(homePrice, val));
     }
   };
 
   // Proper home price change with sync
   const onHomePriceChange = (val: number) => {
     setHomePrice(val);
-    setDownAmt(Math.round(val * (downPct / 100)));
+    setDownAmt(syncDownPaymentFromPercent(val, downPct));
   };
 
   const faqItems = [
@@ -143,6 +103,7 @@ In the initial years of a long-term loan, your monthly payments are heavily weig
                     $
                   </span>
                   <input
+                    aria-label="Home Price"
                     className="w-full pl-[36px] pr-[16px] py-[16px] bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                     type="number"
                     value={homePrice}
@@ -164,6 +125,7 @@ In the initial years of a long-term loan, your monthly payments are heavily weig
                       $
                     </span>
                     <input
+                      aria-label="Down Payment ($)"
                       className="w-full pl-[36px] pr-[16px] py-[16px] bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                       type="number"
                       value={downAmt}
@@ -182,6 +144,7 @@ In the initial years of a long-term loan, your monthly payments are heavily weig
                       %
                     </span>
                     <input
+                      aria-label="Down Payment (%)"
                       className="w-full pl-[16px] pr-[36px] py-[16px] bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                       type="number"
                       value={downPct}
@@ -204,6 +167,7 @@ In the initial years of a long-term loan, your monthly payments are heavily weig
                       %
                     </span>
                     <input
+                      aria-label="Interest Rate"
                       className="w-full pl-[16px] pr-[36px] py-[16px] bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                       type="number"
                       step="0.1"
@@ -219,6 +183,7 @@ In the initial years of a long-term loan, your monthly payments are heavily weig
                     Loan Term
                   </label>
                   <select
+                    aria-label="Loan Term"
                     className="w-full px-[16px] py-[16px] bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all appearance-none"
                     value={loanTerm}
                     onChange={(e) => setLoanTerm(Number(e.target.value))}

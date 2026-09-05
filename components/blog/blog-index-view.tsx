@@ -4,7 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BlogCard } from "@/components/blog/BlogCard";
-import { client } from "@/lib/sanity";
+import { getBlogIndex } from "@/lib/content/blog";
+import type { BlogPost } from "@/lib/types/blog";
 
 const POSTS_PER_PAGE = 9;
 
@@ -15,42 +16,16 @@ export function BlogIndexView() {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
 
-  const [blogs, setBlogs] = useState<any[]>([]);
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [categories, setCategories] = useState<string[]>(["All"]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchBlogsAndCategories() {
       try {
-        const query = `*[_type == "blogPost" && publishedAt <= now()] | order(publishedAt desc, _createdAt desc) {
-          _id,
-          title,
-          "slug": slug.current,
-          excerpt,
-          seoTitle,
-          description,
-          "categories": categories[]->title,
-          "imageUrl": mainImage.asset->url,
-          "imageAlt": mainImage.alt,
-          author,
-          date,
-          readTime,
-          content,
-          publishedAt,
-          "createdAt": _createdAt,
-          updatedAt
-        }`;
-        const categoriesQuery = `*[_type == "category"] | order(title asc) { title }`;
-
-        const [postsData, categoriesData] = await Promise.all([
-          client.fetch(query),
-          client.fetch<Array<{ title: string }>>(categoriesQuery),
-        ]);
-
-        setBlogs(postsData || []);
-        if (categoriesData) {
-          setCategories(["All", ...categoriesData.map(c => c.title)]);
-        }
+        const { posts, categories: categoryData } = await getBlogIndex();
+        setBlogs(posts);
+        setCategories(["All", ...categoryData]);
       } catch (err) {
         console.error(err);
       } finally {

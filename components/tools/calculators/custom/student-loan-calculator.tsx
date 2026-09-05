@@ -3,16 +3,9 @@
 import { useMemo, useState } from "react";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
+import { calculateStudentLoanPlans } from "../logic/student-loan-calculator";
 
 const money = (value: number) => `$${Math.round(value).toLocaleString()}`;
-const payment = (principal: number, annualRate: number, years: number) => {
-  const months = years * 12;
-  const rate = annualRate / 100 / 12;
-  if (principal <= 0 || months <= 0) return 0;
-  if (rate === 0) return principal / months;
-  return principal * rate * Math.pow(1 + rate, months) / (Math.pow(1 + rate, months) - 1);
-};
-
 export default function StudentLoanCalculator() {
   const [balance, setBalance] = useState(45000);
   const [interestRate, setInterestRate] = useState(6.5);
@@ -20,23 +13,7 @@ export default function StudentLoanCalculator() {
   const [familySize, setFamilySize] = useState(1);
   const [dependents, setDependents] = useState(0);
 
-  const plans = useMemo(() => {
-    const standardMonthly = payment(balance, interestRate, 10);
-    const tieredYears = balance < 25000 ? 10 : balance < 50000 ? 15 : balance < 100000 ? 20 : 25;
-    const calculatedTieredMonthly = payment(balance, interestRate, tieredYears);
-    const tieredMonthly = balance < 50 ? balance : Math.max(50, calculatedTieredMonthly);
-    const povertyAllowance = 15960 + Math.max(0, familySize - 1) * 5680;
-    const discretionaryIncome = Math.max(0, income - povertyAllowance * 1.5);
-    const ibrMonthly = Math.min(standardMonthly, discretionaryIncome * 0.1 / 12);
-    const rapRate = income <= 20000 ? 0.01 : income <= 30000 ? 0.02 : income <= 40000 ? 0.03 : income <= 50000 ? 0.04 : income <= 60000 ? 0.05 : income <= 70000 ? 0.06 : income <= 80000 ? 0.07 : income <= 90000 ? 0.08 : income <= 100000 ? 0.09 : 0.1;
-    const rapMonthly = Math.max(10, income * rapRate / 12 - dependents * 50);
-    return [
-      { name: "Standard", monthly: standardMonthly, years: 10, total: standardMonthly * 120, note: "Lowest fixed-plan interest" },
-      { name: "Tiered Standard", monthly: tieredMonthly, years: tieredYears, total: tieredMonthly * tieredYears * 12, note: "Fixed payment by debt level" },
-      { name: "IBR (estimate)", monthly: ibrMonthly, years: 20, total: ibrMonthly * 240, note: "Assumes newer-borrower 10% / 20-year IBR" },
-      { name: "RAP (estimate)", monthly: rapMonthly, years: 30, total: rapMonthly * 360, note: "Includes dependent deduction" },
-    ];
-  }, [balance, interestRate, income, familySize, dependents]);
+  const plans = useMemo(() => calculateStudentLoanPlans(balance, interestRate, income, familySize, dependents), [balance, interestRate, income, familySize, dependents]);
 
   const update = (setter: React.Dispatch<React.SetStateAction<number>>, value: string) => setter(Math.max(0, Number(value) || 0));
   const faqItems = [

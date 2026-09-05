@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { calculatorCategories } from "@/data/calculator-tools";
 import { allTools } from "@/data/tools";
-import { client } from "@/lib/sanity";
+import { getPublishedBlogSlugs } from "@/lib/content/blog";
 import { getCustomToolComponent } from "@/components/tools/calculators/registry";
 
 const SITE_URL = "https://jamrotools.com"; // ✅ updated from vercel preview URL
@@ -43,11 +43,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.51,
     }));
 
-  const blogPosts = await client.fetch<Array<{ slug: string }>>(
-    `*[_type == "blogPost" && publishedAt <= now()] { "slug": slug.current }`
-  );
-  const blogEntries: Entry[] = blogPosts.map((post) => ({
-    url: url(`/blog/${post.slug}`),
+  const blogSlugs = await getPublishedBlogSlugs();
+  const blogEntries: Entry[] = blogSlugs.map((slug) => ({
+    url: url(`/blog/${slug}`),
     lastModified: NOW,
     priority: 0.64,
   }));

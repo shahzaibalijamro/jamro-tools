@@ -4,6 +4,8 @@ import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { evaluateScientificExpression } from "../logic/scientific-calculator";
+import { parseCalculatorHistory, prependCalculatorHistory } from "../logic/basic-calculator";
 
 export default function ScientificCalculator() {
   const [currentInput, setCurrentInput] = useState("0");
@@ -14,9 +16,7 @@ export default function ScientificCalculator() {
   useEffect(() => {
     const saved = localStorage.getItem("jamro_scientific_calc_history");
     if (saved) {
-      try {
-        setHistory(JSON.parse(saved));
-      } catch (e) { }
+      setHistory(parseCalculatorHistory(saved));
     }
   }, []);
 
@@ -47,53 +47,17 @@ export default function ScientificCalculator() {
   };
 
   const calculate = () => {
-    try {
-      let expression = currentInput;
-
-      // Standardize the expression for JS Math
-      expression = expression.replace(/×/g, '*');
-      expression = expression.replace(/÷/g, '/');
-      expression = expression.replace(/−/g, '-');
-      expression = expression.replace(/π/g, 'Math.PI');
-      expression = expression.replace(/e/g, 'Math.E');
-
-      // Handle percentages
-      expression = expression.replace(/%/g, '/100');
-
-      // Handlers for scientific functions
-      // To properly handle degrees, we wrap sin/cos/tan
-      const radConv = isDegrees ? " * (Math.PI / 180)" : "";
-
-      expression = expression.replace(/sin\(([^)]+)\)/g, `Math.sin(($1)${radConv})`);
-      expression = expression.replace(/cos\(([^)]+)\)/g, `Math.cos(($1)${radConv})`);
-      expression = expression.replace(/tan\(([^)]+)\)/g, `Math.tan(($1)${radConv})`);
-
-      expression = expression.replace(/log\(([^)]+)\)/g, `Math.log10($1)`);
-      expression = expression.replace(/ln\(([^)]+)\)/g, `Math.log($1)`);
-      expression = expression.replace(/√\(([^)]+)\)/g, `Math.sqrt($1)`);
-      expression = expression.replace(/√(\d+(\.\d+)?)/g, `Math.sqrt($1)`);
-
-      // Handle powers x^y (using JS **)
-      expression = expression.replace(/\^/g, '**');
-
-      const result = new Function('Math', 'return ' + expression)(Math);
-
-      if (isNaN(result) || !isFinite(result)) {
-        setCurrentInput("Error");
-        setPreviousInput(currentInput + " =");
-      } else {
-        // Round to 15 precision to avoid floating point anomalies like 0.1+0.2
-        const finalRes = parseFloat(result.toPrecision(15)).toString();
-        setPreviousInput(currentInput + " =");
-        setCurrentInput(finalRes);
-
-        const newHistory = [{ expression: currentInput, result: finalRes }, ...history].slice(0, 10);
-        setHistory(newHistory);
-        localStorage.setItem("jamro_scientific_calc_history", JSON.stringify(newHistory));
-      }
-    } catch (e) {
+    const result = evaluateScientificExpression(currentInput, isDegrees);
+    if (result === null) {
       setCurrentInput("Error");
+      setPreviousInput(currentInput + " =");
+      return;
     }
+    setPreviousInput(currentInput + " =");
+    setCurrentInput(result);
+    const newHistory = prependCalculatorHistory(history, { expression: currentInput, result });
+    setHistory(newHistory);
+    localStorage.setItem("jamro_scientific_calc_history", JSON.stringify(newHistory));
   };
 
   useEffect(() => {

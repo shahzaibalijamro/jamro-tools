@@ -1,7 +1,7 @@
-import { client } from "@/lib/sanity";
+import { getBlogIndex } from "@/lib/content/blog";
 
 export interface BlogTeaser {
-  _id: string;
+  _id?: string;
   title: string;
   slug: string;
   excerpt?: string;
@@ -26,11 +26,10 @@ const blogTeaserQuery = `*[
 
 export async function getRandomBlogTeasers(count = 3): Promise<BlogTeaser[]> {
   try {
-    const posts = await client.fetch<BlogTeaser[]>(
-      blogTeaserQuery,
-      {},
-      { next: { revalidate: 3600 } },
-    );
+    const fixtureMode = isFixtureTeaserMode();
+    const posts = fixtureMode
+      ? (await getBlogIndex()).posts.map((post) => ({ ...post, _id: `fixture-${post.slug}` }))
+      : await fetchSanityTeasers();
 
     const uniquePosts = Array.from(
       new Map((posts ?? []).map((post) => [post.slug, post])).values(),
@@ -48,4 +47,13 @@ export async function getRandomBlogTeasers(count = 3): Promise<BlogTeaser[]> {
   } catch {
     return [];
   }
+}
+
+function isFixtureTeaserMode() {
+  return process.env.NEXT_PUBLIC_JAMRO_TEST_MODE === "fixtures" && process.env.VERCEL_ENV !== "production";
+}
+
+async function fetchSanityTeasers(): Promise<BlogTeaser[]> {
+  const { client } = await import("@/lib/sanity");
+  return client.fetch<BlogTeaser[]>(blogTeaserQuery, {}, { next: { revalidate: 3600 } });
 }

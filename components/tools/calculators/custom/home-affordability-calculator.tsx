@@ -2,6 +2,10 @@
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 import { useState, useMemo } from "react";
+import {
+  calculateAffordabilitySensitivity,
+  calculateHomeAffordability,
+} from "@/components/tools/calculators/logic/home-affordability-calculator";
 
 export default function HomeAffordabilityCalculator() {
   // Inputs
@@ -18,139 +22,30 @@ export default function HomeAffordabilityCalculator() {
   // Expandable state
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  // Math Logic
-  const affordabilityData = useMemo(() => {
-    const monthlyIncome = annualIncome / 12;
-    const monthlyRate = (interestRate / 100) / 12;
-    const totalMonths = loanTerm * 12;
-    const t = (propertyTaxRate / 100) / 12;
-    const k =
-      monthlyRate > 0
-        ? (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
-        (Math.pow(1 + monthlyRate, totalMonths) - 1)
-        : 1 / totalMonths;
-    const ins = annualInsurance / 12;
-
-    function getAffordability(maxMonthlyPITI: number, pmiAnnualRate: number) {
-      if (maxMonthlyPITI <= 0) return { price: 0, pmi: 0 };
-      const pmiMonthlyRate = pmiAnnualRate / 12;
-      const mAdjusted = maxMonthlyPITI - ins - hoaMonthly;
-      const denom = k + pmiMonthlyRate + t;
-      if (denom <= 0) return { price: 0, pmi: 0 };
-      const price = (mAdjusted + downPayment * (k + pmiMonthlyRate)) / denom;
-
-      const loanAmt = Math.max(0, price - downPayment);
-      const pmiCost = loanAmt * pmiMonthlyRate;
-      return { price: Math.max(0, price), pmi: pmiCost };
-    }
-
-    function solveForPrice(maxMonthlyPITI: number) {
-      let result = getAffordability(maxMonthlyPITI, 0); // Try without PMI
-      if (result.price > 0 && downPayment < 0.2 * result.price) {
-        // Less than 20% down, recalculate with PMI
-        result = getAffordability(maxMonthlyPITI, 0.005); // 0.5% annual PMI
-      }
-      return result;
-    }
-
-    // 28% Front-End (Housing only), but must also pass 36% back-end (Housing + Debt)
-    const maxPITI28Front = Math.min(monthlyIncome * 0.28, monthlyIncome * 0.36 - monthlyDebt);
-    const conservative = solveForPrice(maxPITI28Front);
-
-    // 36% DTI (Housing + Debt)
-    const maxPITI36 = monthlyIncome * 0.36 - monthlyDebt;
-    const recommended = solveForPrice(maxPITI36);
-
-    // 43% DTI (Housing + Debt)
-    const maxPITI43 = monthlyIncome * 0.43 - monthlyDebt;
-    const aggressive = solveForPrice(maxPITI43);
-
-    // Calculate details for Recommended
-    const recPrice = recommended.price;
-    const loanAmount = Math.max(0, recPrice - downPayment);
-    const pi = loanAmount > 0 ? loanAmount * k : 0;
-    const taxes = (recPrice * propertyTaxRate) / 100 / 12;
-    const pmi = recommended.pmi;
-    const totalMonthly = pi + taxes + ins + hoaMonthly + pmi;
-
-    let yearsToPMI = 0;
-    if (pmi > 0 && loanAmount > 0 && monthlyRate > 0) {
-      const targetBalance = 0.8 * recPrice;
-      if (loanAmount > targetBalance) {
-        const M_over_r = pi / monthlyRate;
-        const num = targetBalance - M_over_r;
-        const den = loanAmount - M_over_r;
-        if (num / den > 0) {
-          const months = Math.log(num / den) / Math.log(1 + monthlyRate);
-          yearsToPMI = Math.max(0, months / 12);
-        }
-      }
-    }
-
-    return {
-      conservativePrice: conservative.price,
-      recommendedPrice: recPrice,
-      aggressivePrice: aggressive.price,
-      loanAmount,
-      pi,
-      taxes,
-      ins,
-      pmi,
-      hoa: hoaMonthly,
-      totalMonthly,
-      hasPMI: pmi > 0,
-      yearsToPMI,
-    };
-  }, [
+  const calculationInput = useMemo(() => ({
     annualIncome,
     monthlyDebt,
     downPayment,
     interestRate,
-    loanTerm,
+    loanTermYears: loanTerm,
     propertyTaxRate,
     annualInsurance,
     hoaMonthly,
-  ]);
-
-  // Sensitivity Analysis
-  const sensitivityData = useMemo(() => {
-    const monthlyIncome = annualIncome / 12;
-    const maxPITI36 = monthlyIncome * 0.36 - monthlyDebt;
-    const t = (propertyTaxRate / 100) / 12;
-    const ins = annualInsurance / 12;
-
-    function solveScenario(ratePct: number, termYrs: number) {
-      const r = (ratePct / 100) / 12;
-      const months = termYrs * 12;
-      const k =
-        r > 0 ? (r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1) : 1 / months;
-
-      function calc(pmiAnnual: number) {
-        const mAdj = maxPITI36 - ins - hoaMonthly;
-        const denom = k + pmiAnnual / 12 + t;
-        return denom > 0 ? (mAdj + downPayment * (k + pmiAnnual / 12)) / denom : 0;
-      }
-
-      let price = calc(0);
-      if (price > 0 && downPayment < 0.2 * price) {
-        price = calc(0.005);
-      }
-      return Math.max(0, price);
-    }
-
-    const rateMinus1 = Math.max(0, interestRate - 1);
-    const ratePlus1 = interestRate + 1;
-    const altTerm = loanTerm === 30 ? 15 : 30;
-
+  }), [annualIncome, monthlyDebt, downPayment, interestRate, loanTerm, propertyTaxRate, annualInsurance, hoaMonthly]);
+  const affordabilityData = useMemo(() => {
+    const result = calculateHomeAffordability(calculationInput);
     return {
-      rateDown: solveScenario(rateMinus1, loanTerm),
-      rateUp: solveScenario(ratePlus1, loanTerm),
-      rateDownLabel: `${rateMinus1.toFixed(2)}%`,
-      rateUpLabel: `${ratePlus1.toFixed(2)}%`,
-      altTermLabel: `${altTerm}-Year`,
-      altTermVal: solveScenario(interestRate, altTerm),
+      ...result,
+      pi: result.principalAndInterest,
+      ins: result.insurance,
+      hasPMI: result.hasPmi,
+      yearsToPMI: result.yearsToPmi,
     };
-  }, [annualIncome, monthlyDebt, downPayment, interestRate, loanTerm, propertyTaxRate, annualInsurance, hoaMonthly]);
+  }, [calculationInput]);
+  const sensitivityData = useMemo(
+    () => calculateAffordabilitySensitivity(calculationInput),
+    [calculationInput],
+  );
 
   const {
     conservativePrice,

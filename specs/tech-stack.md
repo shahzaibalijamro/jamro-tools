@@ -91,11 +91,13 @@ Secret values must not appear in specifications or source control.
 |---|---|---|
 | Typecheck | **Current** | Passes with `npx tsc --noEmit --incremental false` |
 | Production build | **Current** | `npm run build` passes |
-| Lint | **Current / Debt** | Fails with 32 errors and 33 warnings |
-| Tests | **Future** | No framework or test files exist |
+| Lint | **Current / Debt** | Fails with 30 errors and 29 warnings; Phase 2 introduced no new findings |
+| Tests | **Current** | Vitest 4.0.15 with React Testing Library and Playwright 1.55.0 Chromium; 108 Vitest tests and 7 critical browser journeys pass |
 | CI | **Future** | No pipeline is committed |
 
-**Future / Intentional:** Use Vitest for calculation units, React Testing Library for component workflows, and a small Playwright smoke suite. Typecheck, zero-error lint, tests, and production build will become CI gates.
+**Current:** Vitest covers calculation units and representative component workflows, while a focused Playwright Chromium suite covers critical journeys using deterministic fixtures. The commands and dated coverage baseline are maintained in [`specs/testing.md`](./testing.md).
+
+**Future / Intentional:** Typecheck, zero-error lint, tests, and production build will become CI gates after the Phase 3 lint backlog is cleared.
 
 ## Legacy Scaffolding
 

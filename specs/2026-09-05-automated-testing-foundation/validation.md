@@ -2,7 +2,7 @@
 
 > **Document status:** Approved  
 > **Approved:** September 5, 2026  
-> **Validation status:** Not run — implementation has not started
+> **Validation status:** Passed — September 6, 2026
 
 This document defines the evidence required to prove the feature described by [requirements.md](./requirements.md) works, remains deterministic, cannot affect production Sanity data, and is safe to merge.
 
@@ -143,15 +143,14 @@ The numbers are a baseline for detecting major regressions, not an arbitrary rep
 
 ## 8. Merge-readiness checklist
 
-- [ ] All acceptance criteria AC-01 through AC-12 are evidenced.
-- [ ] All 20 tools satisfy the regression matrix and inventory proof.
-- [ ] Component and Chromium critical journeys pass.
-- [ ] Two consecutive end-to-end runs pass identically.
-- [ ] No suite needs a production secret or external network after installation.
-- [ ] No Sanity or analytics request occurred during automated validation.
-- [ ] Typecheck and normal production build pass.
-- [ ] Changed TypeScript/TSX files add no lint findings; existing lint debt is recorded, not expanded.
-- [ ] Coverage summary and known gaps are recorded in `specs/testing.md`; generated artifacts are untracked.
-- [ ] No formula, claim, redesign, catalog change, contact hardening, CI work, or unrelated cleanup entered the diff.
-- [ ] No secrets, real personal data, or unrelated working-tree changes are included.
-
+- [x] All acceptance criteria AC-01 through AC-12 are evidenced.
+- [x] All 20 tools satisfy the regression matrix and inventory proof.
+- [x] Component and Chromium critical journeys pass.
+- [x] Two consecutive end-to-end runs pass identically.
+- [x] No suite needs a production secret or external network after installation.
+- [x] No Sanity or analytics request occurred during automated validation.
+- [x] Typecheck and normal production build pass.
+- [x] Changed TypeScript/TSX files add no lint findings; existing lint debt is recorded, not expanded.
+- [x] Coverage summary and known gaps are recorded in `specs/testing.md`; generated artifacts are untracked.
+- [x] No formula, claim, redesign, catalog change, contact hardening, CI work, or unrelated cleanup entered the diff.
+- [x] No secrets, real personal data, or unrelated working-tree changes are included.

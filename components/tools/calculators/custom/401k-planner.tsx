@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
+import { calculate401k } from "../logic/401k-planner";
 
 const money = (n: number) => `$${Math.round(n).toLocaleString()}`;
 
@@ -14,14 +15,7 @@ export default function FourOhOneKPlanner() {
   const [returnRate, setReturnRate] = useState(7);
   const [years, setYears] = useState(30);
 
-  const projection = useMemo(() => {
-    const r = returnRate / 100;
-    const annual = salary * contribution / 100;
-    const employer = salary * Math.min(contribution, match) / 100;
-    const total = annual + employer;
-    const future = r === 0 ? balance + total * years : balance * Math.pow(1 + r, years) + total * ((Math.pow(1 + r, years) - 1) / r);
-    return { annual, employer, total, future, contributions: total * years, growth: future - balance - total * years };
-  }, [balance, salary, contribution, match, returnRate, years]);
+  const projection = useMemo(() => calculate401k({ balance, salary, contributionPercent: contribution, matchPercent: match, returnPercent: returnRate, years }), [balance, salary, contribution, match, returnRate, years]);
 
   const update = (setter: React.Dispatch<React.SetStateAction<number>>, value: string) => setter(Math.max(0, Number(value) || 0));
   const faqItems = [

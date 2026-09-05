@@ -3,34 +3,9 @@
 import { useMemo, useState } from "react";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
+import { calculateIncomeTax, type FilingStatus } from "../logic/income-tax-calculator";
 
-type FilingStatus = "single" | "mfj" | "hoh" | "mfs";
-type Bracket = { rate: number; limit: number };
-type BracketRow = { rate: number; income: number; tax: number };
-
-const brackets: Record<FilingStatus, Bracket[]> = {
-  single: [{ rate: 10, limit: 12400 }, { rate: 12, limit: 50400 }, { rate: 22, limit: 105700 }, { rate: 24, limit: 201775 }, { rate: 32, limit: 256225 }, { rate: 35, limit: 640600 }, { rate: 37, limit: Infinity }],
-  mfj: [{ rate: 10, limit: 24800 }, { rate: 12, limit: 100800 }, { rate: 22, limit: 211400 }, { rate: 24, limit: 403550 }, { rate: 32, limit: 512450 }, { rate: 35, limit: 768700 }, { rate: 37, limit: Infinity }],
-  hoh: [{ rate: 10, limit: 17700 }, { rate: 12, limit: 67450 }, { rate: 22, limit: 105700 }, { rate: 24, limit: 201775 }, { rate: 32, limit: 256200 }, { rate: 35, limit: 640600 }, { rate: 37, limit: Infinity }],
-  mfs: [{ rate: 10, limit: 12400 }, { rate: 12, limit: 50400 }, { rate: 22, limit: 105700 }, { rate: 24, limit: 201775 }, { rate: 32, limit: 256225 }, { rate: 35, limit: 384350 }, { rate: 37, limit: Infinity }],
-};
-const standardDeductions: Record<FilingStatus, number> = { single: 16100, mfj: 32200, hoh: 24150, mfs: 16100 };
 const money = (value: number) => `$${Math.round(value).toLocaleString()}`;
-
-function calculateTax(income: number, status: FilingStatus) {
-  let lower = 0;
-  let tax = 0;
-  const rows: BracketRow[] = [];
-  for (const bracket of brackets[status]) {
-    const taxableInBracket = Math.max(0, Math.min(income, bracket.limit) - lower);
-    if (taxableInBracket > 0) rows.push({ rate: bracket.rate, income: taxableInBracket, tax: taxableInBracket * bracket.rate / 100 });
-    tax += taxableInBracket * bracket.rate / 100;
-    lower = bracket.limit;
-    if (income <= bracket.limit) break;
-  }
-  const marginal = income > 0 ? (rows[rows.length - 1]?.rate ?? 0) : 0;
-  return { tax, marginal, rows };
-}
 
 export default function IncomeTaxCalculator() {
   const [grossIncome, setGrossIncome] = useState(75000);
@@ -40,16 +15,7 @@ export default function IncomeTaxCalculator() {
   const [itemizedDeduction, setItemizedDeduction] = useState(0);
   const [withholding, setWithholding] = useState(9000);
   const [credits, setCredits] = useState(0);
-  const result = useMemo(() => {
-    const income = Math.max(0, grossIncome);
-    const agi = Math.max(0, income - Math.min(income, Math.max(0, retirementContribution)));
-    const deduction = Math.min(agi, Math.max(0, useItemized ? itemizedDeduction : standardDeductions[status]));
-    const taxableIncome = Math.max(0, agi - deduction);
-    const calculated = calculateTax(taxableIncome, status);
-    const taxAfterCredits = Math.max(0, calculated.tax - Math.max(0, credits));
-    const refund = Math.max(0, withholding - taxAfterCredits);
-    return { ...calculated, agi, deduction, taxableIncome, taxAfterCredits, refund, balanceDue: Math.max(0, taxAfterCredits - withholding), effective: income > 0 ? taxAfterCredits / income * 100 : 0 };
-  }, [grossIncome, status, retirementContribution, useItemized, itemizedDeduction, withholding, credits]);
+  const result = useMemo(() => calculateIncomeTax({ grossIncome, status, retirementContribution, useItemized, itemizedDeduction, withholding, credits }), [grossIncome, status, retirementContribution, useItemized, itemizedDeduction, withholding, credits]);
   const updateNumber = (setter: (value: number) => void, value: string) => setter(Math.max(0, Number(value) || 0));
   const faqItems = [
     { q: "What is an income tax calculator?", a: "It estimates federal income tax by subtracting deductions from gross income, applying progressive 2026 tax brackets, and comparing the result with your withholding." },

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
+import { calculateRoi } from "../logic/roi-calculator";
 
 const money = (value: number) => `$${Math.round(value).toLocaleString()}`;
 const percent = (value: number) => `${value.toFixed(2)}%`;
@@ -16,11 +17,7 @@ export default function RoiCalculator() {
   const [operatingExpenses, setOperatingExpenses] = useState(150000);
   const [otherCosts, setOtherCosts] = useState(50000);
 
-  const roi = investment > 0 ? ((netReturn - investment) / investment) * 100 : 0;
-  const annualizedRoi = investment > 0 && years > 0 ? (Math.pow(Math.max(netReturn / investment, 0), 1 / years) - 1) * 100 : 0;
-  const grossMargin = revenue > 0 ? ((revenue - cogs) / revenue) * 100 : 0;
-  const operatingMargin = revenue > 0 ? ((revenue - cogs - operatingExpenses) / revenue) * 100 : 0;
-  const netMargin = revenue > 0 ? ((revenue - cogs - operatingExpenses - otherCosts) / revenue) * 100 : 0;
+  const { roi, annualizedRoi, grossMargin, operatingMargin, netMargin } = calculateRoi({ investment, netReturn, years, revenue, cogs, operatingExpenses, otherCosts });
   const update = (setter: React.Dispatch<React.SetStateAction<number>>, value: string) => setter(Math.max(0, Number(value) || 0));
   const faqItems = [
     { q: "What is the difference between ROI and profit margin?", a: "ROI measures the return earned relative to capital invested. Profit margin measures the percentage of revenue retained after specified costs. ROI is capital-focused; margin is revenue-focused." },

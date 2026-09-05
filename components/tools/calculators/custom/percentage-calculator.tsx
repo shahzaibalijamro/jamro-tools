@@ -1,20 +1,11 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-
-type Mode = "of" | "percent" | "whole";
+import { calculatePercentage, formatPercentageNumber as formatNumber, type PercentageMode as Mode, type PercentageResult as CalculationResult } from "../logic/percentage-calculator";
 
 interface ModeValues {
   first: string;
   second: string;
-}
-
-interface CalculationResult {
-  value: number;
-  headline: string;
-  formula: string;
-  steps: string[];
-  explanation: string;
 }
 
 const modes: Array<{
@@ -61,14 +52,6 @@ const emptyValues: Record<Mode, ModeValues> = {
   whole: { first: "", second: "" },
 };
 
-const numberFormatter = new Intl.NumberFormat(undefined, {
-  maximumFractionDigits: 6,
-});
-
-function formatNumber(value: number): string {
-  return numberFormatter.format(Object.is(value, -0) ? 0 : value);
-}
-
 export default function PercentageCalculator() {
   const [activeMode, setActiveMode] = useState<Mode>("of");
   const [values, setValues] = useState<Record<Mode, ModeValues>>(emptyValues);
@@ -114,67 +97,8 @@ export default function PercentageCalculator() {
 
   function calculate(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextErrors: Partial<Record<keyof ModeValues, string>> = {};
-    const first = Number(activeValues.first);
-    const second = Number(activeValues.second);
-
-    if (activeValues.first.trim() === "" || !Number.isFinite(first)) {
-      nextErrors.first = `Enter a valid ${activeConfig.firstLabel.toLowerCase()}.`;
-    }
-    if (activeValues.second.trim() === "" || !Number.isFinite(second)) {
-      nextErrors.second = `Enter a valid ${activeConfig.secondLabel.toLowerCase()}.`;
-    } else if ((activeMode === "percent" || activeMode === "whole") && second === 0) {
-      nextErrors.second =
-        activeMode === "percent"
-          ? "The second number cannot be zero."
-          : "The percentage cannot be zero.";
-    }
-
+    const { result, errors: nextErrors } = calculatePercentage(activeMode, activeValues.first, activeValues.second);
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      setResults((current) => ({ ...current, [activeMode]: null }));
-      return;
-    }
-
-    let result: CalculationResult;
-    if (activeMode === "of") {
-      const value = (second * first) / 100;
-      result = {
-        value,
-        headline: `${formatNumber(first)}% of ${formatNumber(second)} = ${formatNumber(value)}`,
-        formula: "Number × Percentage ÷ 100",
-        steps: [
-          `${formatNumber(second)} × ${formatNumber(first)} = ${formatNumber(second * first)}`,
-          `${formatNumber(second * first)} ÷ 100 = ${formatNumber(value)}`,
-        ],
-        explanation: `${formatNumber(first)} percent of ${formatNumber(second)} is ${formatNumber(value)}.`,
-      };
-    } else if (activeMode === "percent") {
-      const value = (first / second) * 100;
-      result = {
-        value,
-        headline: `${formatNumber(first)} is ${formatNumber(value)}% of ${formatNumber(second)}`,
-        formula: "(Part ÷ Whole) × 100",
-        steps: [
-          `${formatNumber(first)} ÷ ${formatNumber(second)} = ${formatNumber(first / second)}`,
-          `${formatNumber(first / second)} × 100 = ${formatNumber(value)}%`,
-        ],
-        explanation: `${formatNumber(first)} represents ${formatNumber(value)} percent of ${formatNumber(second)}.`,
-      };
-    } else {
-      const value = (first / second) * 100;
-      result = {
-        value,
-        headline: `${formatNumber(first)} is ${formatNumber(second)}% of ${formatNumber(value)}`,
-        formula: "Part ÷ Percentage × 100",
-        steps: [
-          `${formatNumber(first)} ÷ ${formatNumber(second)} = ${formatNumber(first / second)}`,
-          `${formatNumber(first / second)} × 100 = ${formatNumber(value)}`,
-        ],
-        explanation: `The original whole is ${formatNumber(value)}.`,
-      };
-    }
-
     setResults((current) => ({ ...current, [activeMode]: result }));
   }
 

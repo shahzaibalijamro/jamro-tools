@@ -3,6 +3,7 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo, useCallback } from "react";
+import { calculateAgeDifference } from "../logic/age-difference-calculator";
 
 const faqItems = [
   {
@@ -52,26 +53,7 @@ export default function AgeDifferenceCalculator() {
   const [person1Label] = useState("Person 1");
   const [person2Label] = useState("Person 2");
 
-  const results = useMemo(() => {
-    const d1 = new Date(dob1);
-    const d2 = new Date(dob2);
-
-    if (isNaN(d1.getTime()) || isNaN(d2.getTime())) {
-      return { years: 0, months: 0, days: 0, totalDays: 0, older: "", isValid: false };
-    }
-
-    const diffTime = Math.abs(d2.getTime() - d1.getTime());
-    const diffDaysTotal = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    const years = Math.floor(diffDaysTotal / 365.25);
-    const remainingDays = diffDaysTotal % 365.25;
-    const months = Math.floor(remainingDays / 30.44);
-    const days = Math.floor(remainingDays % 30.44);
-
-    const older = d1.getTime() < d2.getTime() ? person1Label : person2Label;
-
-    return { years, months, days, totalDays: diffDaysTotal, older, isValid: true };
-  }, [dob1, dob2, person1Label, person2Label]);
+  const results = useMemo(() => calculateAgeDifference(dob1, dob2, person1Label, person2Label), [dob1, dob2, person1Label, person2Label]);
 
   const handleCalculate = useCallback(() => {
     // Force re-render by toggling — memo already updates on state change

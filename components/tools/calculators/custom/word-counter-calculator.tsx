@@ -3,46 +3,12 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useMemo, useState } from "react";
-
-function countWords(text: string): number {
-    const trimmed = text.trim();
-    if (!trimmed) return 0;
-    // Split on any whitespace; handles multiple spaces/newlines.
-    return trimmed.split(/\s+/).filter(Boolean).length;
-}
-
-function countSentences(text: string): number {
-    // Simple heuristic: count . ! ? sequences.
-    // Works well for typical prose; avoids over-engineering.
-    const matches = text
-        .trim()
-        .match(/[.!?]+(?:\s|$)/g);
-    return matches ? matches.length : 0;
-}
+import { calculateWordStats } from "../logic/word-counter-calculator";
 
 export default function WordCounterCalculator() {
     const [text, setText] = useState("");
 
-    const stats = useMemo(() => {
-        const words = countWords(text);
-        const characters = text.length;
-        const charactersNoSpaces = text.replace(/\s/g, "").length;
-        const lines = text ? text.split(/\r?\n/).length : 0;
-        const sentences = countSentences(text);
-
-        // Reading time heuristic (200 WPM)
-        const minutes = words / 200;
-        const readTimeText = words === 0 ? "0 min" : `${Math.max(1, Math.round(minutes))} min`;
-
-        return {
-            words,
-            characters,
-            charactersNoSpaces,
-            lines,
-            sentences,
-            readTimeText,
-        };
-    }, [text]);
+    const stats = useMemo(() => calculateWordStats(text), [text]);
 
     const faqItems = [
         {

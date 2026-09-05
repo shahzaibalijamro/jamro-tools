@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
+import { calculateNetWorth, netWorthBenchmark } from "../logic/net-worth-calculator";
 
 const assetFields = [
   ["Financial accounts", 15000], ["Investments", 25000], ["Retirement accounts", 60000],
@@ -12,19 +13,12 @@ const liabilityFields = [
   ["Mortgage", 95000], ["Student loans", 18000], ["Auto loans", 9000],
   ["Credit cards", 3500], ["Personal/medical debt", 2000], ["Other liabilities", 0],
 ] as const;
-const benchmarks = [
-  ["Under 35", 39000], ["35-44", 135000], ["45-54", 247000], ["55-64", 364000], ["65-74", 410000], ["75+", 335000],
-] as const;
-
 export default function NetWorthCalculator() {
   const [assets, setAssets] = useState<number[]>(assetFields.map(([, value]) => value));
   const [liabilities, setLiabilities] = useState<number[]>(liabilityFields.map(([, value]) => value));
   const [age, setAge] = useState(35);
-  const totalAssets = useMemo(() => assets.reduce((sum, value) => sum + Math.max(0, value), 0), [assets]);
-  const totalLiabilities = useMemo(() => liabilities.reduce((sum, value) => sum + Math.max(0, value), 0), [liabilities]);
-  const netWorth = totalAssets - totalLiabilities;
-  const ageLabel = age < 35 ? "Under 35" : age < 45 ? "35-44" : age < 55 ? "45-54" : age < 65 ? "55-64" : age < 75 ? "65-74" : "75+";
-  const median = benchmarks.find(([label]) => label === ageLabel)?.[1] ?? 39000;
+  const { totalAssets, totalLiabilities, netWorth } = useMemo(() => calculateNetWorth(assets, liabilities), [assets, liabilities]);
+  const { label: ageLabel, median } = netWorthBenchmark(age);
   const format = (value: number) => `$${Math.round(value).toLocaleString()}`;
   const formatNetWorth = (value: number) => {
     if (Math.abs(value) >= 1_000_000) {

@@ -3,17 +3,7 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo } from "react";
-
-const SCORE_DEFINITIONS: Record<
-  number,
-  { label: string; colorClass: string }
-> = {
-  5: { label: "Extremely Well Qualified", colorClass: "text-primary" },
-  4: { label: "Well Qualified", colorClass: "text-secondary" },
-  3: { label: "Qualified", colorClass: "text-on-secondary-fixed-variant" },
-  2: { label: "Possibly Qualified", colorClass: "text-outline" },
-  1: { label: "Not Qualified", colorClass: "text-error" },
-};
+import { calculateApushScore } from "../logic/apush-score-calculator";
 
 export default function ApushScoreCalculator() {
   const [mcq, setMcq] = useState(40);
@@ -23,37 +13,7 @@ export default function ApushScoreCalculator() {
   const [dbq, setDbq] = useState(5);
   const [leq, setLeq] = useState(4);
 
-  const results = useMemo(() => {
-    const totalRaw = mcq + saq1 + saq2 + saq3 + dbq + leq;
-    const composite =
-      mcq * 1.0 +
-      (saq1 + saq2 + saq3) * 3.11 +
-      dbq * 4.5 +
-      leq * 4.25;
-    const roundedComposite = Math.round(composite);
-
-    let finalScore = 1;
-    if (roundedComposite >= 105) finalScore = 5;
-    else if (roundedComposite >= 88) finalScore = 4;
-    else if (roundedComposite >= 70) finalScore = 3;
-    else if (roundedComposite >= 50) finalScore = 2;
-
-    const percent = Math.min(100, Math.round((roundedComposite / 140) * 100));
-
-    // SVG donut: r = 40, circumference = 2 * PI * 40 ≈ 251.327
-    const circumference = 2 * Math.PI * 40;
-    const offset = circumference - (percent / 100) * circumference;
-
-    return {
-      totalRaw,
-      roundedComposite,
-      finalScore,
-      percent,
-      circumference,
-      offset,
-      definition: SCORE_DEFINITIONS[finalScore],
-    };
-  }, [mcq, saq1, saq2, saq3, dbq, leq]);
+  const results = useMemo(() => calculateApushScore(mcq, saq1, saq2, saq3, dbq, leq), [mcq, saq1, saq2, saq3, dbq, leq]);
 
   const clamp = (v: number, min: number, max: number) =>
     Math.max(min, Math.min(max, v));

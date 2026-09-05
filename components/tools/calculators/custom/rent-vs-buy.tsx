@@ -2,6 +2,7 @@
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 import { useState, useMemo } from "react";
+import { calculateRentVsBuy } from "@/components/tools/calculators/logic/rent-vs-buy";
 import {
   LineChart,
   Line,
@@ -41,120 +42,26 @@ export default function RentVsBuyCalculator() {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showAssumptions, setShowAssumptions] = useState(false);
 
-  const chartData = useMemo(() => {
-    const data = [];
-    const monthlyMortgageRate = interestRate / 100 / 12;
-    const numPayments = loanTerm * 12;
-    const downPayment = homePrice * (downPaymentPct / 100);
-    const loanAmount = homePrice - downPayment;
-    const closingCosts = homePrice * (closingCostsPct / 100);
-    const initialCapital = downPayment + closingCosts;
-
-    let monthlyMortgage = 0;
-    if (loanAmount > 0 && monthlyMortgageRate > 0) {
-      monthlyMortgage =
-        (loanAmount * monthlyMortgageRate * Math.pow(1 + monthlyMortgageRate, numPayments)) /
-        (Math.pow(1 + monthlyMortgageRate, numPayments) - 1);
-    } else if (loanAmount > 0 && monthlyMortgageRate === 0) {
-      monthlyMortgage = loanAmount / numPayments;
-    }
-
-    // Both parties start with identical resources, modeled strictly on cash flow
-    let renterInvestment = initialCapital; // Renter invests the entire avoided upfront cash
-    let buyerInvestment = 0; // Buyer spent the upfront cash on DP and closing costs
-    let loanBalance = loanAmount;
-    let currentHomeValue = homePrice;
-    let currentRent = monthlyRent;
-
-    // Track unrecoverable costs decoupled from extreme home appreciation
-    let currentAnnualPropTax = homePrice * (propertyTaxRate / 100);
-    let currentAnnualMaintenance = homePrice * (maintenanceRate / 100);
-    let currentAnnualInsurance = homeInsuranceAnnual;
-    let currentMonthlyHoa = hoaMonthly;
-
-    let foundBreakEven = null;
-
-    for (let year = 1; year <= years; year++) {
-      const monthlyPropTax = currentAnnualPropTax / 12;
-      const monthlyMaintenance = currentAnnualMaintenance / 12;
-      const monthlyInsurance = currentAnnualInsurance / 12;
-
-      const monthlyBuyCost =
-        monthlyMortgage + monthlyPropTax + monthlyMaintenance + monthlyInsurance + currentMonthlyHoa;
-
-      for (let m = 1; m <= 12; m++) {
-        // Find the absolute highest housing budget required this month for a fair baseline
-        const monthlyHousingBudget = Math.max(monthlyBuyCost, currentRent);
-
-        // Calculate investment growth
-        renterInvestment *= 1 + investmentReturnRate / 100 / 12;
-        buyerInvestment *= 1 + investmentReturnRate / 100 / 12;
-
-        // Invest leftover cash flow from the standardized budget
-        renterInvestment += (monthlyHousingBudget - currentRent);
-        buyerInvestment += (monthlyHousingBudget - monthlyBuyCost);
-
-        // Buyer pays down principal
-        if (loanBalance > 0) {
-          const interestPayment = loanBalance * monthlyMortgageRate;
-          const principalPayment = monthlyMortgage - interestPayment;
-          loanBalance -= principalPayment;
-          if (loanBalance < 0) loanBalance = 0;
-        }
-      }
-
-      // End of year inflation triggers
-      currentHomeValue *= 1 + appreciationRate / 100;
-      currentRent *= 1 + rentIncreaseRate / 100;
-
-      // Unrecoverable ownership costs inflate independently of home value
-      currentAnnualPropTax *= 1 + ownershipInflationRate / 100;
-      currentAnnualMaintenance *= 1 + ownershipInflationRate / 100;
-      currentAnnualInsurance *= 1 + ownershipInflationRate / 100;
-      currentMonthlyHoa *= 1 + ownershipInflationRate / 100;
-
-      // Net Worth Calculation
-      const sellingCosts = currentHomeValue * (sellingCostsPct / 100);
-      const homeEquity = currentHomeValue - loanBalance;
-      const buyerNetWorth = homeEquity + buyerInvestment - sellingCosts;
-
-      data.push({
-        year,
-        buyerNetWorth: Math.round(buyerNetWorth),
-        renterNetWorth: Math.round(renterInvestment),
-        homeValue: Math.round(currentHomeValue),
-        rentCost: Math.round(currentRent),
-      });
-
-      if (foundBreakEven === null && buyerNetWorth >= renterInvestment) {
-        foundBreakEven = year;
-      }
-    }
-
-    return {
-      data,
-      breakEvenYear: foundBreakEven,
-      finalBuyerNetWorth: data[data.length - 1]?.buyerNetWorth || 0,
-      finalRenterNetWorth: data[data.length - 1]?.renterNetWorth || 0,
-    };
-  }, [
+  const chartData = useMemo(() => calculateRentVsBuy({
     homePrice,
     monthlyRent,
-    downPaymentPct,
+    downPaymentPercent: downPaymentPct,
     interestRate,
-    loanTerm,
+    loanTermYears: loanTerm,
     propertyTaxRate,
     homeInsuranceAnnual,
     hoaMonthly,
     maintenanceRate,
-    closingCostsPct,
-    sellingCostsPct,
+    closingCostsPercent: closingCostsPct,
+    sellingCostsPercent: sellingCostsPct,
     appreciationRate,
     rentIncreaseRate,
     investmentReturnRate,
     ownershipInflationRate,
     years,
-  ]);
+  }), [homePrice, monthlyRent, downPaymentPct, interestRate, loanTerm, propertyTaxRate,
+    homeInsuranceAnnual, hoaMonthly, maintenanceRate, closingCostsPct, sellingCostsPct,
+    appreciationRate, rentIncreaseRate, investmentReturnRate, ownershipInflationRate, years]);
 
   const { data, breakEvenYear, finalBuyerNetWorth, finalRenterNetWorth } = chartData;
 
@@ -459,7 +366,7 @@ export default function RentVsBuyCalculator() {
                     width={80}
                   />
                   <Tooltip
-                    formatter={(value: any) => `$${Number(value).toLocaleString()}`}
+                    formatter={(value) => `$${Number(value).toLocaleString()}`}
                     labelFormatter={(label) => `Year ${label}`}
                     contentStyle={{ borderRadius: '8px', border: '1px solid var(--outline-variant)', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                   />

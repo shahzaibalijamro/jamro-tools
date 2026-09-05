@@ -3,6 +3,7 @@ import { FaqSection } from "@/components/ui/faq-section";
 import { ToolInfoCard } from "@/components/tools/tool-info-card";
 
 import { useState, useMemo, useCallback } from "react";
+import { calculateTripleIntegral } from "../logic/triple-integral-calculator";
 
 const faqItems = [
   {
@@ -41,58 +42,6 @@ When evaluating this manually or entering it into a calculator, you must always 
   },
 ]
 
-// Simple function parser and numeric integrator
-function evaluateFunction(expr: string, x: number, y: number, z: number): number {
-  try {
-    const sanitized = expr
-      .replace(/\^/g, "**")
-      .replace(/sin/g, "Math.sin")
-      .replace(/cos/g, "Math.cos")
-      .replace(/tan/g, "Math.tan")
-      .replace(/log/g, "Math.log")
-      .replace(/exp/g, "Math.exp")
-      .replace(/sqrt/g, "Math.sqrt")
-      .replace(/abs/g, "Math.abs")
-      .replace(/pi/gi, "Math.PI")
-      .replace(/e(?![xp])/gi, "Math.E");
-    const fn = new Function("x", "y", "z", `return ${sanitized};`);
-    return fn(x, y, z);
-  } catch {
-    return NaN;
-  }
-}
-
-function tripleIntegral(
-  fnExpr: string,
-  x1: number,
-  x2: number,
-  y1: number,
-  y2: number,
-  z1: number,
-  z2: number,
-  steps = 20
-): number {
-  const dx = (x2 - x1) / steps;
-  const dy = (y2 - y1) / steps;
-  const dz = (z2 - z1) / steps;
-
-  let sum = 0;
-  for (let i = 0; i < steps; i++) {
-    const x = x1 + (i + 0.5) * dx;
-    for (let j = 0; j < steps; j++) {
-      const y = y1 + (j + 0.5) * dy;
-      for (let k = 0; k < steps; k++) {
-        const z = z1 + (k + 0.5) * dz;
-        const val = evaluateFunction(fnExpr, x, y, z);
-        if (!isNaN(val)) {
-          sum += val * dx * dy * dz;
-        }
-      }
-    }
-  }
-  return sum;
-}
-
 export default function TripleIntegralCalculator() {
   const [fnExpr, setFnExpr] = useState("x^2 + y^2 + z^2");
   const [x1, setX1] = useState("0");
@@ -116,7 +65,7 @@ export default function TripleIntegralCalculator() {
       return { value: null, isValid: false };
     }
 
-    const val = tripleIntegral(fnExpr, nx1, nx2, ny1, ny2, nz1, nz2);
+    const val = calculateTripleIntegral(fnExpr, nx1, nx2, ny1, ny2, nz1, nz2);
     if (isNaN(val)) return { value: null, isValid: false };
     return { value: val, isValid: true };
   }, [computed, fnExpr, x1, x2, y1, y2, z1, z2]);

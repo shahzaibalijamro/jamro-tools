@@ -2,8 +2,9 @@
 
 > **Document status:** Approved
 > **Approved:** September 5, 2026
-> **Snapshot date:** September 5, 2026
+> **Snapshot date:** September 6, 2026
 > **Baseline:** `e52e2bd` on `main`, matching `origin/main` at inspection time
+> **Implementation delta:** Phase 2 automated-testing foundation validated September 6, 2026
 > **Evidence rule:** Executable code and configuration take precedence over old Markdown
 
 Related specifications: [Mission](./mission.md) · [Tech Stack](./tech-stack.md) · [Roadmap](./roadmap.md)
@@ -17,7 +18,7 @@ Related specifications: [Mission](./mission.md) · [Tech Stack](./tech-stack.md)
 
 ## Snapshot
 
-**Current:** Jamro Tools is a live Next.js utility site at `jamrotools.com`. Its implemented product is primarily browser-side financial and math calculators, supported by company/legal pages, a Sanity-backed blog and Studio, contact capture, search, theme switching, SEO metadata, and analytics.
+**Current:** Jamro Tools is a live Next.js utility site at `jamrotools.com`. Its implemented product is primarily browser-side financial and math calculators, supported by company/legal pages, a Sanity-backed blog and Studio, contact capture, search, theme switching, SEO metadata, analytics, and a deterministic local automated-testing foundation.
 
 There are exactly 20 implemented configs and 20 registered React tool components:
 
@@ -54,11 +55,11 @@ Calculators use local React state and browser math. Basic and scientific calcula
 
 ## Content and Contact
 
-**Current:** Sanity supplies blog posts and categories. The client-rendered blog index supports category filtering, date/read-time sorting, and nine-item pagination. Blog details and related posts are fetched server-side. Tool pages can show randomized recent blog teasers, and the sitemap includes published blog slugs.
+**Current:** Sanity supplies blog posts and categories through application-owned read boundaries. The client-rendered blog index supports category filtering, date/read-time sorting, and nine-item pagination. Blog details and related posts are fetched server-side. Tool pages can show randomized recent blog teasers, and the sitemap includes published blog slugs. Exact, production-guarded fixture mode supplies invented deterministic content during automated browser tests.
 
 **Legacy/Debt:** Newsletter submission is placeholder behavior. Editorial sourcing, review, corrections, freshness, and retirement are not documented.
 
-**Current:** The contact form posts four fields to the API, which checks truthiness and creates a Sanity `contactQuery`.
+**Current:** The contact form posts four fields to the API, which checks truthiness and creates a Sanity `contactQuery` through an application-owned write boundary. Automated tests use a deterministic, non-persisting fixture result and do not construct or call the production writer.
 
 **Legacy/Debt:** Contact handling lacks schema validation, field limits, rate limiting, bot defense, delivery notification, retention rules, and structured monitoring. Several social links are `#` placeholders.
 
@@ -82,8 +83,10 @@ Calculators use local React state and browser math. Basic and scientific calcula
 |---|---|
 | `npx tsc --noEmit --incremental false` | **Pass** |
 | `npm run build` | **Pass** |
-| `npm run lint` | **Fail: 32 errors, 33 warnings** |
-| Automated tests | **Absent** |
+| `npm run lint` | **Fail: 30 errors, 29 warnings; below the pre-Phase 2 baseline** |
+| `npm test` | **Pass: 108 tests across 7 files** |
+| `npm run test:e2e` | **Pass: 7 Chromium critical journeys, including consecutive repeat runs** |
+| `npm run test:coverage` | **Pass: 89.42% statements, 79.44% branches, 90.76% functions, 90.47% lines** |
 | CI pipeline | **Absent** |
 
 The build also warns about the deprecated default export of `@sanity/image-url` and edge runtime disabling static generation for the affected page. Lint failures include explicit `any`, React hook/ref issues, synchronous state changes in effects, unescaped JSX characters, and unused imports.
@@ -95,7 +98,7 @@ The build also warns about the deprecated default export of `@sanity/image-url` 
 | Catalog | **Legacy/Debt** | Sources disagree about availability, slugs, and counts |
 | Claims | **Legacy/Debt** | Traffic, catalog, performance, privacy, and accuracy claims lack evidence |
 | Navigation | **Legacy/Debt** | Planned links are inert, placeholders, or lead to not-found pages |
-| Accuracy | **Legacy/Debt** | No regression tests or maintained source records |
+| Accuracy | **Legacy/Debt** | All 20 tools have characterization regressions, but maintained authoritative formula/source records are still absent |
 | Regional rules | **Legacy/Debt** | US-specific assumptions are not consistently labeled/versioned |
 | Contact | **Legacy/Debt** | Minimal validation and no abuse controls |
 | Code quality | **Legacy/Debt** | Lint fails and deprecated patterns remain |
@@ -105,7 +108,7 @@ The build also warns about the deprecated default export of `@sanity/image-url` 
 
 ## Intended Direction
 
-- **Current:** A live calculator-centered site with 20 tools and active Sanity content/contact flows.
+- **Current:** A live calculator-centered site with 20 tools, active Sanity content/contact flows, and deterministic unit, component, and Chromium regression suites.
 - **Intentional:** Evolve the existing Next.js, React, Tailwind, and Sanity architecture.
 - **Legacy/Debt:** Correct unsupported claims, nonfunctional catalog entries, duplicate data, and unused backend/auth scaffolding.
 - **Future:** Establish measurement and quality gates, then expand across categories according to demand while preserving free, accountless, client-first use.
