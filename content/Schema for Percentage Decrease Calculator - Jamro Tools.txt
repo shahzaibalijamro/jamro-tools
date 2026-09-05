@@ -1,0 +1,160 @@
+﻿<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://jamrotools.com#website",
+      "url": "https://jamrotools.com",
+      "name": "Jamro Tools",
+      "description": "Use our free Percentage Decrease Calculator to quickly calculate the percent decrease between two numbers. Enter the original and new values to get the percentage decrease instantly.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://jamrotools.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#webpage",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator",
+      "name": "Percentage Decrease Calculator - Calculate Percent Decrease | Jamro Tools",
+      "description": "Use our free Percentage Decrease Calculator to quickly calculate the percent decrease between two numbers. Enter the original and new values to get the percentage decrease instantly.",
+      "isPartOf": {
+        "@id": "https://jamrotools.com#website"
+      },
+      "breadcrumb": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#webapp"
+      },
+      "hasPart": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#faq"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#webapp",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator",
+      "name": "Percentage Decrease Calculator",
+      "description": "Use this free Percentage Decrease Calculator to find how much a value has decreased between two numbers. Enter the original value and the new value to calculate the percentage decrease instantly. This calculator is useful for calculating price reductions, sales decreases, revenue decreases, population decreases, and other reductions from an original value.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jamrotools.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://jamrotools.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Calculators",
+          "item": "https://jamrotools.com/tools/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Math",
+          "item": "https://jamrotools.com/tools/calculators/math/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Percentage Decrease Calculator",
+          "item": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-decrease-calculator#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate percentage decrease?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract the new value from the original value, divide the decrease by the original value, and multiply by 100. Formula: ((Original Value − New Value) ÷ Original Value) × 100. For example, the percentage decrease from 100 to 80 is: ((100 − 80) ÷ 100) × 100 = 20%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the percentage decrease formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The formula for percentage decrease is: Percentage Decrease = ((Original Value − New Value) ÷ Original Value) × 100. This formula calculates how much a value has decreased relative to its original value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate percent decrease between two numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract the new number from the original number. Divide the difference by the original number and multiply by 100. For example, calculate the decrease from 200 to 150: 200 − 150 = 50. 50 ÷ 200 = 0.25. 0.25 × 100 = 25%. The percentage decrease is 25%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate a price decrease percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract the new price from the original price, divide the decrease by the original price, and multiply by 100. For example, if a price decreases from $200 to $150: ((200 − 150) ÷ 200) × 100 = 25%. The price decreased by 25%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between percentage decrease and percentage change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Percentage decrease specifically measures a reduction from an original value. Percentage change can describe either an increase or a decrease depending on whether the new value is higher or lower than the original value. Use the Percentage Change Calculator if you want to calculate both increases and decreases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can percentage decrease be greater than 100%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For ordinary positive values decreasing to zero, the maximum percentage decrease is 100%. For example, a value decreasing from 100 to 0 has decreased by 100%. A result greater than 100% may occur in calculations involving negative values, so those results should be interpreted based on the specific context."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate percentage decrease in Excel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the following Excel formula: =(A1-B1)/A1. Where: A1 contains the original value. B1 contains the new value. Format the result as a percentage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this Percentage Decrease Calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Jamro Tools Percentage Decrease Calculator is free to use. Enter the original and new values to calculate the percentage decrease instantly."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>

@@ -1,0 +1,184 @@
+﻿<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://jamrotools.com#website",
+      "url": "https://jamrotools.com",
+      "name": "Jamro Tools",
+      "description": "Use our free Percentage Change Calculator to calculate percentage change instantly. Enter original and new values to get the result, formula, and steps.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://jamrotools.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#webpage",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator",
+      "name": "Percentage Change Calculator - Calculate Percent Change | Jamro Tools",
+      "description": "Use our free Percentage Change Calculator to calculate percentage change instantly. Enter original and new values to get the result, formula, and steps.",
+      "isPartOf": {
+        "@id": "https://jamrotools.com#website"
+      },
+      "breadcrumb": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#webapp"
+      },
+      "hasPart": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#faq"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#webapp",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator",
+      "name": "Percentage Change Calculator",
+      "description": "Use this free Percentage Change Calculator to calculate the percentage change between an original value and a new value. Enter the two values to instantly calculate the percent change and see the formula and calculation steps. Percentage change shows how much a value has increased or decreased relative to its original value.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jamrotools.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://jamrotools.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Calculators",
+          "item": "https://jamrotools.com/tools/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Math",
+          "item": "https://jamrotools.com/tools/calculators/math/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Percentage Change Calculator",
+          "item": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-change-calculator#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate percentage change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To calculate percentage change, subtract the original value from the new value, divide the result by the original value, and multiply by 100. Formula: Percentage Change = (New Value − Original Value) ÷ Original Value × 100. For example, changing from 80 to 100 gives: 20 ÷ 80 × 100 = 25%. So, the percentage change is 25%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the percentage change formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard percentage change formula is: Percentage Change = (New Value − Original Value) ÷ Original Value × 100. The original value is used as the reference point."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate percentage change between two numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "First identify which number is the original value and which is the new value. Then subtract the original value from the new value, divide by the original value, and multiply by 100. For example, from 50 to 70: 70 − 50 = 20. 20 ÷ 50 × 100 = 40%. The percentage change is 40%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is percentage change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Percentage change measures how much a value has increased or decreased relative to its original value. A positive result indicates an increase, while a negative result indicates a decrease."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate percentage change from an original value to a new value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the original value as the denominator: (New Value − Original Value) ÷ Original Value × 100. For example, if the original value is 100 and the new value is 125: (125 − 100) ÷ 100 × 100 = 25%. The percentage change is 25%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can percentage change be negative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A negative percentage change means that the new value is lower than the original value. For example: (80 − 100) ÷ 100 × 100 = -20%. This represents a 20% decrease."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is percentage change the same as percentage increase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Percentage increase is a specific type of percentage change where the new value is greater than the original value. For example, changing from 100 to 120 produces a 20% percentage increase and a +20% percentage change. Percentage change can describe both increases and decreases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between percentage change and percentage difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Percentage change compares a new value with an original value. Percentage difference compares two values using their average as the reference. For example, between 100 and 120: Percentage change from 100 to 120 = 20%. Percentage difference between 100 and 120 = 18.18%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the order of numbers matter when calculating percentage change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Percentage change depends on the original value. For example: 100 → 120 = 20% increase. 120 → 100 = 16.67% decrease. The same two numbers can therefore produce different percentage changes depending on which one is the original value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the original value is zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard percentage change formula cannot be calculated when the original value is zero because it requires division by the original value. Therefore, percentage change from an original value of zero is undefined using the standard formula."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this Percentage Change Calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The JamroTools Percentage Change Calculator is free to use. Enter an original value and a new value to calculate the percentage change instantly."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>

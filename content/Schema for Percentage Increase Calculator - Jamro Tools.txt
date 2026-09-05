@@ -1,0 +1,148 @@
+﻿{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#webpage",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator",
+      "name": "Percentage Increase Calculator - Calculate Percent Increase | Jamro Tools",
+      "description": "Use our free Percentage Increase Calculator to quickly calculate the percent increase between two numbers. Enter the original and new values to get the percentage increase instantly.",
+      "isPartOf": {
+        "@id": "https://jamrotools.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#calculator"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#calculator",
+      "name": "Percentage Increase Calculator",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator",
+      "description": "Free Percentage Increase Calculator to calculate the percent increase between an original value and a new value.",
+      "applicationCategory": "CalculatorApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+      "isAccessibleForFree": true,
+      "featureList": [
+        "Calculate percentage increase between two numbers",
+        "Calculate the absolute increase between two values",
+        "Show percentage increase calculation steps",
+        "Explain the percentage increase formula"
+      ],
+      "mainEntityOfPage": {
+        "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#webpage"
+      },
+      "publisher": {
+        "@id": "https://jamrotools.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jamrotools.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculators",
+          "item": "https://jamrotools.com/tools/calculators/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Percentage Increase Calculator",
+          "item": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator#faq",
+      "url": "https://jamrotools.com/tools/calculators/math/percentage-increase-calculator",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate percentage increase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract the original value from the new value, divide the increase by the original value, and multiply by 100. Formula: ((New Value − Original Value) ÷ Original Value) × 100. For example, the percentage increase from 100 to 150 is ((150 − 100) ÷ 100) × 100 = 50%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the percentage increase formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The formula for percentage increase is: Percentage Increase = ((New Value − Original Value) ÷ Original Value) × 100. This formula calculates how much a value has increased relative to its original value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate percent increase between two numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "First, subtract the original number from the new number. Then divide the difference by the original number and multiply by 100. For example, from 200 to 250: 250 − 200 = 50, 50 ÷ 200 = 0.25, and 0.25 × 100 = 25%. The percentage increase is 25%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between percentage increase and percentage change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Percentage increase specifically describes a value becoming larger than its original value. Percentage change can describe either an increase or a decrease, depending on whether the new value is higher or lower than the original value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can percentage increase be more than 100%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A percentage increase can be greater than 100%. For example, if a value increases from 100 to 250: ((250 − 100) ÷ 100) × 100 = 150%. The value increased by 150%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the new value is lower than the original value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the new value is lower than the original value, the result represents a decrease rather than an increase. In this situation, use the Percentage Decrease Calculator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this Percentage Increase Calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Jamro Tools Percentage Increase Calculator is free to use. Enter the original value and new value to calculate the percentage increase instantly."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jamrotools.com/#website",
+      "url": "https://jamrotools.com/",
+      "name": "Jamro Tools",
+      "publisher": {
+        "@id": "https://jamrotools.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://jamrotools.com/#organization",
+      "name": "Jamro Tools",
+      "url": "https://jamrotools.com/"
+    }
+  ]
+}
