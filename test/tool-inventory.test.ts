@@ -8,10 +8,10 @@ describe("implemented tool regression inventory", () => {
     const configs = allTools.map(({ slug, customComponent }) => [slug, customComponent]).sort();
     const manifest = toolRegressionManifest.map(([slug, component]) => [slug, component]).sort();
     const registered = getRegisteredCustomToolNames().sort();
-    expect(configs).toHaveLength(20);
-    expect(registered).toHaveLength(20);
+    expect(configs).toHaveLength(24);
+    expect(registered).toHaveLength(24);
     expect(manifest).toEqual(configs);
     expect(toolRegressionManifest.map(([, component]) => component).sort()).toEqual(registered);
-    expect(new Set(toolRegressionManifest.map(([, , suite]) => suite)).size).toBe(20);
+    expect(new Set(toolRegressionManifest.map(([, , suite]) => suite)).size).toBe(24);
   });
 });

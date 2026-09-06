@@ -3,6 +3,10 @@ import { mortgageCalculator } from "./mortgage-calculator";
 import { apushScoreCalculator } from "./apush-score-calculator";
 import { cylinderVolumeCalculator } from "./cylinder-volume-calculator";
 import { percentageDecreaseCalculator } from "./percentage-decrease-calculator";
+import { percentageIncreaseCalculator } from "./percentage-increase-calculator";
+import { percentageChangeCalculator } from "./percentage-change-calculator";
+import { percentageDifferenceCalculator } from "./percentage-difference-calculator";
+import { percentageErrorCalculator } from "./percentage-error-calculator";
 import { ageDifferenceCalculator } from "./age-difference-calculator";
 import { middleSchoolGpaCalculator } from "./middle-school-gpa-calculator";
 import { tripleIntegralCalculator } from "./triple-integral-calculator";
@@ -25,6 +29,10 @@ const allTools: ToolConfig[] = [
   apushScoreCalculator,
   cylinderVolumeCalculator,
   percentageDecreaseCalculator,
+  percentageIncreaseCalculator,
+  percentageChangeCalculator,
+  percentageDifferenceCalculator,
+  percentageErrorCalculator,
   ageDifferenceCalculator,
   middleSchoolGpaCalculator,
   tripleIntegralCalculator,

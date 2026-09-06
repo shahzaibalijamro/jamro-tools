@@ -1,10 +1,12 @@
 # Percentage Calculator Family — Implementation Plan
 
-> **Document status:** Approved
+> **Document status:** Complete
 >
 > **Approved:** September 6, 2026
 >
-> **Implementation status:** Not started
+> **Implementation status:** Complete
+>
+> **Completed:** September 6, 2026
 
 This plan implements [requirements.md](./requirements.md) under the project constitution. Task groups are ordered; later groups may rely on earlier groups. This specification package does not itself authorize application-code changes.
 

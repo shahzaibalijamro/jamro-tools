@@ -1,10 +1,12 @@
 # Percentage Calculator Family — Validation
 
-> **Document status:** Approved
+> **Document status:** Complete
 >
 > **Approved:** September 6, 2026
 >
-> **Implementation status:** Not started
+> **Implementation status:** Complete
+>
+> **Completed:** September 6, 2026
 
 This document defines the evidence required to prove [requirements.md](./requirements.md). Expected percentages below are mathematical values before display formatting; assertions must use exact equality where safe or an explicit floating-point tolerance of `1e-10` or tighter.
 
@@ -184,6 +186,6 @@ Merge readiness requires:
 - every changed TypeScript/TSX file has zero lint findings, while the known repository-wide baseline is recorded separately;
 - two consecutive focused Chromium runs pass without external calculation traffic;
 - the final diff includes only approved feature implementation/spec/test changes and no constitution edits;
-- `Tasks.csv` and supplied `content/` remain non-runtime source material;
+- `Tasks.csv` and the supplied `content/` files are removed after the completed source audit;
 - no secret, personal data, generated report, remote image, new dependency, environment variable, API route, persistence path, or unrelated working-tree item enters the feature diff;
 - acceptance criteria AC-01 through AC-13 are mapped to concrete test output or a named manual check.

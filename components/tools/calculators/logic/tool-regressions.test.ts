@@ -13,7 +13,6 @@ import { evaluateBasicExpression, parseCalculatorHistory, prependCalculatorHisto
 import { evaluateScientificExpression } from "./scientific-calculator";
 import { calculateCylinder, cylinderUnits } from "./cylinder-volume-calculator";
 import { calculatePercentage } from "./percentage-calculator";
-import { calculatePercentageDecrease } from "./percentage-decrease-calculator";
 import { calculateTripleIntegral } from "./triple-integral-calculator";
 import { calculateAgeDifference } from "./age-difference-calculator";
 import { calculateMiddleSchoolGpa } from "./middle-school-gpa-calculator";
@@ -200,14 +199,6 @@ describe("percentage calculator", () => {
     const output = calculatePercentage(mode, first, second);
     expect(output.result).toBeNull();
     if (secondError) expect(output.errors.second).toBe(secondError); else expect(output.errors.first).toBeTruthy();
-  });
-});
-
-describe("percentage decrease", () => {
-  it.each([[100, 85, 15], [100, 100, 0], [100, 120, -20]])("covers decrease/no-change/increase", (initial, final, expected) => expect(calculatePercentageDecrease(initial, final).percentage).toBe(expected));
-  it("marks zero or NaN original invalid", () => {
-    expect(calculatePercentageDecrease(0, 1).isValid).toBe(false);
-    expect(calculatePercentageDecrease(Number.NaN, 1).isValid).toBe(false);
   });
 });
 

@@ -1,10 +1,12 @@
 # Percentage Calculator Family — Requirements
 
-> **Document status:** Approved for implementation planning
+> **Document status:** Complete
 >
 > **Approved:** September 6, 2026
 >
-> **Implementation status:** Not started
+> **Implementation status:** Complete
+>
+> **Completed:** September 6, 2026
 >
 > **Roadmap owner:** Phase 5 — Demand-Led Catalog Expansion, with Phase 3 trust and catalog integration requirements applied
 

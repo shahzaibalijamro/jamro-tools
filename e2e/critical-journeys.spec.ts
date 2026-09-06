@@ -1,19 +1,39 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const remoteHosts = ["sanity.io", "sanity-cdn.com", "google-analytics.com", "googletagmanager.com", "vercel-insights.com"];
+const remoteHosts = ["sanity.io", "sanity-cdn.com", "google-analytics.com", "googletagmanager.com", "googleapis.com", "gravatar.com", "vercel-insights.com"];
 const expectedConsoleErrors = new WeakMap<Page, string[]>();
+const failedRequests = new WeakMap<Page, string[]>();
 
 test.beforeEach(async ({ page }) => {
+  failedRequests.set(page, []);
   await page.route("**/*", async (route) => {
     const url = new URL(route.request().url());
     if (url.hostname.includes("sanity")) throw new Error(`Forbidden Sanity request: ${url.href}`);
-    if (remoteHosts.some((host) => url.hostname.includes(host)) || url.hostname.includes("google.com")) {
-      await route.abort("blockedbyclient");
+    const proxiedRemoteUrl = url.searchParams.get("url") ?? "";
+    const isBlockedRemote = remoteHosts.some((host) => url.hostname.includes(host))
+      || url.hostname.includes("google.com")
+      || proxiedRemoteUrl.startsWith("http");
+    if (isBlockedRemote) {
+      const resourceType = route.request().resourceType();
+      await route.fulfill({
+        status: 200,
+        contentType: resourceType === "script"
+          ? "application/javascript"
+          : resourceType === "stylesheet"
+            ? "text/css"
+            : "image/svg+xml",
+        body: resourceType === "image"
+          ? '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1" />'
+          : "",
+      });
       return;
     }
     await route.continue();
   });
   page.on("pageerror", (error) => { throw error; });
+  page.on("requestfailed", (request) => {
+    failedRequests.get(page)?.push(`${request.url()} (${request.failure()?.errorText ?? "unknown"})`);
+  });
   page.on("console", (message) => {
     if (message.type() !== "error") return;
     const expected = expectedConsoleErrors.get(page) ?? [];
@@ -22,7 +42,8 @@ test.beforeEach(async ({ page }) => {
       expected.splice(matchingIndex, 1);
       return;
     }
-    throw new Error(`Unexpected browser console error: ${message.text()}`);
+    const recentFailures = failedRequests.get(page)?.slice(-3).join("; ") ?? "none";
+    throw new Error(`Unexpected browser console error: ${message.text()}. Recent failed requests: ${recentFailures}`);
   });
 });
 
@@ -95,9 +116,10 @@ test("theme preference persists across reload", async ({ page }) => {
 
 test("fixture-backed blog opens a stable invented post", async ({ page }) => {
   await page.goto("/blog");
-  await expect(page.getByText("A Fictional Guide to Mortgage Estimates")).toBeVisible();
+  const fixturePost = page.getByRole("link", { name: /A Fictional Guide to Mortgage Estimates/ });
+  await expect(fixturePost).toBeVisible();
   await expect(page.getByRole("button", { name: "Calculators" })).toBeVisible();
-  await page.getByText("A Fictional Guide to Mortgage Estimates").click();
+  await fixturePost.click();
   await expect(page).toHaveURL(/\/blog\/fixture-mortgage-guide$/);
   await expect(page.getByRole("heading", { name: "A Fictional Guide to Mortgage Estimates", level: 1 })).toBeVisible();
 });

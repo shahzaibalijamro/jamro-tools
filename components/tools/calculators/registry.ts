@@ -3,6 +3,10 @@ import MortgageCalculator from "./custom/mortgage-calculator";
 import ApushScoreCalculator from "./custom/apush-score-calculator";
 import CylinderVolumeCalculator from "./custom/cylinder-volume-calculator";
 import PercentageDecreaseCalculator from "./custom/percentage-decrease-calculator";
+import PercentageIncreaseCalculator from "./custom/percentage-increase-calculator";
+import PercentageChangeCalculator from "./custom/percentage-change-calculator";
+import PercentageDifferenceCalculator from "./custom/percentage-difference-calculator";
+import PercentageErrorCalculator from "./custom/percentage-error-calculator";
 import AgeDifferenceCalculator from "./custom/age-difference-calculator";
 import MiddleSchoolGpaCalculator from "./custom/middle-school-gpa-calculator";
 import TripleIntegralCalculator from "./custom/triple-integral-calculator";
@@ -34,6 +38,10 @@ const customToolRegistry: Record<string, ComponentType> = {
   ApushScoreCalculator,
   CylinderVolumeCalculator,
   PercentageDecreaseCalculator,
+  PercentageIncreaseCalculator,
+  PercentageChangeCalculator,
+  PercentageDifferenceCalculator,
+  PercentageErrorCalculator,
   AgeDifferenceCalculator,
   MiddleSchoolGpaCalculator,
   TripleIntegralCalculator,
@@ -76,6 +84,10 @@ export {
   ApushScoreCalculator,
   CylinderVolumeCalculator,
   PercentageDecreaseCalculator,
+  PercentageIncreaseCalculator,
+  PercentageChangeCalculator,
+  PercentageDifferenceCalculator,
+  PercentageErrorCalculator,
   AgeDifferenceCalculator,
   MiddleSchoolGpaCalculator,
   TripleIntegralCalculator,

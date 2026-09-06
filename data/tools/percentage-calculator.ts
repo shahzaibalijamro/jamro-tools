@@ -159,6 +159,21 @@ export const percentageCalculator: ToolConfig = {
         href: "/tools/calculators/math/percentage-decrease-calculator",
         description: "Measure the percentage drop between two values.",
       },
+      {
+        title: "Percentage Increase Calculator",
+        href: "/tools/calculators/math/percentage-increase-calculator",
+        description: "Measure growth from an original value.",
+      },
+      {
+        title: "Percentage Change Calculator",
+        href: "/tools/calculators/math/percentage-change-calculator",
+        description: "Measure signed change from an original value.",
+      },
+      {
+        title: "Percentage Difference Calculator",
+        href: "/tools/calculators/math/percentage-difference-calculator",
+        description: "Compare two peer values relative to their average.",
+      },
     ],
     faq: [
       {

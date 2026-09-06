@@ -56,11 +56,6 @@ const TOOL_META: Record<string, { title: string; description: string }> = {
     description:
       "Calculate cylinder volume instantly using V=πr²h. Enter radius & height — get volume, surface area & base area in cubic inches, cm³, liters & more. Free.",
   },
-  "percentage-decrease-calculator": {
-    title: "Percentage Decrease Calculator – Instant % Drop & Formula",
-    description:
-      "Find the exact percentage decrease between any two values in seconds. See the absolute drop, retention rate & step-by-step formula. Free, no sign-up needed.",
-  },
   "triple-integral-calculator": {
     title: "Triple Integral Calculator – Step-by-Step, Free Online",
     description:
@@ -135,7 +130,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
       <main className="max-w-[1280px] mx-auto px-[24px] pt-[48px] pb-[48px]">
         {/* ── Breadcrumbs ── */}
-        <nav className="flex items-center gap-[4px] mb-[24px] text-on-surface-variant">
+        <nav className="flex flex-wrap items-center gap-[4px] mb-[24px] text-on-surface-variant">
           <Link
             href="/tools"
             className="text-label-md hover:text-primary transition-colors"
@@ -238,7 +233,7 @@ function getRelatedTools(currentTool: ToolConfig): ToolLink[] {
     }));
 }
 
-function buildToolJsonLd(toolConfig: ToolConfig, categoryTitle: string) {
+export function buildToolJsonLd(toolConfig: ToolConfig, categoryTitle: string) {
   const siteUrl = "https://jamrotools.com";
   const path = `/tools/calculators/${toolConfig.category}/${toolConfig.slug}`;
   const pageUrl = `${siteUrl}${path}`;
@@ -269,13 +264,6 @@ function buildToolJsonLd(toolConfig: ToolConfig, categoryTitle: string) {
   }
 
   const graph: Array<Record<string, unknown>> = [
-    {
-      "@type": "WebSite",
-      "@id": websiteId,
-      url: siteUrl,
-      name: "Jamro Tools",
-      description: metadata.description,
-    },
     webpage,
     {
       "@type": "WebApplication",
